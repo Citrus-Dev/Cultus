@@ -1,0 +1,161 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://assets/enemies/polilla.png" type="Texture" id=1]
+[ext_resource path="res://main/Personajes/PersonajeBase.tscn" type="PackedScene" id=2]
+[ext_resource path="res://main/SistemaDaño/Hurtbox.tscn" type="PackedScene" id=3]
+[ext_resource path="res://main/libs/BehaviorTree/BehaviorTree.gd" type="Script" id=4]
+[ext_resource path="res://main/libs/BehaviorTree/compuestos/Secuencia.gd" type="Script" id=5]
+[ext_resource path="res://main/libs/BehaviorTree/compuestos/Selector.gd" type="Script" id=6]
+[ext_resource path="res://main/libs/BehaviorTree/hojas/Acciones/TomarNodosDeGrupo.gd" type="Script" id=7]
+[ext_resource path="res://main/libs/BehaviorTree/hojas/Acciones/BuscarValorDeBlackboard.gd" type="Script" id=8]
+[ext_resource path="res://main/libs/BehaviorTree/hojas/Steering/SteeringContexto.gd" type="Script" id=9]
+[ext_resource path="res://main/libs/DebugMonitor/DebugMonitor.tscn" type="PackedScene" id=10]
+[ext_resource path="res://main/Personajes/Polilla/Polilla.gd" type="Script" id=11]
+[ext_resource path="res://main/libs/BehaviorTree/hojas/Acciones/MoverseEnDireccion.gd" type="Script" id=12]
+[ext_resource path="res://main/libs/BehaviorTree/hojas/Acciones/TomarDireccionAObjeto.gd" type="Script" id=13]
+[ext_resource path="res://main/AI/Comportamientos/Morir.tscn" type="PackedScene" id=14]
+
+[sub_resource type="RectangleShape2D" id=4]
+
+[sub_resource type="RectangleShape2D" id=3]
+
+[sub_resource type="Animation" id=1]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Skin/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "loop"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Skin/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+
+[node name="Polilla" instance=ExtResource( 2 )]
+collision_layer = 4
+collision_mask = 5
+script = ExtResource( 11 )
+skin = NodePath("Skin")
+behavior_tree_path = NodePath("BehaviorTree")
+aceleracion = 10.0
+friccion = 0.5
+max_velocidad_horizontal = 100.0
+max_velocidad_vertical = 100.0
+no_gravedad = true
+
+[node name="monitores" type="Node2D" parent="." index="0"]
+visible = false
+
+[node name="estado" parent="monitores" index="0" instance=ExtResource( 10 )]
+position = Vector2( 0, -24 )
+monitor_target_property = "state"
+monitor_flavor_text = "estado"
+
+[node name="input" parent="monitores" index="1" instance=ExtResource( 10 )]
+position = Vector2( 0, -37 )
+monitor_target_node = NodePath("../..")
+monitor_target_property = "input"
+monitor_flavor_text = "input"
+
+[node name="Status" parent="." index="1"]
+hp_max = 50
+stun_threshold = 30
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="2"]
+visible = false
+shape = SubResource( 4 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Hitbox" parent="." index="3"]
+visible = false
+
+[node name="Hurtbox" parent="." index="4" instance=ExtResource( 3 )]
+visible = false
+collision_mask = 16
+agente_dir = NodePath("..")
+is_constant = true
+fuerza_retroceso = 150.0
+dmg_tipo = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" index="0"]
+shape = SubResource( 3 )
+
+[node name="Skin" type="Node2D" parent="." index="5"]
+
+[node name="Sprite" type="Sprite" parent="Skin" index="0"]
+texture = ExtResource( 1 )
+hframes = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Skin" index="1"]
+root_node = NodePath("../..")
+autoplay = "loop"
+anims/RESET = SubResource( 1 )
+anims/loop = SubResource( 2 )
+
+[node name="BehaviorTree" type="Node" parent="." index="6"]
+script = ExtResource( 4 )
+agente = NodePath("..")
+
+[node name="Selector" type="Node" parent="BehaviorTree" index="0"]
+script = ExtResource( 6 )
+
+[node name="Morir" parent="BehaviorTree/Selector" index="0" instance=ExtResource( 14 )]
+
+[node name="Tenes 0 vida\?" parent="BehaviorTree/Selector/Morir" index="0"]
+nodo_a_comparar_path = NodePath("../../../../Status")
+
+[node name="PerseguirJugador" type="Node" parent="BehaviorTree/Selector" index="1"]
+script = ExtResource( 5 )
+
+[node name="HayReferenciaAlJugador\?" type="Node" parent="BehaviorTree/Selector/PerseguirJugador" index="0"]
+script = ExtResource( 8 )
+valor_a_buscar = "jugador"
+
+[node name="TomarDireccionAlJugador" type="Node" parent="BehaviorTree/Selector/PerseguirJugador" index="1"]
+script = ExtResource( 13 )
+obj_target_bb = "jugador"
+nombre_entrada_blackboard = "jug_dir"
+
+[node name="SteeringContexto" type="Node" parent="BehaviorTree/Selector/PerseguirJugador" index="2"]
+script = ExtResource( 9 )
+vector_de_direccion_final_bb = "steer_direccion"
+vector_a_seguir_bb = "jug_dir"
+distancia_de_deteccion = 24.0
+num_rayos = 16
+
+[node name="SeguirSteering" type="Node" parent="BehaviorTree/Selector/PerseguirJugador" index="3"]
+script = ExtResource( 12 )
+target_dir_bb = "steer_direccion"
+
+[node name="BuscarReferenciaAlJugador" type="Node" parent="BehaviorTree/Selector" index="2"]
+script = ExtResource( 5 )
+
+[node name="TomarNodosDeGrupo" type="Node" parent="BehaviorTree/Selector/BuscarReferenciaAlJugador" index="0"]
+script = ExtResource( 7 )
+nombre_grupo = "Jugador"
+nombre_entrada_blackboard = "jugador"
+obj_unico = true
+
+[editable path="BehaviorTree/Selector/Morir"]

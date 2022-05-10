@@ -1,0 +1,77 @@
+[gd_scene format=2]
+
+[node name="TestRagdoll" type="Node2D"]
+
+[node name="Cabeza" type="RigidBody2D" parent="."]
+position = Vector2( 0, -1 )
+collision_layer = 1024
+collision_mask = 1025
+
+[node name="Polygon2D" type="Polygon2D" parent="Cabeza"]
+position = Vector2( -1, 0 )
+color = Color( 0.831373, 0.831373, 0.831373, 1 )
+polygon = PoolVector2Array( 1, -8, -1, -9, -2, -10, -2, -11, -1, -12, 1, -13, 2, -13, 4, -13, 5, -12, 5, -10, 4, -9 )
+
+[node name="Polygon2D2" type="CollisionPolygon2D" parent="Cabeza"]
+position = Vector2( -1, 0 )
+polygon = PoolVector2Array( 1, -8, -1, -9, -2, -10, -2, -11, -1, -12, 1, -13, 2, -13, 4, -13, 5, -12, 5, -10, 4, -9 )
+
+[node name="JointCuello" type="PinJoint2D" parent="."]
+position = Vector2( 0, -9 )
+node_a = NodePath("../Cuerpo")
+node_b = NodePath("../Cabeza")
+disable_collision = false
+
+[node name="Cuerpo" type="RigidBody2D" parent="."]
+position = Vector2( 0, -1 )
+collision_layer = 1024
+collision_mask = 1025
+
+[node name="Polygon2D" type="Polygon2D" parent="Cuerpo"]
+position = Vector2( -1, 0 )
+color = Color( 0.831373, 0.831373, 0.831373, 1 )
+polygon = PoolVector2Array( -1, -8, -3, 1, 5, 1, 3, -8 )
+
+[node name="Polygon2D2" type="CollisionPolygon2D" parent="Cuerpo"]
+position = Vector2( -1, 0 )
+polygon = PoolVector2Array( -1, -8, -3, 1, 5, 1, 3, -8 )
+
+[node name="JointHombro1" type="PinJoint2D" parent="."]
+position = Vector2( -1, -8 )
+node_a = NodePath("../Cuerpo")
+node_b = NodePath("../Brazo1")
+
+[node name="Brazo1" type="RigidBody2D" parent="."]
+position = Vector2( 0, -1 )
+collision_layer = 1024
+collision_mask = 1025
+
+[node name="Polygon2D" type="Polygon2D" parent="Brazo1"]
+position = Vector2( -1, 0 )
+rotation = -0.0020859
+polygon = PoolVector2Array( -3.99165, -4.00834, -0.985397, -7.00207, 0.0146013, -6.99998, 0.0125154, -5.99999 )
+
+[node name="Polygon2D2" type="CollisionPolygon2D" parent="Brazo1"]
+position = Vector2( -1, 0 )
+rotation = -0.0020859
+polygon = PoolVector2Array( -3.99165, -4.00834, -0.985397, -7.00207, 0.0146013, -6.99998, 0.0125154, -5.99999 )
+
+[node name="JointCodo1" type="PinJoint2D" parent="."]
+position = Vector2( -1, -8 )
+node_a = NodePath("../Brazo1")
+node_b = NodePath("../Mano1")
+
+[node name="Mano1" type="RigidBody2D" parent="."]
+position = Vector2( 0, -1 )
+collision_layer = 1024
+collision_mask = 1025
+
+[node name="Polygon2D" type="Polygon2D" parent="Mano1"]
+position = Vector2( -1, 0 )
+rotation = -0.0020859
+polygon = PoolVector2Array( -4.99165, -4.01042, -3.99165, -4.00834, -3.99373, -3.00834, -5.99582, -2.01251 )
+
+[node name="Polygon2D2" type="CollisionPolygon2D" parent="Mano1"]
+position = Vector2( -1, 0 )
+rotation = -0.0020859
+polygon = PoolVector2Array( -4.99165, -4.01042, -3.99165, -4.00834, -3.99373, -3.00834, -5.99582, -2.01251 )

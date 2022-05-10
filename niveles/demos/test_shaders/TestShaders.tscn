@@ -1,0 +1,142 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://niveles/Nivel.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/icon.png" type="Texture" id=2]
+[ext_resource path="res://assets/shaders/shader_flicker.shader" type="Shader" id=3]
+
+[sub_resource type="Shader" id=9]
+code = "shader_type canvas_item;
+
+void fragment(){
+	COLOR = texture(TEXTURE, UV);
+	COLOR += vec4(sin(TIME / cos(UV.y * .1f)));
+}"
+
+[sub_resource type="ShaderMaterial" id=10]
+shader = SubResource( 9 )
+
+[sub_resource type="Shader" id=3]
+code = "shader_type canvas_item;
+
+uniform sampler2D textura;
+uniform bool usar_textura;
+uniform float intensidad = 0.5f;
+uniform int capas = 3;
+uniform float velocidad = 0.3f;
+
+float gradient(vec2 uv){
+	return (0.5f - distance(vec2(uv.x, uv.y), vec2(0.5f, 0.5f)));
+}
+
+vec4 colorizar(float c, float a){
+	vec4 paleta;
+	paleta = vec4(c,c,c,a);
+	return paleta;
+}
+
+void fragment(){
+	float capas_f = float(capas);
+	vec4 fondo = texture(TEXTURE, UV - TIME * velocidad);
+	COLOR = fondo;
+//	COLOR.a /= gradient(UV); //ESTO HACE EL ESCUDO
+	COLOR.r = gradient(UV);
+	COLOR.r = clamp(COLOR.r * fondo.r * intensidad, 0f, 1f);
+	COLOR.r = floor(COLOR.r * capas_f) / capas_f;
+	COLOR.a = float(COLOR.r > -0f);
+	
+	if (usar_textura) {
+		vec4 nueva_textura = texture(textura, UV);
+		float avg = (nueva_textura.r + nueva_textura.g + nueva_textura.b) / 3f;
+		nueva_textura.rgb = vec3(avg);
+		COLOR *= (nueva_textura + .6f);
+	}
+	else{
+		COLOR = colorizar(COLOR.r, COLOR.r);
+	}
+}"
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 3 )
+shader_param/usar_textura = false
+shader_param/intensidad = 6.9
+shader_param/capas = 3
+shader_param/velocidad = 0.1
+shader_param/textura = ExtResource( 2 )
+
+[sub_resource type="OpenSimplexNoise" id=7]
+seed = 945
+octaves = 2
+period = 23.3
+persistence = 1.0
+lacunarity = 0.45
+
+[sub_resource type="NoiseTexture" id=8]
+flags = 3
+width = 256
+height = 256
+seamless = true
+noise = SubResource( 7 )
+
+[sub_resource type="ShaderMaterial" id=4]
+shader = ExtResource( 3 )
+shader_param/freq = 5.0
+shader_param/instante = true
+
+[sub_resource type="Shader" id=11]
+code = "shader_type canvas_item;
+
+vec4 creepypasta(vec4 color){
+	color = floor(color * 1.2f);
+	color.b = ceil(0f);
+	color.g = ceil(0f);
+	return color;
+}
+
+vec4 godot_malo(vec4 color){
+	color += sin(color * TIME) - .5f;
+	return color;
+}
+
+void fragment(){
+	COLOR = texture(TEXTURE, UV);
+	COLOR = creepypasta(COLOR);
+}"
+
+[sub_resource type="ShaderMaterial" id=12]
+shader = SubResource( 11 )
+
+[node name="TestShaders" instance=ExtResource( 1 )]
+
+[node name="ColorRect" type="ColorRect" parent="FondoLejos" index="0"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="nose" type="Sprite" parent="Frente" index="0"]
+material = SubResource( 10 )
+position = Vector2( 420, 240 )
+texture = ExtResource( 2 )
+
+[node name="Sprite4" type="Sprite" parent="Frente" index="1"]
+modulate = Color( 0.803922, 0.803922, 0.803922, 1 )
+material = SubResource( 2 )
+position = Vector2( 120, 152 )
+scale = Vector2( 0.75, 0.75 )
+texture = SubResource( 8 )
+
+[node name="flicker" type="Sprite" parent="Frente" index="2"]
+material = SubResource( 4 )
+position = Vector2( 416, 96 )
+scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="Frente" index="3"]
+material = SubResource( 12 )
+position = Vector2( 298, 233 )
+texture = ExtResource( 2 )
+
+[node name="Sprite2" type="Sprite" parent="Frente" index="4"]

@@ -1,0 +1,505 @@
+[gd_scene load_steps=26 format=2]
+
+[ext_resource path="res://main/Personajes/Jugador/Jugador.gd" type="Script" id=1]
+[ext_resource path="res://assets/jug/player.png" type="Texture" id=2]
+[ext_resource path="res://main/Personajes/Jugador/ControladorArmasJugador.gd" type="Script" id=3]
+[ext_resource path="res://main/Componentes/Stretcher.gd" type="Script" id=4]
+[ext_resource path="res://main/SistemaDaño/Status.gd" type="Script" id=5]
+[ext_resource path="res://main/SistemaDaño/Hitbox.tscn" type="PackedScene" id=6]
+[ext_resource path="res://main/libs/DebugMonitor/DebugMonitor.tscn" type="PackedScene" id=7]
+[ext_resource path="res://main/Personajes/Jugador/habilidades/Slide.gd" type="Script" id=8]
+[ext_resource path="res://main/Shaker/Shaker.tscn" type="PackedScene" id=9]
+[ext_resource path="res://main/Componentes/LOSCheck.gd" type="Script" id=10]
+[ext_resource path="res://main/Ragdolls/RagdollJug.tscn" type="PackedScene" id=11]
+
+[sub_resource type="Animation" id=3]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Stretcher/Player:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Stretcher/Player:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -12 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("PosBufanda:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -9 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Stretcher/Player:texture")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ ExtResource( 2 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Stretcher/Player:vframes")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 9 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Stretcher/Player:hframes")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 5 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("../ControladorArmasJugador:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -9 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("../Hitbox:monitoring")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("../Hitbox:monitorable")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=13]
+resource_name = "dejar_de_mirar"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Stretcher/Player:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 6, 7 ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "fall"
+length = 0.2
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Stretcher/Player:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 30, 31 ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "hurt"
+length = 0.2
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Stretcher/Player:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 20, 21 ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "hurt_start"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Stretcher/Player:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 15 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("AnimationPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ "hurt", -1, 1.0, false ],
+"method": "play"
+} ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "idle"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Stretcher/Player:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "jump"
+length = 0.2
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Stretcher/Player:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 25, 26 ]
+}
+
+[sub_resource type="Animation" id=12]
+resource_name = "mirar"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Stretcher/Player:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 7, 6 ]
+}
+
+[sub_resource type="Animation" id=11]
+resource_name = "slide"
+length = 0.3
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Stretcher/Player:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 40, 41, 42 ]
+}
+
+[sub_resource type="Animation" id=14]
+resource_name = "slide_start"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Stretcher/Player:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 35 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("AnimationPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ "slide", -1, 1.0, false ],
+"method": "play"
+} ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../Hitbox:monitoring")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("../Hitbox:monitorable")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "turn"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Stretcher/Player:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 5, 7 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ "turning", false ],
+"method": "set"
+} ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "walk"
+length = 0.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Stretcher/Player:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 10, 11, 12, 13, 14 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("PosBufanda:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -9 ), Vector2( 0, -8.3 ), Vector2( 0, -10 ), Vector2( 0, -10.5 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../ControladorArmasJugador:position")
+tracks/2/interp = 0
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -9 ), Vector2( 0, -8.3 ), Vector2( 0, -10 ), Vector2( 0, -10.5 ) ]
+}
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 4, 8 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 6, 8 )
+
+[node name="Jugador" type="KinematicBody2D" groups=["Jugador"]]
+z_index = 1
+collision_layer = 2
+collision_mask = 9
+script = ExtResource( 1 )
+ragdoll_escena = ExtResource( 11 )
+skin = NodePath("Skin")
+skin_sprite_path = NodePath("Skin/Stretcher/Player")
+status = NodePath("Status")
+aceleracion = 15.0
+friccion = 0.8
+max_velocidad_horizontal = 150.0
+max_velocidad_vertical = 300.0
+jump_time_to_peak = 0.6
+jump_time_to_fall = 0.6
+stretcher = NodePath("Skin/Stretcher")
+pos_bufanda = NodePath("Skin/PosBufanda")
+shaker = NodePath("Skin/Shaker")
+los = NodePath("LOSCheck")
+
+[node name="monitores" type="Node2D" parent="."]
+visible = false
+
+[node name="hp" parent="monitores" instance=ExtResource( 7 )]
+position = Vector2( 10, -36 )
+monitor_target_node = NodePath("../../Status")
+monitor_target_property = "hp"
+monitor_flavor_text = "hp"
+
+[node name="kb" parent="monitores" instance=ExtResource( 7 )]
+position = Vector2( 10, -26 )
+monitor_target_node = NodePath("../..")
+monitor_target_property = "knockback"
+monitor_flavor_text = "knockback"
+
+[node name="Status" type="Node" parent="."]
+script = ExtResource( 5 )
+hp_max = 100
+agente = NodePath("..")
+
+[node name="Skin" type="Node2D" parent="."]
+
+[node name="Shaker" parent="Skin" instance=ExtResource( 9 )]
+decay = 1.5
+max_offset = Vector2( 20, 20 )
+target_path = NodePath("../Stretcher/Player")
+
+[node name="PosBufanda" type="Position2D" parent="Skin"]
+position = Vector2( 0, -9 )
+
+[node name="Stretcher" type="Node2D" parent="Skin"]
+script = ExtResource( 4 )
+
+[node name="Player" type="Sprite" parent="Skin/Stretcher"]
+position = Vector2( 0, -12 )
+texture = ExtResource( 2 )
+hframes = 5
+vframes = 9
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Skin"]
+anims/RESET = SubResource( 3 )
+anims/dejar_de_mirar = SubResource( 13 )
+anims/fall = SubResource( 6 )
+anims/hurt = SubResource( 8 )
+anims/hurt_start = SubResource( 9 )
+anims/idle = SubResource( 4 )
+anims/jump = SubResource( 7 )
+anims/mirar = SubResource( 12 )
+anims/slide = SubResource( 11 )
+anims/slide_start = SubResource( 14 )
+anims/turn = SubResource( 10 )
+anims/walk = SubResource( 5 )
+
+[node name="ControladorArmasJugador" type="Node2D" parent="."]
+position = Vector2( 0, -9 )
+script = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2( 0, -8 )
+shape = SubResource( 1 )
+
+[node name="LOSCheck" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource( 10 )
+radio = 196.0
+mascara_colision = 4
+
+[node name="Hitbox" parent="." instance=ExtResource( 6 )]
+collision_layer = 16
+status = NodePath("../Status")
+i_frames_tiempo = 1.5
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2( 0, -8 )
+shape = SubResource( 2 )
+
+[node name="skill_slide" type="Node" parent="."]
+script = ExtResource( 8 )
+velocidad = 200.0
+tiempo = 0.5

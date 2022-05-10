@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://main/libs/BehaviorTree/hojas/Acciones/CompararValorNodo.gd" type="Script" id=1]
+[ext_resource path="res://main/libs/BehaviorTree/hojas/Acciones/LlamarFuncionNodo.gd" type="Script" id=2]
+[ext_resource path="res://main/libs/BehaviorTree/compuestos/Secuencia.gd" type="Script" id=3]
+
+[node name="Morir" type="Node"]
+script = ExtResource( 3 )
+
+[node name="Tenes 0 vida\?" type="Node" parent="."]
+script = ExtResource( 1 )
+variable_nodo_a_comparar = "hp"
+condicion = 1
+valor_a_comparar = "1"
+
+[node name="Apaga" type="Node" parent="."]
+script = ExtResource( 2 )
+nodo = NodePath("../../../..")
+funcion = "free"
+deferred = true

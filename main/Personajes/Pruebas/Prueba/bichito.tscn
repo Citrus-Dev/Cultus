@@ -1,0 +1,115 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://main/libs/BehaviorTree/compuestos/Secuencia.gd" type="Script" id=1]
+[ext_resource path="res://main/Personajes/Pruebas/Prueba/Prueba.gd" type="Script" id=2]
+[ext_resource path="res://main/libs/BehaviorTree/hojas/Acciones/MoverHaciaPos.gd" type="Script" id=3]
+[ext_resource path="res://main/libs/BehaviorTree/hojas/Acciones/TomarNodosDeGrupo.gd" type="Script" id=4]
+[ext_resource path="res://main/libs/BehaviorTree/hojas/Acciones/GuardarPropiedadBlackboard.gd" type="Script" id=5]
+[ext_resource path="res://main/libs/BehaviorTree/hojas/Acciones/CompararDistancia.gd" type="Script" id=6]
+[ext_resource path="res://main/libs/BehaviorTree/compuestos/Selector.gd" type="Script" id=7]
+[ext_resource path="res://main/libs/BehaviorTree/hojas/Acciones/GuardarPosMouse.gd" type="Script" id=8]
+[ext_resource path="res://main/libs/BehaviorTree/hojas/Acciones/TomarElementoMasCercano.gd" type="Script" id=9]
+[ext_resource path="res://main/libs/BehaviorTree/BehaviorTree.gd" type="Script" id=10]
+[ext_resource path="res://main/SistemaDaño/Status.gd" type="Script" id=11]
+[ext_resource path="res://main/SistemaDaño/Hitbox.tscn" type="PackedScene" id=12]
+[ext_resource path="res://main/libs/DebugMonitor/DebugMonitor.tscn" type="PackedScene" id=13]
+[ext_resource path="res://main/libs/BehaviorTree/hojas/Acciones/BuscarValorDeBlackboard.gd" type="Script" id=14]
+[ext_resource path="res://main/libs/BehaviorTree/hojas/Acciones/LlamarFuncionNodo.gd" type="Script" id=15]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+[node name="bichito" type="KinematicBody2D"]
+script = ExtResource( 2 )
+skin = NodePath("Polygon2D")
+status = NodePath("Status")
+behavior_tree_path = NodePath("BehaviorTree")
+aceleracion = 10.0
+friccion = 0.4
+max_velocidad_horizontal = 100.0
+max_velocidad_vertical = 100.0
+no_gravedad = true
+
+[node name="Status" type="Node" parent="."]
+script = ExtResource( 11 )
+hp_max = 60
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+polygon = PoolVector2Array( 8, 0, -8, -8, -8, 8 )
+
+[node name="BehaviorTree" type="Node" parent="."]
+script = ExtResource( 10 )
+agente = NodePath("..")
+activado = true
+
+[node name="Selector" type="Node" parent="BehaviorTree"]
+script = ExtResource( 7 )
+
+[node name="Morir" type="Node" parent="BehaviorTree/Selector"]
+script = ExtResource( 1 )
+
+[node name="EstaMuerto\?" type="Node" parent="BehaviorTree/Selector/Morir"]
+script = ExtResource( 14 )
+valor_a_buscar = "muerto"
+
+[node name="Borrar" type="Node" parent="BehaviorTree/Selector/Morir"]
+script = ExtResource( 15 )
+nodo = NodePath("../../../..")
+funcion = "free"
+deferred = true
+
+[node name="MoverAlMouse" type="Node" parent="BehaviorTree/Selector"]
+script = ExtResource( 1 )
+
+[node name="GuardarPosMouse" type="Node" parent="BehaviorTree/Selector/MoverAlMouse"]
+script = ExtResource( 8 )
+nombre_entrada_blackboard = "mousepos"
+
+[node name="GuardarPosicionAgente" type="Node" parent="BehaviorTree/Selector/MoverAlMouse"]
+script = ExtResource( 5 )
+nombre_propiedad = "global_position"
+nombre_entrada_blackboard = "pos"
+
+[node name="CompararDistancia" type="Node" parent="BehaviorTree/Selector/MoverAlMouse"]
+script = ExtResource( 6 )
+valor_comparacion = 75.0
+bb_pos_1 = "mousepos"
+bb_pos_2 = "pos"
+
+[node name="MoverHaciaMouse" type="Node" parent="BehaviorTree/Selector/MoverAlMouse"]
+script = ExtResource( 3 )
+target_pos_bb = "mousepos"
+distancia_minima = 25.0
+
+[node name="VolverABase" type="Node" parent="BehaviorTree/Selector"]
+script = ExtResource( 1 )
+
+[node name="TomarBases" type="Node" parent="BehaviorTree/Selector/VolverABase"]
+script = ExtResource( 4 )
+nombre_grupo = "Base"
+nombre_entrada_blackboard = "bases"
+
+[node name="TomarBaseMasCercana" type="Node" parent="BehaviorTree/Selector/VolverABase"]
+script = ExtResource( 9 )
+lista_bb = "bases"
+pos_comparar_bb = "pos"
+resultado_guardar_bb = "base_mas_cercana"
+
+[node name="MoverHaciaBase" type="Node" parent="BehaviorTree/Selector/VolverABase"]
+script = ExtResource( 3 )
+target_pos_bb = "mousepos"
+target_ref_bb = "base_mas_cercana"
+distancia_minima = 25.0
+
+[node name="Hitbox" parent="." instance=ExtResource( 12 )]
+collision_layer = 32
+status = NodePath("../Status")
+i_frames_tiempo = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource( 1 )
+
+[node name="DebugMonitor" parent="." instance=ExtResource( 13 )]
+position = Vector2( 0, -16 )
+monitor_target_node = NodePath("../Status")
+monitor_target_property = "hp"
+monitor_flavor_text = "hp"

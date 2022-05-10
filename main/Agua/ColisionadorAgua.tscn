@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://main/Agua/ColisionadorAgua.gd" type="Script" id=1]
+
+[node name="ColisionadorAgua" type="Area2D"]
+collision_layer = 128
+collision_mask = 326
+script = ExtResource( 1 )
+polygon_color = Color( 0, 0.239216, 0.45098, 0.368627 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+modulate = Color( 0.882353, 0, 1, 1 )
+polygon = PoolVector2Array( 0, 0, 0, 0, 0, 0, 0, 0 )
+
+[connection signal="body_entered" from="." to="." method="entrar_en_agua"]
+[connection signal="body_exited" from="." to="." method="salir_del_agua"]

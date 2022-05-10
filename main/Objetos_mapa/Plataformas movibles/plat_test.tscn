@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://main/Objetos_mapa/Plataformas movibles/PlataformaMovible.gd" type="Script" id=1]
+
+[node name="plat" type="KinematicBody2D"]
+collision_mask = 0
+motion/sync_to_physics = true
+script = ExtResource( 1 )
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+position = Vector2( 424, -272 )
+color = Color( 0, 0, 0, 1 )
+polygon = PoolVector2Array( -456, 264, -456, 272, -448, 280, -400, 280, -392, 272, -392, 264 )
+
+[node name="Polygon2D2" type="CollisionPolygon2D" parent="."]
+position = Vector2( 424, -272 )
+polygon = PoolVector2Array( -456, 264, -456, 272, -448, 280, -400, 280, -392, 272, -392, 264 )

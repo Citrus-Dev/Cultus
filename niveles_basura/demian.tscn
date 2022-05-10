@@ -1,0 +1,40 @@
+[gd_scene format=2]
+
+[node name="Demian" type="Spatial"]
+
+[node name="CSGCylinder" type="CSGCylinder" parent="."]
+transform = Transform( -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0 )
+height = 8.49089
+
+[node name="CSGCylinder3" type="CSGCylinder" parent="."]
+transform = Transform( -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 5.32504, 0, 0 )
+height = 3.25677
+
+[node name="CSGCylinder2" type="CSGCylinder" parent="."]
+transform = Transform( -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -5.58295, 0, 0 )
+height = 3.44375
+cone = true
+
+[node name="CSGBox" type="CSGBox" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.88672 )
+width = 2.97924
+height = 0.177951
+depth = 7.72406
+
+[node name="CSGBox3" type="CSGBox" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.91307, 1.25476, 0.104936 )
+width = 1.72841
+height = 2.48137
+depth = 0.258122
+
+[node name="CSGBox4" type="CSGBox" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 5.91307, 1.11203, 0.104936 )
+width = 1.72841
+height = 5.41873
+depth = 0.258122
+
+[node name="CSGBox2" type="CSGBox" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.77647 )
+width = 2.97924
+height = 0.177951
+depth = 7.72406

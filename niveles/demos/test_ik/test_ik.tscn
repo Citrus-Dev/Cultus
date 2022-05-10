@@ -1,0 +1,71 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://niveles/demos/test_ik/TestIK.gd" type="Script" id=1]
+[ext_resource path="res://niveles/demos/test_ik/arma.gd" type="Script" id=2]
+
+[node name="TestIK" type="Node2D"]
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2( 240, 144 )
+
+[node name="brazo_der" type="Node2D" parent="Node2D"]
+position = Vector2( -16, 0 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+ik_target_path = NodePath("../../arma/IKTarget")
+
+[node name="brazo" type="Polygon2D" parent="Node2D/brazo_der"]
+rotation = -0.0872665
+color = Color( 0, 0, 0, 1 )
+polygon = PoolVector2Array( -16, 0, 0, 8, 48, 0, 0, -8 )
+
+[node name="antebrazo" type="Polygon2D" parent="Node2D/brazo_der/brazo"]
+position = Vector2( 40, 0 )
+rotation = 0.174533
+color = Color( 0, 0, 0, 1 )
+polygon = PoolVector2Array( -16, 0, 0, 8, 48, 0, 0, -8 )
+
+[node name="mano" type="Polygon2D" parent="Node2D/brazo_der/brazo/antebrazo"]
+position = Vector2( 40, 0 )
+color = Color( 0, 0, 0, 1 )
+polygon = PoolVector2Array( -16, 0, 0, 8, 16, 0, 0, -8 )
+
+[node name="brazo_izq" type="Node2D" parent="Node2D"]
+position = Vector2( 27, 0 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+ik_target_path = NodePath("../../arma/IKTarget2")
+
+[node name="brazo" type="Polygon2D" parent="Node2D/brazo_izq"]
+rotation = -0.0872665
+color = Color( 0, 0, 0, 1 )
+polygon = PoolVector2Array( -16, 0, 0, 8, 48, 0, 0, -8 )
+
+[node name="antebrazo" type="Polygon2D" parent="Node2D/brazo_izq/brazo"]
+position = Vector2( 40, 0 )
+rotation = 0.174533
+color = Color( 0, 0, 0, 1 )
+polygon = PoolVector2Array( -16, 0, 0, 8, 48, 0, 0, -8 )
+
+[node name="mano" type="Polygon2D" parent="Node2D/brazo_izq/brazo/antebrazo"]
+position = Vector2( 40, 0 )
+color = Color( 0, 0, 0, 1 )
+polygon = PoolVector2Array( -16, 0, 0, 8, 16, 0, 0, -8 )
+
+[node name="arma" type="Polygon2D" parent="."]
+position = Vector2( 232, 128 )
+color = Color( 0.227451, 0.227451, 0.227451, 1 )
+offset = Vector2( 56, 24 )
+polygon = PoolVector2Array( -8, -16, -16, 8, 0, 8, 8, -16, 16, -16, 16, -8, 40, -8, 40, -16, 72, -16, 72, -24, 112, -24, 112, -32, 104, -32, 96, -40, 96, -32, 16, -32, 16, -40, 0, -40, 0, -32, -56, -32, -56, 0, -48, -16 )
+script = ExtResource( 2 )
+root = NodePath("../Node2D")
+
+[node name="IKTarget" type="Position2D" parent="arma"]
+position = Vector2( 56, 24 )
+
+[node name="IKTarget2" type="Position2D" parent="arma"]
+position = Vector2( 112, 8 )

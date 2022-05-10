@@ -1,0 +1,856 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "Arma",
+"class": "AR",
+"language": "GDScript",
+"path": "res://main/Armas/ArmaAR.gd"
+}, {
+"base": "Hoja",
+"class": "Accion",
+"language": "GDScript",
+"path": "res://main/libs/BehaviorTree/hojas/Accion.gd"
+}, {
+"base": "Accion",
+"class": "AgregarDisparoRafaga",
+"language": "GDScript",
+"path": "res://main/libs/BehaviorTree/hojas/Acciones/AgregarDisparoRafaga.gd"
+}, {
+"base": "Line2D",
+"class": "AntialiasedLine2D",
+"language": "GDScript",
+"path": "res://addons/antialiased_line2d/antialiased_line2d.gd"
+}, {
+"base": "Polygon2D",
+"class": "AntialiasedPolygon2D",
+"language": "GDScript",
+"path": "res://addons/antialiased_line2d/antialiased_polygon2d.gd"
+}, {
+"base": "Polygon2D",
+"class": "AntialiasedRegularPolygon2D",
+"language": "GDScript",
+"path": "res://addons/antialiased_line2d/antialiased_regular_polygon2d.gd"
+}, {
+"base": "Reference",
+"class": "Arma",
+"language": "GDScript",
+"path": "res://main/Armas/Arma.gd"
+}, {
+"base": "Arma",
+"class": "ArmaCultista",
+"language": "GDScript",
+"path": "res://main/Armas/ArmaCultista.gd"
+}, {
+"base": "Reference",
+"class": "Armas",
+"language": "GDScript",
+"path": "res://main/Listas/Armas.gd"
+}, {
+"base": "Node",
+"class": "BTBase",
+"language": "GDScript",
+"path": "res://main/libs/BehaviorTree/BT_base.gd"
+}, {
+"base": "Arma",
+"class": "Ballesta",
+"language": "GDScript",
+"path": "res://main/Armas/ArmaBallesta.gd"
+}, {
+"base": "Node2D",
+"class": "BarraHPBoss",
+"language": "GDScript",
+"path": "res://main/UI/BarraHPBoss/BarraHPBoss.gd"
+}, {
+"base": "Control",
+"class": "BarraHPBossUI",
+"language": "GDScript",
+"path": "res://main/UI/BarraHPBoss/BarraHPBossUI.gd"
+}, {
+"base": "BTBase",
+"class": "BehaviorTree",
+"language": "GDScript",
+"path": "res://main/libs/BehaviorTree/BehaviorTree.gd"
+}, {
+"base": "Reference",
+"class": "Blackboard",
+"language": "GDScript",
+"path": "res://main/libs/BehaviorTree/Blackboard.gd"
+}, {
+"base": "Polygon2D",
+"class": "BlockinPolygon",
+"language": "GDScript",
+"path": "res://main/libs/BlockinPolygon/BlockinPolygon.gd"
+}, {
+"base": "Node2D",
+"class": "Borde",
+"language": "GDScript",
+"path": "res://main/AI/Borde.gd"
+}, {
+"base": "Accion",
+"class": "BorrarValorDeBlackboard",
+"language": "GDScript",
+"path": "res://main/libs/BehaviorTree/hojas/Acciones/BorrarValorDeBlackboard.gd"
+}, {
+"base": "Condicion",
+"class": "BuscarJugadorDetectado",
+"language": "GDScript",
+"path": "res://main/libs/BehaviorTree/hojas/Acciones/BuscarJugadorDetectado.gd"
+}, {
+"base": "Reference",
+"class": "BuscarMapa",
+"language": "GDScript",
+"path": "res://main/BuscadorDeMapas.gd"
+}, {
+"base": "Condicion",
+"class": "BuscarValorDeBlackboard",
+"language": "GDScript",
+"path": "res://main/libs/BehaviorTree/hojas/Acciones/BuscarValorDeBlackboard.gd"
+}, {
+"base": "Camera2D",
+"class": "CamaraFalsa",
+"language": "GDScript",
+"path": "res://main/Camaras/CamaraFalsa.gd"
+}, {
+"base": "Camera2D",
+"class": "CamaraReal",
+"language": "GDScript",
+"path": "res://main/Camaras/CamaraReal.gd"
+}, {
+"base": "CollisionShape2D",
+"class": "CameraBounds",
+"language": "GDScript",
+"path": "res://main/CameraLimitSystem/CameraBounds.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "Casquillo",
+"language": "GDScript",
+"path": "res://main/Efectos/Casquillos/CasquilloBase.gd"
+}, {
+"base": "Node2D",
+"class": "Checkpoint",
+"language": "GDScript",
+"path": "res://main/Objetos_mapa/Checkpoint/Checkpoint.gd"
+}, {
+"base": "Area2D",
+"class": "ColisionadorAgua",
+"language": "GDScript",
+"path": "res://main/Agua/ColisionadorAgua.gd"
+}, {
+"base": "Position2D",
+"class": "ColocadorDePlataformas",
+"language": "GDScript",
+"path": "res://niveles/pruebas/ColocadorDePlataformas.gd"
+}, {
+"base": "Accion",
+"class": "CompararDistancia",
+"language": "GDScript",
+"path": "res://main/libs/BehaviorTree/hojas/Acciones/CompararDistancia.gd"
+}, {
+"base": "Condicion",
+"class": "CompararValorNodo",
+"language": "GDScript",
+"path": "res://main/libs/BehaviorTree/hojas/Acciones/CompararValorNodo.gd"
+}, {
+"base": "BTBase",
+"class": "Compuesto",
+"language": "GDScript",
+"path": "res://main/libs/BehaviorTree/compuestos/Compuesto.gd"
+}, {
+"base": "Hoja",
+"class": "Condicion",
+"language": "GDScript",
+"path": "res://main/libs/BehaviorTree/hojas/Condicion.gd"
+}, {
+"base": "CanvasLayer",
+"class": "ConsoleGUI",
+"language": "GDScript",
+"path": "res://main/libs/Consola/ConsoleGUI.gd"
+}, {
+"base": "Node2D",
+"class": "ControladorArmasJugador",
+"language": "GDScript",
+"path": "res://main/Personajes/Jugador/ControladorArmasJugador.gd"
+}, {
+"base": "Node2D",
+"class": "ControladorArmasNPC",
+"language": "GDScript",
+"path": "res://main/Componentes/ControladorArmasNPC.gd"
+}, {
+"base": "Accion",
+"class": "CrearTimer",
+"language": "GDScript",
+"path": "res://main/libs/BehaviorTree/hojas/Acciones/CrearTimer.gd"
+}, {
+"base": "Node2D",
+"class": "CuerdaVerlet",
+"language": "GDScript",
+"path": "res://niveles_basura/test_cuerdas/CuerdaVerlet.gd"
+}, {
+"base": "Node2D",
+"class": "CuerdaVerletV2",
+"language": "GDScript",
+"path": "res://niveles_basura/test_cuerdas/CuerdaVerletV2.gd"
+}, {
+"base": "Node2D",
+"class": "CuerpoAgua",
+"language": "GDScript",
+"path": "res://main/Agua/CuerpoAgua.gd"
+}, {
+"base": "Personaje",
+"class": "Cultista",
+"language": "GDScript",
+"path": "res://main/Personajes/Cultista/Cultista.gd"
+}, {
+"base": "Accion",
+"class": "DebugBreakpoint",
+"language": "GDScript",
+"path": "res://main/libs/BehaviorTree/hojas/Acciones/DebugBreakpoint.gd"
+}, {
+"base": "Node2D",
+"class": "DebugCanvasDrawer",
+"language": "GDScript",
+"path": "res://main/libs/BehaviorTree/hojas/Steering/DebugCanvasDrawer.gd"
+}, {
+"base": "BTBase",
+"class": "Decorador",
+"language": "GDScript",
+"path": "res://main/libs/BehaviorTree/decoradores/Decorador.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "Demian",
+"language": "GDScript",
+"path": "res://main/demian/demian escena.gd"
+}, {
+"base": "Node",
+"class": "EjecutorComando",
+"language": "GDScript",
+"path": "res://main/Objetos_mapa/EjecutarComando.gd"
+}, {
+"base": "Accion",
+"class": "EsVectorCero",
+"language": "GDScript",
+"path": "res://main/libs/BehaviorTree/hojas/Acciones/EsVectorCero.gd"
+}, {
+"base": "Arma",
+"class": "Escopeta",
+"language": "GDScript",
+"path": "res://main/Armas/ArmaEscopeta.gd"
+}, {
+"base": "Accion",
+"class": "EscribirEnBlackboard",
+"language": "GDScript",
+"path": "res://main/libs/BehaviorTree/hojas/Acciones/EscribirEnBlackboard.gd"
+}, {
+"base": "AntialiasedLine2D",
+"class": "EstelaBase",
+"language": "GDScript",
+"path": "res://main/Efectos/Estelas/EstelaBase.gd"
+}, {
+"base": "Node2D",
+"class": "Explosion",
+"language": "GDScript",
+"path": "res://main/Proyectiles/Explosion.gd"
+}, {
+"base": "Accion",
+"class": "GuardarPosMouse",
+"language": "GDScript",
+"path": "res://main/libs/BehaviorTree/hojas/Acciones/GuardarPosMouse.gd"
+}, {
+"base": "Accion",
+"class": "GuardarPropiedadBlackboard",
+"language": "GDScript",
+"path": "res://main/libs/BehaviorTree/hojas/Acciones/GuardarPropiedadBlackboard.gd"
+}, {
+"base": "Control",
+"class": "HPBar",
+"language": "GDScript",
+"path": "res://main/UI/Hud/HPBar.gd"
+}, {
+"base": "CanvasLayer",
+"class": "HUD",
+"language": "GDScript",
+"path": "res://main/UI/Hud/HUD.gd"
+}, {
+"base": "Node",
+"class": "Habilidad",
+"language": "GDScript",
+"path": "res://main/Personajes/Jugador/habilidades/Habilidad.gd"
+}, {
+"base": "Area2D",
+"class": "Hitbox",
+"language": "GDScript",
+"path": "res://main/SistemaDaño/Hitbox.gd"
+}, {
+"base": "BTBase",
+"class": "Hoja",
+"language": "GDScript",
+"path": "res://main/libs/BehaviorTree/hojas/Hoja.gd"
+}, {
+"base": "Control",
+"class": "HudMedidorBalas",
+"language": "GDScript",
+"path": "res://main/UI/BarrasBalas/HudMedidorBalas.gd"
+}, {
+"base": "Area2D",
+"class": "Hurtbox",
+"language": "GDScript",
+"path": "res://main/SistemaDaño/Hurtbox.gd"
+}, {
+"base": "Accion",
+"class": "ImprimirTexto",
+"language": "GDScript",
+"path": "res://main/libs/BehaviorTree/hojas/Acciones/ImprimirTexto.gd"
+}, {
+"base": "Reference",
+"class": "InfoDmg",
+"language": "GDScript",
+"path": "res://main/SistemaDaño/DamageInfo.gd"
+}, {
+"base": "Resource",
+"class": "InfoJuego",
+"language": "GDScript",
+"path": "res://main/InfoJuego.gd"
+}, {
+"base": "Reference",
+"class": "InvBalas",
+"language": "GDScript",
+"path": "res://main/Personajes/Jugador/InvBalas.gd"
+}, {
+"base": "Node",
+"class": "InverseKinematic",
+"language": "GDScript",
+"path": "res://main/ik/InverseKinematic.gd"
+}, {
+"base": "Decorador",
+"class": "Inversor",
+"language": "GDScript",
+"path": "res://main/libs/BehaviorTree/decoradores/Inversor.gd"
+}, {
+"base": "Accion",
+"class": "InvertirVector",
+"language": "GDScript",
+"path": "res://main/libs/BehaviorTree/hojas/Acciones/InvertirVector.gd"
+}, {
+"base": "Personaje",
+"class": "Jugador",
+"language": "GDScript",
+"path": "res://main/Personajes/Jugador/Jugador.gd"
+}, {
+"base": "Area2D",
+"class": "LOSCheck",
+"language": "GDScript",
+"path": "res://main/Componentes/LOSCheck.gd"
+}, {
+"base": "Node",
+"class": "LabelFuenteAdaptable",
+"language": "GDScript",
+"path": "res://main/libs/LabelFuenteAdaptable.gd"
+}, {
+"base": "Accion",
+"class": "LlamarFuncionNodo",
+"language": "GDScript",
+"path": "res://main/libs/BehaviorTree/hojas/Acciones/LlamarFuncionNodo.gd"
+}, {
+"base": "Accion",
+"class": "MoverHaciaPos",
+"language": "GDScript",
+"path": "res://main/libs/BehaviorTree/hojas/Acciones/MoverHaciaPos.gd"
+}, {
+"base": "Accion",
+"class": "MoverseEnDireccion",
+"language": "GDScript",
+"path": "res://main/libs/BehaviorTree/hojas/Acciones/MoverseEnDireccion.gd"
+}, {
+"base": "Accion",
+"class": "Negador",
+"language": "GDScript",
+"path": "res://main/libs/BehaviorTree/hojas/Acciones/Negador.gd"
+}, {
+"base": "Node2D",
+"class": "Nivel",
+"language": "GDScript",
+"path": "res://niveles/Nivel.gd"
+}, {
+"base": "Node",
+"class": "OneJointIK",
+"language": "GDScript",
+"path": "res://main/ik/OneJointIK.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "Personaje",
+"language": "GDScript",
+"path": "res://main/Personajes/Personaje.gd"
+}, {
+"base": "StaticBody2D",
+"class": "PlataformaAlterna",
+"language": "GDScript",
+"path": "res://main/Objetos_mapa/Plataformas alternas/PlataformaAlterna.gd"
+}, {
+"base": "PlataformaAlterna",
+"class": "PlataformaFragil",
+"language": "GDScript",
+"path": "res://main/Objetos_mapa/Plataformas alternas/PlataformaFragil.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "PlataformaMovible",
+"language": "GDScript",
+"path": "res://main/Objetos_mapa/Plataformas movibles/PlataformaMovible.gd"
+}, {
+"base": "PlataformaAlterna",
+"class": "PlataformaPropagacion",
+"language": "GDScript",
+"path": "res://main/Objetos_mapa/Plataformas alternas/PlataformaPropagacion.gd"
+}, {
+"base": "PlataformaAlterna",
+"class": "PlataformaTimer",
+"language": "GDScript",
+"path": "res://main/Objetos_mapa/Plataformas alternas/PlataformaTimer.gd"
+}, {
+"base": "Personaje",
+"class": "Polilla",
+"language": "GDScript",
+"path": "res://main/Personajes/Polilla/Polilla.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "ProyectilBase",
+"language": "GDScript",
+"path": "res://main/Proyectiles/ProyectilBase.gd"
+}, {
+"base": "Personaje",
+"class": "Prueba",
+"language": "GDScript",
+"path": "res://main/Personajes/Pruebas/Prueba/Prueba.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "Puerta",
+"language": "GDScript",
+"path": "res://main/Objetos_mapa/Puertas/Puerta.gd"
+}, {
+"base": "Node",
+"class": "PuntoVerlet",
+"language": "GDScript",
+"path": "res://niveles_basura/test_cuerdas/PuntoVerlet.gd"
+}, {
+"base": "Node2D",
+"class": "Ragdoll",
+"language": "GDScript",
+"path": "res://main/Ragdolls/Ragdoll.gd"
+}, {
+"base": "Decorador",
+"class": "Repetidor",
+"language": "GDScript",
+"path": "res://main/libs/BehaviorTree/decoradores/Repetidor.gd"
+}, {
+"base": "Node2D",
+"class": "Resorte",
+"language": "GDScript",
+"path": "res://main/Agua/Resorte.gd"
+}, {
+"base": "Arma",
+"class": "Revolver",
+"language": "GDScript",
+"path": "res://main/Armas/ArmaRevolver.gd"
+}, {
+"base": "Node",
+"class": "Rotador",
+"language": "GDScript",
+"path": "res://main/Componentes/Rotador.gd"
+}, {
+"base": "Accion",
+"class": "Saltar",
+"language": "GDScript",
+"path": "res://main/libs/BehaviorTree/hojas/Acciones/Saltar.gd"
+}, {
+"base": "Compuesto",
+"class": "Secuencia",
+"language": "GDScript",
+"path": "res://main/libs/BehaviorTree/compuestos/Secuencia.gd"
+}, {
+"base": "Compuesto",
+"class": "Selector",
+"language": "GDScript",
+"path": "res://main/libs/BehaviorTree/compuestos/Selector.gd"
+}, {
+"base": "Control",
+"class": "SelectorMapas",
+"language": "GDScript",
+"path": "res://main/UI/SelectorMapas/SelectorMapas.gd"
+}, {
+"base": "Reference",
+"class": "SfxrGenerator",
+"language": "GDScript",
+"path": "res://addons/godot_sfxr/SfxrGenerator.gd"
+}, {
+"base": "Object",
+"class": "SfxrGlobals",
+"language": "GDScript",
+"path": "res://addons/godot_sfxr/SfxrGlobals.gd"
+}, {
+"base": "Object",
+"class": "SfxrStreamPlayerInterface",
+"language": "GDScript",
+"path": "res://addons/godot_sfxr/SfxrStreamPlayerInterface.gd"
+}, {
+"base": "Node",
+"class": "Shaker",
+"language": "GDScript",
+"path": "res://main/Shaker/Shaker.gd"
+}, {
+"base": "Node2D",
+"class": "SkinArma",
+"language": "GDScript",
+"path": "res://main/Armas/Skins/SkinArma.gd"
+}, {
+"base": "Habilidad",
+"class": "Slide",
+"language": "GDScript",
+"path": "res://main/Personajes/Jugador/habilidades/Slide.gd"
+}, {
+"base": "Node2D",
+"class": "SpawnJugador",
+"language": "GDScript",
+"path": "res://main/Objetos_mapa/SpawnJugador.gd"
+}, {
+"base": "Position2D",
+"class": "SpawnerAuto",
+"language": "GDScript",
+"path": "res://main/SpawnerAuto/spawner_auto.gd"
+}, {
+"base": "Node",
+"class": "State",
+"language": "GDScript",
+"path": "res://main/libs/HSM/State.gd"
+}, {
+"base": "Node",
+"class": "StateMachine",
+"language": "GDScript",
+"path": "res://main/libs/HSM/StateMachine.gd"
+}, {
+"base": "Node",
+"class": "Status",
+"language": "GDScript",
+"path": "res://main/SistemaDaño/Status.gd"
+}, {
+"base": "Accion",
+"class": "SteeringContexto",
+"language": "GDScript",
+"path": "res://main/libs/BehaviorTree/hojas/Steering/SteeringContexto.gd"
+}, {
+"base": "Node2D",
+"class": "Stretcher",
+"language": "GDScript",
+"path": "res://main/Componentes/Stretcher.gd"
+}, {
+"base": "Accion",
+"class": "Succeder",
+"language": "GDScript",
+"path": "res://main/libs/BehaviorTree/hojas/Acciones/Succeder.gd"
+}, {
+"base": "Accion",
+"class": "TomarDireccionAObjeto",
+"language": "GDScript",
+"path": "res://main/libs/BehaviorTree/hojas/Acciones/TomarDireccionAObjeto.gd"
+}, {
+"base": "Accion",
+"class": "TomarElementoMasCercano",
+"language": "GDScript",
+"path": "res://main/libs/BehaviorTree/hojas/Acciones/TomarElementoMasCercano.gd"
+}, {
+"base": "Accion",
+"class": "TomarNodosDeGrupo",
+"language": "GDScript",
+"path": "res://main/libs/BehaviorTree/hojas/Acciones/TomarNodosDeGrupo.gd"
+}, {
+"base": "Area2D",
+"class": "TransicionDeNivel",
+"language": "GDScript",
+"path": "res://main/Objetos_mapa/TransicionDeNivel/TransicionDeNivel.gd"
+}, {
+"base": "CanvasLayer",
+"class": "TransicionMascara",
+"language": "GDScript",
+"path": "res://main/UI/Transicion/TransicionMascara.gd"
+}, {
+"base": "Area2D",
+"class": "TriggerChangeCamBounds",
+"language": "GDScript",
+"path": "res://main/CameraLimitSystem/TriggerChangeCamBounds.gd"
+}, {
+"base": "Area2D",
+"class": "TriggerOnce",
+"language": "GDScript",
+"path": "res://main/Triggers/TriggerOnce.gd"
+} ]
+_global_script_class_icons={
+"AR": "",
+"Accion": "res://main/libs/BehaviorTree/icons/action.svg",
+"AgregarDisparoRafaga": "",
+"AntialiasedLine2D": "res://addons/antialiased_line2d/antialiased_line2d.svg",
+"AntialiasedPolygon2D": "res://addons/antialiased_line2d/antialiased_polygon2d.svg",
+"AntialiasedRegularPolygon2D": "res://addons/antialiased_line2d/antialiased_regular_polygon2d.svg",
+"Arma": "",
+"ArmaCultista": "",
+"Armas": "",
+"BTBase": "",
+"Ballesta": "",
+"BarraHPBoss": "",
+"BarraHPBossUI": "",
+"BehaviorTree": "res://main/libs/BehaviorTree/icons/tree.svg",
+"Blackboard": "res://main/libs/BehaviorTree/icons/blackboard.svg",
+"BlockinPolygon": "",
+"Borde": "",
+"BorrarValorDeBlackboard": "",
+"BuscarJugadorDetectado": "",
+"BuscarMapa": "",
+"BuscarValorDeBlackboard": "",
+"CamaraFalsa": "",
+"CamaraReal": "",
+"CameraBounds": "",
+"Casquillo": "",
+"Checkpoint": "",
+"ColisionadorAgua": "",
+"ColocadorDePlataformas": "",
+"CompararDistancia": "",
+"CompararValorNodo": "",
+"Compuesto": "",
+"Condicion": "res://main/libs/BehaviorTree/icons/condition.svg",
+"ConsoleGUI": "",
+"ControladorArmasJugador": "",
+"ControladorArmasNPC": "",
+"CrearTimer": "",
+"CuerdaVerlet": "",
+"CuerdaVerletV2": "",
+"CuerpoAgua": "",
+"Cultista": "",
+"DebugBreakpoint": "res://main/libs/BehaviorTree/icons/fail.svg",
+"DebugCanvasDrawer": "",
+"Decorador": "res://main/libs/BehaviorTree/icons/category_decorator.svg",
+"Demian": "",
+"EjecutorComando": "",
+"EsVectorCero": "",
+"Escopeta": "",
+"EscribirEnBlackboard": "",
+"EstelaBase": "",
+"Explosion": "",
+"GuardarPosMouse": "",
+"GuardarPropiedadBlackboard": "",
+"HPBar": "",
+"HUD": "",
+"Habilidad": "",
+"Hitbox": "",
+"Hoja": "",
+"HudMedidorBalas": "",
+"Hurtbox": "",
+"ImprimirTexto": "",
+"InfoDmg": "",
+"InfoJuego": "",
+"InvBalas": "",
+"InverseKinematic": "",
+"Inversor": "res://main/libs/BehaviorTree/icons/inverter.svg",
+"InvertirVector": "",
+"Jugador": "",
+"LOSCheck": "",
+"LabelFuenteAdaptable": "",
+"LlamarFuncionNodo": "",
+"MoverHaciaPos": "",
+"MoverseEnDireccion": "",
+"Negador": "res://main/libs/BehaviorTree/icons/fail.svg",
+"Nivel": "",
+"OneJointIK": "",
+"Personaje": "",
+"PlataformaAlterna": "",
+"PlataformaFragil": "",
+"PlataformaMovible": "",
+"PlataformaPropagacion": "",
+"PlataformaTimer": "",
+"Polilla": "",
+"ProyectilBase": "",
+"Prueba": "",
+"Puerta": "",
+"PuntoVerlet": "",
+"Ragdoll": "",
+"Repetidor": "",
+"Resorte": "",
+"Revolver": "",
+"Rotador": "",
+"Saltar": "",
+"Secuencia": "res://main/libs/BehaviorTree/icons/sequencer.svg",
+"Selector": "res://main/libs/BehaviorTree/icons/selector.svg",
+"SelectorMapas": "",
+"SfxrGenerator": "",
+"SfxrGlobals": "",
+"SfxrStreamPlayerInterface": "",
+"Shaker": "",
+"SkinArma": "",
+"Slide": "",
+"SpawnJugador": "",
+"SpawnerAuto": "",
+"State": "",
+"StateMachine": "",
+"Status": "",
+"SteeringContexto": "",
+"Stretcher": "",
+"Succeder": "",
+"TomarDireccionAObjeto": "",
+"TomarElementoMasCercano": "",
+"TomarNodosDeGrupo": "",
+"TransicionDeNivel": "",
+"TransicionMascara": "",
+"TriggerChangeCamBounds": "",
+"TriggerOnce": ""
+}
+
+[application]
+
+config/name="CULTISTAS"
+run/main_scene="res://niveles/pruebas/prueba1.tscn"
+config/icon="res://assets/icon.png"
+
+[autoload]
+
+DebugDraw="*res://addons/zylann.debug_draw/debug_draw.gd"
+ConsoleAutoload="*res://main/libs/Consola/ConsoleAutoload.gd"
+Comandos="*res://main/Autoloads/Comandos.gd"
+ControladorUi="*res://main/Autoloads/ControladorUI.gd"
+Congelar="*res://main/Autoloads/Congelar.gd"
+TransicionesDePantalla="*res://main/Autoloads/TransicionesDePantalla.gd"
+AntialiasedLine2DTexture="*res://addons/antialiased_line2d/texture.gd"
+
+[debug]
+
+shapes/collision/shape_color=Color( 1, 1, 1, 0.419608 )
+
+[display]
+
+window/size/width=512
+window/size/height=288
+window/size/always_on_top=true
+window/size/test_width=1024
+window/size/test_height=576
+window/stretch/mode="2d"
+window/stretch/aspect="keep"
+
+[editor_plugins]
+
+enabled=PoolStringArray( "res://addons/antialiased_line2d/plugin.cfg", "res://addons/godot_sfxr/plugin.cfg", "res://addons/notes_tab/plugin.cfg" )
+
+[gui]
+
+theme/custom="res://assets/temas/tema_base.tres"
+theme/custom_font="res://assets/fuentes/DungeonFont.tres"
+
+[importer_defaults]
+
+texture={
+"compress/bptc_ldr": 0,
+"compress/hdr_mode": 0,
+"compress/lossy_quality": 0.7,
+"compress/mode": 0,
+"compress/normal_map": 0,
+"detect_3d": false,
+"flags/anisotropic": false,
+"flags/filter": false,
+"flags/mipmaps": false,
+"flags/repeat": 1,
+"flags/srgb": 2,
+"process/HDR_as_SRGB": false,
+"process/fix_alpha_border": true,
+"process/invert_color": false,
+"process/normal_map_invert_y": false,
+"process/premult_alpha": false,
+"size_limit": 0,
+"stream": false,
+"svg/scale": 1.0
+}
+
+[input]
+
+mov_izq={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":65,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+mov_der={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":68,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+mov_arr={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":87,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+mov_abaj={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":83,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+disparo_primario={
+"deadzone": 0.5,
+"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
+ ]
+}
+disparo_secundario={
+"deadzone": 0.5,
+"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":2,"pressed":false,"doubleclick":false,"script":null)
+ ]
+}
+abrir_consola={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":92,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+usar={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":69,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+arma_siguiente={
+"deadzone": 0.5,
+"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":4,"pressed":false,"doubleclick":false,"script":null)
+ ]
+}
+arma_anterior={
+"deadzone": 0.5,
+"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":5,"pressed":false,"doubleclick":false,"script":null)
+ ]
+}
+recargar={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":82,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+
+[layer_names]
+
+2d_physics/layer_1="Mundo"
+2d_physics/layer_2="Jugador"
+2d_physics/layer_3="NPCs"
+2d_physics/layer_4="Items"
+2d_physics/layer_5="HitboxJugador"
+2d_physics/layer_6="HitboxNPCs"
+2d_physics/layer_7="Efectos"
+2d_physics/layer_8="Liquidos"
+2d_physics/layer_9="Balas"
+2d_physics/layer_10="Plataformas"
+2d_physics/layer_11="Ragdolls"
+2d_physics/layer_12="MundoFondo"
+2d_physics/layer_13="EnemigoFondo"
+
+[physics]
+
+common/enable_pause_aware_picking=true
+2d/default_gravity=150
+
+[rendering]
+
+2d/snapping/use_gpu_pixel_snap=true
+quality/filters/msaa=2

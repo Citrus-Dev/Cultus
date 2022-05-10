@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://main/Efectos/Estelas/EstelaBase.gd" type="Script" id=1]
+
+[sub_resource type="Gradient" id=1]
+colors = PoolColorArray( 0, 0, 0, 0, 1, 1, 1, 1 )
+
+[node name="EstelaBase" type="Line2D"]
+gradient = SubResource( 1 )
+texture_mode = 2
+joint_mode = 2
+end_cap_mode = 2
+script = ExtResource( 1 )

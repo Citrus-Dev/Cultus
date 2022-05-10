@@ -1,0 +1,47 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://main/libs/BehaviorTree/hojas/Acciones/BuscarValorDeBlackboard.gd" type="Script" id=1]
+[ext_resource path="res://main/libs/BehaviorTree/compuestos/Secuencia.gd" type="Script" id=2]
+[ext_resource path="res://main/libs/BehaviorTree/compuestos/Selector.gd" type="Script" id=3]
+[ext_resource path="res://main/libs/BehaviorTree/decoradores/Inversor.gd" type="Script" id=4]
+[ext_resource path="res://main/libs/BehaviorTree/hojas/Acciones/EscribirEnBlackboard.gd" type="Script" id=5]
+[ext_resource path="res://main/libs/BehaviorTree/hojas/Acciones/MoverseEnDireccion.gd" type="Script" id=6]
+[ext_resource path="res://main/libs/BehaviorTree/hojas/Acciones/InvertirVector.gd" type="Script" id=7]
+
+[node name="Strafear" type="Node"]
+script = ExtResource( 3 )
+
+[node name="Tomar direccion" type="Node" parent="."]
+script = ExtResource( 2 )
+
+[node name="Inversor" type="Node" parent="Tomar direccion"]
+script = ExtResource( 4 )
+
+[node name="Buscar strafe dir" type="Node" parent="Tomar direccion/Inversor"]
+script = ExtResource( 1 )
+valor_a_buscar = "strafe_dir"
+
+[node name="Escribir strafe dir" type="Node" parent="Tomar direccion"]
+script = ExtResource( 5 )
+valor_vector = Vector2( 1, 0 )
+nombre_entrada_bb = "strafe_dir"
+
+[node name="Alternar dirección" type="Node" parent="."]
+script = ExtResource( 2 )
+
+[node name="TocamosUnBorde\?" type="Node" parent="Alternar dirección"]
+script = ExtResource( 1 )
+valor_a_buscar = "borde"
+
+[node name="InvertirVector" type="Node" parent="Alternar dirección"]
+script = ExtResource( 7 )
+nombre_vector_bb = "strafe_dir"
+solo_x = true
+
+[node name="Moverse en direccion" type="Node" parent="."]
+script = ExtResource( 2 )
+
+[node name="MoverseEnDireccion" type="Node" parent="Moverse en direccion"]
+script = ExtResource( 6 )
+target_dir_bb = "strafe_dir"
+solo_x = true

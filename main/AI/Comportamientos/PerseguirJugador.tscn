@@ -1,0 +1,50 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://main/libs/BehaviorTree/compuestos/Secuencia.gd" type="Script" id=1]
+[ext_resource path="res://main/libs/BehaviorTree/hojas/Acciones/BuscarValorDeBlackboard.gd" type="Script" id=2]
+[ext_resource path="res://main/libs/BehaviorTree/compuestos/Selector.gd" type="Script" id=3]
+[ext_resource path="res://main/libs/BehaviorTree/hojas/Acciones/MoverHaciaPos.gd" type="Script" id=4]
+[ext_resource path="res://main/libs/BehaviorTree/hojas/Acciones/Saltar.gd" type="Script" id=5]
+[ext_resource path="res://main/libs/BehaviorTree/hojas/Acciones/TomarNodosDeGrupo.gd" type="Script" id=6]
+[ext_resource path="res://main/libs/BehaviorTree/decoradores/Inversor.gd" type="Script" id=7]
+
+[node name="PerseguirJugador" type="Node"]
+script = ExtResource( 3 )
+
+[node name="Saltar" type="Node" parent="."]
+script = ExtResource( 1 )
+
+[node name="TocamosUnBorde\?" type="Node" parent="Saltar"]
+script = ExtResource( 2 )
+valor_a_buscar = "borde"
+
+[node name="Saltar" type="Node" parent="Saltar"]
+script = ExtResource( 5 )
+
+[node name="CorrerAlJugador" type="Node" parent="."]
+script = ExtResource( 3 )
+
+[node name="BuscarReferenciaAlJugador" type="Node" parent="CorrerAlJugador"]
+script = ExtResource( 1 )
+
+[node name="Inversor" type="Node" parent="CorrerAlJugador/BuscarReferenciaAlJugador"]
+script = ExtResource( 7 )
+
+[node name="HayRefAlJugador" type="Node" parent="CorrerAlJugador/BuscarReferenciaAlJugador/Inversor"]
+script = ExtResource( 2 )
+valor_a_buscar = "jugador"
+
+[node name="TomarJugador" type="Node" parent="CorrerAlJugador/BuscarReferenciaAlJugador"]
+script = ExtResource( 6 )
+nombre_grupo = "Jugador"
+nombre_entrada_blackboard = "jugador"
+obj_unico = true
+
+[node name="SeguirAlJugador" type="Node" parent="CorrerAlJugador"]
+script = ExtResource( 1 )
+
+[node name="MoverHaciaPos" type="Node" parent="CorrerAlJugador/SeguirAlJugador"]
+script = ExtResource( 4 )
+target_ref_bb = "jugador"
+distancia_minima = 10.0
+solo_x = true

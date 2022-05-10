@@ -1,0 +1,8 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://main/InfoJuego.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+version_actual = "Beta 1"
+creditos = [ "Programador, Coordinador - Agustín García", "Diseño gráfico - Martín Maggi", "Programador, investigación - Manuel Avalos", "Diseño gráfico, investigación - Demian Lozano", "Diseño gráfico - Valentín paz" ]

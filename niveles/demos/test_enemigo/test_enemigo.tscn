@@ -1,0 +1,176 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://niveles/Nivel.tscn" type="PackedScene" id=1]
+[ext_resource path="res://main/libs/BlockinPolygon/BlockinPolygon.gd" type="Script" id=2]
+[ext_resource path="res://main/Objetos_mapa/SpawnJugador.gd" type="Script" id=3]
+[ext_resource path="res://main/AI/Borde.tscn" type="PackedScene" id=4]
+[ext_resource path="res://main/Personajes/Cultista/Cultista.tscn" type="PackedScene" id=5]
+[ext_resource path="res://main/CameraLimitSystem/CameraBounds.gd" type="Script" id=6]
+[ext_resource path="res://niveles/demos/test_enemigo/test_enemigo.gd" type="Script" id=7]
+[ext_resource path="res://main/UI/BarraHPBoss/BarraHPBoss.gd" type="Script" id=8]
+[ext_resource path="res://main/Triggers/TriggerOnce.tscn" type="PackedScene" id=9]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 448, 224 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 24, 40 )
+
+[node name="test_enemigo" instance=ExtResource( 1 )]
+script = ExtResource( 7 )
+
+[node name="ColorRect" type="ColorRect" parent="FondoLejos" index="0"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.0941176, 0.0941176, 0.0941176, 1 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Borde" parent="bordes" index="0" instance=ExtResource( 4 )]
+position = Vector2( 160, 280 )
+mult_fuerza_salto = 0.8
+
+[node name="Borde2" parent="bordes" index="1" instance=ExtResource( 4 )]
+position = Vector2( 288, 280 )
+
+[node name="Borde13" parent="bordes" index="2" instance=ExtResource( 4 )]
+position = Vector2( 448, 280 )
+mult_fuerza_salto = 0.0
+
+[node name="Borde15" parent="bordes" index="3" instance=ExtResource( 4 )]
+position = Vector2( 40, 280 )
+mult_fuerza_salto = 0.0
+
+[node name="Borde3" parent="bordes" index="4" instance=ExtResource( 4 )]
+position = Vector2( 256, 224 )
+mult_fuerza_salto = 0.9
+
+[node name="Borde10" parent="bordes" index="5" instance=ExtResource( 4 )]
+position = Vector2( 192, 224 )
+mult_fuerza_salto = 0.0
+
+[node name="Borde4" parent="bordes" index="6" instance=ExtResource( 4 )]
+position = Vector2( 376, 192 )
+filtro_salto_direccion = 2
+
+[node name="Borde7" parent="bordes" index="7" instance=ExtResource( 4 )]
+position = Vector2( 256, 104 )
+
+[node name="Borde11" parent="bordes" index="8" instance=ExtResource( 4 )]
+position = Vector2( 320, 104 )
+mult_fuerza_salto = 0.0
+
+[node name="Borde12" parent="bordes" index="9" instance=ExtResource( 4 )]
+position = Vector2( 320, 192 )
+mult_fuerza_salto = 0.0
+
+[node name="Borde8" parent="bordes" index="10" instance=ExtResource( 4 )]
+position = Vector2( 192, 32 )
+siempre_saltar = true
+mult_fuerza_salto = 0.4
+
+[node name="Borde14" parent="bordes" index="11" instance=ExtResource( 4 )]
+position = Vector2( 40, 32 )
+siempre_saltar = true
+mult_fuerza_salto = 0.0
+
+[node name="Borde5" parent="bordes" index="12" instance=ExtResource( 4 )]
+position = Vector2( 472, 192 )
+mult_fuerza_salto = 0.85
+
+[node name="Borde9" parent="bordes" index="13" instance=ExtResource( 4 )]
+position = Vector2( 504, 192 )
+mult_fuerza_salto = 0.0
+
+[node name="Borde6" parent="bordes" index="14" instance=ExtResource( 4 )]
+position = Vector2( 560, 128 )
+mult_fuerza_salto = 0.5
+
+[node name="Borde16" parent="bordes" index="15" instance=ExtResource( 4 )]
+position = Vector2( 504, 128 )
+mult_fuerza_salto = 0.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." index="5"]
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="BlockinPolygon" type="Polygon2D" parent="StaticBody2D" index="0"]
+color = Color( 0.580392, 0.580392, 0.580392, 1 )
+polygon = PoolVector2Array( 0, 280, 448, 280, 448, 216, 320, 216, 320, 192, 792, 192, 792, 320, 0, 320 )
+script = ExtResource( 2 )
+enable_collisions = true
+
+[node name="BlockinPolygon4" type="Polygon2D" parent="StaticBody2D" index="1"]
+color = Color( 0.580392, 0.580392, 0.580392, 1 )
+polygon = PoolVector2Array( 504, 192, 504, 128, 792, 128, 792, 192 )
+script = ExtResource( 2 )
+enable_collisions = true
+
+[node name="BlockinPolygon7" type="Polygon2D" parent="StaticBody2D" index="2"]
+color = Color( 0.580392, 0.580392, 0.580392, 1 )
+polygon = PoolVector2Array( 576, 120, 576, 128, 792, 128, 792, 120 )
+script = ExtResource( 2 )
+enable_collisions = true
+
+[node name="BlockinPolygon5" type="Polygon2D" parent="StaticBody2D" index="3"]
+color = Color( 0.580392, 0.580392, 0.580392, 1 )
+polygon = PoolVector2Array( 40, 32, 192, 32, 192, 80, 72, 136, 40, 136 )
+script = ExtResource( 2 )
+enable_collisions = true
+
+[node name="BlockinPolygon2" type="Polygon2D" parent="StaticBody2D" index="4"]
+color = Color( 0.580392, 0.580392, 0.580392, 1 )
+polygon = PoolVector2Array( 0, 280, 0, -128, 40, -128, 40, 280 )
+script = ExtResource( 2 )
+enable_collisions = true
+
+[node name="BlockinPolygon3" type="Polygon2D" parent="StaticBody2D" index="5"]
+position = Vector2( 0, 96 )
+color = Color( 0.580392, 0.580392, 0.580392, 1 )
+polygon = PoolVector2Array( 256, 128, 192, 128, 192, 144, 256, 144 )
+script = ExtResource( 2 )
+enable_collisions = true
+
+[node name="BlockinPolygon6" type="Polygon2D" parent="StaticBody2D" index="6"]
+position = Vector2( 64, -24 )
+color = Color( 0.580392, 0.580392, 0.580392, 1 )
+polygon = PoolVector2Array( 256, 128, 192, 128, 192, 144, 256, 144 )
+script = ExtResource( 2 )
+enable_collisions = true
+
+[node name="Cultista2" parent="." index="6" instance=ExtResource( 5 )]
+position = Vector2( 538, 128 )
+actor = true
+
+[node name="Cultista3" parent="." index="7" instance=ExtResource( 5 )]
+position = Vector2( 216, 224 )
+
+[node name="Cultista4" parent="." index="8" instance=ExtResource( 5 )]
+position = Vector2( 408, 280 )
+
+[node name="main" type="CollisionShape2D" parent="camara limites" index="0"]
+visible = false
+position = Vector2( 448, 96 )
+shape = SubResource( 1 )
+script = ExtResource( 6 )
+
+[node name="SpawnJugador" type="Node2D" parent="." index="10"]
+position = Vector2( 770.514, 119.245 )
+script = ExtResource( 3 )
+
+[node name="BarraHPBoss" type="Node2D" parent="." index="11"]
+position = Vector2( 496.328, 83.9387 )
+script = ExtResource( 8 )
+objetivo_dir = NodePath("../Cultista2")
+
+[node name="TriggerOnce" parent="BarraHPBoss" index="0" instance=ExtResource( 9 )]
+position = Vector2( 151.672, 12.0613 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BarraHPBoss/TriggerOnce" index="0"]
+shape = SubResource( 2 )
+
+[connection signal="triggered" from="BarraHPBoss/TriggerOnce" to="BarraHPBoss" method="set_activo" binds= [ true ]]

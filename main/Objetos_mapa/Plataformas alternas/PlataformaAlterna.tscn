@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://main/Objetos_mapa/Plataformas alternas/PlataformaAlterna.gd" type="Script" id=1]
+
+[node name="PlataformaAlterna" type="StaticBody2D"]
+collision_mask = 0
+script = ExtResource( 1 )
+color_inactivo = Color( 0.121569, 0.121569, 0.121569, 1 )
