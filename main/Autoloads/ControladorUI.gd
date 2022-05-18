@@ -1,6 +1,7 @@
 extends Node
 
 signal cambiar_salud(_cantidad)
+signal balas_cambio(_cantidad)
 
 var jugador : Jugador
 var hud : HUD

@@ -45,6 +45,9 @@ func _unhandled_input(event:InputEvent)->void:
 
 func _process(delta)->void:
 	update_points(delta)
+	
+#	pos[pos.size() - 1] = get_global_mouse_position()
+	
 	update_constrain()
 	
 #	update_constrain()	#Repeat to get tighter rope

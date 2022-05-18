@@ -26,13 +26,17 @@ func _ready() -> void:
 	position = pos
 	velocity = Vector2.RIGHT.rotated(rotation).normalized() * move_speed
 	
+	
 	init_estela()
+	estela.set_process(false)
+	estela.add_point(global_position)
 
 
 func _physics_process(delta: float) -> void:
 	var pos_frame_anterior = global_position
 	
 	global_position += velocity * delta
+	estela.add_point(global_position)
 	
 	var space_state = get_world_2d().direct_space_state
 	var res = space_state.intersect_ray(
@@ -52,12 +56,15 @@ func _physics_process(delta: float) -> void:
 			if !collider.monitorable: return
 			var col = collider.owner.name
 			collider.recibir_dmg(info_dmg)
-		
 		call_deferred("free")
+	
+	if estela.points.size() > estela.numero_de_segmentos + 1:
+		estela.remove_point(0)
 
 
 func init_estela():
 	estela = get_node("EstelaBase")
 	if estela != null:
 		estela.set_process(true)
+
 

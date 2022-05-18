@@ -29,6 +29,7 @@ func _ready() -> void:
 	agregar_arma(AR.new())
 	agregar_arma(Escopeta.new())
 	agregar_arma(Ballesta.new())
+	agregar_arma(Gauss.new())
 
 
 func _process(delta: float) -> void:
@@ -150,6 +151,8 @@ func seleccionar_arma(_slot : String):
 
 # Selecciona un arma por numero en la lista en vez de string
 func seleccionar_arma_int(_slot : int):
+	var rango_slots = Arma.SLOTS.keys().size()
+	if _slot == rango_slots: _slot = 0
 	var slot = Arma.SLOTS.keys()[_slot]
 	seleccionar_arma(slot)
 

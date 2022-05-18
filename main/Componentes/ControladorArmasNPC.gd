@@ -90,6 +90,6 @@ func procesar_arma_actual(_delta : float):
 func set_activo(_bool : bool):
 	activo = _bool
 	
-	if arma_actual.skin_inst:
+	if arma_actual and arma_actual.skin_inst:
 		var skin : SkinArma = arma_actual.skin_inst
 		skin.visible = _bool

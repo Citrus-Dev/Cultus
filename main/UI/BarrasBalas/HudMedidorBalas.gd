@@ -53,6 +53,10 @@ func set_cantidad_no_recarga(_cantidad : int):
 
 func set_balas_reserva(_cant : int):
 	label.text = str(_cant)
+	if _cant == 0:
+		label.modulate = Color.red
+	else:
+		label.modulate = Color.white
 
 
 func _exit_tree():

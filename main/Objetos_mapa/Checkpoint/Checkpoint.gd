@@ -27,6 +27,10 @@ func guardar_checkpoint():
 	var dir_escena_actual : String = get_tree().current_scene.filename
 	print(dir_escena_actual + " guardado como checkpoint")
 	TransicionesDePantalla.checkpoint_actual_escena = dir_escena_actual
+	Guardado.guardar_partida()
+	
+	var nivel = get_tree().get_nodes_in_group("Nivel")[0]
+	nivel.guardar_datos_persistentes()
 
 
 # Alternar la activacion de la zona que te deja usar el checkpoint

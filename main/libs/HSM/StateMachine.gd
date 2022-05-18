@@ -41,8 +41,8 @@ func _physics_process(delta : float) -> void:
 func transition_to(target_state_path : String, msg : Dictionary = {}) -> void:
 	if !has_node(target_state_path):
 		return
-	if state.name == target_state_path:
-		return
+#	if state.name == target_state_path:
+#		return
 	
 	emit_signal("state_changed", target_state_path)
 	emit_signal("state_left", state.name)

@@ -11,6 +11,7 @@ signal objetivo_encontrado
 signal borde_tocado(_borde)
 signal muerto
 
+export(bool) var persistir 
 export(PackedScene) var ragdoll_escena
 export(NodePath) onready var skin = get_node(skin)
 export(NodePath) var skin_sprite_path
@@ -48,7 +49,7 @@ var input : Vector2
 var dir : int setget set_dir # 1 si esta viendo a la derecha, -1 si esta viendo a la izquierda.
 var snap : Vector2
 var is_jumping : bool
-var muerto : bool
+var muerto : bool setget set_muerto
 var stun : bool
 var objetivo : Personaje # En el caso de los enemigos este es el jugador
 var disparando : bool # Para IA
@@ -58,6 +59,10 @@ var ciego : bool
 
 var timer_stun = Timer.new()
 var sprites_shader : Array # Lista de sprites que van a ser afectadas por un shader
+
+func _init() -> void:
+	add_to_group("Personaje")
+
 
 func _ready() -> void:
 	# Poner las siguientes variables en un lista asi las podemos cambiar y despues volver
@@ -89,6 +94,12 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
+	if muerto:
+		if persistir:
+			var datos := {"muerto" : true}
+			var nivel = get_tree().get_nodes_in_group("Nivel")[0]
+			nivel.agregar_dato_persistente(get_path(), datos)
+	
 	if sprites_shader.size() > 0:
 		var fuerza = sprites_shader[0].material.get_shader_param("hit_strength")
 		if fuerza == null: return
@@ -240,11 +251,18 @@ func evento_dmg(_dmg : InfoDmg):
 
 func morir(_info : InfoDmg):
 	emit_signal("muerto")
-	muerto = true
-	collision_mask = 1 # No colisionas con nada mas que el escenario
-	hitbox.collision_layer = 0 # desactiva la hitbox totalmente
+	set_muerto(true)
+
+
+func set_muerto(toggle : bool):
+	muerto = toggle
+#	collision_mask = 1 # No colisionas con nada mas que el escenario
+#	hitbox.collision_layer = 0 # desactiva la hitbox totalmente
+	if toggle:
+		collision_mask = 1 # No colisionas con nada mas que el escenario
+		hitbox.collision_layer = 0 # desactiva la hitbox totalmente
 	instanciar_ragdoll()
-	cambiar_visibilidad(false)
+	cambiar_visibilidad(!toggle)
 
 
 func cambiar_visibilidad(_bool : bool):

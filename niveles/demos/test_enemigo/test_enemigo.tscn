@@ -144,13 +144,15 @@ enable_collisions = true
 
 [node name="Cultista2" parent="." index="6" instance=ExtResource( 5 )]
 position = Vector2( 538, 128 )
-actor = true
+persistir = true
 
 [node name="Cultista3" parent="." index="7" instance=ExtResource( 5 )]
 position = Vector2( 216, 224 )
+persistir = true
 
 [node name="Cultista4" parent="." index="8" instance=ExtResource( 5 )]
 position = Vector2( 408, 280 )
+persistir = true
 
 [node name="main" type="CollisionShape2D" parent="camara limites" index="0"]
 visible = false
@@ -159,7 +161,7 @@ shape = SubResource( 1 )
 script = ExtResource( 6 )
 
 [node name="SpawnJugador" type="Node2D" parent="." index="10"]
-position = Vector2( 770.514, 119.245 )
+position = Vector2( 272, 87 )
 script = ExtResource( 3 )
 
 [node name="BarraHPBoss" type="Node2D" parent="." index="11"]

@@ -6,7 +6,7 @@ var dict_balas := {
 	"Rifle" : {"cant" : 90, "max" : 240},
 	"Escopeta" : {"cant" : 16, "max" : 48},
 	"Granadas" : {"cant" : 1, "max" : 6},
-	"Cohetes" : {"cant" : 12, "max" : 48},
+	"Cohetes" : {"cant" : 6, "max" : 6},
 	"Flechas" : {"cant" : 8, "max" : 24}
 }
 

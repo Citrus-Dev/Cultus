@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://niveles/Nivel.tscn" type="PackedScene" id=1]
 [ext_resource path="res://main/Personajes/Jugador/Jugador.tscn" type="PackedScene" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://main/Pickups/PickupBalasEscopeta.tscn" type="PackedScene" id=7]
 [ext_resource path="res://main/Agua/CuerpoAgua.gd" type="Script" id=8]
 [ext_resource path="res://main/Pickups/PickupBalasRevolver.tscn" type="PackedScene" id=9]
+[ext_resource path="res://main/Pickups/PickupGauss.tscn" type="PackedScene" id=10]
 
 [node name="Nivel" instance=ExtResource( 1 )]
 
@@ -161,3 +162,6 @@ no_desaparecer = true
 [node name="PickupBalasRevolver" parent="." index="16" instance=ExtResource( 9 )]
 position = Vector2( 343, 183 )
 no_desaparecer = true
+
+[node name="PickupGauss" parent="." index="17" instance=ExtResource( 10 )]
+position = Vector2( 191, 184 )

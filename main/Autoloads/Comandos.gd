@@ -168,3 +168,21 @@ func c_mirar(_nada := "a") -> String:
 	else:
 		jug.alternar_checkpoint(!jug.usando_checkpoint)
 	return "Mirar activado." if jug.usando_checkpoint else "Mirar desactivado."
+
+
+func c_guardar(_slot := "0") -> String:
+	Guardado.guardar_partida(_slot)
+	return "Partida guardada en slot " + _slot
+
+
+func c_save(_slot := "0") -> String:
+	return c_guardar(_slot)
+
+
+func c_cargar(_slot := "0") -> String:
+	Guardado.cargar_partida(_slot)
+	return "Partida cargada de slot " + _slot
+
+
+func c_load(_slot := "0") -> String:
+	return c_cargar(_slot)

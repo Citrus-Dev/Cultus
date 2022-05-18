@@ -31,6 +31,7 @@ func _ready():
 func colision_jugador(_jug : Jugador):
 	if _jug.anim_level_trans:
 		return
+	
 	activar_animacion(_jug, direccion_movimiento)
 	yield(get_tree().create_timer(TIEMPO_TRANSICION_NIVEL), "timeout")
 	transicion(_jug)

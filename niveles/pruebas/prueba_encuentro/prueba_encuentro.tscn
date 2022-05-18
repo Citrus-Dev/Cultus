@@ -27,6 +27,8 @@ primer_limite_camara = NodePath("camara limites/CameraBounds")
 spawn_pol_1 = NodePath("sPolilla1")
 spawn_pol_2 = NodePath("sPolilla2")
 spawn_cult = NodePath("sCultista")
+puerta1 = NodePath("puertas/Puerta")
+puerta2 = NodePath("puertas/Puerta2")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="FondoLejos" index="0"]
 

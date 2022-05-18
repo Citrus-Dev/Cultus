@@ -31,4 +31,5 @@ func borrar_barra():
 
 func set_activo(_bool : bool):
 	activo = _bool
-	barra.visible = _bool
+	if is_instance_valid(barra):
+		barra.visible = _bool

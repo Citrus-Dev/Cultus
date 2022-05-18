@@ -40,6 +40,8 @@ func spawn_jugador_transicion_muerte():
 	var nivel = get_tree().get_nodes_in_group("Nivel")[0]
 	juginst.global_position = check.global_position
 	nivel.add_child(juginst)
+	yield(get_tree(), "idle_frame")
+	juginst.controlador_armas.inv_balas.dict_balas = inv_balas_estado
 
 
 func encontrar_trigger_objetivo() -> TransicionDeNivel:

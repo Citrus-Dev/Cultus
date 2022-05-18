@@ -5,12 +5,24 @@ export(NodePath) var primer_limite_camara
 export(bool) var print_fps
 
 var primer_limite_camara_obj : CameraBounds
+var info_persist_nivel := {} # Guardado de datos persistentes
 
 func _init() -> void:
 	add_to_group("Nivel")
 
 
 func _ready():
+	if Guardado.hay_datos_persist_del_nivel(filename):
+		info_persist_nivel = Guardado.tomar_datos_persist_del_nivel(filename)
+	
+	if !info_persist_nivel.empty():
+		var group_pers := get_tree().get_nodes_in_group("Personaje")
+		for personaje in group_pers:
+			var path = personaje.get_path()
+			if info_persist_nivel.has(str(path)):
+				for prop in info_persist_nivel[str(path)]:
+					personaje.set(prop, info_persist_nivel[str(path)][prop])
+	
 	if get_tree().get_nodes_in_group("HUD").size() > 0:
 		var hud = get_tree().get_nodes_in_group("HUD")[0]
 		for i in hud.get_children():
@@ -41,3 +53,21 @@ func init_primer_limite():
 func _process(delta: float) -> void:
 	if OS.is_debug_build() and print_fps:
 		DebugDraw.set_text("fps", Engine.iterations_per_second)
+
+
+func agregar_dato_persistente(path : String, datos : Dictionary):
+	info_persist_nivel[path] = datos
+
+
+func cargar_estado_persistente(estado : Dictionary):
+	info_persist_nivel = estado
+	for i in estado:
+		pass
+
+
+func guardar_datos_persistentes():
+	Guardado.info_persist_global[filename] = info_persist_nivel
+
+
+func _exit_tree():
+	guardar_datos_persistentes()

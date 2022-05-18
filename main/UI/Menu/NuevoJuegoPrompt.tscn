@@ -1,0 +1,47 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://main/UI/Menu/NuevoJuegoPrompt.gd" type="Script" id=1]
+
+[node name="NuevoJuegoPrompt" type="NinePatchRect"]
+margin_left = 96.0
+margin_top = 96.0
+margin_right = 416.0
+margin_bottom = 192.0
+rect_min_size = Vector2( 320, 96 )
+script = ExtResource( 1 )
+boton_aceptar = NodePath("VBoxContainer/HBoxContainer/Aceptar")
+boton_cancelar = NodePath("VBoxContainer/HBoxContainer/Cancelar")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/separation = 15
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+margin_top = 10.0
+margin_right = 320.0
+margin_bottom = 47.0
+text = "Empezar nueva partida? La partida anterior se perdera."
+align = 1
+valign = 1
+autowrap = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 62.0
+margin_right = 320.0
+margin_bottom = 85.0
+custom_constants/separation = 88
+alignment = 1
+
+[node name="Aceptar" type="Button" parent="VBoxContainer/HBoxContainer"]
+margin_left = 54.0
+margin_right = 115.0
+margin_bottom = 23.0
+text = "Aceptar"
+
+[node name="Cancelar" type="Button" parent="VBoxContainer/HBoxContainer"]
+margin_left = 203.0
+margin_right = 265.0
+margin_bottom = 23.0
+text = "Cancelar"

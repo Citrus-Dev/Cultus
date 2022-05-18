@@ -8,6 +8,8 @@ export(PackedScene) var spawn setget set_spawn_object
 export(bool) var spawn_on_ready
 export(bool) var one_shot
 
+var cont_spawns : int 
+
 func _ready():
 	if spawn_on_ready: call_deferred("spawn")
 
@@ -21,6 +23,9 @@ func spawn():
 	get_parent().add_child(new_inst)
 	if one_shot: call_deferred("free")
 	new_inst.connect("muerto", self, "emit_signal", ["spawn_muerto"])
+	
+	new_inst.name += name + str(cont_spawns)
+	cont_spawns += 1
 
 
 func set_spawn_object(_new_spawn : PackedScene):
