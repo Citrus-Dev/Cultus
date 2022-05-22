@@ -1,3 +1,4 @@
+class_name BufanString
 extends Node2D
 
 export (float) var ropeLength = 30

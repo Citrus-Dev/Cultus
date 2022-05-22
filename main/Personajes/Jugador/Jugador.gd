@@ -16,6 +16,7 @@ var usando_checkpoint : bool
 var usando_habilidad : bool
 var bufan
 var objetos_pisando : Array # Los objetos sobre el que estas parado
+var movimiento_desactivado : bool
 
 # Va a mostrar un mensaje si no se encuentra nivel de checkpoint para respawnear
 var debug_muerte_bugeada : bool
@@ -41,7 +42,8 @@ func procesar_movimiento(delta: float) -> void:
 		sacar_input()
 	
 	movement_horizontal(delta)
-	velocity = move_and_slide_with_snap(velocity + knockback, snap, Vector2.UP, true)
+	if !movimiento_desactivado:
+		velocity = move_and_slide_with_snap(velocity + knockback, snap, Vector2.UP, true)
 	
 	if is_instance_valid(bufan):
 		if input.x == 0.0 and is_on_floor():

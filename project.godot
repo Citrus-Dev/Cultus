@@ -99,6 +99,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://main/libs/BehaviorTree/hojas/Acciones/BorrarValorDeBlackboard.gd"
 }, {
+"base": "Node2D",
+"class": "BufanString",
+"language": "GDScript",
+"path": "res://main/libs/Verlet/string.gd"
+}, {
 "base": "Condicion",
 "class": "BuscarJugadorDetectado",
 "language": "GDScript",
@@ -514,6 +519,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://main/Shaker/Shaker.gd"
 }, {
+"base": "Node",
+"class": "SkillBufanda",
+"language": "GDScript",
+"path": "res://main/Personajes/Jugador/skill_bufanda.gd"
+}, {
+"base": "Node2D",
+"class": "SkillEscudo",
+"language": "GDScript",
+"path": "res://main/Personajes/Jugador/skill_escudo.gd"
+}, {
 "base": "Node2D",
 "class": "SkinArma",
 "language": "GDScript",
@@ -618,6 +633,7 @@ _global_script_class_icons={
 "BlockinPolygon": "",
 "Borde": "",
 "BorrarValorDeBlackboard": "",
+"BufanString": "",
 "BuscarJugadorDetectado": "",
 "BuscarMapa": "",
 "BuscarValorDeBlackboard": "",
@@ -701,6 +717,8 @@ _global_script_class_icons={
 "SfxrGlobals": "",
 "SfxrStreamPlayerInterface": "",
 "Shaker": "",
+"SkillBufanda": "",
+"SkillEscudo": "",
 "SkinArma": "",
 "Slide": "",
 "SpawnJugador": "",
@@ -840,6 +858,16 @@ arma_anterior={
 recargar={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":82,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+gancho={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":81,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+escudo={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777237,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
  ]
 }
 

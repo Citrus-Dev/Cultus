@@ -19,7 +19,8 @@ func _ready():
 func enter(msg : Dictionary = {}) -> void:
 	timer_disparo.connect("timeout", self, "terminar_timer_disparo")
 	owner.connect("borde_tocado", self, "saltar")
-	obj_jug = owner.objetivo
+	if owner.objetivo is Jugador:
+		obj_jug = owner.objetivo
 	iniciar_timer_disparo()
 	
 	animador = owner.skin.get_node("AnimationPlayer")

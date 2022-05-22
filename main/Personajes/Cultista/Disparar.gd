@@ -19,7 +19,8 @@ func _ready():
 
 func enter(msg : Dictionary = {}) -> void:
 	owner.input.x = 0.0
-	jug = owner.objetivo
+	if owner.objetivo is Jugador:
+		jug = owner.objetivo
 	controlador_armas.target_obj = jug
 	animador = owner.skin.get_node("AnimationPlayer")
 	

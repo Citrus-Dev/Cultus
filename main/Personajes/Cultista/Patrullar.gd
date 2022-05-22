@@ -1,12 +1,14 @@
 extends State
 
 var dir_actual : int
+var animador : AnimationPlayer
 
 func enter(msg : Dictionary = {}) -> void:
 	owner.connect("objetivo_encontrado", self, "alertar")
 	owner.connect("borde_tocado", self, "tocar_borde")
 	owner.max_velocidad_horizontal = 35
 	cambiar_dir_actual()
+	animador = owner.skin.get_node("AnimationPlayer")
 
 
 func unhandled_input(event : InputEvent) -> void:
@@ -14,7 +16,8 @@ func unhandled_input(event : InputEvent) -> void:
 
 
 func process(delta : float) -> void:
-	return
+	if !owner.turning:
+		animador.play("caminar")
 
 
 func physics_process(delta : float) -> void:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://main/Personajes/Jugador/Jugador.gd" type="Script" id=1]
 [ext_resource path="res://assets/jug/player.png" type="Texture" id=2]
@@ -11,6 +11,8 @@
 [ext_resource path="res://main/Shaker/Shaker.tscn" type="PackedScene" id=9]
 [ext_resource path="res://main/Componentes/LOSCheck.gd" type="Script" id=10]
 [ext_resource path="res://main/Ragdolls/RagdollJug.tscn" type="PackedScene" id=11]
+[ext_resource path="res://main/Personajes/Jugador/skill_bufanda.gd" type="Script" id=12]
+[ext_resource path="res://main/Personajes/Jugador/skill_escudo.gd" type="Script" id=13]
 
 [sub_resource type="Animation" id=3]
 length = 0.001
@@ -121,6 +123,30 @@ tracks/8/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ true ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("../CollisionShape2D:shape:extents")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 4, 8 ) ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("../CollisionShape2D:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -8 ) ]
 }
 
 [sub_resource type="Animation" id=13]
@@ -401,6 +427,9 @@ extents = Vector2( 4, 8 )
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 6, 8 )
 
+[sub_resource type="CircleShape2D" id=15]
+radius = 23.0
+
 [node name="Jugador" type="KinematicBody2D" groups=["Jugador"]]
 z_index = 1
 collision_layer = 2
@@ -491,6 +520,7 @@ radio = 196.0
 mascara_colision = 4
 
 [node name="Hitbox" parent="." instance=ExtResource( 6 )]
+visible = false
 collision_layer = 16
 status = NodePath("../Status")
 i_frames_tiempo = 1.5
@@ -503,3 +533,19 @@ shape = SubResource( 2 )
 script = ExtResource( 8 )
 velocidad = 200.0
 tiempo = 0.5
+
+[node name="skill_bufanda" type="Node" parent="."]
+script = ExtResource( 12 )
+
+[node name="skill_escudo" type="Node2D" parent="."]
+script = ExtResource( 13 )
+
+[node name="RadioParry" type="Area2D" parent="skill_escudo"]
+modulate = Color( 0, 0.439216, 0.537255, 1 )
+position = Vector2( 0, -7 )
+collision_layer = 0
+collision_mask = 256
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="skill_escudo/RadioParry"]
+shape = SubResource( 15 )

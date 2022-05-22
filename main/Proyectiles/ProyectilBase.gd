@@ -68,3 +68,6 @@ func init_estela():
 		estela.set_process(true)
 
 
+# Cambia la mascara de colision para que pegue a enemigos (reflejado del escudo)
+func reflejar():
+	collision_mask = 33
