@@ -194,12 +194,12 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://main/libs/BehaviorTree/hojas/Acciones/CrearTimer.gd"
 }, {
-"base": "Reference",
+"base": "Node2D",
 "class": "CuerdaVerlet",
 "language": "GDScript",
 "path": "res://niveles_basura/test_cuerdas/CuerdaVerlet.gd"
 }, {
-"base": "Reference",
+"base": "Node2D",
 "class": "CuerdaVerletV2",
 "language": "GDScript",
 "path": "res://niveles_basura/test_cuerdas/CuerdaVerletV2.gd"
@@ -439,7 +439,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://main/Proyectiles/ProyectilBase.gd"
 }, {
-"base": "Reference",
+"base": "Personaje",
 "class": "Prueba",
 "language": "GDScript",
 "path": "res://main/Personajes/Pruebas/Prueba/Prueba.gd"
