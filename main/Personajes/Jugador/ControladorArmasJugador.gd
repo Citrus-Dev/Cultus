@@ -59,7 +59,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func procesar_arma_actual(_delta : float):
-	if arma_actual == null: return
+	if arma_actual == null or !activo: return
 	arma_actual.procesar_arma(_delta)
 	
 	arma_actual.reducir_cooldown(_delta)
@@ -159,6 +159,7 @@ func seleccionar_arma_int(_slot : int):
 
 # Detecta el input para ver como cambiar las armas con los numeros.
 func procesar_inventario(_input : InputEvent):
+	if !activo: return
 	if _input is InputEventKey:
 		var just_pressed = _input.is_pressed() and not _input.is_echo()
 		if !just_pressed: return
@@ -182,6 +183,7 @@ func procesar_inventario(_input : InputEvent):
 
 # Procesa cambiar las armas con la ruedita
 func procesar_inventario_ruedita():
+	if !activo: return
 	var slot_arma_actual = arma_actual.slot
 	if Input.is_action_just_released("arma_siguiente"):
 		seleccionar_arma_int(slot_arma_actual + 1)

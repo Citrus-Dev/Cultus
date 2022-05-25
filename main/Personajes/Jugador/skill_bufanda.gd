@@ -1,12 +1,17 @@
 class_name SkillBufanda
 extends Node
 
+const ESCENA_MEDIDOR_COOLDOWN = preload("res://main/UI/Hud/MedidorCooldown.tscn")
+const TEXTURA_ICONO = preload("res://assets/ui/IconoHUDBufan.tres")
+
 const TIEMPO_GANCHO := 0.05
 const TIEMPO_GANCHO_AGARRADO := 0.6
 const DISTANCIA := 230.0
 const VEL_GANCHO := 350.0
 const DIST_MINIMA := 25.0
 const TIEMPO_COOLDOWN := 1.2
+
+signal cooldown_update(valor)
 
 var jug : Jugador
 var bufan_sprite : BufanString
@@ -31,9 +36,14 @@ func _ready():
 	timer_cooldown = Timer.new()
 	add_child(timer_cooldown)
 	timer_cooldown.one_shot = true
+	
+	yield(get_tree(), "idle_frame")
+	instanciar_medidor_cooldown()
 
 
 func _process(delta):
+	emit_signal("cooldown_update", timer_cooldown.time_left)
+	
 	if !is_instance_valid(bufan_sprite):
 		call_deferred("free")
 		return
@@ -104,7 +114,14 @@ func limitar_distancia(pos : Vector2):
 	return pos_final
 
 
-
+func instanciar_medidor_cooldown():
+	var hud = get_tree().get_nodes_in_group("HUD")[0]
+	var inst = ESCENA_MEDIDOR_COOLDOWN.instance()
+	hud.instanciar_medidor_cooldown(inst)
+	inst.set_icono_textura(TEXTURA_ICONO)
+	inst.set_color(Color.red)
+	inst.progress_bar.max_value = TIEMPO_COOLDOWN
+	connect("cooldown_update", inst, "actualizar_valor")
 
 
 

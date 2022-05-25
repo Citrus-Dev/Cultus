@@ -59,6 +59,11 @@ func aplicar_dmg(_info : InfoDmg):
 			emit_signal("aplicar_stun")
 
 
+func curar(_cantidad : int):
+	hp = min(hp + _cantidad, hp_max)
+	actualizar_hp_bar()
+
+
 # Solo sirve si el dueño es el jugador
 func actualizar_hp_bar():
 	if !owner.is_in_group("Jugador"):

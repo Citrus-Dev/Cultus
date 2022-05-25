@@ -12,6 +12,7 @@ var ultima_direccion : int
 var ultima_dir : int
 var slot_arma_seleccionado : String
 var inv_balas_estado : Dictionary
+var ultimo_punto_seguro : Vector2
 
 func spawn_jugador_transicion():
 	var trigger_objetivo_nodo = encontrar_trigger_objetivo()

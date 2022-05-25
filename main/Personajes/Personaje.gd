@@ -46,6 +46,7 @@ var velocity : Vector2
 var knockback : Vector2
 var knockback_procesable : Vector2
 var input : Vector2
+var input_override : Vector2
 var dir : int setget set_dir # 1 si esta viendo a la derecha, -1 si esta viendo a la izquierda.
 var snap : Vector2
 var is_jumping : bool
@@ -133,8 +134,10 @@ func procesar_movimiento(_delta : float):
 
 
 func movement_horizontal(_delta : float):
-	if input.x != 0.0:
-		velocity.x += aceleracion * input.x
+	var input_usable = input_override if input_override != Vector2.ZERO else input
+	
+	if input_usable.x != 0.0:
+		velocity.x += aceleracion * input_usable.x
 	else:
 		velocity.x *= friccion 
 	

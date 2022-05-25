@@ -1,7 +1,7 @@
 class_name HPBar
 extends Control
 
-export(NodePath) onready var progress_bar = get_node(progress_bar) as ProgressBar
+export(NodePath) onready var progress_bar = get_node(progress_bar) as TextureProgress
 
 var tween_progress := Tween.new()
 

@@ -24,7 +24,7 @@ func _ready() -> void:
 	var pos = global_position
 	set_as_toplevel(true)
 	position = pos
-	velocity = Vector2.RIGHT.rotated(rotation).normalized() * move_speed
+	set_velocity()
 	
 	
 	init_estela()
@@ -33,6 +33,7 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
+	set_velocity()
 	var pos_frame_anterior = global_position
 	
 	global_position += velocity * delta
@@ -60,6 +61,10 @@ func _physics_process(delta: float) -> void:
 	
 	if estela.points.size() > estela.numero_de_segmentos + 1:
 		estela.remove_point(0)
+
+
+func set_velocity():
+	velocity = Vector2.RIGHT.rotated(rotation).normalized() * move_speed
 
 
 func init_estela():

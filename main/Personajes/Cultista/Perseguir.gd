@@ -33,13 +33,16 @@ func unhandled_input(event : InputEvent) -> void:
 func process(delta : float) -> void:
 	debug_timer = timer_disparo.time_left
 	if !owner.turning:
-		if owner.is_on_floor():
-			animador.play("correr")
-		else:
-			if owner.velocity.y > 0:
-				animador.play("caer")
+		if !owner.stun:
+			if owner.is_on_floor():
+				animador.play("correr")
 			else:
-				animador.play("saltar")
+				if owner.velocity.y > 0:
+					animador.play("caer")
+				else:
+					animador.play("saltar")
+		else:
+			animador.play("hurt")
 
 
 func physics_process(delta : float) -> void:

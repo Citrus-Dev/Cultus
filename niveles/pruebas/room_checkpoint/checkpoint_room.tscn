@@ -37,7 +37,7 @@ __meta__ = {
 }
 
 [node name="Sprite" type="Sprite" parent="FondoLejos/ParallaxBackground/fondo" index="0"]
-modulate = Color( 0.380392, 0.380392, 0.380392, 1 )
+modulate = Color( 0.133333, 0.133333, 0.133333, 1 )
 texture = ExtResource( 2 )
 centered = false
 region_enabled = true

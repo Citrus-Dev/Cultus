@@ -1,9 +1,14 @@
 class_name SkillEscudo
 extends Node2D
 
+const ESCENA_MEDIDOR_COOLDOWN = preload("res://main/UI/Hud/MedidorCooldown.tscn")
+const TEXTURA_ICONO = preload("res://assets/ui/IconoHUDCruz.tres")
+
 const DURACION_PARRY := 0.6
 const TIEMPO_COOLDOWN := 1.6
 const VEL_DASH := 150.0
+
+signal cooldown_update(valor)
 
 var jug : Jugador
 var jug_hitbox : Hitbox
@@ -12,8 +17,11 @@ var timer_escudo : Timer
 var timer_cooldown : Timer
 
 var dir_mov : Vector2
+var desactivado : bool
 
 func _ready():
+	get_parent().connect("muerto", self, "set", ["desactivado", true])
+	
 	yield(get_parent(), "ready")
 	jug = owner
 	jug_hitbox = jug.hitbox
@@ -29,6 +37,9 @@ func _ready():
 	timer_cooldown = Timer.new()
 	add_child(timer_cooldown)
 	timer_cooldown.one_shot = true
+	
+	yield(get_tree(), "idle_frame")
+	instanciar_medidor_cooldown()
 
 
 func _draw():
@@ -39,9 +50,10 @@ func _draw():
 
 
 func _process(delta):
+	emit_signal("cooldown_update", timer_cooldown.time_left)
 	update()
 	if puede_activar() and Input.is_action_just_pressed("escudo"):
-		if jug.input.x == 0:
+		if sign(jug.input.x) == 0:
 			empezar_block_quieto()
 		else:
 			empezar_dash(jug.input.x)
@@ -54,6 +66,7 @@ func _physics_process(delta):
 
 func puede_activar() -> bool:
 	return bool(
+		!desactivado and
 		!jug.usando_habilidad and
 		timer_cooldown.is_stopped()
 	)
@@ -81,6 +94,7 @@ func empezar_block_quieto():
 
 func empezar_dash(dir_x : int):
 	activar()
+	dir_x = sign(dir_x)
 	dir_mov = Vector2(dir_x, 0)
 	jug_hitbox.monitorable = false
 
@@ -90,4 +104,13 @@ func bloquear_bala(bala : ProyectilBase):
 	bala.velocity = bala.velocity.bounce(normal)
 	bala.reflejar()
 
+
+func instanciar_medidor_cooldown():
+	var hud = get_tree().get_nodes_in_group("HUD")[0]
+	var inst = ESCENA_MEDIDOR_COOLDOWN.instance()
+	hud.instanciar_medidor_cooldown(inst)
+	inst.set_icono_textura(TEXTURA_ICONO)
+	inst.set_color(Color.gold)
+	inst.progress_bar.max_value = TIEMPO_COOLDOWN
+	connect("cooldown_update", inst, "actualizar_valor")
 

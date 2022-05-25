@@ -1,6 +1,8 @@
 class_name Checkpoint
 extends Node2D
 
+signal usado
+
 onready var area : Area2D = get_node("Area2D")
 onready var sprite : Sprite = get_node("Sprite")
 
@@ -28,6 +30,7 @@ func guardar_checkpoint():
 	print(dir_escena_actual + " guardado como checkpoint")
 	TransicionesDePantalla.checkpoint_actual_escena = dir_escena_actual
 	Guardado.guardar_partida()
+	emit_signal("usado")
 	
 	var nivel = get_tree().get_nodes_in_group("Nivel")[0]
 	nivel.guardar_datos_persistentes()

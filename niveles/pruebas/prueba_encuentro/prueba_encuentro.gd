@@ -23,6 +23,7 @@ func _ready():
 
 
 func _process(delta):
+	return
 	DebugDraw.set_text("fase_actual", fase_actual)
 	DebugDraw.set_text("contador_fase", contador_fase)
 	DebugDraw.set_text("cont_fase_objetivo", cont_fase_objetivo)

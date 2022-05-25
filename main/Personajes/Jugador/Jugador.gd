@@ -35,6 +35,10 @@ func _process(delta: float) -> void:
 		DebugDraw.set_text("Reiniciar o cargar otro nivel.", "")
 
 
+func _physics_process(delta):
+	detectar_punto_seguro()
+
+
 func procesar_movimiento(delta: float) -> void:
 	var puede_moverse = puede_moverse()
 	set_snap()
@@ -300,6 +304,13 @@ func crear_hud():
 	ControladorUi.hud = hud
 	ControladorUi.jugador = self
 	get_tree().get_root().call_deferred("add_child", hud)
+
+
+func detectar_punto_seguro():
+	if bool(
+		is_on_floor()
+	):
+		TransicionesDePantalla.ultimo_punto_seguro = global_position
 
 
 func osciliar(_x :float, _freq : float, _amplitud : float) -> float:
