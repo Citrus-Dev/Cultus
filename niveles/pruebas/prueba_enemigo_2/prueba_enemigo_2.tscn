@@ -36,4 +36,19 @@ position = Vector2( 288, 272 )
 script = ExtResource( 3 )
 
 [node name="Polilla" parent="." index="7" instance=ExtResource( 5 )]
-position = Vector2( 520, 176 )
+position = Vector2( 613, -21 )
+
+[node name="Polilla2" parent="." index="8" instance=ExtResource( 5 )]
+position = Vector2( 599, -66 )
+
+[node name="Polilla3" parent="." index="9" instance=ExtResource( 5 )]
+position = Vector2( 653, -50 )
+
+[node name="Polilla4" parent="." index="10" instance=ExtResource( 5 )]
+position = Vector2( 640, -100 )
+
+[node name="Polilla5" parent="." index="11" instance=ExtResource( 5 )]
+position = Vector2( 706, -29 )
+
+[node name="Polilla6" parent="." index="12" instance=ExtResource( 5 )]
+position = Vector2( 700, -79 )
