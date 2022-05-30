@@ -77,8 +77,6 @@ func morir(_info : InfoDmg):
 
 func set_muerto(toggle : bool):
 	muerto = toggle
-#	collision_mask = 1 # No colisionas con nada mas que el escenario
-#	hitbox.collision_layer = 0 # desactiva la hitbox totalmente
 	if toggle:
 		collision_mask = 1 # No colisionas con nada mas que el escenario
 		hitbox.collision_layer = 0 # desactiva la hitbox totalmente

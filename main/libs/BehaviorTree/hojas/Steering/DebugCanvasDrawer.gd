@@ -9,7 +9,7 @@ func _init(_owner) -> void:
 
 
 func _draw() -> void:
-	if steer.agente:
+	if steer.user:
 		for i in steer.rayos:
 			var color : Color = Color.orange
 			if i in steer.peligro:
@@ -18,22 +18,22 @@ func _draw() -> void:
 				color = Color.green
 			
 			draw_line(
-				steer.agente.position,
-				steer.agente.position + i * steer.distancia_de_deteccion,
+				steer.user.position,
+				steer.user.position + i * steer.distancia_de_deteccion,
 				Color.orange,
 				.5
 			)
 		
 		draw_line(
-			steer.agente.position,
-			steer.agente.position + steer.dir_final * steer.distancia_de_deteccion,
+			steer.user.position,
+			steer.user.position + steer.dir_final * steer.distancia_de_deteccion,
 			Color.green,
 			2.5
 		)
 		
 		draw_line(
-			steer.agente.position,
-			steer.agente.position + steer.dir_avoid * steer.distancia_de_deteccion,
+			steer.user.position,
+			steer.user.position + steer.dir_avoid * steer.distancia_de_deteccion,
 			Color.red,
 			2.5
 		)

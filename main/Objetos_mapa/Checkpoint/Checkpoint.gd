@@ -45,11 +45,11 @@ func jug_alternar_area(_jug : Jugador, _bool : bool):
 func alternar_uso_checkpoint(_bool : bool):
 	if !jugador or !jugador.is_on_floor(): 
 		return
+	guardar_checkpoint()
 	usando = _bool
 	jugador.alternar_checkpoint(_bool)
 	if _bool: 
 		sprite.material.set_shader_param("hit_strength", 1.0)
-		guardar_checkpoint()
 		lerp_jug_al_centro()
 
 

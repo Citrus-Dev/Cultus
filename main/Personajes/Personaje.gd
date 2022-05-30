@@ -16,7 +16,6 @@ export(PackedScene) var ragdoll_escena
 export(NodePath) onready var skin = get_node(skin)
 export(NodePath) var skin_sprite_path
 export(NodePath) onready var status = get_node(status) as Status
-export(NodePath) var behavior_tree_path
 
 export(float) var aceleracion
 export(float) var friccion
@@ -78,9 +77,6 @@ func _ready() -> void:
 		"jump_velocity"
 	])
 	init_timer_stun()
-	
-	if behavior_tree_path:
-		behavior_tree = get_node(behavior_tree_path)
 	
 	animador = get_node("Skin/AnimationPlayer")
 	collider = get_node("CollisionShape2D")

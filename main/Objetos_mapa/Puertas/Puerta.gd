@@ -33,9 +33,13 @@ export(TransitionType) var transicion_cerrar
 
 var pos_cerrado : float
 var pos_abierto : float
-var abierto : bool
+var abierto : bool setget set_abierto
 var moving : bool
 var tween := Tween.new()
+
+func set_abierto(toggle : bool):
+	abierto = toggle
+	position.y = pos_abierto if abierto else pos_cerrado
 
 func _ready():
 	pos_cerrado = position.y

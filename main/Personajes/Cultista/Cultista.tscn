@@ -214,6 +214,7 @@ hurtbox = NodePath("Hurtbox")
 arma_id = "ArmaCultista"
 
 [node name="monitores" type="Node2D" parent="." index="0"]
+visible = false
 
 [node name="piso" parent="monitores" index="0" instance=ExtResource( 9 )]
 monitor_target_node = NodePath("../..")

@@ -1,7 +1,6 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://main/Personajes/Jugador/Jugador.gd" type="Script" id=1]
-[ext_resource path="res://assets/jug/player.png" type="Texture" id=2]
 [ext_resource path="res://main/Personajes/Jugador/ControladorArmasJugador.gd" type="Script" id=3]
 [ext_resource path="res://main/Componentes/Stretcher.gd" type="Script" id=4]
 [ext_resource path="res://main/SistemaDaño/Status.gd" type="Script" id=5]
@@ -62,7 +61,7 @@ tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ ExtResource( 2 ) ]
+"values": [ null ]
 }
 tracks/4/type = "value"
 tracks/4/path = NodePath("Stretcher/Player:vframes")
@@ -485,7 +484,6 @@ script = ExtResource( 4 )
 
 [node name="Player" type="Sprite" parent="Skin/Stretcher"]
 position = Vector2( 0, -12 )
-texture = ExtResource( 2 )
 hframes = 5
 vframes = 9
 
