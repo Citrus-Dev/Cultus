@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://niveles/Nivel.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/tilesets/tileset_castillo.tres" type="TileSet" id=2]
 [ext_resource path="res://main/Componentes/LOSCheck.gd" type="Script" id=3]
 [ext_resource path="res://main/Personajes/Jugador/Jugador.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/luz/luz_96_mask.png" type="Texture" id=5]
 [ext_resource path="res://assets/luz/luz_96.png" type="Texture" id=6]
 
 [sub_resource type="Environment" id=1]
@@ -38,16 +39,24 @@ position = Vector2( 51, 152 )
 
 [node name="Light2DMask" type="Light2D" parent="Jugador" index="8"]
 position = Vector2( 0, -10 )
+texture = ExtResource( 5 )
+texture_scale = 2.19
+energy = 0.0
 mode = 3
+range_layer_min = -512
 range_layer_max = 100
 range_item_cull_mask = 2
 shadow_item_cull_mask = 2
 
 [node name="Light2D" type="Light2D" parent="Jugador" index="9"]
-visible = false
 position = Vector2( 0, -10 )
 texture = ExtResource( 6 )
+texture_scale = 2.19
+energy = 0.7
 range_layer_max = 267
+range_item_cull_mask = 3
+shadow_enabled = true
+shadow_gradient_length = 0.1
 
 [node name="Frente" parent="." index="4"]
 layer = 30
@@ -75,4 +84,4 @@ layer = 40
 light_mask = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0, 0, 0, 0.796078 )
+color = Color( 0, 0, 0, 1 )
