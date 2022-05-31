@@ -24,18 +24,22 @@ func _ready() -> void:
 	usador.controlador_armas = self
 	yield(get_tree(), "idle_frame")
 	
-	inicializar_inv_armas()
-	agregar_arma(Revolver.new())
-	agregar_arma(AR.new())
-	agregar_arma(Escopeta.new())
-	agregar_arma(Ballesta.new())
-	agregar_arma(Gauss.new())
+	if armas.empty():
+		inicializar_inv_armas()
+		agregar_arma(Revolver.new())
+	else:
+		return
+		for obj in armas:
+			if obj != null:
+				seleccionar_arma(obj)
 
 
 func _process(delta: float) -> void:
 	if arma_actual != null and activo:
 		arma_actual.apuntar(angulo)
 	procesar_inventario_ruedita()
+	if Input.is_key_pressed(KEY_P):
+		agregar_arma(AR.new())
 
 
 func _physics_process(delta: float) -> void:
@@ -120,6 +124,9 @@ func inicializar_inv_armas():
 	var slots = Arma.SLOTS.keys()
 	for sl in slots:
 		armas[sl] = null
+	
+	if TransicionesDePantalla.inv_armas == {}:
+		TransicionesDePantalla.inv_armas = armas
 
 
 func agregar_arma(_arma : Arma):
@@ -184,6 +191,7 @@ func procesar_inventario(_input : InputEvent):
 # Procesa cambiar las armas con la ruedita
 func procesar_inventario_ruedita():
 	if !activo: return
+	if armas.empty(): return
 	var slot_arma_actual = arma_actual.slot
 	if Input.is_action_just_released("arma_siguiente"):
 		seleccionar_arma_int(slot_arma_actual + 1)

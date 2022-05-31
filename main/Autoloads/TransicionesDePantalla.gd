@@ -12,6 +12,7 @@ var ultima_direccion : int
 var ultima_dir : int
 var slot_arma_seleccionado : String
 var inv_balas_estado : Dictionary
+var inv_armas : Dictionary
 var ultimo_punto_seguro : Vector2
 
 func spawn_jugador_transicion():
@@ -26,6 +27,7 @@ func spawn_jugador_transicion():
 	juginst.anim_level_trans = true
 	trigger_objetivo_nodo.animacion_de_salida(juginst, ultima_direccion)
 	juginst.controlador_armas.inv_balas.dict_balas = inv_balas_estado
+	juginst.controlador_armas.armas = inv_armas
 	
 	yield(get_tree(), "idle_frame")
 	juginst.controlador_armas.seleccionar_arma(slot_arma_seleccionado)
@@ -43,6 +45,7 @@ func spawn_jugador_transicion_muerte():
 	nivel.add_child(juginst)
 	yield(get_tree(), "idle_frame")
 	juginst.controlador_armas.inv_balas.dict_balas = inv_balas_estado
+	juginst.controlador_armas.armas = inv_armas
 
 
 func encontrar_trigger_objetivo() -> TransicionDeNivel:

@@ -49,6 +49,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://main/Armas/ArmaCultista.gd"
 }, {
+"base": "Arma",
+"class": "ArmaRevolverEsqueleto",
+"language": "GDScript",
+"path": "res://main/Armas/ArmaRevolverEsqueleto.gd"
+}, {
 "base": "Reference",
 "class": "Armas",
 "language": "GDScript",
@@ -253,6 +258,11 @@ _global_script_classes=[ {
 "class": "EscribirEnBlackboard",
 "language": "GDScript",
 "path": "res://main/libs/BehaviorTree/hojas/Acciones/EscribirEnBlackboard.gd"
+}, {
+"base": "Cultista",
+"class": "Esqueleto",
+"language": "GDScript",
+"path": "res://main/Personajes/Esqueleto/Esqueleto.gd"
 }, {
 "base": "AntialiasedLine2D",
 "class": "EstelaBase",
@@ -648,6 +658,7 @@ _global_script_class_icons={
 "AntialiasedRegularPolygon2D": "res://addons/antialiased_line2d/antialiased_regular_polygon2d.svg",
 "Arma": "",
 "ArmaCultista": "",
+"ArmaRevolverEsqueleto": "",
 "Armas": "",
 "BTBase": "",
 "Ballesta": "",
@@ -689,6 +700,7 @@ _global_script_class_icons={
 "EsVectorCero": "",
 "Escopeta": "",
 "EscribirEnBlackboard": "",
+"Esqueleto": "",
 "EstelaBase": "",
 "Explosion": "",
 "Gauss": "",

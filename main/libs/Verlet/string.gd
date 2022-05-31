@@ -33,6 +33,7 @@ func init_position()->void:
 	position = Vector2.ZERO
 
 func _unhandled_input(event:InputEvent)->void:
+	return
 	if event is InputEventMouseMotion:
 		if Input.is_action_pressed("disparo_primario"):	#Move start point
 			set_start(get_global_mouse_position())

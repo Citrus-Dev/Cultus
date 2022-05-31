@@ -1,8 +1,7 @@
 extends State
 
 # Va a esperar un tiempo random entre estos dos numeros antes de disparar
-const INTERVALO_DISPARO := Vector2(0.4, 1.2)
-
+export(Vector2) var intervalo_disparo = Vector2(0.4, 1.2)
 export(NodePath) onready var los_check = get_node(los_check) as LOSCheck
 
 var timer_disparo := Timer.new()
@@ -66,7 +65,7 @@ func saltar(_borde : Borde):
 
 func iniciar_timer_disparo():
 	timer_disparo.stop()
-	timer_disparo.wait_time = rand_range(INTERVALO_DISPARO.x, INTERVALO_DISPARO.y)
+	timer_disparo.wait_time = rand_range(intervalo_disparo.x, intervalo_disparo.y)
 	timer_disparo.start()
 
 

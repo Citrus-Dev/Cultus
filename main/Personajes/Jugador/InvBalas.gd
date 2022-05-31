@@ -1,6 +1,8 @@
 class_name InvBalas
 extends Reference
 
+signal balas_cambiadas(_self)
+
 var dict_balas := {
 	"Pistola" : {"cant" : 24, "max" : 60},
 	"Rifle" : {"cant" : 90, "max" : 240},
@@ -15,11 +17,13 @@ var medidor : HudMedidorBalas setget set_medidor
 func bajar_balas(cant, id):
 	var balas = dict_balas[id]
 	balas["cant"] = max(balas["cant"] - cant, 0)
+	emit_signal("balas_cambiadas", dict_balas)
 
 
 func agregar_balas(cant, id):
 	var balas = dict_balas[id]
 	balas["cant"] = min(balas["cant"] + cant, balas["max"])
+	emit_signal("balas_cambiadas", dict_balas)
 
 
 func hay_balas(id : String) -> bool:

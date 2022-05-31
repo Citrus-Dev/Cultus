@@ -50,7 +50,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ 35, 36 ]
+"values": [ 30, 31 ]
 }
 
 [sub_resource type="Animation" id=9]
@@ -66,7 +66,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 15, 16, 17, 18, 19 ]
+"values": [ 10, 11, 12, 13, 14 ]
 }
 
 [sub_resource type="Animation" id=5]
@@ -100,7 +100,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ 25, 26 ]
+"values": [ 20, 21 ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -164,7 +164,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1, 0.101 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
-"values": [ 30, 26, 31 ]
+"values": [ 25, 26, 26 ]
 }
 
 [sub_resource type="Animation" id=6]
@@ -214,12 +214,11 @@ hurtbox = NodePath("Hurtbox")
 arma_id = "ArmaCultista"
 
 [node name="monitores" type="Node2D" parent="." index="0"]
-visible = false
 
 [node name="piso" parent="monitores" index="0" instance=ExtResource( 9 )]
-monitor_target_node = NodePath("../..")
-monitor_target_property = "is_on_floor"
-monitor_flavor_text = "is_on_floor"
+monitor_target_node = NodePath("../../Status")
+monitor_target_property = "stun_actual"
+monitor_flavor_text = "stun_actual"
 
 [node name="estado" parent="monitores" index="1" instance=ExtResource( 9 )]
 position = Vector2( 0, -46 )
@@ -245,7 +244,7 @@ shape = SubResource( 1 )
 
 [node name="Status" parent="." index="3"]
 hp_max = 100
-stun_threshold = 100
+stun_threshold = 50
 
 [node name="Hurtbox" parent="." index="4" instance=ExtResource( 7 )]
 collision_mask = 16

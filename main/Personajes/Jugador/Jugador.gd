@@ -127,8 +127,9 @@ func evento_dmg(_dmg : InfoDmg):
 func morir(_info : InfoDmg):
 	emit_signal("muerto")
 	muerto = true
-
-	bufan.call_deferred("free")
+	
+	if is_instance_valid(bufan):
+		bufan.call_deferred("free")
 	collision_mask = 1 # No colisionas con nada mas que el escenario
 	collision_layer = 0
 	hitbox.collision_layer = 0 # desactiva la hitbox totalmente

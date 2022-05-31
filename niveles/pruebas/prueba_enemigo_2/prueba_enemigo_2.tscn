@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://niveles/Nivel.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/tilesets/tileset_castillo.tres" type="TileSet" id=2]
 [ext_resource path="res://main/Objetos_mapa/SpawnJugador.gd" type="Script" id=3]
 [ext_resource path="res://main/CameraLimitSystem/CameraBounds.gd" type="Script" id=4]
 [ext_resource path="res://main/Personajes/Polilla/Polilla.tscn" type="PackedScene" id=5]
+[ext_resource path="res://main/Personajes/Esqueleto/Esqueleto.tscn" type="PackedScene" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 612, 220 )
@@ -52,3 +53,7 @@ position = Vector2( 706, -29 )
 
 [node name="Polilla6" parent="." index="12" instance=ExtResource( 5 )]
 position = Vector2( 700, -79 )
+
+[node name="Esqueleto" parent="." index="13" instance=ExtResource( 6 )]
+position = Vector2( 473, 272 )
+status = NodePath("Status")

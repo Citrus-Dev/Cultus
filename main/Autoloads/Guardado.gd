@@ -19,6 +19,7 @@ func guardar_partida(_slot := ""):
 	
 	datos["checkpoint_actual_escena"] = TransicionesDePantalla.checkpoint_actual_escena
 	datos["inv_balas_estado"] = jug.controlador_armas.inv_balas.dict_balas
+	datos["armas"] = TransicionesDePantalla.inv_armas
 	datos["info_persist_global"] = info_persist_global
 	
 	var data_string = var2str(datos)
@@ -54,6 +55,7 @@ func cargar_partida(_slot := ""):
 	
 	TransicionesDePantalla.checkpoint_actual_escena = datos["checkpoint_actual_escena"]
 	TransicionesDePantalla.inv_balas_estado = datos["inv_balas_estado"]
+	TransicionesDePantalla.inv_armas = datos["armas"]
 	info_persist_global = datos["info_persist_global"]
 	
 	TransicionesDePantalla.muerte = true

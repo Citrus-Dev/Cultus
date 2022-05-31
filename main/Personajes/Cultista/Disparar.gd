@@ -1,10 +1,9 @@
 extends State
 
 # Tiempo de esperar antes de disparar
-const TIEMPO_DE_DISPARO := 0.5
+export(float) var tiempo_de_disparo = 0.5
 # Tiempo de esperar antes de volver al estado perseguir
-const TIEMPO_DE_ESPERA := 0.3
-
+export(float) var tiempo_de_espera = 0.3
 export(NodePath) onready var controlador_armas = get_node(controlador_armas) as ControladorArmasNPC
 export(int) var rafaga
 
@@ -25,7 +24,7 @@ func enter(msg : Dictionary = {}) -> void:
 	animador = owner.skin.get_node("AnimationPlayer")
 	
 	timer.connect("timeout", self, "empezar_a_disparar")
-	timer.start(TIEMPO_DE_DISPARO)
+	timer.start(tiempo_de_disparo)
 	animador.play("idle")
 
 
@@ -57,9 +56,8 @@ func empezar_a_disparar():
 
 func terminar_de_disparar():
 	controlador_armas.disconnect("termino_de_disparar", self, "terminar_de_disparar")
-	timer.start(TIEMPO_DE_ESPERA)
+	timer.start(tiempo_de_espera)
 	timer.connect("timeout", self, "salir_del_estado")
-	controlador_armas.target_obj = null
 
 
 func salir_del_estado():

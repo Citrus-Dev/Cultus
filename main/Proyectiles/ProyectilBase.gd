@@ -33,7 +33,6 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	set_velocity()
 	var pos_frame_anterior = global_position
 	
 	global_position += velocity * delta
@@ -50,13 +49,12 @@ func _physics_process(delta: float) -> void:
 	)
 	
 	if !res.empty():
-		global_position = res["position"]
-		
 		var collider = res["collider"]
 		if collider is Hitbox:
 			if !collider.monitorable: return
 			var col = collider.owner.name
 			collider.recibir_dmg(info_dmg)
+		global_position = res["position"]
 		call_deferred("free")
 	
 	if estela.points.size() > estela.numero_de_segmentos + 1:

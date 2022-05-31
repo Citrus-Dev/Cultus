@@ -7,6 +7,7 @@ var armas_lista := {
 	"ArmaEscopeta" : "res://main/Armas/ArmaEscopeta.gd",
 	"ArmaPistola" : "res://main/Armas/ArmaPistola.gd",
 	"ArmaCultista" : "res://main/Armas/ArmaCultista.gd",
+	"ArmaRevolverEsqueleto" : "res://main/Armas/ArmaRevolverEsqueleto.gd"
 }
 
 
