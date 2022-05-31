@@ -27,6 +27,7 @@ func _init() -> void:
 
 func equipar(_controlador):
 	actualizar_medidor()
+	timer_recarga = Timer.new()
 	timer_recarga.one_shot = true
 	timer_recarga.wait_time = TIEMPO_RECARGA
 	_controlador.add_child(timer_recarga)

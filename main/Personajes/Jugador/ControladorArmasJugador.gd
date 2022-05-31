@@ -24,10 +24,11 @@ func _ready() -> void:
 	usador.controlador_armas = self
 	yield(get_tree(), "idle_frame")
 	
-	if armas.empty():
+	if TransicionesDePantalla.inv_armas.empty():
 		inicializar_inv_armas()
 		agregar_arma(Revolver.new())
 	else:
+		armas = TransicionesDePantalla.inv_armas
 		return
 		for obj in armas:
 			if obj != null:
@@ -124,9 +125,6 @@ func inicializar_inv_armas():
 	var slots = Arma.SLOTS.keys()
 	for sl in slots:
 		armas[sl] = null
-	
-	if TransicionesDePantalla.inv_armas == {}:
-		TransicionesDePantalla.inv_armas = armas
 
 
 func agregar_arma(_arma : Arma):
@@ -135,6 +133,7 @@ func agregar_arma(_arma : Arma):
 	_arma.damage_info.atacante = usador
 	armas[slot] = _arma
 	seleccionar_arma(slot)
+	TransicionesDePantalla.inv_armas = armas
 
 
 func seleccionar_arma(_slot : String):
