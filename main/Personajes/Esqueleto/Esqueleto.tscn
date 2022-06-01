@@ -1,38 +1,331 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=29 format=2]
 
-[ext_resource path="res://main/Personajes/Cultista/Cultista.tscn" type="PackedScene" id=1]
+[ext_resource path="res://main/Personajes/Cultista/Disparar.gd" type="Script" id=1]
 [ext_resource path="res://assets/enemies/cowboy_skeleton.png" type="Texture" id=2]
 [ext_resource path="res://main/Personajes/Esqueleto/Esqueleto.gd" type="Script" id=3]
 [ext_resource path="res://main/Personajes/Esqueleto/estados/Muerte.gd" type="Script" id=4]
+[ext_resource path="res://main/libs/HSM/StateMachine.gd" type="Script" id=5]
+[ext_resource path="res://main/Componentes/ControladorArmasNPC.gd" type="Script" id=6]
+[ext_resource path="res://main/Personajes/Cultista/ScriptSetFrame.gd" type="Script" id=7]
+[ext_resource path="res://main/Personajes/Cultista/Perseguir.gd" type="Script" id=8]
+[ext_resource path="res://main/Personajes/Cultista/ScripIdle.gd" type="Script" id=9]
+[ext_resource path="res://main/Personajes/Cultista/Patrullar.gd" type="Script" id=10]
+[ext_resource path="res://main/SistemaDaño/Hitbox.tscn" type="PackedScene" id=11]
+[ext_resource path="res://main/libs/DebugMonitor/DebugMonitor.tscn" type="PackedScene" id=12]
+[ext_resource path="res://main/SistemaDaño/Status.gd" type="Script" id=13]
+[ext_resource path="res://main/Componentes/LOSCheck.gd" type="Script" id=14]
+[ext_resource path="res://main/SistemaDaño/Hurtbox.tscn" type="PackedScene" id=15]
 
-[node name="Esqueleto" instance=ExtResource( 1 )]
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 6, 8.5 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 8, 9 )
+
+[sub_resource type="RectangleShape2D" id=13]
+extents = Vector2( 5, 10 )
+
+[sub_resource type="Animation" id=3]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "caer"
+length = 0.2
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 30, 31 ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "caminar"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 10, 11, 12, 13, 14 ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "correr"
+length = 0.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 10, 11, 12, 13, 14 ]
+}
+
+[sub_resource type="Animation" id=12]
+resource_name = "hurt"
+length = 0.2
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 20, 21 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "idle"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "mirar"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 6 ]
+}
+
+[sub_resource type="Animation" id=11]
+resource_name = "mirar_der"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "saltar"
+length = 0.2
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.101 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 25, 26, 26 ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "turn"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 5, 6, 7 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ "turning", false ],
+"method": "set"
+} ]
+}
+
+[node name="Esqueleto" type="KinematicBody2D"]
+collision_layer = 4
 script = ExtResource( 3 )
+skin = NodePath("Skin")
+skin_sprite_path = NodePath("Skin/Sprite")
+status = NodePath("Status")
 aceleracion = 45.0
+friccion = 0.8
+max_velocidad_horizontal = 75.0
 max_velocidad_vertical = 300.0
-jump_time_to_peak = 1.0
-jump_time_to_fall = 1.0
+arma = NodePath("ControladorArmasNPC")
+fsm = NodePath("StateMachine")
+hurtbox = NodePath("Hurtbox")
 arma_id = "ArmaRevolverEsqueleto"
 
-[node name="input_disparar" parent="monitores" index="0"]
-scale = Vector2( 0, 0 )
+[node name="monitores" type="Node2D" parent="."]
+
+[node name="piso" parent="monitores" instance=ExtResource( 12 )]
+monitor_target_node = NodePath("../../Status")
+monitor_target_property = "stun_actual"
+monitor_flavor_text = "stun_actual"
+
+[node name="estado" parent="monitores" instance=ExtResource( 12 )]
+position = Vector2( 0, -46 )
+monitor_target_node = NodePath("../../StateMachine")
+monitor_target_property = "_state_name"
+monitor_flavor_text = "state_name"
+
+[node name="input_disparar" parent="monitores" instance=ExtResource( 12 )]
+position = Vector2( 0, -56 )
+scale = Vector2( 1e-05, 1e-05 )
 monitor_target_node = NodePath("../..")
 monitor_target_property = "knockback_procesable"
 monitor_flavor_text = "knockback_procesable"
 
-[node name="Status" parent="." index="3"]
+[node name="ControladorArmasNPC" type="Node2D" parent="."]
+position = Vector2( 0, -9 )
+z_index = 2
+script = ExtResource( 6 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2( 0, -8.5 )
+shape = SubResource( 1 )
+
+[node name="Status" type="Node" parent="."]
+script = ExtResource( 13 )
 hp_max = 175
 stun_threshold = 999999
+agente = NodePath("..")
 
-[node name="Perseguir" parent="StateMachine" index="1"]
+[node name="Hurtbox" parent="." instance=ExtResource( 15 )]
+collision_mask = 16
+agente_dir = NodePath("..")
+is_constant = true
+dmg = 5
+fuerza_retroceso = 100.0
+dmg_tipo = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2( 0, -9 )
+shape = SubResource( 2 )
+
+[node name="Hitbox" parent="." instance=ExtResource( 11 )]
+visible = false
+collision_layer = 32
+status = NodePath("../Status")
+i_frames_tiempo = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2( 0, -10 )
+shape = SubResource( 13 )
+
+[node name="LOSCheckDisparo" type="Area2D" parent="."]
+position = Vector2( 0, -10 )
+collision_layer = 0
+collision_mask = 2
+script = ExtResource( 14 )
+radio = 180.0
+mascara_colision = 2
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource( 5 )
+initial_state = NodePath("Patrullar")
+
+[node name="Patrullar" type="Node" parent="StateMachine"]
+script = ExtResource( 10 )
+
+[node name="Perseguir" type="Node" parent="StateMachine"]
+script = ExtResource( 8 )
 intervalo_disparo = Vector2( 0.2, 1 )
+los_check = NodePath("../../LOSCheckDisparo")
 
-[node name="Disparar" parent="StateMachine" index="2"]
+[node name="Disparar" type="Node" parent="StateMachine"]
+script = ExtResource( 1 )
+controlador_armas = NodePath("../../ControladorArmasNPC")
 rafaga = 1
 
-[node name="Muerte" parent="StateMachine" index="3"]
+[node name="Muerte" type="Node" parent="StateMachine"]
 script = ExtResource( 4 )
 
-[node name="Sprite" parent="Skin" index="0"]
+[node name="ScriptSetFrame" type="Node" parent="StateMachine"]
+script = ExtResource( 7 )
+sprite = NodePath("../../Skin/Sprite")
+
+[node name="ScriptIdle" type="Node" parent="StateMachine"]
+script = ExtResource( 9 )
+
+[node name="Skin" type="Node2D" parent="."]
+
+[node name="Sprite" type="Sprite" parent="Skin"]
 position = Vector2( 0, -12 )
 texture = ExtResource( 2 )
+offset = Vector2( 0, -1 )
+hframes = 5
 vframes = 7
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Skin"]
+anims/RESET = SubResource( 3 )
+anims/caer = SubResource( 8 )
+anims/caminar = SubResource( 9 )
+anims/correr = SubResource( 5 )
+anims/hurt = SubResource( 12 )
+anims/idle = SubResource( 4 )
+anims/mirar = SubResource( 10 )
+anims/mirar_der = SubResource( 11 )
+anims/saltar = SubResource( 7 )
+anims/turn = SubResource( 6 )

@@ -56,4 +56,3 @@ position = Vector2( 700, -79 )
 
 [node name="Esqueleto" parent="." index="13" instance=ExtResource( 6 )]
 position = Vector2( 473, 272 )
-status = NodePath("Status")

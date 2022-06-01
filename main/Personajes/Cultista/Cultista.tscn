@@ -10,7 +10,7 @@
 [ext_resource path="res://main/Componentes/ControladorArmasNPC.gd" type="Script" id=8]
 [ext_resource path="res://main/libs/DebugMonitor/DebugMonitor.tscn" type="PackedScene" id=9]
 [ext_resource path="res://main/Personajes/Cultista/Disparar.gd" type="Script" id=10]
-[ext_resource path="res://main/Personajes/Cultista/Muerte.gd" type="Script" id=11]
+[ext_resource path="res://main/Personajes/Esqueleto/estados/Muerte.gd" type="Script" id=11]
 [ext_resource path="res://main/Personajes/Cultista/ScriptSetFrame.gd" type="Script" id=12]
 [ext_resource path="res://main/Personajes/Cultista/Cultista.gd" type="Script" id=13]
 [ext_resource path="res://main/Personajes/Cultista/ScripIdle.gd" type="Script" id=14]
@@ -50,7 +50,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ 30, 31 ]
+"values": [ 35, 36 ]
 }
 
 [sub_resource type="Animation" id=9]
@@ -66,7 +66,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 10, 11, 12, 13, 14 ]
+"values": [ 15, 16, 17, 18, 19 ]
 }
 
 [sub_resource type="Animation" id=5]
@@ -100,7 +100,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ 20, 21 ]
+"values": [ 26, 25 ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -164,7 +164,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1, 0.101 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
-"values": [ 25, 26, 26 ]
+"values": [ 31, 26, 30 ]
 }
 
 [sub_resource type="Animation" id=6]
