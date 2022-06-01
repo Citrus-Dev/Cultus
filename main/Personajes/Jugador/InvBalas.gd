@@ -31,6 +31,7 @@ func hay_balas(id : String) -> bool:
 
 
 func set_medidor(_medidor : HudMedidorBalas):
+	if _medidor == null: return
 	medidor = _medidor
 	var balas_max = dict_balas[medidor.id_balas]["max"]
 	var balas_actual = dict_balas[medidor.id_balas]["cant"]

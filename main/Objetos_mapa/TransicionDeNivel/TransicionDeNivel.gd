@@ -73,7 +73,6 @@ func transicion(_jug : Jugador):
 	TransicionesDePantalla.ultima_dir = _jug.dir
 	TransicionesDePantalla.slot_arma_seleccionado = _jug.controlador_armas.slot_actual
 	TransicionesDePantalla.inv_balas_estado = _jug.controlador_armas.inv_balas.dict_balas
-	TransicionesDePantalla.inv_armas = _jug.controlador_armas.armas
 	get_tree().change_scene(direccion_nivel)
 
 

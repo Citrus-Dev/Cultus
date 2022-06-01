@@ -5,7 +5,9 @@ extends Reference
 var armas_lista := {
 	"ArmaAR" : "res://main/Armas/ArmaAR.gd",
 	"ArmaEscopeta" : "res://main/Armas/ArmaEscopeta.gd",
-	"ArmaPistola" : "res://main/Armas/ArmaPistola.gd",
+	"ArmaPistola" : "res://main/Armas/ArmaRevolver.gd",
+	"ArmaBallesta" : "res://main/Armas/ArmaBallesta.gd",
+	"ArmaGauss" : "res://main/Armas/ArmaGauss.gd",
 	"ArmaCultista" : "res://main/Armas/ArmaCultista.gd",
 	"ArmaRevolverEsqueleto" : "res://main/Armas/ArmaRevolverEsqueleto.gd"
 }

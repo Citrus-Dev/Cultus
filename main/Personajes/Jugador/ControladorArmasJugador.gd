@@ -14,6 +14,7 @@ var max_dist : float = 250.0
 
 var activo : bool = true setget set_activo
 
+onready var tabla_armas := Armas.new()
 onready var inv_balas = InvBalas.new()
 onready var centro_pantalla = get_viewport_rect().size / 2
 onready var usador : Personaje = owner 
@@ -24,15 +25,19 @@ func _ready() -> void:
 	usador.controlador_armas = self
 	yield(get_tree(), "idle_frame")
 	
+	# IDEA FIX
+	# Hacer otra funcion que le da armas al jugador desde la tabla de armas, y no creando objetos nuevos
+	# Asi podemos guardar los strings de las armas que tenes
 	if TransicionesDePantalla.inv_armas.empty():
 		inicializar_inv_armas()
-		agregar_arma(Revolver.new())
+#		agregar_arma(Revolver.new())
+		agregar_arma_string("ArmaPistola")
 	else:
-		armas = TransicionesDePantalla.inv_armas
-		return
-		for obj in armas:
-			if obj != null:
-				seleccionar_arma(obj)
+		inicializar_inv_armas()
+		var lista = TransicionesDePantalla.inv_armas
+		for i in lista:
+			if lista[i] == null: continue
+			agregar_arma_string(lista[i])
 
 
 func _process(delta: float) -> void:
@@ -40,7 +45,7 @@ func _process(delta: float) -> void:
 		arma_actual.apuntar(angulo)
 	procesar_inventario_ruedita()
 	if Input.is_key_pressed(KEY_P):
-		agregar_arma(AR.new())
+		agregar_arma_string("ArmaAR")
 
 
 func _physics_process(delta: float) -> void:
@@ -127,13 +132,30 @@ func inicializar_inv_armas():
 		armas[sl] = null
 
 
+# NO USAR
+# USAR agregar_arma_string
 func agregar_arma(_arma : Arma):
-	var slot = Arma.SLOTS.keys()[_arma.slot]
+	var slot = tomar_slot_de_arma(_arma)
 	_arma.usador = usador
 	_arma.damage_info.atacante = usador
 	armas[slot] = _arma
 	seleccionar_arma(slot)
-	TransicionesDePantalla.inv_armas = armas
+#	TransicionesDePantalla.inv_armas = armas
+
+
+func agregar_arma_string(dir : String):
+	var good_dir = tabla_armas.armas_lista[dir]
+	var arma_inst = Reference.new()
+	arma_inst.set_script(load(good_dir))
+	if arma_inst is Arma:
+		agregar_arma(arma_inst)
+		var slot = tomar_slot_de_arma(arma_inst)
+		TransicionesDePantalla.inv_armas[slot] = dir
+
+
+func tomar_slot_de_arma(arma : Arma) -> String:
+	var slot = Arma.SLOTS.keys()[arma.slot]
+	return slot
 
 
 func seleccionar_arma(_slot : String):
