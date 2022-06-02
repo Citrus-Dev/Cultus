@@ -122,6 +122,7 @@ func evento_dmg(_dmg : InfoDmg):
 	efecto_brillo_dmg(0.6)
 	shaker.add_trauma(1.0)
 	aplicar_stun()
+	print("Jugador hit: " + str(_dmg.atacante))
 
 
 func morir(_info : InfoDmg):

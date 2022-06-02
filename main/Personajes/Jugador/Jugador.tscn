@@ -451,7 +451,6 @@ shaker = NodePath("Skin/Shaker")
 los = NodePath("LOSCheck")
 
 [node name="monitores" type="Node2D" parent="."]
-visible = false
 
 [node name="hp" parent="monitores" instance=ExtResource( 7 )]
 position = Vector2( 10, -36 )
@@ -461,9 +460,9 @@ monitor_flavor_text = "hp"
 
 [node name="kb" parent="monitores" instance=ExtResource( 7 )]
 position = Vector2( 10, -26 )
-monitor_target_node = NodePath("../..")
-monitor_target_property = "knockback"
-monitor_flavor_text = "knockback"
+monitor_target_node = NodePath("../../Hitbox")
+monitor_target_property = "monitorable"
+monitor_flavor_text = "monitorable"
 
 [node name="Status" type="Node" parent="."]
 script = ExtResource( 5 )
