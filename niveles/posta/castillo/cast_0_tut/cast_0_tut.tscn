@@ -208,7 +208,7 @@ spawn = ExtResource( 13 )
 position = Vector2( 888, 272 )
 
 [node name="PickupArma" parent="." index="15" instance=ExtResource( 14 )]
-position = Vector2( 712, 248 )
+position = Vector2( 712, 257 )
 
 [connection signal="triggered" from="triggers/TriggerAbrir" to="." method="terminar_script"]
 [connection signal="body_entered" from="triggers/TriggerCultistaChau" to="." method="chau"]
