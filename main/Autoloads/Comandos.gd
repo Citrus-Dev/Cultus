@@ -186,3 +186,17 @@ func c_cargar(_slot := "0") -> String:
 
 func c_load(_slot := "0") -> String:
 	return c_cargar(_slot)
+
+
+func c_give(_arma := "") -> String:
+	if get_tree().get_nodes_in_group("ArmasJugador").size() <= 0:
+		return "ERROR INESPERADO"
+	var cont : ControladorArmasJugador = get_tree().get_nodes_in_group("ArmasJugador")[0]
+	var armas := Armas.new()
+	
+	if _arma in armas.armas_lista:
+		cont.agregar_arma_string(_arma)
+		return "Giveado: " + _arma
+	else:
+		return "Arma no encontrada"
+

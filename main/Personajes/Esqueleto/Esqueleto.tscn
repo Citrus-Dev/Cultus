@@ -211,12 +211,16 @@ aceleracion = 45.0
 friccion = 0.8
 max_velocidad_horizontal = 75.0
 max_velocidad_vertical = 300.0
+jump_height = 72.0
+jump_time_to_peak = 0.6
+jump_time_to_fall = 0.6
 arma = NodePath("ControladorArmasNPC")
 fsm = NodePath("StateMachine")
 hurtbox = NodePath("Hurtbox")
 arma_id = "ArmaRevolverEsqueleto"
 
 [node name="monitores" type="Node2D" parent="."]
+visible = false
 
 [node name="piso" parent="monitores" instance=ExtResource( 12 )]
 monitor_target_node = NodePath("../../Status")

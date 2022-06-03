@@ -19,6 +19,10 @@ onready var inv_balas = InvBalas.new()
 onready var centro_pantalla = get_viewport_rect().size / 2
 onready var usador : Personaje = owner 
 
+func _init():
+	add_to_group("ArmasJugador")
+
+
 func _ready() -> void:
 	yield(owner, "ready")
 	camara_falsa = get_tree().get_nodes_in_group("CamaraFalsa")[0]
@@ -30,8 +34,6 @@ func _ready() -> void:
 	# Asi podemos guardar los strings de las armas que tenes
 	if TransicionesDePantalla.inv_armas.empty():
 		inicializar_inv_armas()
-#		agregar_arma(Revolver.new())
-		agregar_arma_string("ArmaPistola")
 	else:
 		inicializar_inv_armas()
 		var lista = TransicionesDePantalla.inv_armas
@@ -41,6 +43,7 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
+	if inv_vacio(): return
 	if arma_actual != null and activo:
 		arma_actual.apuntar(angulo)
 	procesar_inventario_ruedita()
@@ -64,7 +67,7 @@ func _draw() -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	if !activo: return
+	if !activo or inv_vacio(): return
 	procesar_inventario(event)
 
 
@@ -187,7 +190,7 @@ func seleccionar_arma_int(_slot : int):
 
 # Detecta el input para ver como cambiar las armas con los numeros.
 func procesar_inventario(_input : InputEvent):
-	if !activo: return
+	if !activo or inv_vacio(): return
 	if _input is InputEventKey:
 		var just_pressed = _input.is_pressed() and not _input.is_echo()
 		if !just_pressed: return
@@ -212,7 +215,7 @@ func procesar_inventario(_input : InputEvent):
 # Procesa cambiar las armas con la ruedita
 func procesar_inventario_ruedita():
 	if !activo: return
-	if armas.empty(): return
+	if inv_vacio(): return
 	var slot_arma_actual = arma_actual.slot
 	if Input.is_action_just_released("arma_siguiente"):
 		seleccionar_arma_int(slot_arma_actual + 1)
@@ -240,3 +243,11 @@ func info_debug():
 	DebugDraw.set_text("centro_pantalla", centro_pantalla)
 	DebugDraw.set_text("dist", distancia)
 
+
+func inv_vacio() -> bool:
+	var result := true
+	for slot in armas:
+		if armas[slot] != null: 
+			result = false
+			break
+	return result

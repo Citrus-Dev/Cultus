@@ -23,3 +23,5 @@ follow_viewport_enable = true
 [node name="bordes" type="Node2D" parent="."]
 
 [node name="camara limites" type="Node2D" parent="."]
+
+[node name="triggers" type="Node2D" parent="."]

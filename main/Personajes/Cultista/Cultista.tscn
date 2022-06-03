@@ -216,6 +216,7 @@ arma_id = "ArmaCultista"
 [node name="monitores" type="Node2D" parent="." index="0"]
 
 [node name="piso" parent="monitores" index="0" instance=ExtResource( 9 )]
+visible = false
 monitor_target_node = NodePath("../../Status")
 monitor_target_property = "stun_actual"
 monitor_flavor_text = "stun_actual"
@@ -227,6 +228,7 @@ monitor_target_property = "_state_name"
 monitor_flavor_text = "state_name"
 
 [node name="input_disparar" parent="monitores" index="2" instance=ExtResource( 9 )]
+visible = false
 position = Vector2( 0, -56 )
 monitor_target_node = NodePath("../../ControladorArmasNPC")
 monitor_target_property = "input_disparar"

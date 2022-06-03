@@ -88,8 +88,8 @@ shape = SubResource( 2 )
 [node name="TransicionDeNivel" parent="." index="9" instance=ExtResource( 6 )]
 position = Vector2( 520, 256 )
 ID = "comienzo"
-ID_objetivo = "entrada_pasillo"
-direccion_nivel = "res://niveles/posta/castillo/intro_pasillo/IntroPasillo.tscn"
+ID_objetivo = "comienzo"
+direccion_nivel = "res://niveles/posta/castillo/cast_0_tut/cast_0_tut.tscn"
 direccion_movimiento = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TransicionDeNivel" index="0"]

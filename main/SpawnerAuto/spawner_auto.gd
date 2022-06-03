@@ -26,6 +26,7 @@ func spawn():
 	
 	new_inst.name += name + str(cont_spawns)
 	cont_spawns += 1
+	return new_inst
 
 
 func set_spawn_object(_new_spawn : PackedScene):
