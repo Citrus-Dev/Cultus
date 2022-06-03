@@ -26,7 +26,7 @@ sprites = [ NodePath("Cuerpo/Sprite"), NodePath("Cabeza/Sprite"), NodePath("Coli
 [node name="Cuerpo" type="RigidBody2D" parent="."]
 position = Vector2( 0, -6 )
 collision_layer = 1024
-collision_mask = 1025
+collision_mask = 1029
 mass = 3.04082
 
 [node name="Sprite" type="Sprite" parent="Cuerpo"]
@@ -39,7 +39,7 @@ shape = SubResource( 4 )
 [node name="Cabeza" type="RigidBody2D" parent="."]
 position = Vector2( 0, -10 )
 collision_layer = 1024
-collision_mask = 1025
+collision_mask = 1029
 mass = 1.02041
 
 [node name="Sprite" type="Sprite" parent="Cabeza"]
@@ -69,7 +69,7 @@ node_b = NodePath("../Colita")
 [node name="Colita" type="RigidBody2D" parent="."]
 position = Vector2( -6, -10 )
 collision_layer = 1024
-collision_mask = 1025
+collision_mask = 1029
 mass = 3.04082
 
 [node name="Sprite" type="Sprite" parent="Colita"]
@@ -96,7 +96,7 @@ bias = 0.71
 position = Vector2( 0, -6 )
 z_index = -1
 collision_layer = 0
-collision_mask = 1025
+collision_mask = 1029
 mass = 0.204082
 
 [node name="Sprite" type="Sprite" parent="Pierna1"]
@@ -112,13 +112,83 @@ disabled = true
 position = Vector2( 0, -6 )
 z_index = -1
 collision_layer = 0
-collision_mask = 1025
+collision_mask = 1029
 mass = 0.204082
 
 [node name="Sprite" type="Sprite" parent="Pierna2"]
 texture = ExtResource( 5 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Pierna2"]
+position = Vector2( 2, 6 )
+rotation = -0.392712
+shape = SubResource( 3 )
+disabled = true
+
+[node name="Cuerpo2" type="RigidBody2D" parent="."]
+position = Vector2( 0, -6 )
+collision_layer = 1024
+collision_mask = 1029
+mass = 3.04082
+
+[node name="Sprite" type="Sprite" parent="Cuerpo2"]
+texture = ExtResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cuerpo2"]
+position = Vector2( 0, 2 )
+shape = SubResource( 4 )
+
+[node name="Cabeza2" type="RigidBody2D" parent="."]
+position = Vector2( 0, -10 )
+collision_layer = 1024
+collision_mask = 1029
+mass = 1.02041
+
+[node name="Sprite" type="Sprite" parent="Cabeza2"]
+position = Vector2( 0, -2 )
+z_index = 1
+texture = ExtResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cabeza2"]
+position = Vector2( 0, -2 )
+shape = SubResource( 2 )
+
+[node name="Colita2" type="RigidBody2D" parent="."]
+position = Vector2( -6, -10 )
+collision_layer = 1024
+collision_mask = 1029
+mass = 3.04082
+
+[node name="Sprite" type="Sprite" parent="Colita2"]
+position = Vector2( 0, -2 )
+texture = ExtResource( 2 )
+
+[node name="Pierna3" type="RigidBody2D" parent="."]
+position = Vector2( 0, -6 )
+z_index = -1
+collision_layer = 0
+collision_mask = 1029
+mass = 0.204082
+
+[node name="Sprite" type="Sprite" parent="Pierna3"]
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pierna3"]
+position = Vector2( -2, 6 )
+rotation = 0.292948
+shape = SubResource( 3 )
+disabled = true
+
+[node name="Pierna4" type="RigidBody2D" parent="."]
+position = Vector2( 0, -6 )
+z_index = -1
+collision_layer = 0
+collision_mask = 1029
+mass = 0.204082
+
+[node name="Sprite" type="Sprite" parent="Pierna4"]
+texture = ExtResource( 5 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Pierna4"]
 position = Vector2( 2, 6 )
 rotation = -0.392712
 shape = SubResource( 3 )

@@ -225,3 +225,9 @@ func give_skill(_skill := "") -> String:
 		return "Giveado: " + _skill
 	else:
 		return "Arma o habilidad no encontrada"
+
+
+func c_graciosa(__ := "0") -> String:
+	for i in int(__):
+		c_kill()
+	return "ok"
