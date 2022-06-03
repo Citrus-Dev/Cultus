@@ -22,8 +22,7 @@ var desactivado : bool
 func _ready():
 	get_parent().connect("muerto", self, "set", ["desactivado", true])
 	
-	yield(get_parent(), "ready")
-	jug = owner
+	jug = get_parent()
 	jug_hitbox = jug.hitbox
 	area_escudo = get_child(0)
 	area_escudo.connect("body_entered", self, "bloquear_bala")

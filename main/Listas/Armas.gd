@@ -13,6 +13,13 @@ var armas_lista := {
 }
 
 
+var skills_lista := {
+	"Slide" : "res://main/Pickups/skills/SkillSlide.tscn",
+	"Bufanda" : "res://main/Pickups/skills/SkillBufanda.tscn",
+	"Escudo" : "res://main/Pickups/skills/SkillEscudo.tscn"
+}
+
+
 func tomar_obj_lista(_key : String):
 	if !armas_lista.has(_key):
 		return

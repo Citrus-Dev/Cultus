@@ -6,13 +6,13 @@ export(NodePath) var path_spawner_cult
 export(NodePath) var path_puertas
 export(NodePath) var path_target_correr
 export(NodePath) var path_trigger_rajar
-export(NodePath) var path_trigger_abrir
+export(NodePath) var path_arma
 
 var spawner_cult : SpawnerAuto
 var puertas : Puerta
 var target_correr : Position2D
 var trigger_rajar : Area2D
-var trigger_abrir : Area2D
+var arma : Node2D
 
 var cultista_actor : Cultista
 
@@ -21,12 +21,12 @@ func _ready():
 	puertas = get_node(path_puertas)
 	target_correr = get_node(path_target_correr)
 	trigger_rajar = get_node(path_trigger_rajar)
-	trigger_abrir = get_node(path_trigger_abrir)
+	arma = get_node(path_arma)
 	
 	if info_persist_nivel.has(NOMBRE_DATO): 
 		puertas.set_abierto(true)
 		trigger_rajar.free()
-		trigger_abrir.free()
+		arma.free()
 		return
 	
 	cultista_actor = spawner_cult.spawn()
@@ -37,6 +37,7 @@ func _ready():
 
 # El cultista ve al jugador y se va corriendo
 func rajemos():
+	yield(get_tree().create_timer(0.6), "timeout")
 	cultista_actor.script_idle({
 		"Anim" : "correr",
 		"FlipH" : false, 

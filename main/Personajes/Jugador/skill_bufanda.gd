@@ -24,8 +24,8 @@ var attached : bool
 var usando : bool
 
 func _ready():
-	yield(get_parent(), "ready")
-	jug = owner
+#	yield(get_parent(), "ready")
+	jug = get_parent()
 	bufan_sprite = jug.bufan
 	
 	timer_gancho = Timer.new()

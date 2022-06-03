@@ -27,6 +27,10 @@ func _ready() -> void:
 	crear_hud()
 	crear_camaras()
 	crear_bufanda()
+	
+	if !TransicionesDePantalla.inv_skills.empty():
+		for skill in TransicionesDePantalla.inv_skills:
+			agregar_skill(skill)
 
 
 func _process(delta: float) -> void:
@@ -313,6 +317,16 @@ func detectar_punto_seguro():
 		is_on_floor()
 	):
 		TransicionesDePantalla.ultimo_punto_seguro = global_position
+
+
+func agregar_skill(skill_id : String):
+	var armas := Armas.new()
+	var skill = load(armas.skills_lista[skill_id])
+	var inst = skill.instance()
+	add_child(inst)
+	
+	if !TransicionesDePantalla.inv_skills.has(skill_id):
+		TransicionesDePantalla.inv_skills[skill_id] = true
 
 
 func osciliar(_x :float, _freq : float, _amplitud : float) -> float:

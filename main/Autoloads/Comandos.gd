@@ -188,7 +188,18 @@ func c_load(_slot := "0") -> String:
 	return c_cargar(_slot)
 
 
+# TODO optimizar estas tres funciones que tienen codigo repetido
 func c_give(_arma := "") -> String:
+	var armas := Armas.new()
+	if _arma in armas.armas_lista:
+		return give_arma(_arma)
+	elif _arma in armas.skills_lista:
+		return give_skill(_arma)
+	else:
+		return "Arma o habilidad no encontrada"
+
+
+func give_arma(_arma := "") -> String:
 	if get_tree().get_nodes_in_group("ArmasJugador").size() <= 0:
 		return "ERROR INESPERADO"
 	var cont : ControladorArmasJugador = get_tree().get_nodes_in_group("ArmasJugador")[0]
@@ -198,5 +209,19 @@ func c_give(_arma := "") -> String:
 		cont.agregar_arma_string(_arma)
 		return "Giveado: " + _arma
 	else:
-		return "Arma no encontrada"
+		return "Arma o habilidad no encontrada"
 
+
+func give_skill(_skill := "") -> String:
+	if get_tree().get_nodes_in_group("Jugador").size() <= 0:
+		return "ERROR INESPERADO"
+	var jug : Jugador = get_tree().get_nodes_in_group("Jugador")[0]
+	var armas := Armas.new()
+	
+	if _skill in armas.skills_lista:
+		var skill = load(armas.skills_lista[_skill])
+		var skill_inst = skill.instance()
+		jug.agregar_skill(_skill)
+		return "Giveado: " + _skill
+	else:
+		return "Arma o habilidad no encontrada"

@@ -429,6 +429,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://main/Pickups/PickupHP.gd"
 }, {
+"base": "Node2D",
+"class": "PickupSkill",
+"language": "GDScript",
+"path": "res://main/Pickups/skills/PickupSkill.gd"
+}, {
 "base": "StaticBody2D",
 "class": "PlataformaAlterna",
 "language": "GDScript",
@@ -739,6 +744,7 @@ _global_script_class_icons={
 "Personaje": "",
 "PickupArma": "",
 "PickupHP": "",
+"PickupSkill": "",
 "PlataformaAlterna": "",
 "PlataformaFragil": "",
 "PlataformaMovible": "",

@@ -6,7 +6,7 @@ var jugador : Jugador
 var contexto_usable : bool # Si podes usar la habilidad
 
 func _ready():
-	jugador = owner
+	jugador = get_parent()
 
 
 func _physics_process(delta):

@@ -1,10 +1,9 @@
-class_name PickupArma
+class_name PickupSkill
 extends Node2D
 
-signal on_pickup
-
 export(NodePath) onready var area = get_node(area) as Area2D
-export(String) var id_arma
+export(NodePath) onready var anim = get_node(anim) as AnimationPlayer
+export(String) var id_skill
 
 onready var armas := Armas.new()
 onready var altura_inicial := position.y
@@ -14,6 +13,7 @@ func _ready():
 		printerr("La cagaste")
 		call_deferred("free")
 	area.connect("body_entered", self, "pickup")
+	anim.play("loop")
 
 
 func _process(delta):
@@ -26,11 +26,9 @@ func anim_levitar(_x :float, _freq : float, _amplitud : float) -> float:
 
 
 func es_valido() -> bool:
-	return !armas.armas_lista.has(id_arma)
+	return !armas.skills_lista.has(id_skill)
 
 
 func pickup(jug : Jugador):
-	emit_signal("on_pickup")
-	var cont : ControladorArmasJugador = jug.controlador_armas
-	cont.agregar_arma_string(id_arma)
+	jug.agregar_skill(id_skill)
 	call_deferred("free")
