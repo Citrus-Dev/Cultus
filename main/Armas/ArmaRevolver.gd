@@ -16,6 +16,8 @@ func _init() -> void:
 	damage_info.fuerza_retroceso = 600
 	damage_info.dmg_stun = 35
 	
+	recoil_visual_duracion = 0.25
+	screenshake = 5.0
 	cooldown_tiempo = 0.4
 	cooldown_tiempo_sec = 0.2
 	spread = 2

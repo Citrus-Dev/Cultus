@@ -165,3 +165,9 @@ func borrar_skin():
 	skin_inst.call_deferred("free")
 	skin_inst = null
 
+
+func aplicar_screenshake():
+	if usador.get_tree().get_nodes_in_group("CamaraReal").size() > 0:
+		var cam = usador.get_tree().get_nodes_in_group("CamaraReal")[0]
+		cam.shaker.max_offset = Vector2.ONE * screenshake
+		cam.aplicar_screenshake(screenshake)

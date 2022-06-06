@@ -99,10 +99,10 @@ func procesar_arma_actual(_delta : float):
 		owner.stretcher.stretch(Vector2(0.9, 1.2), arma_actual.recoil_visual_duracion)
 		arma_actual.comenzar_cooldown()
 		# TODO mover esto al codigo de las armas
-		if get_tree().get_nodes_in_group("CamaraReal").size() > 0:
-			var cam = get_tree().get_nodes_in_group("CamaraReal")[0]
-			cam.shaker.max_offset = Vector2.ONE * arma_actual.screenshake
-			cam.aplicar_screenshake(arma_actual.screenshake)
+#		if get_tree().get_nodes_in_group("CamaraReal").size() > 0:
+#			var cam = get_tree().get_nodes_in_group("CamaraReal")[0]
+#			cam.shaker.max_offset = Vector2.ONE * arma_actual.screenshake
+#			cam.aplicar_screenshake(arma_actual.screenshake)
 
 
 # Calcula la direccion a la que apuntas con el mouse.
