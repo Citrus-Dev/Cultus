@@ -30,6 +30,7 @@ func disparar(_origin : Node, _dir : float):
 	_origin.inv_balas.bajar_balas(1, "Cohetes")
 	actualizar_medidor()
 	usador.aplicar_knockback(350, -Vector2.RIGHT.rotated(_dir))
+	aplicar_screenshake()
 
 
 func dibujar_hitscan(_origin : Node, _dir : float):

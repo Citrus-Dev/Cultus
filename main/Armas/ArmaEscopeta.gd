@@ -33,6 +33,7 @@ func disparar(_origin : Node, _dir : float):
 		crear_bala(_origin, BALA, angle)
 	
 	usador.aplicar_knockback(250, -Vector2.RIGHT.rotated(_dir))
+	aplicar_screenshake()
 
 
 func puede_disparar() -> bool:

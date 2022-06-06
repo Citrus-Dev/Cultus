@@ -227,6 +227,15 @@ func give_skill(_skill := "") -> String:
 		return "Arma o habilidad no encontrada"
 
 
+func c_impulse(_nada := "") -> String:
+	var armas := Armas.new()
+	for arma in armas.armas_jugador:
+		give_arma(arma)
+	for skill in armas.skills_lista:
+		give_skill(skill)
+	return "Dadas todas las armas y habilidades."
+
+
 func c_graciosa(__ := "0") -> String:
 	for i in int(__):
 		c_kill()

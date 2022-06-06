@@ -58,6 +58,7 @@ func disparar(_origin : Node, _dir : float):
 	_origin.inv_balas.bajar_balas(1, TIPO_BALAS)
 	balas_actual -= 1
 	actualizar_medidor()
+	aplicar_screenshake()
 
 
 func puede_disparar() -> bool:

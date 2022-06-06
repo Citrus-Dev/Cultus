@@ -2,7 +2,15 @@
 class_name Armas
 extends Reference
 
-var armas_lista := {
+var armas_jugador := [
+	"ArmaRevolver",
+	"ArmaAR",
+	"ArmaEscopeta",
+	"ArmaGauss",
+	"ArmaBallesta"
+]
+
+const armas_lista := {
 	"ArmaAR" : "res://main/Armas/ArmaAR.gd",
 	"ArmaEscopeta" : "res://main/Armas/ArmaEscopeta.gd",
 	"ArmaPistola" : "res://main/Armas/ArmaRevolver.gd",
@@ -14,7 +22,7 @@ var armas_lista := {
 }
 
 
-var skills_lista := {
+const skills_lista := {
 	"Slide" : "res://main/Pickups/skills/SkillSlide.tscn",
 	"Bufanda" : "res://main/Pickups/skills/SkillBufanda.tscn",
 	"Escudo" : "res://main/Pickups/skills/SkillEscudo.tscn"
