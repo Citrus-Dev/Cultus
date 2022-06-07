@@ -7,6 +7,8 @@ var jug
 func enter(msg : Dictionary = {}) -> void:
 	if owner.objetivo is Jugador:
 		jug = owner.objetivo
+	
+	add_to_group("EnemigosAlertados")
 
 
 func physics_process(delta : float) -> void:

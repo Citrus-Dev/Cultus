@@ -1,3 +1,4 @@
+class_name MainMenu
 extends Control
 
 export(NodePath) onready var cont_botones = get_node(cont_botones) as Control
@@ -7,6 +8,7 @@ export(NodePath) onready var ng_prompt = get_node(ng_prompt) as Control
 var GAME_INFO = preload("res://main/InfoJuego.tres")
 
 func _ready():
+	GameState.determinar_estado_inicial(self)
 	if Guardado.existe_partida("1") != OK:
 		boton_continuar.visible = false
 

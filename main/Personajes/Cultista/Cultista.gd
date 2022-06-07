@@ -1,6 +1,6 @@
 class_name Cultista
 extends Personaje
- 
+
 export(NodePath) onready var arma = get_node(arma) as ControladorArmasNPC
 export(NodePath) onready var fsm = get_node(fsm) as StateMachine
 export(NodePath) onready var hurtbox = get_node(hurtbox) as Hurtbox
@@ -59,6 +59,7 @@ func alertar():
 	if !ciego and !muerto:
 		fsm.transition_to("Perseguir")
 		objetivo.connect("muerto", self, "perder_vista_jugador")
+		add_to_group("EnemigosAlertados")
 
 
 func evento_dmg(_dmg : InfoDmg):
@@ -68,11 +69,6 @@ func evento_dmg(_dmg : InfoDmg):
 	if objetivo is Personaje:
 		objetivo = _dmg.atacante
 		alertar()
-
-
-func morir(_info : InfoDmg):
-	emit_signal("muerto")
-	set_muerto(true)
 
 
 func set_muerto(toggle : bool):

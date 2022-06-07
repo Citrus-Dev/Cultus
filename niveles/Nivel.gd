@@ -9,6 +9,7 @@ var info_persist_nivel := {} # Guardado de datos persistentes
 
 func _init() -> void:
 	add_to_group("Nivel")
+	GameState.determinar_estado_inicial(self)
 
 
 func _ready():

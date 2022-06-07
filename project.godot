@@ -380,6 +380,11 @@ _global_script_classes=[ {
 "path": "res://main/libs/BehaviorTree/hojas/Acciones/LlamarFuncionNodo.gd"
 }, {
 "base": "Control",
+"class": "MainMenu",
+"language": "GDScript",
+"path": "res://niveles/menu/MainMenu.gd"
+}, {
+"base": "Control",
 "class": "MedidorCooldown",
 "language": "GDScript",
 "path": "res://main/UI/Hud/MedidorCooldown.gd"
@@ -734,6 +739,7 @@ _global_script_class_icons={
 "LOSCheck": "",
 "LabelFuenteAdaptable": "",
 "LlamarFuncionNodo": "",
+"MainMenu": "",
 "MedidorCooldown": "",
 "MoverHaciaPos": "",
 "MoverseEnDireccion": "",
@@ -809,6 +815,8 @@ Congelar="*res://main/Autoloads/Congelar.gd"
 TransicionesDePantalla="*res://main/Autoloads/TransicionesDePantalla.gd"
 AntialiasedLine2DTexture="*res://addons/antialiased_line2d/texture.gd"
 Guardado="*res://main/Autoloads/Guardado.gd"
+GameState="*res://main/Autoloads/GameState.gd"
+Musica="*res://main/Autoloads/Musica.gd"
 
 [debug]
 
