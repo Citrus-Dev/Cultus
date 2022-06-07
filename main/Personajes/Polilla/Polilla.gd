@@ -4,6 +4,10 @@ extends Personaje
 export(NodePath) onready var fsm = get_node(fsm) as StateMachine
 export(NodePath) onready var hurtbox = get_node(hurtbox) as Hurtbox
 
+func _init():
+	add_to_group("Enemigos")
+
+
 func procesar_movimiento(_delta : float):
 	if !muerto:
 		movement_omni()

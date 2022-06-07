@@ -504,6 +504,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://main/libs/BehaviorTree/decoradores/Repetidor.gd"
 }, {
+"base": "Resource",
+"class": "ResCancion",
+"language": "GDScript",
+"path": "res://main/Musica/ResCancion.gd"
+}, {
 "base": "Node2D",
 "class": "Resorte",
 "language": "GDScript",
@@ -764,6 +769,7 @@ _global_script_class_icons={
 "PuntoVerlet": "",
 "Ragdoll": "",
 "Repetidor": "",
+"ResCancion": "",
 "Resorte": "",
 "Revolver": "",
 "Rotador": "",

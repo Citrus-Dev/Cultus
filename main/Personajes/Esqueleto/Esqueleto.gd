@@ -12,9 +12,6 @@ func procesar_movimiento(_delta : float):
 	velocity = move_and_slide_with_snap(velocity + knockback_procesable, snap, Vector2.UP, true)
 	movement_vertical(_delta)
 	
-#	if knockback_procesable != Vector2.ZERO:
-#		breakpoint
-	
 	knockback_procesable = Vector2.ZERO
 	procesar_knockback()
 	
@@ -26,6 +23,8 @@ func morir(_info : InfoDmg):
 	aplicar_knockback(350, (global_position - _info.atacante.global_position))
 	aplicar_stun()
 	set_muerto(true)
+	remove_from_group("EnemigosAlertados")
+	remove_from_group("Enemigos")
 
 
 func set_muerto(toggle : bool):

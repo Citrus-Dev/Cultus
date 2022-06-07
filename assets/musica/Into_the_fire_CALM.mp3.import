@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Into_the_fire_CALM.mp3-929b3eee568eb47e99b7db0b469c07c2.mp3str"
+
+[deps]
+
+source_file="res://assets/musica/Into_the_fire_CALM.mp3"
+dest_files=[ "res://.import/Into_the_fire_CALM.mp3-929b3eee568eb47e99b7db0b469c07c2.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

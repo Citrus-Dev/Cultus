@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Into_the_fire_COMBAT.mp3-406e41918e3e7b0c7a3c1e906e718528.mp3str"
+
+[deps]
+
+source_file="res://assets/musica/Into_the_fire_COMBAT.mp3"
+dest_files=[ "res://.import/Into_the_fire_COMBAT.mp3-406e41918e3e7b0c7a3c1e906e718528.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://niveles/Nivel.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/tilesets/tileset_castillo.tres" type="TileSet" id=2]
@@ -7,12 +7,15 @@
 [ext_resource path="res://main/Personajes/Polilla/Polilla.tscn" type="PackedScene" id=5]
 [ext_resource path="res://main/Personajes/Esqueleto/Esqueleto.tscn" type="PackedScene" id=6]
 [ext_resource path="res://main/AI/Borde.tscn" type="PackedScene" id=7]
+[ext_resource path="res://niveles/pruebas/prueba_enemigo_2/prueba_enemigo_mus.tres" type="Resource" id=8]
+[ext_resource path="res://main/Personajes/Subdito/Subdito.tscn" type="PackedScene" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 612, 220 )
 
 [node name="prueba_enemigo_2" instance=ExtResource( 1 )]
 primer_limite_camara = NodePath("camara limites/CameraBounds")
+musica = ExtResource( 8 )
 
 [node name="TileMap" type="TileMap" parent="Fondo" index="0"]
 modulate = Color( 0.4, 0.4, 0.4, 1 )
@@ -62,4 +65,7 @@ position = Vector2( 706, -29 )
 position = Vector2( 700, -79 )
 
 [node name="Esqueleto" parent="." index="13" instance=ExtResource( 6 )]
-position = Vector2( 469, 271 )
+position = Vector2( 929, 60 )
+
+[node name="Subdito" parent="." index="15" instance=ExtResource( 9 )]
+position = Vector2( 429, 188 )

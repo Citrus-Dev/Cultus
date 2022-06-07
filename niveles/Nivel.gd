@@ -3,6 +3,7 @@ extends Node2D
 
 export(NodePath) var primer_limite_camara
 export(bool) var print_fps
+export(Resource) var musica
 
 var primer_limite_camara_obj : CameraBounds
 var info_persist_nivel := {} # Guardado de datos persistentes
@@ -13,6 +14,8 @@ func _init() -> void:
 
 
 func _ready():
+	Musica.asignar_musica(musica)
+	
 	if Guardado.hay_datos_persist_del_nivel(filename):
 		info_persist_nivel = Guardado.tomar_datos_persist_del_nivel(filename)
 	

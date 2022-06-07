@@ -10,6 +10,10 @@ export(bool) var actor
 
 var es_actor : bool setget set_es_actor
 
+func _init():
+	add_to_group("Enemigos")
+
+
 func set_es_actor(_actor : bool):
 	if !is_inside_tree(): return # Pelotudo de mierda
 	es_actor = _actor

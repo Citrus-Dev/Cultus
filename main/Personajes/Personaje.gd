@@ -252,6 +252,7 @@ func morir(_info : InfoDmg):
 	emit_signal("muerto")
 	set_muerto(true)
 	remove_from_group("EnemigosAlertados")
+	remove_from_group("Enemigos")
 
 
 func set_muerto(toggle : bool):
