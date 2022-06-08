@@ -12,7 +12,6 @@ var combate_terminado : bool
 
 func _process(delta):
 	DebugDraw.set_text("estado", Estados.keys()[estado_actual])
-	DebugDraw.set_text("enemigos", buscar_enemigos())
 	procesar_estado(estado_actual)
 
 

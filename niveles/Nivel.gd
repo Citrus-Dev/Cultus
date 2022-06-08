@@ -10,11 +10,11 @@ var info_persist_nivel := {} # Guardado de datos persistentes
 
 func _init() -> void:
 	add_to_group("Nivel")
-	GameState.determinar_estado_inicial(self)
 
 
 func _ready():
 	Musica.asignar_musica(musica)
+	GameState.determinar_estado_inicial(self)
 	
 	if Guardado.hay_datos_persist_del_nivel(filename):
 		info_persist_nivel = Guardado.tomar_datos_persist_del_nivel(filename)

@@ -20,7 +20,8 @@ func procesar_movimiento(_delta : float):
 
 func morir(_info : InfoDmg):
 	emit_signal("muerto")
-	aplicar_knockback(350, (global_position - _info.atacante.global_position))
+	if _info.atacante:
+		aplicar_knockback(350, (global_position - _info.atacante.global_position))
 	aplicar_stun()
 	set_muerto(true)
 	remove_from_group("EnemigosAlertados")

@@ -70,7 +70,7 @@ func evento_dmg(_dmg : InfoDmg):
 	efecto_brillo_dmg(.6)
 	
 	# Si te ataca el jugador despertate (aunque este fuera del rango de deteccion)
-	if objetivo is Personaje:
+	if _dmg.atacante is Personaje:
 		objetivo = _dmg.atacante
 		alertar()
 

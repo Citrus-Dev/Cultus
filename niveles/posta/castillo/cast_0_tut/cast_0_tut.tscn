@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://niveles/Nivel.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/tilesets/tileset_castillo.tres" type="TileSet" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://main/SpawnerAuto/spawner_auto.gd" type="Script" id=12]
 [ext_resource path="res://main/Personajes/Cultista/Cultista.tscn" type="PackedScene" id=13]
 [ext_resource path="res://main/Pickups/armas/PickupArma.tscn" type="PackedScene" id=14]
+[ext_resource path="res://main/Musica/MusCastillo.tres" type="Resource" id=15]
 [ext_resource path="res://assets/objetos/pillar_pickup.png" type="Texture" id=18]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -32,6 +33,7 @@ extents = Vector2( 96, 52 )
 scale = Vector2( 0.996301, 1 )
 script = ExtResource( 11 )
 primer_limite_camara = NodePath("camara limites/CameraBounds")
+musica = ExtResource( 15 )
 path_spawner_cult = NodePath("SpawnerAuto")
 path_puertas = NodePath("Puerta")
 path_target_correr = NodePath("TargetCorrer")

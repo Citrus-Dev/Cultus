@@ -240,3 +240,11 @@ func c_graciosa(__ := "0") -> String:
 	for i in int(__):
 		c_kill()
 	return "ok"
+
+
+func c_killall(__ := "") -> String:
+	var info = InfoDmg.new()
+	info.atacante = get_tree()
+	for i in get_tree().get_nodes_in_group("Enemigos"):
+		i.morir(info)
+	return "muerte"

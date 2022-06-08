@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://icon.png" type="Texture" id=1]
 [ext_resource path="res://assets/fondos/back_cast.png" type="Texture" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://main/CameraLimitSystem/CameraBounds.tscn" type="PackedScene" id=7]
 [ext_resource path="res://main/Personajes/Cultista/Cultista.tscn" type="PackedScene" id=8]
 [ext_resource path="res://niveles/posta/castillo/intro_pasillo/IntroPasillo.gd" type="Script" id=9]
+[ext_resource path="res://main/Musica/MusCastillo.tres" type="Resource" id=10]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 169.5, 70 )
@@ -28,6 +29,7 @@ extents = Vector2( 13, 24 )
 [node name="IntroPasillo" instance=ExtResource( 4 )]
 script = ExtResource( 9 )
 primer_limite_camara = NodePath("camara limites/CameraBounds")
+musica = ExtResource( 10 )
 path_cult1 = NodePath("FondoLejos/ParallaxBackground/obj/awwww")
 path_cult2 = NodePath("FondoLejos/ParallaxBackground/obj/Cultista2")
 path_trigger = NodePath("trigger_script")
