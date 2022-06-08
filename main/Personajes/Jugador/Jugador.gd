@@ -309,7 +309,7 @@ func crear_hud():
 	var hud = HUD.instance()
 	ControladorUi.hud = hud
 	ControladorUi.jugador = self
-	get_tree().get_root().call_deferred("add_child", hud)
+	get_parent().call_deferred("add_child", hud)
 
 
 func detectar_punto_seguro():

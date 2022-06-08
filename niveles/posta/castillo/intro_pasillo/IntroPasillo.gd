@@ -1,5 +1,7 @@
 extends Nivel
 
+const NOMBRE_DATO := "cutscene"
+
 export(NodePath) var path_cult1
 export(NodePath) var path_cult2
 export(NodePath) var path_trigger
@@ -18,6 +20,11 @@ func _ready():
 	trigger = get_node(path_trigger)
 	correr_obj = get_node(correr_obj_path)
 	
+	if info_persist_nivel.has(NOMBRE_DATO): 
+		cult1.call_deferred("free")
+		cult2.call_deferred("free")
+		return
+	
 	cult1.script_idle({"Anim" : "idle"})
 	cult2.script_idle({"Anim" : "idle", "FlipH" : true})
 	
@@ -25,6 +32,8 @@ func _ready():
 
 
 func comenzar_anim_mirar(__):
+	info_persist_nivel[NOMBRE_DATO] = true
+	
 	cult1.script_idle({"Anim" : "mirar"})
 	cult2.script_idle({"Anim" : "mirar", "FlipH" : true})
 	

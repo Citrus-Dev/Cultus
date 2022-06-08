@@ -10,9 +10,13 @@ enum Estados {
 var estado_actual : int
 var combate_terminado : bool
 
+func _init() -> void:
+	pause_mode = Node.PAUSE_MODE_PROCESS
+
+
 func _process(delta):
-	DebugDraw.set_text("estado", Estados.keys()[estado_actual])
-	procesar_estado(estado_actual)
+#	DebugDraw.set_text("estado", Estados.keys()[estado_actual])
+	procesar_estado(estado_actual, delta)
 
 
 func entrar_estado(est : int):
@@ -27,19 +31,21 @@ func entrar_estado(est : int):
 			pass
 
 
-func procesar_estado(est : int):
+func procesar_estado(est : int, delta : float):
 	match est:
 		Estados.MENU:
 			pass
 		Estados.NORMAL:
+			procesar_pausa(delta)
 			if !combate_terminado and buscar_enemigos_alertados() > 0:
 				cambiar_estado(Estados.COMBATE)
 		Estados.COMBATE:
+			procesar_pausa(delta)
 			if buscar_enemigos() <= 0:
 				combate_terminado = true
 				cambiar_estado(Estados.NORMAL)
 		Estados.MUERTE:
-			pass
+			procesar_pausa(delta)
 
 
 func cambiar_estado(est : int):
@@ -63,6 +69,8 @@ func determinar_estado_inicial(nivel):
 	cambiar_estado(Estados.NORMAL)
 
 
+func procesar_pausa(delta : float):
+	Pausa.procesar_pausa(delta)
 
 
 

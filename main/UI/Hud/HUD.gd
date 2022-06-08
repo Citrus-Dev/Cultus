@@ -1,6 +1,7 @@
 class_name HUD
 extends CanvasLayer
 
+
 export(NodePath) onready var cont_cooldowns = get_node(cont_cooldowns) as Container
 
 func _ready() -> void:
@@ -9,3 +10,4 @@ func _ready() -> void:
 
 func instanciar_medidor_cooldown(inst):
 	cont_cooldowns.add_child(inst)
+

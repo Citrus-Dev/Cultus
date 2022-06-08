@@ -37,6 +37,7 @@ func _ready():
 
 
 func _process(delta):
+	return
 	DebugDraw.set_text("track", Tracks.keys()[track_actual])
 	DebugDraw.set_text("play1", str(stream_player_1.get_playback_position()) + (" - ") + str(stream_player_1.get_stream_playback()))
 	DebugDraw.set_text("play2", str(stream_player_2.get_playback_position()) + (" - ") + str(stream_player_2.get_stream_playback()))

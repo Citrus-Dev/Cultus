@@ -1,0 +1,88 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/ui/ninepatch_test.png" type="Texture" id=1]
+[ext_resource path="res://main/UI/Hud/MenuPausa.gd" type="Script" id=2]
+
+[node name="MenuPausa" type="CanvasLayer"]
+pause_mode = 2
+layer = 128
+script = ExtResource( 2 )
+but_resumir = NodePath("MenuPausa/CenterContainer/VBoxContainer/NinePatchRect/VBoxContainer/Resumir")
+but_opciones = NodePath("MenuPausa/CenterContainer/VBoxContainer/NinePatchRect/VBoxContainer/Opciones")
+but_quit_menu = NodePath("MenuPausa/CenterContainer/VBoxContainer/NinePatchRect/VBoxContainer/Menu")
+but_quit_desk = NodePath("MenuPausa/CenterContainer/VBoxContainer/NinePatchRect/VBoxContainer/Quit")
+
+[node name="MenuPausa" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="ColorRect" type="ColorRect" parent="MenuPausa"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.427451 )
+
+[node name="CenterContainer" type="CenterContainer" parent="MenuPausa"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MenuPausa/CenterContainer"]
+margin_left = 192.0
+margin_top = 60.0
+margin_right = 320.0
+margin_bottom = 228.0
+rect_min_size = Vector2( 128, 168 )
+
+[node name="Label" type="Label" parent="MenuPausa/CenterContainer/VBoxContainer"]
+margin_right = 128.0
+margin_bottom = 17.0
+text = "Pausa"
+align = 1
+
+[node name="NinePatchRect" type="NinePatchRect" parent="MenuPausa/CenterContainer/VBoxContainer"]
+margin_top = 21.0
+margin_right = 128.0
+margin_bottom = 168.0
+size_flags_vertical = 3
+texture = ExtResource( 1 )
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MenuPausa/CenterContainer/VBoxContainer/NinePatchRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = -10.0
+margin_bottom = -10.0
+custom_constants/separation = 12
+alignment = 1
+
+[node name="Resumir" type="Button" parent="MenuPausa/CenterContainer/VBoxContainer/NinePatchRect/VBoxContainer"]
+margin_right = 108.0
+margin_bottom = 23.0
+text = "Resumir"
+
+[node name="Opciones" type="Button" parent="MenuPausa/CenterContainer/VBoxContainer/NinePatchRect/VBoxContainer"]
+margin_top = 35.0
+margin_right = 108.0
+margin_bottom = 58.0
+text = "Opciones"
+
+[node name="Menu" type="Button" parent="MenuPausa/CenterContainer/VBoxContainer/NinePatchRect/VBoxContainer"]
+margin_top = 70.0
+margin_right = 108.0
+margin_bottom = 93.0
+text = "Volver al menu"
+
+[node name="Quit" type="Button" parent="MenuPausa/CenterContainer/VBoxContainer/NinePatchRect/VBoxContainer"]
+margin_top = 105.0
+margin_right = 108.0
+margin_bottom = 128.0
+text = "Salir"
+
+[connection signal="pressed" from="MenuPausa/CenterContainer/VBoxContainer/NinePatchRect/VBoxContainer/Resumir" to="." method="emit_signal" binds= [ "resumido" ]]
+[connection signal="pressed" from="MenuPausa/CenterContainer/VBoxContainer/NinePatchRect/VBoxContainer/Opciones" to="." method="mostrar_opciones"]
+[connection signal="pressed" from="MenuPausa/CenterContainer/VBoxContainer/NinePatchRect/VBoxContainer/Menu" to="." method="quit_menu"]
+[connection signal="pressed" from="MenuPausa/CenterContainer/VBoxContainer/NinePatchRect/VBoxContainer/Quit" to="." method="quit_desk"]
