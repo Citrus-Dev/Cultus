@@ -4,16 +4,21 @@ extends Node2D
 const UI = preload("res://main/UI/BarraHPBoss/BarraHPBossUI.tscn")
 
 export(NodePath) var objetivo_dir
+export(String) var objetivo_group
 
 var objetivo : Node
 var barra : BarraHPBossUI
 var activo : bool
 
-func _ready():
-	yield(get_tree(), "idle_frame")
-	objetivo = get_node(objetivo_dir)
+func setup():
+	if objetivo_dir:
+		objetivo = get_node(objetivo_dir)
+	elif objetivo_group:
+		objetivo = get_tree().get_nodes_in_group(objetivo_group)[0]
+	else:
+		call_deferred("free")
+		return
 	instanciar_barra()
-	set_activo(activo)
 
 
 func instanciar_barra():
@@ -30,6 +35,7 @@ func borrar_barra():
 
 
 func set_activo(_bool : bool):
+	setup()
 	activo = _bool
 	if is_instance_valid(barra):
 		barra.visible = _bool

@@ -5,6 +5,7 @@ extends Position2D
 signal spawn_muerto
 
 export(PackedScene) var spawn setget set_spawn_object
+export(String) var spawn_group
 export(bool) var spawn_on_ready
 export(bool) var one_shot
 
@@ -19,13 +20,18 @@ func spawn():
 		return
 	
 	var new_inst = spawn.instance()
+	
+	if spawn_group != "":
+		new_inst.add_to_group(spawn_group)
+	
 	new_inst.global_position = global_position
 	get_parent().add_child(new_inst)
-	if one_shot: call_deferred("free")
-	new_inst.connect("muerto", self, "emit_signal", ["spawn_muerto"])
+	new_inst.connect("muerto", self, "on_spawn_muerto")
 	
 	new_inst.name += name + str(cont_spawns)
 	cont_spawns += 1
+	
+	if one_shot: call_deferred("free")
 	return new_inst
 
 
@@ -61,3 +67,7 @@ func find_packedscene_sprite(_instance : Node):
 		return "ERR"
 	else:
 		return [sprite, sprite.hframes, sprite.vframes, sprite.offset]
+
+
+func on_spawn_muerto():
+	emit_signal("spawn_muerto")
