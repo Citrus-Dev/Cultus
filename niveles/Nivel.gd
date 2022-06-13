@@ -54,6 +54,10 @@ func init_primer_limite():
 		primer_limite_camara_obj.get_new_limits(true)
 
 
+func cambiar_limites_camara(limite : CameraBounds):
+	limite.get_new_limits(false)
+
+
 func _process(delta: float) -> void:
 	if OS.is_debug_build() and print_fps:
 		DebugDraw.set_text("fps", Engine.iterations_per_second)
