@@ -13,6 +13,7 @@ export(float) var tiempo
 
 var timer := Timer.new()
 var timer_cooldown := Timer.new()
+var area_test : Area2D
 
 func _ready():
 	timer_cooldown.wait_time = TIEMPO_COOLDOWN
@@ -22,6 +23,8 @@ func _ready():
 	timer.wait_time = tiempo
 	timer.one_shot = true
 	add_child(timer)
+	
+	area_test = get_node("Area2D")
 	
 	yield(get_tree(), "idle_frame")
 	instanciar_medidor_cooldown()
@@ -35,6 +38,18 @@ func _physics_process(delta):
 	if !timer.is_stopped() and jugador.is_on_floor():
 		if Input.is_action_just_pressed("mov_arr"):
 			jugador.salto_largo()
+	
+	if timer.is_stopped():
+		if probar_fin():
+			jugador.usando_habilidad = false
+			jugador.valor_default("max_velocidad_horizontal")
+			
+			# Manualmente reactivamos la hitbox porque la animacion RESET no lo hace por alguna razon.
+			var hb : Hitbox = jugador.get_node("Hitbox")
+			hb.monitorable = true
+			hb.monitoring = true
+			yield(get_tree(), "idle_frame")
+			jugador.reiniciar_forma_de_colision()
 
 
 func detectar_usable():
@@ -60,13 +75,15 @@ func activar():
 	timer.start()
 	yield(timer, "timeout")
 	
-	jugador.usando_habilidad = false
-	jugador.valor_default("max_velocidad_horizontal")
-	
-	# Manualmente reactivamos la hitbox porque la animacion RESET no lo hace por alguna razon.
-	var hb : Hitbox = jugador.get_node("Hitbox")
-	hb.monitorable = true
-	hb.monitoring = true
+#	jugador.usando_habilidad = false
+#	jugador.valor_default("max_velocidad_horizontal")
+#
+#	# Manualmente reactivamos la hitbox porque la animacion RESET no lo hace por alguna razon.
+#	var hb : Hitbox = jugador.get_node("Hitbox")
+#	hb.monitorable = true
+#	hb.monitoring = true
+#	yield(get_tree(), "idle_frame")
+#	jugador.reiniciar_forma_de_colision()
 
 
 func instanciar_medidor_cooldown():
@@ -77,4 +94,17 @@ func instanciar_medidor_cooldown():
 	inst.set_color(Color.lightblue)
 	inst.progress_bar.max_value = TIEMPO_COOLDOWN
 	connect("cooldown_update", inst, "actualizar_valor")
+
+
+# Prueba si hay lugar para que se pare el jugador. Si no, continuamos el slide asi no te quedas trabado
+func probar_fin() -> bool:
+	var test = area_test.get_overlapping_bodies()
+	return test.empty()
+
+
+
+
+
+
+
 

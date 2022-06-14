@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://icon.png" type="Texture" id=1]
 [ext_resource path="res://assets/fondos/back_cast.png" type="Texture" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://main/Personajes/Cultista/Cultista.tscn" type="PackedScene" id=8]
 [ext_resource path="res://niveles/posta/castillo/intro_pasillo/IntroPasillo.gd" type="Script" id=9]
 [ext_resource path="res://main/Musica/MusCastillo.tres" type="Resource" id=10]
+[ext_resource path="res://main/Objetos_mapa/TransicionDeNivel/TransicionDeNivelConArea.tscn" type="PackedScene" id=11]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 169.5, 70 )
@@ -147,6 +148,9 @@ direccion_nivel = "res://niveles/posta/castillo/cast_0_tut/cast_0_tut.tscn"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TransicionDeNivel" index="0"]
 position = Vector2( 3, -24 )
 shape = SubResource( 6 )
+
+[node name="TransicionDeNivelConArea" parent="triggers" index="0" instance=ExtResource( 11 )]
+position = Vector2( 908, 119 )
 
 [editable path="FondoLejos/ParallaxBackground/obj/Borde"]
 [editable path="FondoLejos/ParallaxBackground/obj/Borde2"]

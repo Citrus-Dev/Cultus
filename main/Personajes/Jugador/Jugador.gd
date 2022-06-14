@@ -126,7 +126,8 @@ func evento_dmg(_dmg : InfoDmg):
 	efecto_brillo_dmg(0.6)
 	shaker.add_trauma(1.0)
 	aplicar_stun()
-	print("Jugador hit: " + str(_dmg.atacante.name))
+	if _dmg.atacante != null:
+		print("Jugador hit: " + str(_dmg.atacante.name))
 
 
 func morir(_info : InfoDmg):
@@ -327,6 +328,13 @@ func agregar_skill(skill_id : String):
 	
 	if !TransicionesDePantalla.inv_skills.has(skill_id):
 		TransicionesDePantalla.inv_skills[skill_id] = true
+
+
+# Esto lo tendria que hacer la animacion RESET, pero no lo hace asi que jodanse
+func reiniciar_forma_de_colision():
+	var col = $CollisionShape2D
+	col.shape.extents = Vector2(4, 8)
+	col.position = Vector2(0, -8)
 
 
 func osciliar(_x :float, _freq : float, _amplitud : float) -> float:
