@@ -276,6 +276,7 @@ hurtbox = NodePath("Hurtbox")
 hurtbox_martillo = NodePath("HurtboxMartillo")
 
 [node name="monitores" type="Node2D" parent="." index="0"]
+visible = false
 
 [node name="piso" parent="monitores" index="0" instance=ExtResource( 11 )]
 visible = false
