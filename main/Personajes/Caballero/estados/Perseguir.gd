@@ -14,6 +14,7 @@ var timer_recien_entrado : float
 func enter(msg : Dictionary = {}) -> void:
 	obj = owner.objetivo 
 	animador = owner.get_node("Skin/AnimationPlayer")
+	owner.connect("borde_tocado", self, "saltar")
 	timer_recien_entrado = TIEMPO_DE_GRACIA
 
 
@@ -41,6 +42,12 @@ func exit() -> void:
 	return 
 
 
+func saltar(_borde : Borde):
+	# Si el jugador esta por encima del dueño de esta maquina de estados
+	if owner.global_position.y > obj.global_position.y:
+		owner.jump(owner.jump_velocity * _borde.mult_fuerza_salto)
+
+
 func calcular_distancia_a_jugador():
 	var dir_to_jug = obj.global_position - owner.global_position
 	target_dir = sign(dir_to_jug.x)
@@ -51,7 +58,10 @@ func procesar_animacion():
 	if owner.stun: return
 	var velocidad = abs(owner.velocity.x)
 	
-	if velocidad > 1:
-		animador.play("caminar")
+	if owner.is_on_floor():
+		if velocidad > 1:
+			animador.play("caminar")
+		else:
+			animador.play("idle")
 	else:
-		animador.play("idle")
+		animador.play("saltar")

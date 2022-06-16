@@ -3,6 +3,7 @@ extends Personaje
 
 export(NodePath) onready var fsm = get_node(fsm) as StateMachine
 export(NodePath) onready var hurtbox = get_node(hurtbox) as Hurtbox
+export(NodePath) onready var hurtbox_martillo = get_node(hurtbox_martillo) as Hurtbox
 
 func _init():
 	add_to_group("Enemigos")
@@ -27,6 +28,7 @@ func set_muerto(toggle : bool):
 		collision_mask = 1 # No colisionas con nada mas que el escenario
 		hitbox.collision_layer = 0 # desactiva la hitbox totalmente
 		hurtbox.collision_mask = 0 
+		hurtbox_martillo.collision_mask = 0 
 	cambiar_visibilidad(!toggle)
 	fsm.transition_to("Morir")
 

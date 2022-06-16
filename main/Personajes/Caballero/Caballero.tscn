@@ -273,6 +273,7 @@ jump_time_to_peak = 0.5
 jump_time_to_fall = 0.5
 fsm = NodePath("StateMachine")
 hurtbox = NodePath("Hurtbox")
+hurtbox_martillo = NodePath("HurtboxMartillo")
 
 [node name="monitores" type="Node2D" parent="." index="0"]
 
