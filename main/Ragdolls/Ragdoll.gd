@@ -15,3 +15,4 @@ func set_dir(_dir : int):
 	for sprite in sprites_lista:
 		sprite = sprite as Sprite
 		sprite.flip_h = true if _dir == -1 else false
+		sprite.position.x *= _dir

@@ -76,7 +76,9 @@ func crossfade(nueva_cancion : AudioStream, posicion : float):
 		VOL_NORMAL,
 		VOL_SILENCIO,
 		DURACION,
-		Tween.TRANS_LINEAR
+		Tween.TRANS_LINEAR,
+		2,
+		DURACION
 	)
 	
 	tween.start()
