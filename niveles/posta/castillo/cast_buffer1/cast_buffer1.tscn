@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://assets/tilesets/tileset_castillo.tres" type="TileSet" id=1]
 [ext_resource path="res://niveles/Nivel.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://main/CameraLimitSystem/CameraBounds.gd" type="Script" id=6]
 [ext_resource path="res://main/Objetos_mapa/TransicionDeNivel/TransicionDeNivelConArea.tscn" type="PackedScene" id=7]
 [ext_resource path="res://main/Musica/MusCastillo.tres" type="Resource" id=8]
+[ext_resource path="res://main/Objetos_mapa/Pinchos/Pinchos.tscn" type="PackedScene" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 372, 384 )
@@ -90,9 +91,14 @@ position = Vector2( 544, -88 )
 [node name="PlataformaFragil6" parent="." index="15" instance=ExtResource( 5 )]
 position = Vector2( 664, -112 )
 
-[node name="Label" type="Label" parent="." index="16"]
-margin_left = 528.0
-margin_top = 384.0
-margin_right = 589.0
-margin_bottom = 401.0
-text = "pinches"
+[node name="Pinchos" parent="." index="16" instance=ExtResource( 9 )]
+position = Vector2( 461, 391 )
+
+[node name="Pinchos2" parent="." index="17" instance=ExtResource( 9 )]
+position = Vector2( 525, 391 )
+
+[node name="Pinchos3" parent="." index="18" instance=ExtResource( 9 )]
+position = Vector2( 589, 390 )
+
+[node name="Pinchos4" parent="." index="19" instance=ExtResource( 9 )]
+position = Vector2( 653, 390 )
