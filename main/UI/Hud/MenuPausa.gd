@@ -30,6 +30,7 @@ func quit_desk():
 
 func _enter_tree() -> void:
 	get_tree().paused = true
+	get_tree()
 
 
 func _exit_tree() -> void:

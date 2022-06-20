@@ -434,6 +434,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://main/ik/OneJointIK.gd"
 }, {
+"base": "Reference",
+"class": "OneshotParticles",
+"language": "GDScript",
+"path": "res://main/particulas/OneshotParticles.gd"
+}, {
 "base": "KinematicBody2D",
 "class": "Personaje",
 "language": "GDScript",
@@ -770,6 +775,7 @@ _global_script_class_icons={
 "Nivel": "",
 "NuevoJuegoPrompt": "",
 "OneJointIK": "",
+"OneshotParticles": "",
 "Personaje": "",
 "PickupArma": "",
 "PickupHP": "",
@@ -842,6 +848,7 @@ Guardado="*res://main/Autoloads/Guardado.gd"
 GameState="*res://main/Autoloads/GameState.gd"
 Musica="*res://main/Autoloads/Musica.gd"
 Pausa="*res://main/Autoloads/Pausa.gd"
+Config="*res://main/Autoloads/Config.gd"
 
 [debug]
 

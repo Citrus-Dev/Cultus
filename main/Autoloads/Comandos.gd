@@ -248,3 +248,13 @@ func c_killall(__ := "") -> String:
 	for i in get_tree().get_nodes_in_group("Enemigos"):
 		i.morir(info)
 	return "muerte"
+
+
+func c_config_cargar(__ := "") -> String:
+	Config.cargar_config()
+	return "Configuracion cargada"
+
+
+func c_config_guardar(__ := "") -> String:
+	Config.guardar_config()
+	return "Configuracion guardada"

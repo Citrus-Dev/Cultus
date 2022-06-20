@@ -5,7 +5,7 @@
 [ext_resource path="res://main/Objetos_mapa/SpawnJugador.gd" type="Script" id=3]
 [ext_resource path="res://main/CameraLimitSystem/CameraBounds.gd" type="Script" id=4]
 [ext_resource path="res://main/Personajes/Polilla/Polilla.tscn" type="PackedScene" id=5]
-[ext_resource path="res://main/Personajes/Esqueleto/Esqueleto.tscn" type="PackedScene" id=6]
+[ext_resource path="res://main/particulas/Sangre.tscn" type="PackedScene" id=6]
 [ext_resource path="res://main/AI/Borde.tscn" type="PackedScene" id=7]
 [ext_resource path="res://niveles/pruebas/prueba_enemigo_2/prueba_enemigo_mus.tres" type="Resource" id=8]
 [ext_resource path="res://main/Personajes/Caballero/Caballero.tscn" type="PackedScene" id=9]
@@ -91,5 +91,5 @@ position = Vector2( 706, -29 )
 [node name="Polilla6" parent="." index="21" instance=ExtResource( 5 )]
 position = Vector2( 700, -79 )
 
-[node name="Esqueleto" parent="." index="22" instance=ExtResource( 6 )]
-position = Vector2( 929, 60 )
+[node name="Sangre" parent="." index="23" instance=ExtResource( 6 )]
+position = Vector2( 306, 186 )

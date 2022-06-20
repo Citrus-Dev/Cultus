@@ -22,7 +22,6 @@ func guardar_partida(_slot := ""):
 	datos["armas"] = TransicionesDePantalla.inv_armas
 	datos["info_persist_global"] = info_persist_global
 	
-	# ???????????
 	var data_string = var2str(datos)
 	
 	existe_directorio()
