@@ -26,7 +26,6 @@ func _ready() -> void:
 	position = pos
 	set_velocity()
 	
-	
 	init_estela()
 	estela.set_process(false)
 	estela.add_point(global_position)

@@ -13,6 +13,7 @@ var ultima_dir : int
 var slot_arma_seleccionado : String
 var inv_balas_estado : Dictionary
 var inv_armas : Dictionary
+var inv_variantes : Dictionary
 var inv_skills : Dictionary
 var ultimo_punto_seguro : Vector2
 

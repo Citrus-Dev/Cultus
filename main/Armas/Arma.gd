@@ -16,6 +16,7 @@ enum SLOTS {
 	BAZUCA
 }
 
+var nombre := "arma"
 var damage_info = InfoDmg.new()
 var cooldown_tiempo : float = 0.8
 var cooldown_tiempo_sec : float = 1
@@ -35,6 +36,12 @@ var recoil_visual_duracion : float = 0.3
 var skin_inst : SkinArma
 var hud_medidor_inst : HudMedidorBalas
 var inv_balas : InvBalas
+var cont 
+
+var variantes := [
+	"NORMAL"
+]
+var variante_actual : int
 
 func _init() -> void:
 	damage_info.dmg_cantidad = 1
@@ -131,8 +138,8 @@ func eyectar_casquillo(_angulo : float):
 	skin_inst.get_parent().add_child(casq)
 
 
-func instanciar_skin(_parent : Node2D):
-	var inst = skin_escena.instance()
+func instanciar_skin(_parent : Node2D, _skin_escena = skin_escena):
+	var inst = _skin_escena.instance()
 	_parent.add_child(inst)
 	skin_inst = inst
 
@@ -171,3 +178,34 @@ func aplicar_screenshake():
 		var cam = usador.get_tree().get_nodes_in_group("CamaraReal")[0]
 		cam.shaker.max_offset = Vector2.ONE * screenshake
 		cam.aplicar_screenshake(screenshake)
+
+
+func ciclar_variante():
+	var variante_nueva
+	var unlock = tomar_variantes_desbloqueadas()
+	var disponible : bool
+	for n in variantes.size():
+		variante_nueva = wrapi(variante_actual + 1 + n, 0, variantes.size())
+		if variante_nueva in unlock or variante_nueva == 0: 
+			disponible = true
+			break
+	
+	if disponible and variante_actual != variante_nueva:
+		cambiar_variante_actual(variante_nueva)
+
+
+func cambiar_variante_actual(nueva : int):
+	variante_actual = nueva
+	var func_cambio = "cambio_variante_" + variantes[nueva] 
+	if has_method(func_cambio):
+		call(func_cambio)
+
+
+func tomar_variantes_desbloqueadas() -> Array:
+	if TransicionesDePantalla.inv_variantes.has(nombre):
+		return TransicionesDePantalla.inv_variantes[nombre]
+	else: return []
+
+
+
+

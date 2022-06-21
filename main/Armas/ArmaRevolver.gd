@@ -15,6 +15,7 @@ func _init() -> void:
 	damage_info.dmg_cantidad = 25
 	damage_info.fuerza_retroceso = 600
 	damage_info.dmg_stun = 35
+	nombre = "ArmaRevolver"
 	
 	recoil_visual_duracion = 0.25
 	screenshake = 5.0

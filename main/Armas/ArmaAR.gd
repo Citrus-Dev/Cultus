@@ -5,6 +5,9 @@ const MAX_BALAS = 30 # Tamaño cargador
 const TIPO_BALAS = "Rifle"
 const TIEMPO_RECARGA = 1.2
 const BALA = preload("res://main/Proyectiles/BalaAR.tscn")
+const SKIN_FLASH_ESCENA = preload("res://main/Armas/Skins/SkinARFlash.tscn")
+const PROY_GRANADA_ESCENA = preload("res://main/Proyectiles/GranadaAR.tscn")
+const PROY_GRANADA_FLASH_ESCENA = preload("res://main/Proyectiles/GranadaARFlash.tscn")
 
 var balas_actual : int = MAX_BALAS
 var timer_recarga := Timer.new()
@@ -23,6 +26,12 @@ func _init() -> void:
 	recoil_visual_duracion = 0.2
 	spread = 5
 	screenshake = 2.5
+	nombre = "ArmaAR"
+	
+	variantes = [
+	"NORMAL",
+	"FLASH"
+	]
 
 
 func equipar(_controlador):
@@ -61,6 +70,19 @@ func disparar(_origin : Node, _dir : float):
 	aplicar_screenshake()
 
 
+func disparar_secundario(_origin : Node, _dir : float):
+	if variantes[variante_actual] == "NORMAL":
+		var gren = PROY_GRANADA_ESCENA.instance()
+		gren.vel_entrada = Vector2.RIGHT.rotated(_dir) * 600
+		gren.z_index = -1
+		_origin.add_child(gren)
+	if variantes[variante_actual] == "FLASH":
+		var gren = PROY_GRANADA_FLASH_ESCENA.instance()
+		gren.vel_entrada = Vector2.RIGHT.rotated(_dir) * 600
+		gren.z_index = -1
+		_origin.add_child(gren)
+
+
 func puede_disparar() -> bool:
 	return balas_actual > 0 and timer_recarga.is_stopped() and inv_balas.hay_balas(TIPO_BALAS)
 
@@ -96,3 +118,12 @@ func actualizar_medidor():
 	var reserva = max(0, inv_balas.dict_balas[tipo]["cant"] - balas_actual)
 	hud_medidor_inst.set_balas_reserva(reserva)
 
+
+func cambio_variante_NORMAL():
+	borrar_skin()
+	instanciar_skin(cont)
+
+
+func cambio_variante_FLASH():
+	borrar_skin()
+	instanciar_skin(cont, SKIN_FLASH_ESCENA)

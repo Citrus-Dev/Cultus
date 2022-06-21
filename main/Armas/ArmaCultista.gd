@@ -4,7 +4,7 @@ extends Arma
 const BALA_CULT = preload("res://main/Proyectiles/ProyCultista.tscn")
 
 func _init() -> void:
-	skin_escena = preload("res://main/Armas/Skins/SkinShotgun.tscn")
+	skin_escena = preload("res://main/Armas/Skins/SkinARCultista.tscn")
 	casquillo_escena = preload("res://main/Efectos/Casquillos/CasquilloBase.tscn")
 	damage_info.dmg_cantidad = 5
 	damage_info.fuerza_retroceso = 100

@@ -89,6 +89,9 @@ func procesar_arma_actual(_delta : float):
 	else:
 		puede_disparar = Input.is_action_just_pressed("disparo_primario")
 	
+	if Input.is_action_just_pressed("ciclar_var"):
+		arma_actual.ciclar_variante()
+	
 	if arma_actual.esta_en_cooldown(): puede_disparar = false
 	
 	if puede_disparar:
@@ -150,6 +153,7 @@ func agregar_arma_string(dir : String):
 	var good_dir = tabla_armas.armas_lista[dir]
 	var arma_inst = Reference.new()
 	arma_inst.set_script(load(good_dir))
+	arma_inst.cont = self
 	if arma_inst is Arma:
 		agregar_arma(arma_inst)
 		var slot = tomar_slot_de_arma(arma_inst)

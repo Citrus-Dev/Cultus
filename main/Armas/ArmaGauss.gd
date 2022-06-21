@@ -10,6 +10,7 @@ func _init() -> void:
 	damage_info.dmg_stun = 250
 	damage_info.fuerza_retroceso = 250
 	damage_info.dmg_tipo = damage_info.DMG_TIPOS.PLASMA
+	nombre = "ArmaGauss"
 	
 	cooldown_tiempo = 1.2
 	slot = SLOTS.BAZUCA

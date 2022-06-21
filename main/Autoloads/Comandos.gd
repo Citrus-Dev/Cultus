@@ -236,6 +236,15 @@ func c_impulse(_nada := "") -> String:
 	return "Dadas todas las armas y habilidades."
 
 
+func c_impulse_102(__ := "") -> String:
+	var armas := Armas.new()
+	for a in armas.armas_lista:
+		TransicionesDePantalla.inv_variantes[a] = []
+		for n in [1, 5]:
+			TransicionesDePantalla.inv_variantes[a].append(n)
+	return "Dadas todas las variantes de armas."
+
+
 func c_graciosa(__ := "0") -> String:
 	for i in int(__):
 		c_kill()

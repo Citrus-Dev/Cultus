@@ -160,7 +160,7 @@ func muerte_cambio_nivel():
 		TransicionesDePantalla.muerte = false
 
 
-func aplicar_stun():
+func aplicar_stun(_tiempo_stun := tiempo_stun):
 	animador.play("hurt_start")
 	alternar_stun(true)
 	Congelar.congelar(self, 0.5)
@@ -173,7 +173,7 @@ func aplicar_stun():
 	# Si el enemigo esta en el aire y no es un enemigo volador le damos mas tiempo
 	# de stun (porque lo estas tirando a la mierda y queda medio duro si se recupera
 	# en el aire)
-	timer_stun.start(tiempo_stun)
+	timer_stun.start(_tiempo_stun)
 	yield(timer_stun, "timeout")
 	
 	valor_default("friccion")

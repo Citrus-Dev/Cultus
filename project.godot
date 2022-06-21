@@ -280,6 +280,16 @@ _global_script_classes=[ {
 "path": "res://main/Efectos/Estelas/EstelaBase.gd"
 }, {
 "base": "Node2D",
+"class": "ExplFlash",
+"language": "GDScript",
+"path": "res://main/Proyectiles/ExplFlash.gd"
+}, {
+"base": "Node2D",
+"class": "ExplHE",
+"language": "GDScript",
+"path": "res://main/Proyectiles/ExplHE.gd"
+}, {
+"base": "Node2D",
 "class": "Explosion",
 "language": "GDScript",
 "path": "res://main/Proyectiles/Explosion.gd"
@@ -288,6 +298,11 @@ _global_script_classes=[ {
 "class": "Gauss",
 "language": "GDScript",
 "path": "res://main/Armas/ArmaGauss.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "Granada",
+"language": "GDScript",
+"path": "res://main/Proyectiles/Granada.gd"
 }, {
 "base": "Accion",
 "class": "GuardarPosMouse",
@@ -434,7 +449,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://main/ik/OneJointIK.gd"
 }, {
-"base": "Reference",
+"base": "Node2D",
 "class": "OneshotParticles",
 "language": "GDScript",
 "path": "res://main/particulas/OneshotParticles.gd"
@@ -744,8 +759,11 @@ _global_script_class_icons={
 "EscribirEnBlackboard": "",
 "Esqueleto": "",
 "EstelaBase": "",
+"ExplFlash": "",
+"ExplHE": "",
 "Explosion": "",
 "Gauss": "",
+"Granada": "",
 "GuardarPosMouse": "",
 "GuardarPropiedadBlackboard": "",
 "HPBar": "",
@@ -963,6 +981,11 @@ escudo={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":70,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
 , Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777237,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+ciclar_var={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":90,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
  ]
 }
 

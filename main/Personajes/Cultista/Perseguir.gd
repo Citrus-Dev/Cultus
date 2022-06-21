@@ -72,6 +72,7 @@ func iniciar_timer_disparo():
 # revisar si el jugador esta dentro del rango de disparo y tiene linea de vision.
 # Si eso es verdadero, pasar al estado disparar
 func terminar_timer_disparo():
+	if owner.stun: return
 	for obj in los_check.obj_en_vision:
 		if obj is Jugador and owner.is_on_floor():
 			_state_machine.transition_to("Disparar")

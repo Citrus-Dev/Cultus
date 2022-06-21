@@ -1,0 +1,22 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://main/Proyectiles/ProyectilBase.tscn" type="PackedScene" id=1]
+[ext_resource path="res://main/Efectos/Estelas/EstelaBase.tscn" type="PackedScene" id=2]
+[ext_resource path="res://main/Proyectiles/Granada.gd" type="Script" id=3]
+[ext_resource path="res://main/Proyectiles/ExplFlash.tscn" type="PackedScene" id=4]
+
+[sub_resource type="Gradient" id=1]
+colors = PoolColorArray( 0.670588, 0.976471, 1, 0, 0.670588, 0.976471, 1, 1 )
+
+[node name="GranadaARFlash" instance=ExtResource( 1 )]
+script = ExtResource( 3 )
+spawn_en_impacto = ExtResource( 4 )
+gravedad = 400.0
+friccion = 0.6
+usar_timer = true
+timer = 2.0
+
+[node name="EstelaBase" parent="." index="2" instance=ExtResource( 2 )]
+width = 6.0
+gradient = SubResource( 1 )
+numero_de_segmentos = 10

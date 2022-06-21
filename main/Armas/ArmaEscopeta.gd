@@ -11,6 +11,7 @@ func _init() -> void:
 	damage_info.dmg_cantidad = 12
 	damage_info.fuerza_retroceso = 400
 	damage_info.dmg_stun = 25
+	nombre = "ArmaEscopeta"
 	
 	slot = SLOTS.ESCOPETA
 	automatica = false

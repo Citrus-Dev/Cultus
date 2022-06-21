@@ -223,7 +223,7 @@ func init_timer_stun():
 
 
 # durante stun no te podes mover, y se te baja la fricción para que el retroceso te empuje mas
-func aplicar_stun():
+func aplicar_stun(_tiempo_stun := tiempo_stun):
 	stun = true
 	if !timer_stun.is_stopped():
 		timer_stun.stop()
@@ -235,7 +235,7 @@ func aplicar_stun():
 	# Si el enemigo esta en el aire y no es un enemigo volador le damos mas tiempo
 	# de stun (porque lo estas tirando a la mierda y queda medio duro si se recupera
 	# en el aire)
-	var t : float = tiempo_stun * 2.4 if !no_gravedad and !is_on_floor() else tiempo_stun
+	var t : float = _tiempo_stun * 2.4 if !no_gravedad and !is_on_floor() else _tiempo_stun
 	timer_stun.start(t)
 	yield(timer_stun, "timeout")
 	

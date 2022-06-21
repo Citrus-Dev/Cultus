@@ -10,6 +10,7 @@ func _init() -> void:
 	damage_info.dmg_stun = 120
 	damage_info.fuerza_retroceso = 150
 	damage_info.dmg_tipo = damage_info.DMG_TIPOS.BALA
+	nombre = "ArmaBallesta"
 	
 	cooldown_tiempo = 0.8
 	slot = SLOTS.BALLESTA
