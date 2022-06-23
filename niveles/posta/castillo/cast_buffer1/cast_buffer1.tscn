@@ -74,7 +74,7 @@ position = Vector2( 544, 160 )
 position = Vector2( 240, 400 )
 
 [node name="SpawnJugador" type="Node2D" parent="." index="9"]
-position = Vector2( 351, 343 )
+position = Vector2( 321, 338 )
 script = ExtResource( 4 )
 
 [node name="PlataformaFragil2" parent="." index="10" instance=ExtResource( 5 )]
@@ -108,14 +108,13 @@ position = Vector2( 589, 390 )
 position = Vector2( 653, 390 )
 
 [node name="TransicionDeNivelConArea" parent="." index="20" instance=ExtResource( 7 )]
-position = Vector2( 64, -35 )
+position = Vector2( 240, 432 )
 ID = "buffer_abajo"
 ID_objetivo = "al_buffer"
 direccion_nivel = "res://niveles/posta/castillo/cast_pinches/cast_pinches.tscn"
 direccion_movimiento = 3
 
 [node name="CollisionShape2D" parent="TransicionDeNivelConArea" index="0"]
-position = Vector2( 178, 467 )
 shape = SubResource( 2 )
 
 [editable path="TransicionDeNivelConArea"]

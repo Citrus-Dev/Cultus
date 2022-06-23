@@ -78,9 +78,10 @@ ID_objetivo = "buffer1_der_bajo"
 direccion_nivel = "res://niveles/posta/castillo/cast_buffer1/cast_buffer1.tscn"
 
 [node name="TransicionDeNivelConArea6" parent="triggers" index="2" instance=ExtResource( 17 )]
-position = Vector2( 1408, 496 )
+position = Vector2( 1405, 506 )
 ID = "enc_puente_der_bajo"
-direccion_nivel = "res://niveles/posta/castillo/cast_encuentro_puente/cast_encuentro_puente.tscn"
+ID_objetivo = "izq"
+direccion_nivel = "res://niveles/posta/castillo/cast_conector/cast_conector.tscn"
 direccion_movimiento = 1
 
 [node name="TransicionDeNivelConArea7" parent="triggers" index="3" instance=ExtResource( 17 )]

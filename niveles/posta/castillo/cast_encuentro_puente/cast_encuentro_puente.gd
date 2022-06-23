@@ -36,10 +36,7 @@ func _ready():
 
 
 func _process(delta):
-	DebugDraw.set_text("info_persist_nivel", info_persist_nivel.has(NOMBRE_DATO))
-	DebugDraw.set_text("kills_para_terminar_oleada", kills_para_terminar_oleada)
-	DebugDraw.set_text("contador_kills_actual", contador_kills_actual)
-	DebugDraw.set_text("oleada_actual", oleada_actual)
+	pass
 
 
 func registrar_escopeta_agarrada():

@@ -31,6 +31,7 @@ func guardar_checkpoint():
 	TransicionesDePantalla.checkpoint_actual_escena = dir_escena_actual
 	Guardado.guardar_partida()
 	emit_signal("usado")
+	ControladorUi.emit_signal("partida_guardada")
 	
 	var nivel = get_tree().get_nodes_in_group("Nivel")[0]
 	nivel.guardar_datos_persistentes()
@@ -45,7 +46,8 @@ func jug_alternar_area(_jug : Jugador, _bool : bool):
 func alternar_uso_checkpoint(_bool : bool):
 	if !jugador or !jugador.is_on_floor(): 
 		return
-	guardar_checkpoint()
+	if _bool:
+		guardar_checkpoint()
 	usando = _bool
 	jugador.alternar_checkpoint(_bool)
 	if _bool: 
