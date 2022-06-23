@@ -47,9 +47,15 @@ func aplicar_dmg(_info : InfoDmg):
 		emit_signal("morir")
 		emit_signal("morir_info", _info)
 	if _info.fuerza_retroceso != 0:
-		var pos_atacante = _info.atacante.global_position
-		var pos_agente = agente.global_position
-		var dir = pos_agente - pos_atacante
+		var dir
+		if _info.atacante.has_method("tomar_centro") and agente.has_method("tomar_centro"):
+			var pos_atacante = _info.atacante.tomar_centro()
+			var pos_agente = agente.tomar_centro()
+			dir = pos_agente - pos_atacante
+		else:
+			var pos_atacante = _info.atacante.global_position
+			var pos_agente = agente.global_position
+			dir = pos_agente - pos_atacante
 		emit_signal("aplicar_knockback", _info.fuerza_retroceso, dir)
 	if _info.dmg_stun:
 		stun_actual += _info.dmg_stun

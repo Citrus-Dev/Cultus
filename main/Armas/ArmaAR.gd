@@ -127,3 +127,17 @@ func cambio_variante_NORMAL():
 func cambio_variante_FLASH():
 	borrar_skin()
 	instanciar_skin(cont, SKIN_FLASH_ESCENA)
+
+
+func instanciar_skin(_parent : Node2D, _skin_escena = skin_escena):
+	match variantes[variante_actual]:
+		"NORMAL":
+			_skin_escena = skin_escena
+		"FLASH":
+			_skin_escena = SKIN_FLASH_ESCENA
+	var inst = _skin_escena.instance()
+	_parent.add_child(inst)
+	skin_inst = inst
+
+
+

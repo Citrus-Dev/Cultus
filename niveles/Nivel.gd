@@ -79,3 +79,11 @@ func guardar_datos_persistentes():
 
 func _exit_tree():
 	guardar_datos_persistentes()
+
+
+func alertar_todos_los_enemigos():
+	var p = get_tree().get_nodes_in_group("Jugador")[0]
+	for i in get_tree().get_nodes_in_group("Enemigos"):
+		i.objetivo = p
+		i.emit_signal("objetivo_encontrado")
+

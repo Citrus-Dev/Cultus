@@ -10,8 +10,8 @@ signal disparado
 
 enum SLOTS {
 	PISTOLA,
-	ESCOPETA,
 	RIFLE,
+	ESCOPETA,
 	BALLESTA,
 	BAZUCA
 }

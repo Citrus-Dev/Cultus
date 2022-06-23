@@ -101,11 +101,6 @@ func procesar_arma_actual(_delta : float):
 		arma_actual.disparar(self, angulo)
 		owner.stretcher.stretch(Vector2(0.9, 1.2), arma_actual.recoil_visual_duracion)
 		arma_actual.comenzar_cooldown()
-		# TODO mover esto al codigo de las armas
-#		if get_tree().get_nodes_in_group("CamaraReal").size() > 0:
-#			var cam = get_tree().get_nodes_in_group("CamaraReal")[0]
-#			cam.shaker.max_offset = Vector2.ONE * arma_actual.screenshake
-#			cam.aplicar_screenshake(arma_actual.screenshake)
 
 
 # Calcula la direccion a la que apuntas con el mouse.
@@ -218,8 +213,7 @@ func procesar_inventario(_input : InputEvent):
 
 # Procesa cambiar las armas con la ruedita
 func procesar_inventario_ruedita():
-	if !activo: return
-	if inv_vacio(): return
+	if !activo or inv_vacio(): return
 	var slot_arma_actual = arma_actual.slot
 	if Input.is_action_just_released("arma_siguiente"):
 		seleccionar_arma_int(slot_arma_actual + 1)

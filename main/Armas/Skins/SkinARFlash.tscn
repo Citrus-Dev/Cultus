@@ -39,7 +39,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 3, 1 ) ]
+"values": [ Vector2( 11, 1 ) ]
 }
 
 [sub_resource type="Animation" id=2]
@@ -84,14 +84,14 @@ tracks/1/keys = {
 "times": PoolRealArray( 0.4, 0.6, 0.8 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 3, 1 ), Vector2( -3, -2 ), Vector2( 3, 1 ) ]
+"values": [ Vector2( 11, 1 ), Vector2( 5, -2 ), Vector2( 11, 1 ) ]
 }
 
 [node name="SkinAR" instance=ExtResource( 1 )]
 position = Vector2( -1, 2 )
 
 [node name="Sprite" parent="." index="0"]
-position = Vector2( 3, 1 )
+position = Vector2( 11, 1 )
 texture = ExtResource( 2 )
 hframes = 3
 frame = 2
