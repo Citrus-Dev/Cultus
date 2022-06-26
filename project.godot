@@ -509,6 +509,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://main/Proyectiles/ProyectilBase.gd"
 }, {
+"base": "Node2D",
+"class": "ProyectilGaussV2",
+"language": "GDScript",
+"path": "res://main/Proyectiles/ProyectilGaussV2.gd"
+}, {
 "base": "ProyectilBase",
 "class": "ProyectilHoming",
 "language": "GDScript",
@@ -805,6 +810,7 @@ _global_script_class_icons={
 "PlataformaTimer": "",
 "Polilla": "",
 "ProyectilBase": "",
+"ProyectilGaussV2": "",
 "ProyectilHoming": "",
 "Prueba": "",
 "Puerta": "",

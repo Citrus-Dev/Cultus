@@ -1,7 +1,7 @@
 class_name Gauss
 extends Arma
 
-const BALA = preload("res://main/Proyectiles/ProyectilGauss.tscn")
+const BALA = preload("res://main/Proyectiles/ProyectilGaussV2.tscn")
 
 func _init() -> void:
 	medidor_balas_escena = preload("res://main/UI/BarrasBalas/BarraBalasGauss.tscn")
@@ -26,12 +26,27 @@ func disparar(_origin : Node, _dir : float):
 		skin_inst.animador.play("disparar")
 	
 	crear_bala(_origin, BALA, _dir, spread)
-#	dibujar_hitscan(_origin, _dir)
 	
 	_origin.inv_balas.bajar_balas(1, "Cohetes")
 	actualizar_medidor()
 	usador.aplicar_knockback(350, -Vector2.RIGHT.rotated(_dir))
 	aplicar_screenshake()
+
+
+func crear_bala(_origin : Node, _preload_bala : PackedScene, _angulo : float, _spread : float = 0.0):
+	var bala = _preload_bala.instance()
+	
+	bala.mascara = 33
+	bala.angle = _angulo
+	bala.usador = usador
+	bala.info_dmg = damage_info
+	bala.z_index = -1
+	if _spread != 0.0:
+		var spread_rad = deg2rad(_spread)
+		bala.angle += rand_range(-spread_rad, spread_rad)
+	
+	bala.global_position = _origin.global_position
+	usador.get_parent().add_child(bala)
 
 
 func dibujar_hitscan(_origin : Node, _dir : float):
@@ -45,8 +60,6 @@ func dibujar_hitscan(_origin : Node, _dir : float):
 	
 	var estela = AntialiasedLine2D.new()
 	estela.points.resize(2)
-#	estela.points[0] = _origin.global_position
-#	estela.points[1] = hitscan["position"]
 	estela.points.append(_origin.global_position)
 	estela.points.append(hitscan["position"])
 	_origin.add_child(estela)

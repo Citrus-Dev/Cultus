@@ -2,11 +2,27 @@ extends Node
 
 const CAMINO_GUARDADO := "user://"
 const ARCHIVO_GUARDADO := "config"
-const SUFIJO_GUARDADO := ".cfg"
+const SUFIJO_GUARDADO := ".ini"
 
 var config_data := {
-	"volumen_sonido" : 0.8,
-	"volumen_musica" : 0.5
+	"volumen_sonido" : 0.5,
+	"volumen_musica" : 0.35
+}
+
+var keybinds := {
+	"mov_izq" : KEY_A,
+	"mov_der" : KEY_D,
+	"mov_abaj" : KEY_S,
+	"mov_arr" : KEY_W,
+	"disparo_primario" : BUTTON_LEFT,
+	"disparo_secundario" : BUTTON_RIGHT,
+	"ciclar_var" : KEY_Z,
+	"usar" : KEY_E,
+	"arma_siguiente" : BUTTON_WHEEL_UP,
+	"arma_anterior" : BUTTON_WHEEL_DOWN,
+	"recargar" : KEY_R,
+	"gancho" : KEY_Q,
+	"escudo" : KEY_SHIFT,
 }
 
 func _init() -> void:
@@ -27,32 +43,38 @@ func guardar_config():
 	
 	if !existe_directorio(): return
 	
-	var file := File.new()
+	var file := ConfigFile.new()
 	var archivo_camino = CAMINO_GUARDADO + ARCHIVO_GUARDADO + SUFIJO_GUARDADO
-	var err = file.open(archivo_camino, File.WRITE)
-	file.store_string(data_string)
-	file.close()
 	
-	if err == OK:
-		print(archivo_camino + "(config) guardado.")
-	else:
-		printerr("ERROR " + str(err) + " AL GUARDAR CONFIG")
+	for key in config_data.keys():
+		file.set_value("CONFIG", key, config_data[key])
+	
+	for key in keybinds.keys():
+		file.set_value("KEYBINDS", key, keybinds[key])
+	
+	file.save(archivo_camino)
+	print(archivo_camino + "(config) guardado.")
 
 
 func cargar_config():
 	if !existe_directorio(): 
 		return
-	else:
-		print("Config cargada con exito")
 	
-	var file := File.new()
+	var file := ConfigFile.new()
 	var archivo_camino = CAMINO_GUARDADO + ARCHIVO_GUARDADO + SUFIJO_GUARDADO
-	var err = file.open(archivo_camino, File.READ)
+	var err = file.load(archivo_camino)
 	
-	var datos = str2var(file.get_as_text())
-	config_data = datos
-	file.close()
+	for section in file.get_sections():
+		match section:
+			"CONFIG":
+				for key in file.get_section_keys("CONFIG"):
+					config_data[key] = file.get_value("CONFIG", key, null)
+			"KEYBINDS":
+				for key in file.get_section_keys("KEYBINDS"):
+					keybinds[key] = file.get_value("KEYBINDS", key, null)
 	
+	print("Config cargada con exito")
+	print(config_data)
 	actualizar_opciones()
 
 

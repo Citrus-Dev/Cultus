@@ -41,7 +41,7 @@ script = ExtResource( 3 )
 position = Vector2( 216, 256 )
 
 [node name="TransicionDeNivelConArea" parent="triggers" index="0" instance=ExtResource( 4 )]
-position = Vector2( 8, 144 )
+position = Vector2( 8, 176 )
 ID = "izq"
 ID_objetivo = "pinches_der"
 direccion_nivel = "res://niveles/posta/castillo/cast_pinches/cast_pinches.tscn"
@@ -54,12 +54,18 @@ direccion_nivel = "res://niveles/posta/castillo/cast_conector/cast_conector.tscn
 direccion_movimiento = 2
 
 [node name="CollisionShape2D" parent="triggers/TransicionDeNivelConArea2" index="0"]
+position = Vector2( 0, 0 )
 shape = SubResource( 2 )
 
 [node name="TransicionDeNivelConArea3" parent="triggers" index="2" instance=ExtResource( 4 )]
 position = Vector2( 448, 283 )
+ID = "entrada_abajo"
+ID_objetivo = "caida"
+direccion_nivel = "res://niveles/posta/castillo/cast_boss/cast_boss.tscn"
+direccion_movimiento = 3
 
 [node name="CollisionShape2D" parent="triggers/TransicionDeNivelConArea3" index="0"]
+position = Vector2( 0, 0 )
 shape = SubResource( 2 )
 
 [node name="SpawnJugador" type="Node2D" parent="." index="8"]

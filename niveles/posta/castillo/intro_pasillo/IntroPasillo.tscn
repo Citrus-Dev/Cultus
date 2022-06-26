@@ -150,7 +150,7 @@ position = Vector2( 3, -24 )
 shape = SubResource( 6 )
 
 [node name="TransicionDeNivelConArea" parent="triggers" index="0" instance=ExtResource( 11 )]
-position = Vector2( 908, 119 )
+position = Vector2( 908, 144 )
 
 [editable path="FondoLejos/ParallaxBackground/obj/Borde"]
 [editable path="FondoLejos/ParallaxBackground/obj/Borde2"]

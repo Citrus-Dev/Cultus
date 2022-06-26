@@ -56,7 +56,7 @@ func procesar_arma(_delta : float):
 func disparar(_origin : Node, _dir : float):
 	if !puede_disparar(): 
 		return
-	elif timer_recarga.is_stopped() and balas_actual == 0:
+	elif timer_recarga.is_stopped() and balas_actual <= 0:
 		recargar()
 	
 	if skin_inst != null:
@@ -71,6 +71,8 @@ func disparar(_origin : Node, _dir : float):
 
 
 func disparar_secundario(_origin : Node, _dir : float):
+	if !puede_disparar_sec(): 
+		return
 	if variantes[variante_actual] == "NORMAL":
 		var gren = PROY_GRANADA_ESCENA.instance()
 		gren.vel_entrada = Vector2.RIGHT.rotated(_dir) * 600
@@ -85,6 +87,10 @@ func disparar_secundario(_origin : Node, _dir : float):
 
 func puede_disparar() -> bool:
 	return balas_actual > 0 and timer_recarga.is_stopped() and inv_balas.hay_balas(TIPO_BALAS)
+
+
+func puede_disparar_sec() -> bool:
+	return timer_recarga.is_stopped()
 
 
 func recargar():

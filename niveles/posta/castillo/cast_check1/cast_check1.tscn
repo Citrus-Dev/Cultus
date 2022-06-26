@@ -34,17 +34,17 @@ shape = SubResource( 1 )
 script = ExtResource( 3 )
 
 [node name="TransicionDeNivelConArea" parent="triggers" index="0" instance=ExtResource( 6 )]
-position = Vector2( 0, 176 )
+position = Vector2( 0, 206 )
 
 [node name="TransicionDeNivelConArea2" parent="triggers" index="1" instance=ExtResource( 6 )]
-position = Vector2( 672, 88 )
+position = Vector2( 672, 118 )
 ID = "check1_alto"
 ID_objetivo = "buffer1_izq_alto"
 direccion_nivel = "res://niveles/posta/castillo/cast_buffer1/cast_buffer1.tscn"
 direccion_movimiento = 1
 
 [node name="TransicionDeNivelConArea3" parent="triggers" index="2" instance=ExtResource( 6 )]
-position = Vector2( 672, 288 )
+position = Vector2( 672, 318 )
 ID = "check1_bajo"
 ID_objetivo = "buffer1_izq_bajo"
 direccion_nivel = "res://niveles/posta/castillo/cast_buffer1/cast_buffer1.tscn"

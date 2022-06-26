@@ -42,26 +42,26 @@ shape = SubResource( 1 )
 script = ExtResource( 6 )
 
 [node name="TransicionDeNivelConArea" parent="triggers" index="0" instance=ExtResource( 7 )]
-position = Vector2( 64, 72 )
+position = Vector2( 64, 104 )
 ID = "buffer1_izq_alto"
 ID_objetivo = "check1_alto"
 direccion_nivel = "res://niveles/posta/castillo/cast_check1/cast_check1.tscn"
 
 [node name="TransicionDeNivelConArea2" parent="triggers" index="1" instance=ExtResource( 7 )]
-position = Vector2( 72, 272 )
+position = Vector2( 72, 304 )
 ID = "buffer1_izq_bajo"
 ID_objetivo = "check1_bajo"
 direccion_nivel = "res://niveles/posta/castillo/cast_check1/cast_check1.tscn"
 
 [node name="TransicionDeNivelConArea3" parent="triggers" index="2" instance=ExtResource( 7 )]
-position = Vector2( 816, 280 )
+position = Vector2( 816, 312 )
 ID = "buffer1_der_bajo"
 ID_objetivo = "enc_puente_izq_bajo"
 direccion_nivel = "res://niveles/posta/castillo/cast_encuentro_puente/cast_encuentro_puente.tscn"
 direccion_movimiento = 1
 
 [node name="TransicionDeNivelConArea4" parent="triggers" index="3" instance=ExtResource( 7 )]
-position = Vector2( 816, -136 )
+position = Vector2( 816, -104 )
 ID = "buffer1_der_alto"
 ID_objetivo = "enc_puente_izq_alto"
 direccion_nivel = "res://niveles/posta/castillo/cast_encuentro_puente/cast_encuentro_puente.tscn"

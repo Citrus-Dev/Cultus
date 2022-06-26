@@ -107,6 +107,7 @@ direccion_nivel = "res://niveles/posta/castillo/cast_check2/cast_check2.tscn"
 direccion_movimiento = 3
 
 [node name="CollisionShape2D" parent="triggers/TransicionDeNivelConArea2" index="0"]
+position = Vector2( 0, 1 )
 shape = SubResource( 3 )
 
 [node name="SpawnJugador" type="Node2D" parent="." index="7"]

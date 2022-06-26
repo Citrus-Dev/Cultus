@@ -26,7 +26,7 @@ func _ready() -> void:
 	timer_stun.one_shot = true
 	timer_stun.wait_time = TIEMPO_REDUCCION_STUN
 	
-	hp = hp_max
+	hp = hp_max if ControladorUi.jug_hp == 0 else ControladorUi.jug_hp
 	actualizar_hp_bar()
 
 
@@ -65,7 +65,7 @@ func aplicar_dmg(_info : InfoDmg):
 			emit_signal("aplicar_stun")
 
 
-func curar(_cantidad : int):
+func curar(_cantidad : int = hp_max):
 	hp = min(hp + _cantidad, hp_max)
 	actualizar_hp_bar()
 

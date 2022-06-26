@@ -46,6 +46,8 @@ func _ready():
 	
 	if s_group.size() > 0:
 		s_group[0].spawn()
+	
+	ControladorUi.emit_signal("cambiar_salud", ControladorUi.jug_hp)
 
 
 func init_primer_limite():

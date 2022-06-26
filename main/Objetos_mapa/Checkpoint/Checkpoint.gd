@@ -25,13 +25,14 @@ func _process(delta: float) -> void:
 		sprite.material.set_shader_param("hit_strength", strength - delta)
 
 
-func guardar_checkpoint():
+func guardar_checkpoint(jugador : Jugador):
 	var dir_escena_actual : String = get_tree().current_scene.filename
 	print(dir_escena_actual + " guardado como checkpoint")
 	TransicionesDePantalla.checkpoint_actual_escena = dir_escena_actual
 	Guardado.guardar_partida()
 	emit_signal("usado")
 	ControladorUi.emit_signal("partida_guardada")
+	jugador.status.curar()
 	
 	var nivel = get_tree().get_nodes_in_group("Nivel")[0]
 	nivel.guardar_datos_persistentes()
@@ -47,7 +48,7 @@ func alternar_uso_checkpoint(_bool : bool):
 	if !jugador or !jugador.is_on_floor(): 
 		return
 	if _bool:
-		guardar_checkpoint()
+		guardar_checkpoint(jugador)
 	usando = _bool
 	jugador.alternar_checkpoint(_bool)
 	if _bool: 

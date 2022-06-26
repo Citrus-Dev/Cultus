@@ -29,6 +29,7 @@ func spawn_jugador_transicion():
 	juginst.anim_level_trans = true
 	trigger_objetivo_nodo.animacion_de_salida(juginst, ultima_direccion)
 	juginst.controlador_armas.inv_balas.dict_balas = inv_balas_estado
+	juginst.status.hp = ControladorUi.jug_hp
 	
 	yield(get_tree(), "idle_frame")
 	juginst.controlador_armas.seleccionar_arma(slot_arma_seleccionado)

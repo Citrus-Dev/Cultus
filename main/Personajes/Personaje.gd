@@ -154,8 +154,9 @@ func movement_vertical(_delta : float):
 
 # Movimiento en las cuatro direcciones (sin gravedad)
 func movement_omni():
-	if input.x != 0.0:
-		velocity.x += aceleracion * input.x
+	var input_usable = input_override if input_override != Vector2.ZERO else input
+	if input_usable.x != 0.0:
+		velocity.x += aceleracion * input_usable.x
 	else:
 		velocity.x *= friccion 
 	
