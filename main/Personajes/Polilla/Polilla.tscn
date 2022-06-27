@@ -1,9 +1,10 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://assets/enemies/polilla.png" type="Texture" id=1]
 [ext_resource path="res://main/Personajes/PersonajeBase.tscn" type="PackedScene" id=2]
 [ext_resource path="res://main/SistemaDaño/Hurtbox.tscn" type="PackedScene" id=3]
 [ext_resource path="res://main/Personajes/Polilla/estados/Idle.gd" type="Script" id=4]
+[ext_resource path="res://main/Personajes/Caballero/estados/Stun.gd" type="Script" id=5]
 [ext_resource path="res://main/libs/DebugMonitor/DebugMonitor.tscn" type="PackedScene" id=10]
 [ext_resource path="res://main/Personajes/Polilla/Polilla.gd" type="Script" id=11]
 [ext_resource path="res://main/Personajes/Polilla/estados/Perseguir.gd" type="Script" id=15]
@@ -121,6 +122,10 @@ script = ExtResource( 4 )
 [node name="Perseguir" type="Node" parent="StateMachine" index="1"]
 script = ExtResource( 15 )
 steering = NodePath("../../Steering")
+
+[node name="Stun" type="Node" parent="StateMachine" index="2"]
+script = ExtResource( 5 )
+estado_salida = "Perseguir"
 
 [node name="Steering" type="Node" parent="." index="7"]
 script = ExtResource( 17 )

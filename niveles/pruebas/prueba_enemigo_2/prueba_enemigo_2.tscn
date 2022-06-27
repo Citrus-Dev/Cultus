@@ -61,7 +61,7 @@ position = Vector2( 557, 145 )
 position = Vector2( 581, 142 )
 
 [node name="Caballero7" parent="." index="12" instance=ExtResource( 9 )]
-position = Vector2( 509, 147 )
+position = Vector2( 256, 232 )
 
 [node name="Caballero8" parent="." index="13" instance=ExtResource( 9 )]
 position = Vector2( 557, 145 )

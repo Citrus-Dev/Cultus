@@ -33,7 +33,7 @@ func unhandled_input(event : InputEvent) -> void:
 
 
 func process(delta : float) -> void:
-	return
+	if owner.muerto: _state_machine.transition_to("Muerte")
 
 
 func physics_process(delta : float) -> void:

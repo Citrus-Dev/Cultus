@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://main/Personajes/PersonajeBase.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/enemies/SPRITESHEET_CABALLERO.png" type="Texture" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://main/Personajes/Caballero/estados/Melee.gd" type="Script" id=7]
 [ext_resource path="res://main/Personajes/Caballero/estados/Morir.gd" type="Script" id=8]
 [ext_resource path="res://main/Personajes/Caballero/Caballero.gd" type="Script" id=9]
+[ext_resource path="res://main/Personajes/Caballero/estados/Stun.gd" type="Script" id=10]
 [ext_resource path="res://main/libs/DebugMonitor/DebugMonitor.tscn" type="PackedScene" id=11]
 
 [sub_resource type="RectangleShape2D" id=11]
@@ -278,23 +279,11 @@ hurtbox_martillo = NodePath("HurtboxMartillo")
 [node name="monitores" type="Node2D" parent="." index="0"]
 visible = false
 
-[node name="piso" parent="monitores" index="0" instance=ExtResource( 11 )]
-visible = false
-monitor_target_node = NodePath("../../Status")
-monitor_target_property = "stun_actual"
-monitor_flavor_text = "stun_actual"
-
-[node name="estado" parent="monitores" index="1" instance=ExtResource( 11 )]
-position = Vector2( 0, -46 )
-monitor_target_node = NodePath("../../StateMachine")
-monitor_target_property = "_state_name"
-monitor_flavor_text = "state_name"
-
-[node name="dist" parent="monitores" index="2" instance=ExtResource( 11 )]
+[node name="velocity" parent="monitores" index="0" instance=ExtResource( 11 )]
 position = Vector2( 0, -37 )
-monitor_target_node = NodePath("../../StateMachine/Perseguir")
-monitor_target_property = "dist"
-monitor_flavor_text = "dist"
+monitor_target_node = NodePath("../..")
+monitor_target_property = "velocity"
+monitor_flavor_text = "velocity"
 
 [node name="Status" parent="." index="1"]
 hp_max = 200
@@ -369,3 +358,7 @@ script = ExtResource( 7 )
 
 [node name="Morir" type="Node" parent="StateMachine" index="3"]
 script = ExtResource( 8 )
+
+[node name="Stun" type="Node" parent="StateMachine" index="4"]
+script = ExtResource( 10 )
+estado_salida = "Perseguir"

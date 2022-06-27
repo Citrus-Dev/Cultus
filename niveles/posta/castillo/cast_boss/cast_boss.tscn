@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://assets/tilesets/tileset_castillo.tres" type="TileSet" id=1]
 [ext_resource path="res://niveles/Nivel.tscn" type="PackedScene" id=2]
@@ -20,6 +20,8 @@
 [ext_resource path="res://main/Objetos_mapa/Puertas/Puerta.tscn" type="PackedScene" id=18]
 [ext_resource path="res://assets/objetos/puerta.png" type="Texture" id=19]
 [ext_resource path="res://main/Objetos_mapa/TransicionDeNivel/TransicionDeNivelConArea.tscn" type="PackedScene" id=20]
+[ext_resource path="res://assets/tilesets/tiles_castillo_full.png" type="Texture" id=21]
+[ext_resource path="res://main/Objetos_mapa/Plataformas movibles/PlataformaMovible.gd" type="Script" id=22]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 776, 384 )
@@ -32,6 +34,13 @@ extents = Vector2( 17, 76 )
 
 [sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 72, 8 )
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 21 )
+region = Rect2( 64, 0, 48, 16 )
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 24, 8 )
 
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 8, 24 )
@@ -185,8 +194,21 @@ position = Vector2( 808, 256 )
 [node name="PlataformaAlterna2" parent="Plataformas" index="1" instance=ExtResource( 6 )]
 position = Vector2( 1464, 16 )
 
-[node name="PlataformaFragil" parent="Plataformas" index="2" instance=ExtResource( 7 )]
-position = Vector2( 1264, 128 )
+[node name="PlataformaMovible" type="KinematicBody2D" parent="Plataformas" index="2"]
+position = Vector2( 1176, 136 )
+script = ExtResource( 22 )
+__meta__ = {
+"_edit_group_": true
+}
+camino = NodePath("../camino_plat")
+velocidad = 75.0
+
+[node name="Sprite" type="Sprite" parent="Plataformas/PlataformaMovible" index="0"]
+texture = SubResource( 6 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Plataformas/PlataformaMovible" index="1"]
+visible = false
+shape = SubResource( 7 )
 
 [node name="PlataformaFragil2" parent="Plataformas" index="3" instance=ExtResource( 7 )]
 position = Vector2( 1496, 88 )
@@ -205,6 +227,11 @@ position = Vector2( 40, 112 )
 
 [node name="PlataformaFragil7" parent="Plataformas" index="8" instance=ExtResource( 7 )]
 position = Vector2( 40, 192 )
+
+[node name="camino_plat" type="Line2D" parent="Plataformas" index="9"]
+visible = false
+points = PoolVector2Array( 1136, 136, 1400, 136 )
+width = 2.0
 
 [node name="Pinches" type="Node2D" parent="." index="11"]
 

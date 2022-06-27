@@ -44,3 +44,10 @@ func detectar_borde(_borde):
 func perder_vista_jugador():
 	objetivo = null
 	fsm.transition_to("Idle")
+
+
+func on_parry(escudo : Node2D):
+	var dir = (tomar_centro() - escudo.global_position).normalized() * 500
+	var tiempo := 0.5
+	
+	fsm.transition_to("Stun", {"Tiempo" : tiempo, "Dir" : dir})

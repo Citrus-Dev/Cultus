@@ -10,8 +10,6 @@ func _ready() -> void:
 	if !info_persist_nivel.has(NOMBRE_DATO):
 		trigger_empezar_boss.connect("triggered", self, "empezar_boss")
 		return
-	
-	
 
 
 func empezar_boss():

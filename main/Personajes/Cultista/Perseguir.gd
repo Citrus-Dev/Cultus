@@ -30,6 +30,7 @@ func unhandled_input(event : InputEvent) -> void:
 
 
 func process(delta : float) -> void:
+	if owner.muerto: _state_machine.transition_to("Muerte")
 	debug_timer = timer_disparo.time_left
 	if !owner.turning:
 		if !owner.stun:

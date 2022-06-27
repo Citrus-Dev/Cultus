@@ -28,6 +28,7 @@ export(float) var jump_height = 96
 export(float) var jump_time_to_peak = 1.0
 export(float) var jump_time_to_fall = 1.0
 export(bool) var no_gravedad 
+export(bool) var no_limitar_velocidad
 
 # Ignoren esta matematica la saque de internet ni yo la entiendo.
 # Controla la velocidad de saltar.
@@ -137,7 +138,8 @@ func movement_horizontal(_delta : float):
 	else:
 		velocity.x *= friccion 
 	
-	velocity.x = clamp(velocity.x, -max_velocidad_horizontal, max_velocidad_horizontal)
+	if !no_limitar_velocidad:
+		velocity.x = clamp(velocity.x, -max_velocidad_horizontal, max_velocidad_horizontal)
 
 
 func movement_vertical(_delta : float):
@@ -149,7 +151,8 @@ func movement_vertical(_delta : float):
 		else:
 			velocity.y += get_gravity() * _delta
 	
-	velocity.y = clamp(velocity.y, -max_velocidad_vertical, max_velocidad_vertical)
+	if !no_limitar_velocidad:
+		velocity.y = clamp(velocity.y, -max_velocidad_vertical, max_velocidad_vertical)
 
 
 # Movimiento en las cuatro direcciones (sin gravedad)
@@ -165,8 +168,9 @@ func movement_omni():
 	else:
 		velocity.y *= friccion 
 	
-	velocity.x = clamp(velocity.x, -max_velocidad_horizontal, max_velocidad_horizontal)
-	velocity.y = clamp(velocity.y, -max_velocidad_vertical, max_velocidad_vertical)
+	if !no_limitar_velocidad:
+		velocity.x = clamp(velocity.x, -max_velocidad_horizontal, max_velocidad_horizontal)
+		velocity.y = clamp(velocity.y, -max_velocidad_vertical, max_velocidad_vertical)
 
 
 func procesar_knockback():
@@ -331,3 +335,11 @@ func tomar_centro(col_shape : CollisionShape2D = null) -> Vector2:
 	if col_shape == null: col_shape = $CollisionShape2D
 	var s : RectangleShape2D = col_shape.shape
 	return col_shape.global_position
+
+
+func on_parry(escudo : Node2D):
+	var vel_vieja = velocity
+	velocity = (global_position - escudo.global_position) * 500
+	print(name + ": he sido victima d eparry")
+	print("velocidad anterior: " + str(vel_vieja))
+	print("velocidad ahora: " + str(velocity))

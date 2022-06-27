@@ -5,7 +5,9 @@ const ESCENA_MEDIDOR_COOLDOWN = preload("res://main/UI/Hud/MedidorCooldown.tscn"
 const TEXTURA_ICONO = preload("res://assets/ui/IconoHUDCruz.tres")
 
 const DURACION_PARRY := 0.6
+const DURACION_PARRY_DURO := 0.2
 const TIEMPO_COOLDOWN := 1.6
+const TIEMPO_COOLDOWN_DURO := 2.5
 const VEL_DASH := 150.0
 
 signal cooldown_update(valor)
@@ -25,7 +27,7 @@ func _ready():
 	jug = get_parent()
 	jug_hitbox = jug.hitbox
 	area_escudo = get_child(0)
-	area_escudo.connect("body_entered", self, "bloquear_bala")
+	area_escudo.connect("body_entered", self, "determinar_bloqueo")
 	area_escudo.monitoring = false
 	
 	timer_escudo = Timer.new()
@@ -72,10 +74,8 @@ func puede_activar() -> bool:
 
 
 func activar():
-	timer_escudo.start(DURACION_PARRY)
-	timer_cooldown.start(TIEMPO_COOLDOWN)
-	jug.stretcher.stretch(Vector2(1.2, 0.8), DURACION_PARRY)
 	jug.movimiento_desactivado = true
+	jug_hitbox.monitorable = false
 
 
 func terminar():
@@ -86,16 +86,35 @@ func terminar():
 
 
 func empezar_block_quieto():
+	timer_escudo.start(DURACION_PARRY_DURO)
+	timer_cooldown.start(TIEMPO_COOLDOWN_DURO)
+	jug.stretcher.stretch(Vector2(1.2, 0.8), DURACION_PARRY_DURO)
+	
 	activar()
 	dir_mov = Vector2.ZERO
 	area_escudo.monitoring = true
 
 
 func empezar_dash(dir_x : int):
+	timer_escudo.start(DURACION_PARRY)
+	timer_cooldown.start(TIEMPO_COOLDOWN)
+	jug.stretcher.stretch(Vector2(1.2, 0.8), DURACION_PARRY)
+	
 	activar()
 	dir_x = sign(dir_x)
 	dir_mov = Vector2(dir_x, 0)
 	jug_hitbox.monitorable = false
+
+
+func determinar_bloqueo(objeto_en_cuestion):
+	if objeto_en_cuestion is ProyectilBase:
+		bloquear_bala(objeto_en_cuestion)
+	elif objeto_en_cuestion is Personaje:
+		bloquear_individuo(objeto_en_cuestion)
+
+
+func bloquear_individuo(individuo : Personaje):
+	if individuo.has_method("on_parry"): individuo.call("on_parry", self)
 
 
 func bloquear_bala(bala : ProyectilBase):

@@ -103,3 +103,10 @@ func perder_vista_jugador():
 func script_idle(msg : Dictionary):
 	var sm = $StateMachine as StateMachine
 	sm.transition_to("ScriptIdle", msg)
+
+
+func on_parry(escudo : Node2D):
+	var dir = (tomar_centro() - escudo.global_position).normalized() * 250
+	var tiempo := 0.5
+	
+	fsm.transition_to("Stun", {"Tiempo" : tiempo, "Dir" : dir})
