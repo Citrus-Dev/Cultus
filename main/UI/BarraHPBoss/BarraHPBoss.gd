@@ -11,13 +11,14 @@ var barra : BarraHPBossUI
 var activo : bool
 
 func setup():
-	if objetivo_dir:
-		objetivo = get_node(objetivo_dir)
-	elif objetivo_group:
-		objetivo = get_tree().get_nodes_in_group(objetivo_group)[0]
-	else:
-		call_deferred("free")
-		return
+	if objetivo == null:
+		if objetivo_dir:
+			objetivo = get_node(objetivo_dir)
+		elif objetivo_group:
+			objetivo = get_tree().get_nodes_in_group(objetivo_group)[0]
+		else:
+			call_deferred("free")
+			return
 	instanciar_barra()
 
 

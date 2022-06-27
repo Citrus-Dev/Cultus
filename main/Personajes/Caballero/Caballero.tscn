@@ -277,13 +277,24 @@ hurtbox = NodePath("Hurtbox")
 hurtbox_martillo = NodePath("HurtboxMartillo")
 
 [node name="monitores" type="Node2D" parent="." index="0"]
-visible = false
 
 [node name="velocity" parent="monitores" index="0" instance=ExtResource( 11 )]
-position = Vector2( 0, -37 )
+position = Vector2( 0, -32 )
 monitor_target_node = NodePath("../..")
 monitor_target_property = "velocity"
 monitor_flavor_text = "velocity"
+
+[node name="hp" parent="monitores" index="1" instance=ExtResource( 11 )]
+position = Vector2( 0, -40 )
+monitor_target_node = NodePath("../../Status")
+monitor_target_property = "hp"
+monitor_flavor_text = "hp"
+
+[node name="hpmax" parent="monitores" index="2" instance=ExtResource( 11 )]
+position = Vector2( 0, -48 )
+monitor_target_node = NodePath("../../Status")
+monitor_target_property = "hp_max"
+monitor_flavor_text = "hp_max"
 
 [node name="Status" parent="." index="1"]
 hp_max = 200

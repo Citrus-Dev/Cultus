@@ -1010,6 +1010,7 @@ ciclar_var={
 2d_physics/layer_11="Ragdolls"
 2d_physics/layer_12="MundoFondo"
 2d_physics/layer_13="EnemigoFondo"
+2d_physics/layer_14="ParedInvisJug"
 
 [physics]
 

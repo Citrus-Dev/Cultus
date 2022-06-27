@@ -6,6 +6,9 @@ export(NodePath) onready var limites_camara_boss = get_node(limites_camara_boss)
 export(NodePath) onready var puerta = get_node(puerta) as Puerta
 export(NodePath) onready var trigger_empezar_boss = get_node(trigger_empezar_boss) as TriggerOnce
 export(NodePath) onready var barra_hp = get_node(barra_hp) as BarraHPBoss
+export(NodePath) onready var spawner_boss = get_node(spawner_boss) as SpawnerAuto
+
+var boss : Personaje
 
 func _ready() -> void:
 	if !info_persist_nivel.has(NOMBRE_DATO):
@@ -16,3 +19,10 @@ func _ready() -> void:
 func empezar_boss():
 	puerta.cerrar()
 	limites_camara_boss.get_new_limits()
+	boss = spawner_boss.spawn()
+#	yield(get_tree().create_timer(1.2), "timeout")
+	
+	barra_hp.objetivo = boss
+	barra_hp.set_activo(true)
+
+
