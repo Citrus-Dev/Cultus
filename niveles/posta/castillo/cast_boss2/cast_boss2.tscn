@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://assets/tilesets/tileset_castillo.tres" type="TileSet" id=1]
 [ext_resource path="res://niveles/Nivel.tscn" type="PackedScene" id=2]
@@ -10,6 +10,9 @@
 [ext_resource path="res://assets/objetos/puerta.png" type="Texture" id=8]
 [ext_resource path="res://main/Triggers/TriggerOnce.tscn" type="PackedScene" id=9]
 [ext_resource path="res://main/Objetos_mapa/TransicionDeNivel/TransicionDeNivelConArea.tscn" type="PackedScene" id=10]
+[ext_resource path="res://main/UI/BarraHPBoss/BarraHPBoss.gd" type="Script" id=11]
+[ext_resource path="res://main/Objetos_mapa/Plataformas alternas/PlataformaAlterna.tscn" type="PackedScene" id=12]
+[ext_resource path="res://main/SpawnerAuto/spawner_auto.gd" type="Script" id=13]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 365, 324 )
@@ -29,6 +32,7 @@ primer_limite_camara = NodePath("camara limites/inicial")
 limites_camara_boss = NodePath("camara limites/boss")
 puerta = NodePath("Puerta")
 trigger_empezar_boss = NodePath("triggers/TriggerOnce")
+barra_hp = NodePath("BarraHPBoss")
 
 [node name="TileMapFondo" type="TileMap" parent="Fondo" index="0"]
 modulate = Color( 0.188235, 0.188235, 0.188235, 1 )
@@ -101,3 +105,17 @@ texture = ExtResource( 8 )
 visible = false
 position = Vector2( -6.10352e-05, 23 )
 shape = SubResource( 3 )
+
+[node name="BarraHPBoss" type="Node2D" parent="." index="10"]
+position = Vector2( 448, 128 )
+script = ExtResource( 11 )
+
+[node name="PlataformaAlterna" parent="." index="11" instance=ExtResource( 12 )]
+position = Vector2( 696, 152 )
+
+[node name="PlataformaAlterna2" parent="." index="12" instance=ExtResource( 12 )]
+position = Vector2( 808, 152 )
+
+[node name="SpawnerBoss" type="Position2D" parent="." index="13"]
+position = Vector2( 776, 120 )
+script = ExtResource( 13 )
