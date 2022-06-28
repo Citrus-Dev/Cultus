@@ -21,6 +21,9 @@ func puede_disparar() -> bool:
 
 
 func disparar(_origin : Node, _dir : float):
+	if !puede_disparar(): 
+		return
+	
 	if skin_inst != null:
 		skin_inst.animador.stop()
 		skin_inst.animador.play("disparar")

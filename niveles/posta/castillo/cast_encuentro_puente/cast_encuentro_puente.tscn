@@ -87,7 +87,8 @@ direccion_movimiento = 1
 [node name="TransicionDeNivelConArea7" parent="triggers" index="3" instance=ExtResource( 17 )]
 position = Vector2( 1408, 112 )
 ID = "enc_puente_der_alto"
-direccion_nivel = "res://niveles/posta/castillo/cast_encuentro_puente/cast_encuentro_puente.tscn"
+ID_objetivo = "entrada_izq"
+direccion_nivel = "res://niveles/posta/castillo/cast_encuentro2/cast_encuentro2.tscn"
 direccion_movimiento = 1
 
 [node name="SpawnJugador" type="Node2D" parent="." index="7"]

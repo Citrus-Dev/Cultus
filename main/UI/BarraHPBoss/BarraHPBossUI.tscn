@@ -19,33 +19,33 @@ margin_bottom = -20.0
 margin_right = 472.0
 margin_bottom = 248.0
 
-[node name="relleno" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
-margin_right = 472.0
-margin_bottom = 228.0
-size_flags_vertical = 3
-
 [node name="Barra" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
-margin_top = 232.0
 margin_right = 472.0
-margin_bottom = 248.0
+margin_bottom = 16.0
 rect_min_size = Vector2( 0, 16 )
 
 [node name="relleno2" type="MarginContainer" parent="MarginContainer/VBoxContainer/Barra"]
-margin_right = 57.0
+margin_right = 72.0
 margin_bottom = 16.0
 size_flags_horizontal = 3
 
 [node name="ProgressBar" type="ProgressBar" parent="MarginContainer/VBoxContainer/Barra"]
 modulate = Color( 0.905882, 0, 0, 1 )
-margin_left = 61.0
-margin_right = 411.0
+margin_left = 76.0
+margin_right = 396.0
 margin_bottom = 16.0
-rect_min_size = Vector2( 350, 0 )
+rect_min_size = Vector2( 320, 0 )
 size_flags_vertical = 1
 percent_visible = false
 
 [node name="relleno" type="MarginContainer" parent="MarginContainer/VBoxContainer/Barra"]
-margin_left = 415.0
+margin_left = 400.0
 margin_right = 472.0
 margin_bottom = 16.0
 size_flags_horizontal = 3
+
+[node name="relleno" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+margin_top = 20.0
+margin_right = 472.0
+margin_bottom = 248.0
+size_flags_vertical = 3

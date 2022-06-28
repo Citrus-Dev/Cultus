@@ -263,6 +263,7 @@ extents = Vector2( 2, 2 )
 
 [node name="Caballero" instance=ExtResource( 1 )]
 collision_layer = 4
+collision_mask = 513
 script = ExtResource( 9 )
 skin = NodePath("Skin")
 skin_sprite_path = NodePath("Skin/Sprite")
@@ -270,6 +271,7 @@ aceleracion = 7.0
 friccion = 0.95
 max_velocidad_horizontal = 90.0
 max_velocidad_vertical = 500.0
+jump_height = 48.0
 jump_time_to_peak = 0.5
 jump_time_to_fall = 0.5
 fsm = NodePath("StateMachine")
@@ -277,6 +279,7 @@ hurtbox = NodePath("Hurtbox")
 hurtbox_martillo = NodePath("HurtboxMartillo")
 
 [node name="monitores" type="Node2D" parent="." index="0"]
+visible = false
 
 [node name="velocity" parent="monitores" index="0" instance=ExtResource( 11 )]
 position = Vector2( 0, -32 )

@@ -203,6 +203,7 @@ tracks/1/keys = {
 
 [node name="Esqueleto" type="KinematicBody2D"]
 collision_layer = 4
+collision_mask = 513
 script = ExtResource( 3 )
 skin = NodePath("Skin")
 skin_sprite_path = NodePath("Skin/Sprite")

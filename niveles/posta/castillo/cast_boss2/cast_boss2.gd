@@ -20,9 +20,13 @@ func empezar_boss():
 	puerta.cerrar()
 	limites_camara_boss.get_new_limits()
 	boss = spawner_boss.spawn()
-#	yield(get_tree().create_timer(1.2), "timeout")
+	spawner_boss.connect("spawn_muerto", self, "terminar_boss")
+	
+	yield(get_tree().create_timer(1.2), "timeout")
 	
 	barra_hp.objetivo = boss
 	barra_hp.set_activo(true)
 
 
+func terminar_boss():
+	primer_limite_camara_obj.get_new_limits()

@@ -245,7 +245,7 @@ func input_jump():
 
 func borrar_objetos_pisando():
 	for i in objetos_pisando:
-		if i is PlataformaFragil:
+		if i is PlataformaFragil or i is PlataformaMovible:
 			i.pisando = false
 	objetos_pisando.clear()
 
@@ -275,7 +275,7 @@ func tomar_objetos_pisando():
 		objetos_pisando.append(rc2["collider"])
 	
 	for i in objetos_pisando:
-		if i is PlataformaFragil:
+		if i is PlataformaFragil or i is PlataformaMovible:
 			i.pisando = true
 
 

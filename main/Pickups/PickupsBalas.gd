@@ -23,6 +23,9 @@ func proceso(delta):
 func agarrar(_jug):
 	var inv : InvBalas = _jug.controlador_armas.inv_balas
 	var arma : Arma = _jug.controlador_armas.arma_actual
+	
+	if arma == null or inv == null: return
+	
 	inv.agregar_balas(cant_bala, nombre_bala)
 	if arma.has_method("actualizar_medidor"):
 		arma.actualizar_medidor()

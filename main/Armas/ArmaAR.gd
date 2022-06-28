@@ -54,10 +54,11 @@ func procesar_arma(_delta : float):
 
 
 func disparar(_origin : Node, _dir : float):
+	if timer_recarga.is_stopped() and balas_actual <= 0:
+		recargar()
+	
 	if !puede_disparar(): 
 		return
-	elif timer_recarga.is_stopped() and balas_actual <= 0:
-		recargar()
 	
 	if skin_inst != null:
 		skin_inst.animador.stop()

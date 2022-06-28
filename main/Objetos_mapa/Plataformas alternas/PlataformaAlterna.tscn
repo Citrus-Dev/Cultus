@@ -4,7 +4,8 @@
 [ext_resource path="res://main/libs/BlockinPolygon/BlockinPolygon.gd" type="Script" id=2]
 
 [node name="PlataformaAlterna" type="StaticBody2D"]
-collision_mask = 0
+collision_layer = 512
+collision_mask = 512
 script = ExtResource( 1 )
 color_inactivo = Color( 0.121569, 0.121569, 0.121569, 1 )
 

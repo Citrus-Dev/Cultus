@@ -95,9 +95,6 @@ func procesar_arma_actual(_delta : float):
 	if arma_actual.esta_en_cooldown(): puede_disparar = false
 	
 	if puede_disparar:
-		puede_disparar = arma_actual.puede_disparar()
-	
-	if puede_disparar:
 		arma_actual.disparar(self, angulo)
 		owner.stretcher.stretch(Vector2(0.9, 1.2), arma_actual.recoil_visual_duracion)
 		arma_actual.comenzar_cooldown()
