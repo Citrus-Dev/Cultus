@@ -61,6 +61,7 @@ func enemigo_detectado(hitbox : Hitbox):
 	var dmg_info = InfoDmg.new()
 	dmg_info.dmg_cantidad = 60
 	dmg_info.dmg_stun = 100
+	dmg_info.dmg_tipo = InfoDmg.DMG_TIPOS.EXPLOSION
 	hitbox.recibir_dmg(dmg_info)
 
 

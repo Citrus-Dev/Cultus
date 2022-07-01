@@ -87,7 +87,11 @@ func disparar_secundario(_origin : Node, _dir : float):
 
 
 func puede_disparar() -> bool:
-	return balas_actual > 0 and timer_recarga.is_stopped() and inv_balas.hay_balas(TIPO_BALAS)
+	return bool(
+		balas_actual > 0 and 
+		timer_recarga.is_stopped() and 
+		inv_balas.hay_balas(TIPO_BALAS) and 
+		cooldown_actual_sec <= 0.0)
 
 
 func puede_disparar_sec() -> bool:

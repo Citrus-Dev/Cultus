@@ -91,7 +91,7 @@ position = Vector2( 40, 104 )
 position = Vector2( 672, 336 )
 
 [node name="PickupHP" parent="." index="21" instance=ExtResource( 8 )]
-position = Vector2( 1336, 344 )
+position = Vector2( 1344, 344 )
 no_desaparecer = true
 
 [node name="Pinchos" parent="." index="22" instance=ExtResource( 9 )]

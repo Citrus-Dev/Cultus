@@ -19,25 +19,28 @@ func _ready():
 	position = pos
 	
 	init_estela()
-	estela.set_process(false)
-	estela.add_point(global_position)
+	if estela != null:
+		estela.set_process(false)
+		estela.add_point(global_position)
 
 
 func _physics_process(delta):
-	estela.add_point(global_position)
+	if estela != null:
+		estela.add_point(global_position)
 	
 	velocity.x = lerp(velocity.x, 0, friccion * delta)
 	velocity.y += gravedad * delta
 	var col : KinematicCollision2D = move_and_collide(velocity * delta)
 	if !usar_timer:
 		if col:
+			print(col.collider)
 			impacto()
 	else:
 		if col:
 			velocity = velocity.bounce(col.normal) * 0.8
 			velocity.y *= 0.6
 	
-	if estela.points.size() > estela.numero_de_segmentos + 1:
+	if estela != null and estela.points.size() > estela.numero_de_segmentos + 1:
 		estela.remove_point(0)
 
 

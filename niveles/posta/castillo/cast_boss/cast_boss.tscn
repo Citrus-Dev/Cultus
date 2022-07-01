@@ -175,7 +175,7 @@ direccion_nivel = "res://niveles/posta/castillo/cast_boss2/cast_boss2.tscn"
 direccion_movimiento = 1
 
 [node name="SpawnJugador" type="Node2D" parent="." index="7"]
-position = Vector2( 37, -326 )
+position = Vector2( 763, 322 )
 script = ExtResource( 17 )
 
 [node name="PickupSlide" parent="." index="8" instance=ExtResource( 8 )]
@@ -220,23 +220,18 @@ position = Vector2( 1496, 88 )
 position = Vector2( 24, -304 )
 
 [node name="PlataformaFragil4" parent="Plataformas" index="5" instance=ExtResource( 6 )]
-position = Vector2( 48, -160 )
-collision_mask = 512
+position = Vector2( 136, -160 )
 
-[node name="PlataformaFragil8" parent="Plataformas" index="6" instance=ExtResource( 6 )]
-position = Vector2( 104, -160 )
-collision_mask = 512
-
-[node name="PlataformaFragil5" parent="Plataformas" index="7" instance=ExtResource( 6 )]
+[node name="PlataformaFragil5" parent="Plataformas" index="6" instance=ExtResource( 6 )]
 position = Vector2( 24, -16 )
 
-[node name="PlataformaFragil6" parent="Plataformas" index="8" instance=ExtResource( 6 )]
+[node name="PlataformaFragil6" parent="Plataformas" index="7" instance=ExtResource( 6 )]
 position = Vector2( 40, 112 )
 
-[node name="PlataformaFragil7" parent="Plataformas" index="9" instance=ExtResource( 6 )]
+[node name="PlataformaFragil7" parent="Plataformas" index="8" instance=ExtResource( 6 )]
 position = Vector2( 40, 192 )
 
-[node name="camino_plat" type="Line2D" parent="Plataformas" index="10"]
+[node name="camino_plat" type="Line2D" parent="Plataformas" index="9"]
 visible = false
 points = PoolVector2Array( 1136, 136, 1400, 136 )
 width = 2.0
@@ -281,25 +276,22 @@ spawn = ExtResource( 13 )
 [node name="Cultista" parent="." index="16" instance=ExtResource( 9 )]
 position = Vector2( 1080, 160 )
 
-[node name="Cultista6" parent="." index="17" instance=ExtResource( 9 )]
-position = Vector2( 88, -168 )
+[node name="Cultista2" parent="." index="17" instance=ExtResource( 9 )]
+position = Vector2( 368, 325 )
 
-[node name="Cultista2" parent="." index="18" instance=ExtResource( 9 )]
-position = Vector2( 392, 336 )
-
-[node name="Cultista3" parent="." index="19" instance=ExtResource( 9 )]
+[node name="Cultista3" parent="." index="18" instance=ExtResource( 9 )]
 position = Vector2( 456, 336 )
 
-[node name="Cultista4" parent="." index="20" instance=ExtResource( 9 )]
+[node name="Cultista4" parent="." index="19" instance=ExtResource( 9 )]
 position = Vector2( 1144, 16 )
 
-[node name="Cultista5" parent="." index="21" instance=ExtResource( 9 )]
+[node name="Cultista5" parent="." index="20" instance=ExtResource( 9 )]
 position = Vector2( 1168, 16 )
 
-[node name="Caballero" parent="." index="22" instance=ExtResource( 21 )]
+[node name="Caballero" parent="." index="21" instance=ExtResource( 21 )]
 position = Vector2( 424, 336 )
 
-[node name="Puerta" parent="." index="23" instance=ExtResource( 22 )]
+[node name="Puerta" parent="." index="22" instance=ExtResource( 22 )]
 position = Vector2( 1000, -31 )
 motion/sync_to_physics = true
 tiempo_abrir = 1.5

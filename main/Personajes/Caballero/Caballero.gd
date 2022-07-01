@@ -26,6 +26,7 @@ func set_muerto(toggle : bool):
 	muerto = toggle
 	if toggle:
 		collision_mask = 1 # No colisionas con nada mas que el escenario
+		collision_layer = 0
 		hitbox.collision_layer = 0 # desactiva la hitbox totalmente
 		hurtbox.collision_mask = 0 
 		hurtbox_martillo.collision_mask = 0 

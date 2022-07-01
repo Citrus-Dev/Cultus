@@ -14,7 +14,7 @@
 [ext_resource path="res://main/Objetos_mapa/Plataformas alternas/PlataformaAlterna.tscn" type="PackedScene" id=12]
 [ext_resource path="res://main/SpawnerAuto/spawner_auto.gd" type="Script" id=13]
 [ext_resource path="res://main/Triggers/TriggerNPCMover.gd" type="Script" id=14]
-[ext_resource path="res://main/Personajes/Cultista/Cultista.tscn" type="PackedScene" id=15]
+[ext_resource path="res://main/Personajes/Bosses/paladin/BossPaladin.tscn" type="PackedScene" id=15]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 365, 324 )
@@ -142,7 +142,7 @@ position = Vector2( 448, 128 )
 script = ExtResource( 11 )
 
 [node name="SpawnerBoss" type="Position2D" parent="." index="11"]
-position = Vector2( 760, 120 )
+position = Vector2( 774, 106 )
 script = ExtResource( 13 )
 spawn = ExtResource( 15 )
 

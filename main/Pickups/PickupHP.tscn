@@ -5,6 +5,7 @@
 [ext_resource path="res://assets/objetos/vida_pickup.png" type="Texture" id=3]
 
 [node name="PickupHP" instance=ExtResource( 1 )]
+collision_mask = 513
 script = ExtResource( 2 )
 extra_lifetime = 2.0
 

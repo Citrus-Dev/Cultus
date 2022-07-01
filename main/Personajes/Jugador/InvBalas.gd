@@ -26,8 +26,8 @@ func agregar_balas(cant, id):
 	emit_signal("balas_cambiadas", dict_balas)
 
 
-func hay_balas(id : String) -> bool:
-	return dict_balas[id]["cant"] > 0
+func hay_balas(id : String, minimo : int = 0) -> bool:
+	return dict_balas[id]["cant"] > minimo
 
 
 func set_medidor(_medidor : HudMedidorBalas):

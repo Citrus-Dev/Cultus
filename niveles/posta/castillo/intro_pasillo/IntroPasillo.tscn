@@ -21,11 +21,11 @@ extents = Vector2( 17.375, 43.5 )
 [sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 462, 266 )
 
-[sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 34.5, 48.5 )
-
 [sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 13, 24 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 34.5, 48.5 )
 
 [node name="IntroPasillo" instance=ExtResource( 4 )]
 script = ExtResource( 9 )
@@ -33,7 +33,7 @@ primer_limite_camara = NodePath("camara limites/CameraBounds")
 musica = ExtResource( 10 )
 path_cult1 = NodePath("FondoLejos/ParallaxBackground/obj/awwww")
 path_cult2 = NodePath("FondoLejos/ParallaxBackground/obj/Cultista2")
-path_trigger = NodePath("trigger_script")
+path_trigger = NodePath("triggers/trigger_script")
 correr_obj_path = NodePath("ObjCorrer")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="FondoLejos" index="0"]
@@ -134,7 +134,24 @@ visible = false
 position = Vector2( 458, 22 )
 shape = SubResource( 5 )
 
-[node name="trigger_script" type="Area2D" parent="." index="7"]
+[node name="ObjCorrer" type="Position2D" parent="." index="7"]
+position = Vector2( 536, 74 )
+
+[node name="TransicionDeNivelConArea" parent="triggers" index="0" instance=ExtResource( 11 )]
+position = Vector2( 908, 144 )
+direccion_movimiento = 1
+
+[node name="TransicionDeNivel" parent="triggers" index="1" instance=ExtResource( 5 )]
+position = Vector2( 24, 240 )
+ID = "entrada_pasillo"
+ID_objetivo = "backtrack"
+direccion_nivel = "res://niveles/posta/castillo/cast_0_tut/cast_0_tut.tscn"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="triggers/TransicionDeNivel" index="0"]
+position = Vector2( 3, -24 )
+shape = SubResource( 6 )
+
+[node name="trigger_script" type="Area2D" parent="triggers" index="2"]
 modulate = Color( 0.94902, 0.486275, 0.14902, 1 )
 position = Vector2( 306, 160 )
 collision_layer = 0
@@ -143,25 +160,9 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="trigger_script" index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="triggers/trigger_script" index="0"]
 rotation = -0.60818
 shape = SubResource( 3 )
-
-[node name="ObjCorrer" type="Position2D" parent="." index="8"]
-position = Vector2( 536, 74 )
-
-[node name="TransicionDeNivel" parent="." index="9" instance=ExtResource( 5 )]
-position = Vector2( 24, 240 )
-ID = "entrada_pasillo"
-ID_objetivo = "backtrack"
-direccion_nivel = "res://niveles/posta/castillo/cast_0_tut/cast_0_tut.tscn"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TransicionDeNivel" index="0"]
-position = Vector2( 3, -24 )
-shape = SubResource( 6 )
-
-[node name="TransicionDeNivelConArea" parent="triggers" index="0" instance=ExtResource( 11 )]
-position = Vector2( 908, 144 )
 
 [editable path="FondoLejos/ParallaxBackground/obj/Borde"]
 [editable path="FondoLejos/ParallaxBackground/obj/Borde2"]

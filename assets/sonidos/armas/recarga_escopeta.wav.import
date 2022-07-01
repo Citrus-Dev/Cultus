@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/recarga_escopeta.wav-da5496ac65a4a6d619048b96c00a4295.sample"
+
+[deps]
+
+source_file="res://assets/sonidos/armas/recarga_escopeta.wav"
+dest_files=[ "res://.import/recarga_escopeta.wav-da5496ac65a4a6d619048b96c00a4295.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

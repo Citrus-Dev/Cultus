@@ -266,7 +266,10 @@ func set_muerto(toggle : bool):
 #	hitbox.collision_layer = 0 # desactiva la hitbox totalmente
 	if toggle:
 		collision_mask = 1 # No colisionas con nada mas que el escenario
+		collision_layer = 0
 		hitbox.collision_layer = 0 # desactiva la hitbox totalmente
+		hitbox.set_deferred("monitorable", false)
+		hitbox.collision_mask = 0 
 	instanciar_ragdoll()
 	cambiar_visibilidad(!toggle)
 

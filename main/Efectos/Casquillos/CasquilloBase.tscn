@@ -12,6 +12,7 @@ extents = Vector2( 1, 1 )
 [node name="CasquilloBase" type="KinematicBody2D"]
 z_index = 2
 collision_layer = 64
+collision_mask = 513
 script = ExtResource( 2 )
 curva_fade = SubResource( 2 )
 

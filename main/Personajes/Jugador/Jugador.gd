@@ -245,6 +245,7 @@ func input_jump():
 
 func borrar_objetos_pisando():
 	for i in objetos_pisando:
+		if i == null: continue
 		if i is PlataformaFragil or i is PlataformaMovible:
 			i.pisando = false
 	objetos_pisando.clear()

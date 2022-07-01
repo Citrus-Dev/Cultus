@@ -64,6 +64,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://main/libs/BehaviorTree/BT_base.gd"
 }, {
+"base": "Granada",
+"class": "BalaFlak",
+"language": "GDScript",
+"path": "res://main/Proyectiles/BalaFlak.gd"
+}, {
 "base": "Arma",
 "class": "Ballesta",
 "language": "GDScript",
@@ -298,6 +303,16 @@ _global_script_classes=[ {
 "class": "Gauss",
 "language": "GDScript",
 "path": "res://main/Armas/ArmaGauss.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "GibFisicas",
+"language": "GDScript",
+"path": "res://main/GibFisicas.gd"
+}, {
+"base": "Node2D",
+"class": "Gibs",
+"language": "GDScript",
+"path": "res://main/Gibs.gd"
 }, {
 "base": "KinematicBody2D",
 "class": "Granada",
@@ -721,6 +736,7 @@ _global_script_class_icons={
 "ArmaRevolverEsqueleto": "",
 "Armas": "",
 "BTBase": "",
+"BalaFlak": "",
 "Ballesta": "",
 "BarraHPBoss": "",
 "BarraHPBossUI": "",
@@ -768,6 +784,8 @@ _global_script_class_icons={
 "ExplHE": "",
 "Explosion": "",
 "Gauss": "",
+"GibFisicas": "",
+"Gibs": "",
 "Granada": "",
 "GuardarPosMouse": "",
 "GuardarPropiedadBlackboard": "",

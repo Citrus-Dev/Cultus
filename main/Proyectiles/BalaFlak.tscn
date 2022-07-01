@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://main/Efectos/Estelas/EstelaBase.tscn" type="PackedScene" id=1]
+[ext_resource path="res://main/Proyectiles/BalaFlak.gd" type="Script" id=2]
+[ext_resource path="res://main/SistemaDaño/Hurtbox.tscn" type="PackedScene" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 3, 3 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 3, 3 )
+
+[node name="BalaFlak" type="KinematicBody2D"]
+collision_layer = 0
+collision_mask = 8737
+script = ExtResource( 2 )
+gravedad = 650.0
+friccion = 0.9
+usar_timer = true
+timer = 5.0
+
+[node name="EstelaBase" parent="." instance=ExtResource( 1 )]
+width = 2.0
+numero_de_segmentos = 10
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="Hurtbox" parent="." instance=ExtResource( 3 )]
+collision_mask = 32
+is_constant = true
+dmg = 15
+dmg_tipo = 2
+cooldown_de_dmg = 0.6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource( 2 )

@@ -9,9 +9,11 @@ export(String) var arma_id = "ArmaAR"
 export(bool) var actor
 
 var es_actor : bool setget set_es_actor
+var gibs_escena
 
 func _init():
 	add_to_group("Enemigos")
+	gibs_escena = preload("res://main/Personajes/Cultista/gibs/GibsCultista.tscn")
 
 
 func set_es_actor(_actor : bool):
@@ -31,6 +33,7 @@ func set_es_actor(_actor : bool):
 	else:
 		set_collision_layer_bit(2, true)
 		set_collision_mask_bit(0, true)
+		set_collision_mask_bit(9, true)
 		hitbox.set_collision_layer_bit(5, true)
 		hurtbox.set_collision_mask_bit(4, true)
 
@@ -75,13 +78,28 @@ func evento_dmg(_dmg : InfoDmg):
 		alertar()
 
 
+func morir(_info : InfoDmg):
+	emit_signal("muerto")
+	set_muerto(true)
+	remove_from_group("EnemigosAlertados")
+	remove_from_group("Enemigos")
+	
+	var tipo = _info.dmg_tipo
+	
+	if tipo == InfoDmg.DMG_TIPOS.EXPLOSION:
+		instanciar_gibs()
+	else:
+		instanciar_ragdoll()
+
+
 func set_muerto(toggle : bool):
 	muerto = toggle
 	if toggle:
 		collision_mask = 1 # No colisionas con nada mas que el escenario
+		collision_layer = 0
+		set_deferred("monitorable", false)
 		hitbox.collision_layer = 0 # desactiva la hitbox totalmente
 		hurtbox.collision_mask = 0 
-	instanciar_ragdoll()
 	cambiar_visibilidad(!toggle)
 	fsm.transition_to("Muerte")
 
@@ -110,3 +128,12 @@ func on_parry(escudo : Node2D):
 	var tiempo := 0.5
 	
 	fsm.transition_to("Stun", {"Tiempo" : tiempo, "Dir" : dir})
+
+
+func instanciar_gibs():
+	if gibs_escena == null:
+		return
+	var gib = gibs_escena.instance() as Gibs
+	gib.global_position = global_position
+	get_parent().add_child(gib)
+
