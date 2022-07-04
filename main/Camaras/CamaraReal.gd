@@ -10,6 +10,8 @@ var view_offset : Vector2
 var shaker := Shaker.new()
 
 func _ready() -> void:
+	add_to_group("Camara")
+	
 	shaker.decay = 1.5
 	shaker.max_offset = Vector2(5, 5)
 	shaker.target = self

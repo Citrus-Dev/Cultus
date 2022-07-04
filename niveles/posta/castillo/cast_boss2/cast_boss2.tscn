@@ -2,7 +2,7 @@
 
 [ext_resource path="res://assets/tilesets/tileset_castillo.tres" type="TileSet" id=1]
 [ext_resource path="res://niveles/Nivel.tscn" type="PackedScene" id=2]
-[ext_resource path="res://main/libs/BlockinPolygon/BlockinPolygon.gd" type="Script" id=3]
+[ext_resource path="res://main/Objetos_mapa/PuenteCastillo.tscn" type="PackedScene" id=3]
 [ext_resource path="res://niveles/posta/castillo/cast_boss2/cast_boss2.gd" type="Script" id=4]
 [ext_resource path="res://main/CameraLimitSystem/CameraBounds.gd" type="Script" id=5]
 [ext_resource path="res://main/Objetos_mapa/SpawnJugador.gd" type="Script" id=6]
@@ -45,6 +45,7 @@ puerta = NodePath("Puerta")
 trigger_empezar_boss = NodePath("triggers/TriggerOnce")
 barra_hp = NodePath("BarraHPBoss")
 spawner_boss = NodePath("SpawnerBoss")
+puente = NodePath("Puente")
 
 [node name="TileMapFondo" type="TileMap" parent="Fondo" index="0"]
 modulate = Color( 0.188235, 0.188235, 0.188235, 1 )
@@ -107,14 +108,7 @@ direccion_nivel = "res://niveles/posta/castillo/cast_boss/cast_boss.tscn"
 position = Vector2( -2, 2 )
 shape = SubResource( 7 )
 
-[node name="Puente" type="StaticBody2D" parent="." index="7"]
-collision_mask = 0
-
-[node name="BlockinPolygon" type="Polygon2D" parent="Puente" index="0"]
-color = Color( 0.2, 0.0862745, 0.0862745, 1 )
-polygon = PoolVector2Array( 224, 272, 704, 272, 704, 304, 224, 304 )
-script = ExtResource( 3 )
-enable_collisions = true
+[node name="Puente" parent="." index="7" instance=ExtResource( 3 )]
 
 [node name="SpawnJugador" type="Node2D" parent="." index="8"]
 position = Vector2( 115.046, 238.913 )
@@ -145,6 +139,7 @@ script = ExtResource( 11 )
 position = Vector2( 774, 106 )
 script = ExtResource( 13 )
 spawn = ExtResource( 15 )
+spawn_group = "forro"
 
 [node name="ParedInvis" type="StaticBody2D" parent="." index="12"]
 position = Vector2( 700.035, 126.735 )
@@ -168,6 +163,10 @@ position = Vector2( 758.038, 129.479 )
 collision_layer = 0
 collision_mask = 4
 script = ExtResource( 14 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
 dir = Vector2( -1, 0 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/TriggerNPCMover" index="0"]

@@ -27,6 +27,7 @@ func instanciar_barra():
 	barra.connect("objetivo_muerto", self, "borrar_barra")
 	var hud = get_tree().get_nodes_in_group("HUD")[0]
 	hud.add_child(barra)
+	yield(get_tree(), "idle_frame")
 	barra.setup_barra(objetivo)
 
 

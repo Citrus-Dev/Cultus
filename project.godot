@@ -664,6 +664,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://main/SistemaDaño/Status.gd"
 }, {
+"base": "Status",
+"class": "StatusJugador",
+"language": "GDScript",
+"path": "res://main/SistemaDaño/StatusJugador.gd"
+}, {
 "base": "Node",
 "class": "Steering",
 "language": "GDScript",
@@ -856,6 +861,7 @@ _global_script_class_icons={
 "State": "",
 "StateMachine": "",
 "Status": "",
+"StatusJugador": "",
 "Steering": "",
 "SteeringContexto": "",
 "Stretcher": "",

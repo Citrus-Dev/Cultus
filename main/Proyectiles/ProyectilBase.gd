@@ -1,6 +1,7 @@
 class_name ProyectilBase
 extends KinematicBody2D
 
+export(PackedScene) var efecto
 export(float) var move_speed
 export(float) var lifetime
 
@@ -48,6 +49,8 @@ func _physics_process(delta: float) -> void:
 	)
 	
 	if !res.empty():
+		if efecto:
+			instanciar_efecto(res["position"], res["normal"].angle())
 		var collider = res["collider"]
 		if collider is Hitbox:
 			if !collider.monitorable: return
@@ -73,3 +76,10 @@ func init_estela():
 # Cambia la mascara de colision para que pegue a enemigos (reflejado del escudo)
 func reflejar():
 	collision_mask = 33
+
+
+func instanciar_efecto(pos : Vector2, rot : float):
+	var new = efecto.instance()
+	get_parent().add_child(new)
+	new.rotation = rot
+	new.global_position = pos

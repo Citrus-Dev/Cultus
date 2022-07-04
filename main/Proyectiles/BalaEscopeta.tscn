@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://assets/proyectiles/bala_escopeta.png" type="Texture" id=1]
 [ext_resource path="res://main/Proyectiles/ProyectilBase.tscn" type="PackedScene" id=2]
 [ext_resource path="res://main/Efectos/Estelas/EstelaBase.tscn" type="PackedScene" id=3]
+[ext_resource path="res://main/particulas/ImpactoBala.tscn" type="PackedScene" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 2, 2 )
@@ -11,6 +12,7 @@ extents = Vector2( 2, 2 )
 colors = PoolColorArray( 0, 0, 0, 0, 1, 0.517647, 0.517647, 1 )
 
 [node name="BalaEscopeta" instance=ExtResource( 2 )]
+efecto = ExtResource( 4 )
 move_speed = 1300.0
 lifetime = 1.0
 

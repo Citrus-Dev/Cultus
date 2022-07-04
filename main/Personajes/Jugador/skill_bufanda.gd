@@ -101,7 +101,7 @@ func encontrar_punto_de_agarre():
 		jug.global_position,
 		limitar_distancia(pos_objetivo),
 		[],
-		1
+		513
 	)
 	
 	if !rc.empty():

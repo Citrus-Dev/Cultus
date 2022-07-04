@@ -1,6 +1,7 @@
 class_name ProyectilGaussV2
 extends Node2D
 
+const IMPACTO_ESCENA := preload("res://main/particulas/ImpactoGauss.tscn")
 const VELOCIDAD_FADE := 2.5
 
 export(NodePath) onready var estela = get_node(estela) as Line2D
@@ -34,6 +35,7 @@ func dibujar_hitscan(_dir : float):
 	)
 	
 	if !hitscan.empty():
+		instanciar_efecto(hitscan["position"], hitscan["normal"].angle())
 		var collider = hitscan["collider"]
 		if collider is Hitbox:
 			if !collider.monitorable: return
@@ -45,3 +47,10 @@ func dibujar_hitscan(_dir : float):
 	estela.points.resize(2)
 	estela.add_point(global_position, 0)
 	estela.add_point(final, 1)
+
+
+func instanciar_efecto(pos : Vector2, rot : float):
+	var new = IMPACTO_ESCENA.instance()
+	get_parent().add_child(new)
+	new.rotation = rot
+	new.global_position = pos

@@ -1,9 +1,9 @@
 [gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://main/Personajes/Jugador/Jugador.gd" type="Script" id=1]
+[ext_resource path="res://main/SistemaDaño/StatusJugador.gd" type="Script" id=2]
 [ext_resource path="res://main/Personajes/Jugador/ControladorArmasJugador.gd" type="Script" id=3]
 [ext_resource path="res://main/Componentes/Stretcher.gd" type="Script" id=4]
-[ext_resource path="res://main/SistemaDaño/Status.gd" type="Script" id=5]
 [ext_resource path="res://main/SistemaDaño/Hitbox.tscn" type="PackedScene" id=6]
 [ext_resource path="res://main/libs/DebugMonitor/DebugMonitor.tscn" type="PackedScene" id=7]
 [ext_resource path="res://assets/jug/player.png" type="Texture" id=8]
@@ -484,7 +484,7 @@ monitor_target_property = "monitorable"
 monitor_flavor_text = "monitorable"
 
 [node name="Status" type="Node" parent="."]
-script = ExtResource( 5 )
+script = ExtResource( 2 )
 hp_max = 100
 agente = NodePath("..")
 
