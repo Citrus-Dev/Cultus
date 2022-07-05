@@ -1,7 +1,18 @@
 extends State
+# Moverse lentamente hacia una direccion hasta lo que dure la animacion de girar.
+# Quedarse quieto por unos segundos y cambiar de ataque.
+
+const TIEMPO_ESPERA_FINAL := .8
+
+var timer_final : float
+var descontando : bool
 
 func enter(msg : Dictionary = {}) -> void:
-	return 
+	owner.animador.play("girar")
+	owner.input.x = owner.dir
+	owner.max_velocidad_horizontal = 120
+	
+	owner.animador.connect("animation_finished", self, "animacion_terminada")
 
 
 func unhandled_input(event : InputEvent) -> void:
@@ -9,12 +20,31 @@ func unhandled_input(event : InputEvent) -> void:
 
 
 func process(delta : float) -> void:
-	return
+	if !descontando: return
+	
+	owner.mirar_al_jugador()
+	
+	timer_final -= delta
+	if timer_final <= 0:
+		owner.determinar_siguiente_ataque()
 
 
 func physics_process(delta : float) -> void:
-	return
+	var col : KinematicCollision2D = owner.move_and_collide(owner.velocity, true, true, true)
+	if col and col.normal.x != 0.0: owner.input.x *= -1
 
 
 func exit() -> void:
-	return 
+	owner.valor_default("max_velocidad_horizontal")
+	descontando = false
+
+
+func animacion_terminada(__):
+	owner.animador.play("idle")
+	
+	descontando = true
+	timer_final = TIEMPO_ESPERA_FINAL
+	
+	owner.input.x = 0
+
+

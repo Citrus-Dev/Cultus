@@ -46,6 +46,7 @@ trigger_empezar_boss = NodePath("triggers/TriggerOnce")
 barra_hp = NodePath("BarraHPBoss")
 spawner_boss = NodePath("SpawnerBoss")
 puente = NodePath("Puente")
+plataforma_spawn_boss = NodePath("PlataformaSpawnBoss")
 
 [node name="TileMapFondo" type="TileMap" parent="Fondo" index="0"]
 modulate = Color( 0.188235, 0.188235, 0.188235, 1 )
@@ -152,12 +153,12 @@ modulate = Color( 0.737255, 0.807843, 0.117647, 1 )
 position = Vector2( 19.9648, -18.7346 )
 shape = SubResource( 6 )
 
-[node name="Node2D" type="Node2D" parent="." index="13"]
+[node name="PlataformaSpawnBoss" type="Node2D" parent="." index="13"]
 
-[node name="PlataformaAlterna" parent="Node2D" index="0" instance=ExtResource( 12 )]
+[node name="PlataformaAlterna" parent="PlataformaSpawnBoss" index="0" instance=ExtResource( 12 )]
 position = Vector2( 696, 152 )
 
-[node name="TriggerNPCMover" type="Area2D" parent="Node2D" index="1"]
+[node name="TriggerNPCMover" type="Area2D" parent="PlataformaSpawnBoss" index="1"]
 modulate = Color( 0.443137, 0.145098, 0.792157, 1 )
 position = Vector2( 758.038, 129.479 )
 collision_layer = 0
@@ -169,11 +170,11 @@ __meta__ = {
 }
 dir = Vector2( -1, 0 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/TriggerNPCMover" index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlataformaSpawnBoss/TriggerNPCMover" index="0"]
 position = Vector2( -22.0382, -13.4787 )
 shape = SubResource( 5 )
 
-[node name="PlataformaAlterna2" parent="Node2D" index="2" instance=ExtResource( 12 )]
+[node name="PlataformaAlterna2" parent="PlataformaSpawnBoss" index="2" instance=ExtResource( 12 )]
 position = Vector2( 808, 152 )
 
 [editable path="triggers/TransicionDeNivelConArea2"]

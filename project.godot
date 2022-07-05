@@ -109,6 +109,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://main/libs/BehaviorTree/hojas/Acciones/BorrarValorDeBlackboard.gd"
 }, {
+"base": "Personaje",
+"class": "BossPaladin",
+"language": "GDScript",
+"path": "res://main/Personajes/Bosses/paladin/BossPaladin.gd"
+}, {
 "base": "Node2D",
 "class": "BufanString",
 "language": "GDScript",
@@ -750,6 +755,7 @@ _global_script_class_icons={
 "BlockinPolygon": "",
 "Borde": "",
 "BorrarValorDeBlackboard": "",
+"BossPaladin": "",
 "BufanString": "",
 "BuscarJugadorDetectado": "",
 "BuscarMapa": "",

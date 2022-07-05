@@ -1,7 +1,8 @@
 extends State
+# Hacer una animacion y al terminar emitir una señal
 
 func enter(msg : Dictionary = {}) -> void:
-	return 
+	owner.animador.play("morir")
 
 
 func unhandled_input(event : InputEvent) -> void:
