@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/tiles_castillo_full.png-f1213af3b15c5769b3c0c59415873e99.stex"
+path="res://.import/castillo_pared.png-e5b1c3bc4c9367922093cc90bb3f9915.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/tilesets/tiles_castillo_full.png"
-dest_files=[ "res://.import/tiles_castillo_full.png-f1213af3b15c5769b3c0c59415873e99.stex" ]
+source_file="res://assets/tilesets/castillo_pared.png"
+dest_files=[ "res://.import/castillo_pared.png-e5b1c3bc4c9367922093cc90bb3f9915.stex" ]
 
 [params]
 
@@ -21,7 +21,7 @@ compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=1
 flags/filter=false
-flags/mipmaps=false
+flags/mipmaps=true
 flags/anisotropic=false
 flags/srgb=2
 process/fix_alpha_border=true

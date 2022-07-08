@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/tiles_castillo_full.png-f1213af3b15c5769b3c0c59415873e99.stex"
+path="res://.import/Moth_gib_1.png-cf3281d49b6a333c54559e27b2feae09.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/tilesets/tiles_castillo_full.png"
-dest_files=[ "res://.import/tiles_castillo_full.png-f1213af3b15c5769b3c0c59415873e99.stex" ]
+source_file="res://assets/gibs/Moth_gib_1.png"
+dest_files=[ "res://.import/Moth_gib_1.png-cf3281d49b6a333c54559e27b2feae09.stex" ]
 
 [params]
 

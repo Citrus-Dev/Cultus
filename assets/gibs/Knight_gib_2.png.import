@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/knight.png-587ac7f9f2719b5bfac98f7504017eae.stex"
+path="res://.import/Knight_gib_2.png-dde5a2653e5b893edb0419ff03b0b95a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/enemies/knight.png"
-dest_files=[ "res://.import/knight.png-587ac7f9f2719b5bfac98f7504017eae.stex" ]
+source_file="res://assets/gibs/Knight_gib_2.png"
+dest_files=[ "res://.import/Knight_gib_2.png-dde5a2653e5b893edb0419ff03b0b95a.stex" ]
 
 [params]
 
@@ -19,7 +19,7 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
-flags/repeat=0
+flags/repeat=1
 flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false

@@ -1,0 +1,78 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://main/Gibs.gd" type="Script" id=1]
+[ext_resource path="res://assets/gibs/Knight_gib_2.png" type="Texture" id=2]
+[ext_resource path="res://assets/gibs/Knight_gib_1.png" type="Texture" id=3]
+[ext_resource path="res://assets/gibs/Knight_gib_3.png" type="Texture" id=4]
+[ext_resource path="res://main/particulas/Sangre.tscn" type="PackedScene" id=5]
+[ext_resource path="res://main/GibFisicas.gd" type="Script" id=6]
+
+[node name="GibsCaballero" type="Node2D"]
+script = ExtResource( 1 )
+gibs_paths = [ NodePath("Node2D3"), NodePath("Node2D2"), NodePath("Node2D") ]
+punto_de_expulsion_path = NodePath("Position2D")
+
+[node name="Position2D" type="Position2D" parent="."]
+
+[node name="Sangre" parent="." instance=ExtResource( 5 )]
+position = Vector2( 0, -9 )
+
+[node name="Node2D" type="KinematicBody2D" parent="."]
+position = Vector2( 2, -6 )
+collision_layer = 0
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_group_": true
+}
+gravedad = 500.0
+friccion = 0.8
+vel_rotacion_base = 50.0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Node2D"]
+polygon = PoolVector2Array( -1, 6, 6, 3, 3, -1, 4, -3, 1, -3, -2, -6, -6, -3 )
+
+[node name="KnightGib3" type="Sprite" parent="Node2D"]
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Node2D2" type="KinematicBody2D" parent="."]
+position = Vector2( 0, -14 )
+collision_layer = 0
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_group_": true
+}
+gravedad = 500.0
+friccion = 0.8
+vel_rotacion_base = 50.0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Node2D2"]
+polygon = PoolVector2Array( -5, 0, -1, 3, 4, 0, 1, -4, -3, -4 )
+
+[node name="KnightGib1" type="Sprite" parent="Node2D2"]
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Node2D3" type="KinematicBody2D" parent="."]
+position = Vector2( 0, -5 )
+collision_layer = 0
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_group_": true
+}
+gravedad = 500.0
+friccion = 0.8
+vel_rotacion_base = 50.0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Node2D3"]
+polygon = PoolVector2Array( -5, -4, 0, 6, 4, -3, 3, -6, -3, -7 )
+
+[node name="KnightGib2" type="Sprite" parent="Node2D3"]
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}

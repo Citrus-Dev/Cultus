@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://assets/tilesets/tiles_castillo_full.png" type="Texture" id=1]
 [ext_resource path="res://niveles/posta/castillo/cast_boss/cast_boss.gd" type="Script" id=2]
@@ -22,6 +22,7 @@
 [ext_resource path="res://main/Objetos_mapa/Pinchos/Pinchos.tscn" type="PackedScene" id=20]
 [ext_resource path="res://main/Personajes/Caballero/Caballero.tscn" type="PackedScene" id=21]
 [ext_resource path="res://main/Objetos_mapa/Puertas/Puerta.tscn" type="PackedScene" id=22]
+[ext_resource path="res://main/Ragdolls/RagdollCaballero.tscn" type="PackedScene" id=23]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 776, 384 )
@@ -36,6 +37,7 @@ extents = Vector2( 17, 76 )
 extents = Vector2( 72, 8 )
 
 [sub_resource type="AtlasTexture" id=6]
+flags = 2
 atlas = ExtResource( 1 )
 region = Rect2( 64, 0, 48, 16 )
 
@@ -212,6 +214,7 @@ texture = SubResource( 6 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Plataformas/PlataformaMovible" index="1"]
 visible = false
 shape = SubResource( 7 )
+one_way_collision = true
 
 [node name="PlataformaFragil2" parent="Plataformas" index="3" instance=ExtResource( 6 )]
 position = Vector2( 1496, 88 )
@@ -304,6 +307,9 @@ texture = ExtResource( 15 )
 visible = false
 position = Vector2( -6.10352e-05, 23 )
 shape = SubResource( 4 )
+
+[node name="RagdollCaballero" parent="." index="23" instance=ExtResource( 23 )]
+position = Vector2( 691, 321 )
 
 [connection signal="triggered" from="triggers/TriggerOnce" to="." method="spawnear_polillas"]
 [connection signal="spawn_muerto" from="SpawnerAuto" to="." method="enemigo_puerta_muerto"]

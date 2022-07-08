@@ -5,8 +5,11 @@ export(NodePath) onready var fsm = get_node(fsm) as StateMachine
 export(NodePath) onready var hurtbox = get_node(hurtbox) as Hurtbox
 export(NodePath) onready var hurtbox_martillo = get_node(hurtbox_martillo) as Hurtbox
 
+var gibs_escena
+
 func _init():
 	add_to_group("Enemigos")
+	gibs_escena = preload("res://main/Personajes/Caballero/gibs/GibsCaballero.tscn")
 
 
 func _ready() -> void:
@@ -34,6 +37,20 @@ func set_muerto(toggle : bool):
 	fsm.transition_to("Morir")
 
 
+func morir(_info : InfoDmg):
+	emit_signal("muerto")
+	set_muerto(true)
+	remove_from_group("EnemigosAlertados")
+	remove_from_group("Enemigos")
+	
+	var tipo = _info.dmg_tipo
+	
+	if tipo == InfoDmg.DMG_TIPOS.EXPLOSION:
+		instanciar_gibs()
+	else:
+		instanciar_ragdoll()
+
+
 func cambiar_visibilidad(_bool : bool):
 	skin.visible = _bool
 
@@ -52,3 +69,14 @@ func on_parry(escudo : Node2D):
 	var tiempo := 0.5
 	
 	fsm.transition_to("Stun", {"Tiempo" : tiempo, "Dir" : dir})
+
+
+func instanciar_gibs():
+	if gibs_escena == null:
+		return
+	var gib = gibs_escena.instance() as Gibs
+	gib.global_position = global_position
+	get_parent().add_child(gib)
+
+
+

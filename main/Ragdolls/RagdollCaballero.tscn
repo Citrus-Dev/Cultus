@@ -1,0 +1,124 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://main/Ragdolls/Ragdoll.gd" type="Script" id=1]
+[ext_resource path="res://assets/ragdolls/knight/cuerpo.png" type="Texture" id=2]
+[ext_resource path="res://assets/ragdolls/knight/cabeza.png" type="Texture" id=3]
+[ext_resource path="res://assets/ragdolls/knight/pierna2.png" type="Texture" id=4]
+[ext_resource path="res://assets/ragdolls/knight/pierna1.png" type="Texture" id=5]
+[ext_resource path="res://assets/ragdolls/knight/martillo.png" type="Texture" id=6]
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 3.0
+
+[sub_resource type="CapsuleShape2D" id=3]
+radius = 1.0
+height = 6.0
+
+[node name="RagdollCaballero" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Cabeza" type="RigidBody2D" parent="."]
+position = Vector2( -2, -22 )
+collision_layer = 1024
+collision_mask = 1029
+mass = 3.04082
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Cabeza"]
+position = Vector2( 1, 1 )
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cabeza"]
+shape = SubResource( 2 )
+
+[node name="PinCuello" type="PinJoint2D" parent="."]
+position = Vector2( -1, -19 )
+scale = Vector2( 0.140309, 0.140309 )
+z_index = 2
+node_a = NodePath("../Cuerpo")
+node_b = NodePath("../Cabeza")
+disable_collision = false
+
+[node name="Cuerpo" type="RigidBody2D" parent="."]
+position = Vector2( -1, -14 )
+collision_layer = 1024
+collision_mask = 1029
+mass = 3.04082
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Cuerpo"]
+position = Vector2( 1, 1 )
+texture = ExtResource( 2 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Cuerpo"]
+polygon = PoolVector2Array( -3, -5, 2, -5, 5, 2, 1, 5, -5, 3 )
+
+[node name="CuerpoPierna1" type="PinJoint2D" parent="."]
+position = Vector2( -3, -10 )
+scale = Vector2( 0.140309, 0.140309 )
+z_index = 2
+node_a = NodePath("../Cuerpo")
+node_b = NodePath("../Pierna")
+disable_collision = false
+
+[node name="CuerpoPierna2" type="PinJoint2D" parent="."]
+position = Vector2( 2, -10 )
+scale = Vector2( 0.140309, 0.140309 )
+z_index = 2
+node_a = NodePath("../Cuerpo")
+node_b = NodePath("../Pierna2")
+disable_collision = false
+
+[node name="Pierna" type="RigidBody2D" parent="."]
+position = Vector2( -4, -6 )
+collision_layer = 1024
+collision_mask = 1029
+mass = 3.04082
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Pierna"]
+position = Vector2( 1, 1 )
+texture = ExtResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pierna"]
+position = Vector2( 1, 2 )
+shape = SubResource( 3 )
+
+[node name="Pierna2" type="RigidBody2D" parent="."]
+position = Vector2( 1, -6 )
+collision_layer = 1024
+collision_mask = 1029
+mass = 3.04082
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Pierna2"]
+position = Vector2( 1, 1 )
+texture = ExtResource( 5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pierna2"]
+position = Vector2( 1, 2 )
+shape = SubResource( 3 )
+
+[node name="Martillo" type="RigidBody2D" parent="."]
+position = Vector2( 15, -13 )
+collision_layer = 1024
+collision_mask = 1029
+mass = 3.04082
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Martillo"]
+position = Vector2( 1, 1 )
+texture = ExtResource( 6 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Martillo"]
+polygon = PoolVector2Array( 9, -10, 11, -8, -2, 5, 1, 8, -2, 11, -10, 3, -8, 0, -4, 3 )

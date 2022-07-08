@@ -50,7 +50,7 @@ func _physics_process(delta: float) -> void:
 	
 	if !res.empty():
 		if efecto:
-			instanciar_efecto(res["position"], res["normal"].angle())
+			instanciar_efecto(res["position"], res["normal"].angle(), res["collider"])
 		var collider = res["collider"]
 		if collider is Hitbox:
 			if !collider.monitorable: return
@@ -78,8 +78,8 @@ func reflejar():
 	collision_mask = 33
 
 
-func instanciar_efecto(pos : Vector2, rot : float):
+func instanciar_efecto(pos : Vector2, rot : float, objetivo : Node2D):
 	var new = efecto.instance()
-	get_parent().add_child(new)
+	objetivo.add_child(new)
 	new.rotation = rot
-	new.global_position = pos
+	new.position = pos

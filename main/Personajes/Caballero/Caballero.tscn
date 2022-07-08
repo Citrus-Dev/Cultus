@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://main/Personajes/PersonajeBase.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/enemies/SPRITESHEET_CABALLERO.png" type="Texture" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://main/Personajes/Caballero/Caballero.gd" type="Script" id=9]
 [ext_resource path="res://main/Personajes/Caballero/estados/Stun.gd" type="Script" id=10]
 [ext_resource path="res://main/libs/DebugMonitor/DebugMonitor.tscn" type="PackedScene" id=11]
+[ext_resource path="res://main/Ragdolls/RagdollCaballero.tscn" type="PackedScene" id=12]
 
 [sub_resource type="RectangleShape2D" id=11]
 extents = Vector2( 6, 12.5 )
@@ -265,6 +266,7 @@ extents = Vector2( 2, 2 )
 collision_layer = 4
 collision_mask = 513
 script = ExtResource( 9 )
+ragdoll_escena = ExtResource( 12 )
 skin = NodePath("Skin")
 skin_sprite_path = NodePath("Skin/Sprite")
 aceleracion = 7.0
