@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/armas/weapon_gauss.png" type="Texture" id=1]
 [ext_resource path="res://main/Armas/Skins/SkinArma.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/sfx/armas/disparo/mixkit-sci-fi-plasma-gun-power-up-1679.wav" type="AudioStream" id=3]
 
 [sub_resource type="Animation" id=1]
 length = 0.001
@@ -56,6 +57,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [ Vector2( 11, 2 ), Vector2( 6, 2 ), Vector2( 11, 2 ) ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("SonidoDisparo:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 
 [node name="SkinGauss" instance=ExtResource( 2 )]
 
@@ -73,3 +86,6 @@ position = Vector2( -7, 3 )
 [node name="AnimationPlayer" parent="." index="1"]
 anims/RESET = SubResource( 1 )
 anims/disparar = SubResource( 2 )
+
+[node name="SonidoDisparo" type="AudioStreamPlayer" parent="." index="2"]
+stream = ExtResource( 3 )

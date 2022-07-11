@@ -11,5 +11,5 @@ dest_files=[ "res://.import/Beefy-12-Gauge-Pump-Action-Shotgun-Close-Gunshot-D-w
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0
