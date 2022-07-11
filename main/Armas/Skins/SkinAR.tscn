@@ -110,3 +110,7 @@ rotation = -2.22879
 anims/RESET = SubResource( 1 )
 anims/disparar = SubResource( 2 )
 anims/recargar = SubResource( 3 )
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="." index="2"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="3"]

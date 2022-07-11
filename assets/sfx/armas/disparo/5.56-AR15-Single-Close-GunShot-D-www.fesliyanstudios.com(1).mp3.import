@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/5.56-AR15-Single-Close-GunShot-D-www.fesliyanstudios.com(1).mp3-2a100a8aa6d8a19d3e2ff7716acbb82c.mp3str"
+
+[deps]
+
+source_file="res://assets/sfx/armas/disparo/5.56-AR15-Single-Close-GunShot-D-www.fesliyanstudios.com(1).mp3"
+dest_files=[ "res://.import/5.56-AR15-Single-Close-GunShot-D-www.fesliyanstudios.com(1).mp3-2a100a8aa6d8a19d3e2ff7716acbb82c.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
