@@ -3,6 +3,7 @@ extends Arma
 
 const MAX_BALAS = 30 # Tamaño cargador
 const TIPO_BALAS = "Rifle"
+const TIPO_GREN = "Granadas"
 const TIEMPO_RECARGA = 1.2
 const BALA = preload("res://main/Proyectiles/BalaAR.tscn")
 const SKIN_FLASH_ESCENA = preload("res://main/Armas/Skins/SkinARFlash.tscn")
@@ -15,7 +16,7 @@ var timer_recarga := Timer.new()
 func _init() -> void:
 	skin_escena = preload("res://main/Armas/Skins/SkinAR.tscn")
 	casquillo_escena = preload("res://main/Efectos/Casquillos/CasquilloBase.tscn")
-	medidor_balas_escena = preload("res://main/UI/BarrasBalas/BarraBalasRevolver.tscn")
+	medidor_balas_escena = preload("res://main/UI/BarrasBalas/BarraBalasAR.tscn")
 	damage_info.dmg_cantidad = 15
 	damage_info.fuerza_retroceso = 400
 	damage_info.dmg_stun = 15
@@ -84,6 +85,9 @@ func disparar_secundario(_origin : Node, _dir : float):
 		gren.vel_entrada = Vector2.RIGHT.rotated(_dir) * 600
 		gren.z_index = -1
 		_origin.add_child(gren)
+	
+	inv_balas.dict_balas[TIPO_GREN]["cant"] -= 1
+	actualizar_medidor()
 
 
 func puede_disparar() -> bool:
@@ -95,7 +99,7 @@ func puede_disparar() -> bool:
 
 
 func puede_disparar_sec() -> bool:
-	return timer_recarga.is_stopped()
+	return timer_recarga.is_stopped() and hay_granadas()
 
 
 func recargar():
@@ -123,11 +127,20 @@ func hay_balas_reserva() -> bool:
 	return inv_balas.dict_balas[TIPO_BALAS]["cant"] > balas_actual
 
 
+func hay_granadas() -> bool:
+	return cantidad_granadas() > 0
+
+
+func cantidad_granadas() -> int:
+	return inv_balas.dict_balas[TIPO_GREN]["cant"]
+
+
 func actualizar_medidor():
 	var tipo = hud_medidor_inst.id_balas
 	hud_medidor_inst.set_cantidad(min(balas_actual, inv_balas.dict_balas[tipo]["cant"]))
 	var reserva = max(0, inv_balas.dict_balas[tipo]["cant"] - balas_actual)
 	hud_medidor_inst.set_balas_reserva(reserva)
+	hud_medidor_inst.set_granadas(cantidad_granadas())
 
 
 func cambio_variante_NORMAL():

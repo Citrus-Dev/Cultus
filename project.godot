@@ -74,6 +74,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://main/Armas/ArmaBallesta.gd"
 }, {
+"base": "HudMedidorBalas",
+"class": "BarraBalasAR",
+"language": "GDScript",
+"path": "res://main/UI/BarrasBalas/BarraBalasAR.gd"
+}, {
 "base": "Node2D",
 "class": "BarraHPBoss",
 "language": "GDScript",
@@ -253,6 +258,11 @@ _global_script_classes=[ {
 "class": "Demian",
 "language": "GDScript",
 "path": "res://main/demian/demian escena.gd"
+}, {
+"base": "Node",
+"class": "DropManager",
+"language": "GDScript",
+"path": "res://main/Componentes/DropManager.gd"
 }, {
 "base": "Node2D",
 "class": "EfectoParticulas",
@@ -748,6 +758,7 @@ _global_script_class_icons={
 "BTBase": "",
 "BalaFlak": "",
 "Ballesta": "",
+"BarraBalasAR": "",
 "BarraHPBoss": "",
 "BarraHPBossUI": "",
 "BehaviorTree": "res://main/libs/BehaviorTree/icons/tree.svg",
@@ -784,6 +795,7 @@ _global_script_class_icons={
 "DebugCanvasDrawer": "",
 "Decorador": "res://main/libs/BehaviorTree/icons/category_decorator.svg",
 "Demian": "",
+"DropManager": "",
 "EfectoParticulas": "",
 "EjecutorComando": "",
 "EsVectorCero": "",

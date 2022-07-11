@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://main/UI/BarrasBalas/BarraBalasRevolver.tscn" type="PackedScene" id=1]
+[ext_resource path="res://main/UI/BarrasBalas/BarraBalasAR.gd" type="Script" id=2]
+[ext_resource path="res://assets/ui/balas/hud_bala_icono_rifle.tres" type="Texture" id=3]
+[ext_resource path="res://assets/ui/balas/hud_bala_icono_granada.tres" type="Texture" id=4]
+
+[node name="BarraBalasAR" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+modo = ""
+bala_textura = ExtResource( 3 )
+id_balas = "Rifle"
+bala_textura_gran = ExtResource( 4 )
+id_balas_gran = "Granadas"
+container_g_path = NodePath("MarginContainer/Container/HBoxContainer")
+text_rec_g_path = NodePath("MarginContainer/Container/HBoxContainer/TextureRect")
+label_g_path = NodePath("MarginContainer/Container/HBoxContainer/Label")
+
+[node name="Container" parent="MarginContainer" index="0"]
+margin_right = 66.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Container" index="2"]
+margin_left = 29.0
+margin_right = 66.0
+margin_bottom = 30.0
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/Container/HBoxContainer" index="0"]
+margin_right = 12.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 12, 0 )
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="MarginContainer/Container/HBoxContainer" index="1"]
+margin_left = 16.0
+margin_top = 6.0
+margin_right = 37.0
+margin_bottom = 23.0
+text = "999"

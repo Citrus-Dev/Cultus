@@ -197,7 +197,7 @@ position = Vector2( 1464, 16 )
 collision_mask = 0
 
 [node name="PlataformaMovible" type="KinematicBody2D" parent="Plataformas" index="2"]
-position = Vector2( 1176, 136 )
+position = Vector2( 1136, 136 )
 collision_layer = 512
 collision_mask = 512
 script = ExtResource( 3 )
@@ -205,7 +205,7 @@ __meta__ = {
 "_edit_group_": true
 }
 camino = NodePath("../camino_plat")
-velocidad = 75.0
+velocidad = 45.0
 
 [node name="Sprite" type="Sprite" parent="Plataformas/PlataformaMovible" index="0"]
 texture = SubResource( 6 )
@@ -215,27 +215,51 @@ visible = false
 shape = SubResource( 7 )
 one_way_collision = true
 
-[node name="PlataformaFragil2" parent="Plataformas" index="3" instance=ExtResource( 6 )]
+[node name="PlataformaMovible2" type="KinematicBody2D" parent="Plataformas" index="3"]
+position = Vector2( 1392, 136 )
+collision_layer = 512
+collision_mask = 512
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_group_": true
+}
+camino = NodePath("../camino_plat2")
+velocidad = 45.0
+
+[node name="Sprite" type="Sprite" parent="Plataformas/PlataformaMovible2" index="0"]
+texture = SubResource( 6 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Plataformas/PlataformaMovible2" index="1"]
+visible = false
+shape = SubResource( 7 )
+one_way_collision = true
+
+[node name="PlataformaFragil2" parent="Plataformas" index="4" instance=ExtResource( 6 )]
 position = Vector2( 1496, 88 )
 
-[node name="PlataformaFragil3" parent="Plataformas" index="4" instance=ExtResource( 6 )]
+[node name="PlataformaFragil3" parent="Plataformas" index="5" instance=ExtResource( 6 )]
 position = Vector2( 24, -304 )
 
-[node name="PlataformaFragil4" parent="Plataformas" index="5" instance=ExtResource( 6 )]
+[node name="PlataformaFragil4" parent="Plataformas" index="6" instance=ExtResource( 6 )]
 position = Vector2( 136, -160 )
 
-[node name="PlataformaFragil5" parent="Plataformas" index="6" instance=ExtResource( 6 )]
+[node name="PlataformaFragil5" parent="Plataformas" index="7" instance=ExtResource( 6 )]
 position = Vector2( 24, -16 )
 
-[node name="PlataformaFragil6" parent="Plataformas" index="7" instance=ExtResource( 6 )]
+[node name="PlataformaFragil6" parent="Plataformas" index="8" instance=ExtResource( 6 )]
 position = Vector2( 40, 112 )
 
-[node name="PlataformaFragil7" parent="Plataformas" index="8" instance=ExtResource( 6 )]
+[node name="PlataformaFragil7" parent="Plataformas" index="9" instance=ExtResource( 6 )]
 position = Vector2( 40, 192 )
 
-[node name="camino_plat" type="Line2D" parent="Plataformas" index="9"]
+[node name="camino_plat" type="Line2D" parent="Plataformas" index="10"]
 visible = false
-points = PoolVector2Array( 1136, 136, 1400, 136 )
+points = PoolVector2Array( 1136, 136, 1248, 136 )
+width = 2.0
+
+[node name="camino_plat2" type="Line2D" parent="Plataformas" index="11"]
+visible = false
+points = PoolVector2Array( 1288, 136, 1392, 136 )
 width = 2.0
 
 [node name="Pinches" type="Node2D" parent="." index="11"]

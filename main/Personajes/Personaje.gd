@@ -10,6 +10,7 @@ const KNOCKBACK_FRICCION_VERTICAL := 0.8
 signal objetivo_encontrado
 signal borde_tocado(_borde)
 signal muerto
+signal muerto_gib
 
 export(bool) var persistir 
 export(PackedScene) var ragdoll_escena
