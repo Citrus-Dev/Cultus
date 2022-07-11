@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://main/Armas/Skins/SkinArma.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/armas/weapon_machinegun.png" type="Texture" id=2]
+[ext_resource path="res://assets/sfx/armas/disparo/5.56-AR15-shot.wav" type="AudioStream" id=3]
+[ext_resource path="res://assets/sfx/armas/recarga/recargaAr.wav" type="AudioStream" id=4]
 
 [sub_resource type="Animation" id=1]
 length = 0.001
@@ -44,8 +46,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id=2]
 resource_name = "disparar"
-length = 0.15
-loop = true
+length = 0.11
 step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -58,6 +59,18 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
 "values": [ 0, 1, 2 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("SonidoDisparo:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.05 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -87,6 +100,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [ Vector2( 11, 1 ), Vector2( 5, -2 ), Vector2( 11, 1 ) ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("SonidoRecarga:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.3 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 
 [node name="SkinAR" instance=ExtResource( 1 )]
 position = Vector2( -1, 2 )
@@ -113,5 +138,7 @@ anims/disparar = SubResource( 2 )
 anims/recargar = SubResource( 3 )
 
 [node name="SonidoDisparo" type="AudioStreamPlayer" parent="." index="2"]
+stream = ExtResource( 3 )
 
 [node name="SonidoRecarga" type="AudioStreamPlayer" parent="." index="3"]
+stream = ExtResource( 4 )

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/5.56-AR15-shot.wav-f7c026243acc01942ac7ecf9642dd0f3.sample"
+
+[deps]
+
+source_file="res://assets/sfx/armas/disparo/5.56-AR15-shot.wav"
+dest_files=[ "res://.import/5.56-AR15-shot.wav-f7c026243acc01942ac7ecf9642dd0f3.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=true
+edit/loop=false
+compress/mode=0

@@ -22,7 +22,7 @@ func _init() -> void:
 	
 	slot = SLOTS.RIFLE
 	automatica = true
-	cooldown_tiempo = 0.1
+	cooldown_tiempo = 0.11
 	recoil_visual_duracion = 0.2
 	spread = 5
 	screenshake = 2.5

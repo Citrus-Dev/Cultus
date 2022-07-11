@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Machine-Gun-Automatic-Fire-A-www.fesliyanstudios.com(1).mp3-da50623d5c0a92a74153534dacf07095.mp3str"
+
+[deps]
+
+source_file="res://assets/sfx/armas/disparo/Machine-Gun-Automatic-Fire-A-www.fesliyanstudios.com(1).mp3"
+dest_files=[ "res://.import/Machine-Gun-Automatic-Fire-A-www.fesliyanstudios.com(1).mp3-da50623d5c0a92a74153534dacf07095.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
