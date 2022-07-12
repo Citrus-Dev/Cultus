@@ -7,6 +7,7 @@ const TIEMPO_DE_ESPERA := 1.3
 var timer_espera : float
 
 func enter(msg : Dictionary = {}) -> void:
+	owner.set_animacion("idle")
 	timer_espera = TIEMPO_DE_ESPERA
 
 

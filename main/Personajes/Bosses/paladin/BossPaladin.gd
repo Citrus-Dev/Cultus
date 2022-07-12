@@ -4,6 +4,9 @@ extends Personaje
 signal muerte_fachera_terminada
 
 export(NodePath) onready var fsm = get_node(fsm) as StateMachine
+export(NodePath) onready var hurtbox_contacto = get_node(hurtbox_contacto) as Hurtbox
+export(NodePath) onready var hurtbox_pignia = get_node(hurtbox_pignia) as Hurtbox
+export(NodePath) onready var hurtbox_giro = get_node(hurtbox_giro) as Hurtbox
 
 # Vamos a poner nombres de movimientos aca. El sistema va a ir agarrando movimientos de aca hasta que
 # no haya mas, y despues lo va a rellenar devuelta con empezar_ciclo
@@ -15,6 +18,21 @@ var activo : bool
 func empezar_boss():
 	activo = true
 	empezar_ciclo()
+	mirar_al_jugador()
+
+
+func procesar_movimiento(_delta : float):
+	set_snap()
+	
+	movement_horizontal(_delta)
+	velocity = move_and_slide_with_snap(velocity + knockback_procesable, snap, Vector2.UP, true)
+	movement_vertical(_delta)
+
+
+func set_dir(_dir : int):
+	if _dir != 0: 
+		dir = _dir
+		skin.scale.x = _dir
 
 
 func empezar_ciclo():
@@ -24,6 +42,8 @@ func empezar_ciclo():
 		"Saltar",
 		"Saltar",
 		"Saltar",
+		"Piña",
+		"Piña",
 		"Giro",
 		"Giro",
 	]
@@ -45,7 +65,7 @@ func mirar_al_jugador():
 	var jug = get_tree().get_nodes_in_group("Jugador")[0]
 	var dir_a_jug = jug.global_position - global_position
 	
-	dir = sign(dir_a_jug.x)
+	set_dir(sign(dir_a_jug.x))
 
 
 func set_muerto(toggle : bool):
@@ -57,3 +77,13 @@ func set_muerto(toggle : bool):
 		hitbox.set_deferred("monitorable", false)
 		hitbox.collision_mask = 0 
 	fsm.transition_to("Morir")
+
+
+func set_animacion(anim : String):
+	var animanterior := animador.current_animation
+	animador.stop()
+	animador.play(anim)
+	animador.advance(0)
+	yield(get_tree(), "idle_frame")
+	if animador.current_animation != anim: 
+		printerr("QUE CARAJO: " + anim + ", anim anterior: " + animanterior)

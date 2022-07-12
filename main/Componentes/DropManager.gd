@@ -11,26 +11,24 @@ const DROP_RIFLE = preload("res://main/Pickups/PickupBalasAR.tscn")
 const DROP_RIFLE_GRANADA = preload("res://main/Pickups/PickupGranadas.tscn")
 const DROP_BAZUCA = preload("res://main/Pickups/PickupGauss.tscn")
 
-var sort_nums : Array
-var sort_names : Array
-
 func drop():
 	elegir_drop(tomar_lista_de_balas())
 
 
 func elegir_drop(opciones : Dictionary):
-	var final : Dictionary
+	var final : Array
 	for o in opciones:
-		sort_nums.append(opciones[o]["cant"])
-		sort_names.append(o)
+		final.append(
+			{
+				"cant" : opciones[o]["cant"],
+				"id" : o
+			}
+		)
+	breakpoint
 	
-	sort_names.sort_custom(self, "sort_balas")
 
 
-func sort_balas(num_a : String, num_b : String):
-#	var result : bool = sort_nums
-	return "aaAaaaaAAAAAA"
-	
+
 
 
 func tomar_lista_de_balas() -> Dictionary:

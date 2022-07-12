@@ -2,7 +2,13 @@ extends State
 # Hacer una animacion y al terminar emitir una señal
 
 func enter(msg : Dictionary = {}) -> void:
-	owner.animador.play("morir")
+	owner.hurtbox_contacto.is_constant = false
+	owner.hurtbox_pignia.is_constant = false
+	owner.hurtbox_giro.is_constant = false
+	
+	owner.input = Vector2.ZERO
+	
+	owner.set_animacion("morir")
 
 
 func unhandled_input(event : InputEvent) -> void:

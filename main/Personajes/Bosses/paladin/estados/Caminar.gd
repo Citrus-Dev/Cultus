@@ -11,9 +11,11 @@ var timer_final : float
 var descontando : bool
 
 func enter(msg : Dictionary = {}) -> void:
+	descontando = false
 	timer = TIEMPO_DE_CAMINAR
 	timer_final = TIEMPO_ESPERA_FINAL
 	
+	owner.set_animacion("caminar")
 	owner.input.x = owner.dir
 
 
@@ -46,3 +48,4 @@ func exit() -> void:
 func terminar_de_moverse():
 	owner.input.x = 0
 	descontando = true
+	owner.set_animacion("idle")
