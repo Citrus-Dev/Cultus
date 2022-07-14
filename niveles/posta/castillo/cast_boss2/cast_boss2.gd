@@ -2,7 +2,7 @@ extends Nivel
 
 const NOMBRE_DATO := "boss_muerto"
 const TIEMPO_POLILLAS := 6.0
-const MAX_POLILLAS := 4
+const MAX_POLILLAS := 3
 
 export(NodePath) onready var limites_camara_boss = get_node(limites_camara_boss) as CameraBounds
 export(NodePath) onready var puerta = get_node(puerta) as Puerta

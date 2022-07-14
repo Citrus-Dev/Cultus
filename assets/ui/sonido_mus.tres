@@ -1,0 +1,9 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=2]
+
+[ext_resource path="res://assets/ui/sonido_ui_sheet.png" type="Texture" id=1]
+
+[resource]
+flags = 2
+atlas = ExtResource( 1 )
+region = Rect2( 4, 71, 22, 21 )
+filter_clip = true

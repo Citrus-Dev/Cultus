@@ -1,10 +1,14 @@
 class_name MenuConfig
 extends Control
 
+const TEX_ICONO_FX_0 := preload("res://assets/ui/sonido_fx_0.tres")
+const TEX_ICONO_FX_1 := preload("res://assets/ui/sonido_fx_1.tres")
+
 signal volver
 
 export(NodePath) onready var slider_sfx = get_node(slider_sfx) as Slider
 export(NodePath) onready var label_sfx = get_node(label_sfx) as Label
+export(NodePath) onready var icono_sfx = get_node(icono_sfx) as TextureRect
 export(NodePath) onready var slider_musica = get_node(slider_musica) as Slider
 export(NodePath) onready var label_musica = get_node(label_musica) as Label
 
@@ -22,6 +26,7 @@ func volver():
 
 func actualizar_slider_sfx(val : float):
 	Config.actualizar_opcion_vol_efectos(val)
+	icono_sfx.texture = TEX_ICONO_FX_1 if val > 0 else TEX_ICONO_FX_0
 	label_sfx.text = str(val)
 
 
