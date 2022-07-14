@@ -95,6 +95,7 @@ func polilla_time():
 	polilla.connect("muerto", self, "polilla_muerta")
 	polillas_totales += 1
 	empezar_timer_polillas()
+	alertar_todos_los_enemigos()
 
 
 func polilla_muerta():

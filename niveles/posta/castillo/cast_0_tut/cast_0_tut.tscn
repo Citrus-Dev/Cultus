@@ -74,7 +74,7 @@ position = Vector2( 512, 4 )
 shape = SubResource( 1 )
 
 [node name="SpawnJugador" type="Node2D" parent="." index="6"]
-position = Vector2( 64, 264 )
+position = Vector2( 859.178, -40 )
 script = ExtResource( 3 )
 
 [node name="Puerta" type="KinematicBody2D" parent="." index="7"]
@@ -106,7 +106,6 @@ enable_collisions = true
 
 [node name="PlataformaAlterna" parent="." index="8" instance=ExtResource( 7 )]
 position = Vector2( 448, 128 )
-collision_layer = 512
 
 [node name="BlockinPolygon" type="Polygon2D" parent="PlataformaAlterna" index="0"]
 position = Vector2( 8, 0 )
@@ -118,7 +117,6 @@ one_way = true
 
 [node name="PlataformaAlterna2" parent="." index="9" instance=ExtResource( 7 )]
 position = Vector2( 448, -16 )
-collision_layer = 512
 
 [node name="BlockinPolygon" type="Polygon2D" parent="PlataformaAlterna2" index="0"]
 position = Vector2( 8, 0 )
@@ -130,7 +128,6 @@ one_way = true
 
 [node name="PlataformaAlterna3" parent="." index="10" instance=ExtResource( 7 )]
 position = Vector2( 384, 57 )
-collision_layer = 512
 
 [node name="BlockinPolygon" type="Polygon2D" parent="PlataformaAlterna3" index="0"]
 color = Color( 0.129412, 0.129412, 0.129412, 1 )

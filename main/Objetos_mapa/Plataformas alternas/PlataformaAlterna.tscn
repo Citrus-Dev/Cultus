@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://main/Objetos_mapa/Plataformas alternas/PlataformaAlterna.gd" type="Script" id=1]
 [ext_resource path="res://main/libs/BlockinPolygon/BlockinPolygon.gd" type="Script" id=2]
+[ext_resource path="res://assets/tilesets/plataformas/plataforma_larga.png" type="Texture" id=3]
 
 [node name="PlataformaAlterna" type="StaticBody2D"]
 collision_layer = 512
@@ -10,9 +11,15 @@ script = ExtResource( 1 )
 color_inactivo = Color( 0.121569, 0.121569, 0.121569, 1 )
 
 [node name="BlockinPolygon" type="Polygon2D" parent="."]
+visible = false
 position = Vector2( 8, 0 )
 color = Color( 0.129412, 0.129412, 0.129412, 1 )
-polygon = PoolVector2Array( 48, 0, -64, 0, -64, 8, -56, 16, 40, 16, 48, 8 )
+polygon = PoolVector2Array( 56, 0, -72, 0, -72, 16, 56, 16 )
 script = ExtResource( 2 )
 enable_collisions = true
 one_way = true
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0, 8 )
+texture = ExtResource( 3 )
+vframes = 2

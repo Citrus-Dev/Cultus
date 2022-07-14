@@ -26,7 +26,7 @@ sprites = [ NodePath("Cuerpo/Sprite"), NodePath("Cabeza/Sprite"), NodePath("Coli
 [node name="Cuerpo" type="RigidBody2D" parent="."]
 position = Vector2( 0, -6 )
 collision_layer = 1024
-collision_mask = 1029
+collision_mask = 1537
 mass = 3.04082
 
 [node name="Sprite" type="Sprite" parent="Cuerpo"]
@@ -39,7 +39,7 @@ shape = SubResource( 4 )
 [node name="Cabeza" type="RigidBody2D" parent="."]
 position = Vector2( 0, -10 )
 collision_layer = 1024
-collision_mask = 1029
+collision_mask = 1025
 mass = 1.02041
 
 [node name="Sprite" type="Sprite" parent="Cabeza"]
@@ -69,7 +69,7 @@ node_b = NodePath("../Colita")
 [node name="Colita" type="RigidBody2D" parent="."]
 position = Vector2( -6, -10 )
 collision_layer = 1024
-collision_mask = 1029
+collision_mask = 1025
 mass = 3.04082
 
 [node name="Sprite" type="Sprite" parent="Colita"]
@@ -96,7 +96,7 @@ bias = 0.71
 position = Vector2( 0, -6 )
 z_index = -1
 collision_layer = 0
-collision_mask = 1029
+collision_mask = 1025
 mass = 0.204082
 
 [node name="Sprite" type="Sprite" parent="Pierna1"]
@@ -112,7 +112,7 @@ disabled = true
 position = Vector2( 0, -6 )
 z_index = -1
 collision_layer = 0
-collision_mask = 1029
+collision_mask = 1025
 mass = 0.204082
 
 [node name="Sprite" type="Sprite" parent="Pierna2"]

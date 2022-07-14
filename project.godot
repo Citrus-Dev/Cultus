@@ -444,6 +444,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://main/UI/Hud/MedidorCooldown.gd"
 }, {
+"base": "Control",
+"class": "MenuConfig",
+"language": "GDScript",
+"path": "res://main/UI/Hud/MenuConfig.gd"
+}, {
 "base": "CanvasLayer",
 "class": "MenuPausa",
 "language": "GDScript",
@@ -832,6 +837,7 @@ _global_script_class_icons={
 "LlamarFuncionNodo": "",
 "MainMenu": "",
 "MedidorCooldown": "",
+"MenuConfig": "",
 "MenuPausa": "",
 "MoverHaciaPos": "",
 "MoverseEnDireccion": "",

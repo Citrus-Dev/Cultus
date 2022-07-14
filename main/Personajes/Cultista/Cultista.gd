@@ -79,6 +79,7 @@ func evento_dmg(_dmg : InfoDmg):
 
 
 func morir(_info : InfoDmg):
+	if muerto: return
 	emit_signal("muerto")
 	set_muerto(true)
 	remove_from_group("EnemigosAlertados")

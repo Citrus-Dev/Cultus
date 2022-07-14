@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://main/Personajes/PersonajeBase.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/enemies/SPRITESHEET_CABALLERO.png" type="Texture" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://main/Personajes/Caballero/estados/Stun.gd" type="Script" id=10]
 [ext_resource path="res://main/libs/DebugMonitor/DebugMonitor.tscn" type="PackedScene" id=11]
 [ext_resource path="res://main/Ragdolls/RagdollCaballero.tscn" type="PackedScene" id=12]
+[ext_resource path="res://main/Componentes/DropManager.gd" type="Script" id=13]
 
 [sub_resource type="RectangleShape2D" id=11]
 extents = Vector2( 6, 12.5 )
@@ -280,7 +281,10 @@ fsm = NodePath("StateMachine")
 hurtbox = NodePath("Hurtbox")
 hurtbox_martillo = NodePath("HurtboxMartillo")
 
-[node name="monitores" type="Node2D" parent="." index="0"]
+[node name="DropManager" type="Node" parent="." index="0"]
+script = ExtResource( 13 )
+
+[node name="monitores" type="Node2D" parent="." index="1"]
 visible = false
 
 [node name="velocity" parent="monitores" index="0" instance=ExtResource( 11 )]
@@ -301,22 +305,22 @@ monitor_target_node = NodePath("../../Status")
 monitor_target_property = "hp_max"
 monitor_flavor_text = "hp_max"
 
-[node name="Status" parent="." index="1"]
+[node name="Status" parent="." index="2"]
 hp_max = 200
 stun_threshold = 100
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="3"]
 visible = false
 position = Vector2( 0, -12.5 )
 shape = SubResource( 11 )
 
-[node name="Hitbox" parent="." index="3"]
+[node name="Hitbox" parent="." index="4"]
 visible = false
 
 [node name="CollisionShape2D" parent="Hitbox" index="0"]
 position = Vector2( 0, -12 )
 
-[node name="Skin" type="Node2D" parent="." index="4"]
+[node name="Skin" type="Node2D" parent="." index="5"]
 
 [node name="Sprite" type="Sprite" parent="Skin" index="0"]
 position = Vector2( -6, 5 )
@@ -334,7 +338,7 @@ anims/caminar = SubResource( 15 )
 anims/idle = SubResource( 13 )
 anims/saltar = SubResource( 14 )
 
-[node name="Hurtbox" parent="." index="5" instance=ExtResource( 4 )]
+[node name="Hurtbox" parent="." index="6" instance=ExtResource( 4 )]
 visible = false
 collision_mask = 16
 agente_dir = NodePath("..")
@@ -347,7 +351,7 @@ dmg_tipo = 1
 position = Vector2( 0, -13 )
 shape = SubResource( 18 )
 
-[node name="HurtboxMartillo" parent="." index="6" instance=ExtResource( 4 )]
+[node name="HurtboxMartillo" parent="." index="7" instance=ExtResource( 4 )]
 collision_mask = 16
 agente_dir = NodePath("..")
 is_constant = true
@@ -359,7 +363,7 @@ dmg_tipo = 1
 position = Vector2( 0, -12 )
 shape = SubResource( 19 )
 
-[node name="StateMachine" type="Node" parent="." index="7"]
+[node name="StateMachine" type="Node" parent="." index="8"]
 script = ExtResource( 3 )
 initial_state = NodePath("Idle")
 
@@ -378,3 +382,5 @@ script = ExtResource( 8 )
 [node name="Stun" type="Node" parent="StateMachine" index="4"]
 script = ExtResource( 10 )
 estado_salida = "Perseguir"
+
+[connection signal="muerto" from="." to="DropManager" method="drop"]

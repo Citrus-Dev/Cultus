@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://assets/tilesets/tileset_castillo.tres" type="TileSet" id=1]
 [ext_resource path="res://niveles/Nivel.tscn" type="PackedScene" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://main/Objetos_mapa/TransicionDeNivel/TransicionDeNivelConArea.tscn" type="PackedScene" id=12]
 [ext_resource path="res://main/Pickups/PickupBalasRevolver.tscn" type="PackedScene" id=13]
 [ext_resource path="res://main/Pickups/PickupBalasEscopeta.tscn" type="PackedScene" id=14]
+[ext_resource path="res://main/Musica/MusCastillo.tres" type="Resource" id=15]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 496, 224 )
@@ -30,6 +31,7 @@ extents = Vector2( 48, 4 )
 [node name="Nivel" instance=ExtResource( 2 )]
 script = ExtResource( 7 )
 primer_limite_camara = NodePath("camara limites/CameraBounds")
+musica = ExtResource( 15 )
 trigger_enemigos = NodePath("triggers/Area2D")
 hp1 = NodePath("triggers/PickupHP")
 hp2 = NodePath("triggers/PickupHP2")

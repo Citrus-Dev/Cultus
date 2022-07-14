@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://assets/tilesets/tileset_castillo.tres" type="TileSet" id=1]
 [ext_resource path="res://niveles/Nivel.tscn" type="PackedScene" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://assets/skrungler.png" type="Texture" id=11]
 [ext_resource path="res://assets/scrunkly.png" type="Texture" id=12]
 [ext_resource path="res://assets/fuentes/RobotoRegular.tres" type="DynamicFont" id=13]
+[ext_resource path="res://main/Musica/MusCastillo.tres" type="Resource" id=14]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 260, 264 )
@@ -22,6 +23,7 @@ extents = Vector2( 48, 4 )
 
 [node name="Nivel" instance=ExtResource( 2 )]
 primer_limite_camara = NodePath("camara limites/CameraBounds")
+musica = ExtResource( 14 )
 
 [node name="TileMapFondo" type="TileMap" parent="Fondo" index="0"]
 modulate = Color( 0.188235, 0.188235, 0.188235, 1 )

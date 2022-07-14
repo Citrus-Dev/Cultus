@@ -104,15 +104,21 @@ func actualizar_opciones():
 	actualizar_opcion_vol_musica()
 
 
-func actualizar_opcion_vol_efectos():
-	var value_in_db = linear2db(config_data["volumen_sonido"])
-	var sfx_index = AudioServer.get_bus_index("Musica")
+func actualizar_opcion_vol_efectos(val : float = config_data["volumen_sonido"]):
+	if config_data["volumen_sonido"] != val:
+		config_data["volumen_sonido"] = val
+	
+	var value_in_db = linear2db(val)
+	var sfx_index = AudioServer.get_bus_index("Master")
 	AudioServer.set_bus_volume_db(sfx_index, value_in_db)
-	print(config_data["volumen_musica"])
+	print(config_data["volumen_sonido"])
 
 
-func actualizar_opcion_vol_musica():
-	var value_in_db = linear2db(config_data["volumen_musica"])
+func actualizar_opcion_vol_musica(val : float = config_data["volumen_musica"]):
+	if config_data["volumen_musica"] != val:
+		config_data["volumen_musica"] = val
+	
+	var value_in_db = linear2db(val)
 	var sfx_index = AudioServer.get_bus_index("Musica")
 	AudioServer.set_bus_volume_db(sfx_index, value_in_db)
 	print(config_data["volumen_musica"])

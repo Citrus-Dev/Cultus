@@ -209,18 +209,21 @@ hurtbox_pignia = NodePath("HurtboxPiña")
 hurtbox_giro = NodePath("HurtboxGiro")
 
 [node name="state" parent="." instance=ExtResource( 11 )]
+visible = false
 position = Vector2( 24, -68 )
 monitor_target_node = NodePath("../StateMachine")
 monitor_target_property = "state"
 monitor_flavor_text = "state"
 
 [node name="input" parent="." instance=ExtResource( 11 )]
+visible = false
 position = Vector2( 24, -88 )
 monitor_target_node = NodePath("..")
 monitor_target_property = "input"
 monitor_flavor_text = "input"
 
 [node name="velñ" parent="." instance=ExtResource( 11 )]
+visible = false
 position = Vector2( 22, -54 )
 monitor_target_node = NodePath("..")
 monitor_target_property = "velocity"

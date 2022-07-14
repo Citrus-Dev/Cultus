@@ -1,10 +1,11 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://assets/enemies/polilla.png" type="Texture" id=1]
 [ext_resource path="res://main/Personajes/PersonajeBase.tscn" type="PackedScene" id=2]
 [ext_resource path="res://main/SistemaDaño/Hurtbox.tscn" type="PackedScene" id=3]
 [ext_resource path="res://main/Personajes/Polilla/estados/Idle.gd" type="Script" id=4]
 [ext_resource path="res://main/Personajes/Caballero/estados/Stun.gd" type="Script" id=5]
+[ext_resource path="res://main/Componentes/DropManager.gd" type="Script" id=6]
 [ext_resource path="res://main/libs/DebugMonitor/DebugMonitor.tscn" type="PackedScene" id=10]
 [ext_resource path="res://main/Personajes/Polilla/Polilla.gd" type="Script" id=11]
 [ext_resource path="res://main/Personajes/Polilla/estados/Perseguir.gd" type="Script" id=15]
@@ -49,7 +50,7 @@ tracks/0/keys = {
 
 [node name="Polilla" instance=ExtResource( 2 )]
 collision_layer = 4
-collision_mask = 5
+collision_mask = 517
 script = ExtResource( 11 )
 skin = NodePath("Skin")
 skin_sprite_path = NodePath("Skin/Sprite")
@@ -60,7 +61,10 @@ max_velocidad_vertical = 120.0
 fsm = NodePath("StateMachine")
 hurtbox = NodePath("Hurtbox")
 
-[node name="monitores" type="Node2D" parent="." index="0"]
+[node name="DropManager" type="Node" parent="." index="0"]
+script = ExtResource( 6 )
+
+[node name="monitores" type="Node2D" parent="." index="1"]
 visible = false
 
 [node name="estado" parent="monitores" index="0" instance=ExtResource( 10 )]
@@ -74,21 +78,21 @@ monitor_target_node = NodePath("../..")
 monitor_target_property = "input"
 monitor_flavor_text = "input"
 
-[node name="Status" parent="." index="1"]
+[node name="Status" parent="." index="2"]
 hp_max = 50
 stun_threshold = 30
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="3"]
 visible = false
 shape = SubResource( 4 )
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Hitbox" parent="." index="3"]
+[node name="Hitbox" parent="." index="4"]
 visible = false
 
-[node name="Hurtbox" parent="." index="4" instance=ExtResource( 3 )]
+[node name="Hurtbox" parent="." index="5" instance=ExtResource( 3 )]
 visible = false
 collision_mask = 16
 agente_dir = NodePath("..")
@@ -100,7 +104,7 @@ dmg_tipo = 1
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" index="0"]
 shape = SubResource( 3 )
 
-[node name="Skin" type="Node2D" parent="." index="5"]
+[node name="Skin" type="Node2D" parent="." index="6"]
 
 [node name="Sprite" type="Sprite" parent="Skin" index="0"]
 texture = ExtResource( 1 )
@@ -112,7 +116,7 @@ autoplay = "loop"
 anims/RESET = SubResource( 1 )
 anims/loop = SubResource( 2 )
 
-[node name="StateMachine" type="Node" parent="." index="6"]
+[node name="StateMachine" type="Node" parent="." index="7"]
 script = ExtResource( 16 )
 initial_state = NodePath("Idle")
 
@@ -127,7 +131,9 @@ steering = NodePath("../../Steering")
 script = ExtResource( 5 )
 estado_salida = "Perseguir"
 
-[node name="Steering" type="Node" parent="." index="7"]
+[node name="Steering" type="Node" parent="." index="8"]
 script = ExtResource( 17 )
 distancia_de_deteccion = 24.0
 num_rayos = 16
+
+[connection signal="muerto" from="." to="DropManager" method="drop"]

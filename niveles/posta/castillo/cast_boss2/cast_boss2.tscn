@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://assets/tilesets/tileset_castillo.tres" type="TileSet" id=1]
 [ext_resource path="res://niveles/Nivel.tscn" type="PackedScene" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://main/Triggers/TriggerNPCMover.gd" type="Script" id=14]
 [ext_resource path="res://main/Personajes/Bosses/paladin/BossPaladin.tscn" type="PackedScene" id=15]
 [ext_resource path="res://main/Personajes/Polilla/Polilla.tscn" type="PackedScene" id=16]
+[ext_resource path="res://main/Musica/MusCastillo.tres" type="Resource" id=17]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 365, 324 )
@@ -41,6 +42,7 @@ extents = Vector2( 16, 44 )
 [node name="Nivel" instance=ExtResource( 2 )]
 script = ExtResource( 4 )
 primer_limite_camara = NodePath("camara limites/inicial")
+musica = ExtResource( 17 )
 limites_camara_boss = NodePath("camara limites/boss")
 puerta = NodePath("Puerta")
 trigger_empezar_boss = NodePath("triggers/TriggerOnce")
@@ -192,7 +194,7 @@ shape = SubResource( 6 )
 [node name="PlataformaSpawnBoss" type="Node2D" parent="." index="16"]
 
 [node name="PlataformaAlterna" parent="PlataformaSpawnBoss" index="0" instance=ExtResource( 12 )]
-position = Vector2( 696, 152 )
+position = Vector2( 704, 152 )
 
 [node name="TriggerNPCMover" type="Area2D" parent="PlataformaSpawnBoss" index="1"]
 modulate = Color( 0.443137, 0.145098, 0.792157, 1 )
