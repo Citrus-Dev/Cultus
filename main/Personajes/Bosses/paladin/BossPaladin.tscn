@@ -179,17 +179,17 @@ tracks/0/keys = {
 "values": [ Vector2( 0, 2 ), Vector2( 1, 2 ), Vector2( 2, 2 ) ]
 }
 
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 24, 24 )
+[sub_resource type="RectangleShape2D" id=14]
+extents = Vector2( 19.5, 20 )
 
 [sub_resource type="RectangleShape2D" id=13]
 extents = Vector2( 23, 20 )
 
-[sub_resource type="RectangleShape2D" id=14]
-extents = Vector2( 19.5, 20 )
-
 [sub_resource type="RectangleShape2D" id=15]
 extents = Vector2( 33, 29 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 24, 24 )
 
 [node name="BossPaladin" type="KinematicBody2D"]
 collision_layer = 16384
@@ -204,9 +204,9 @@ max_velocidad_horizontal = 100.0
 max_velocidad_vertical = 500.0
 jump_height = 144.0
 fsm = NodePath("StateMachine")
-hurtbox_contacto = NodePath("HurtboxContacto")
-hurtbox_pignia = NodePath("HurtboxPiña")
-hurtbox_giro = NodePath("HurtboxGiro")
+hurtbox_contacto = NodePath("Skin/HurtboxContacto")
+hurtbox_pignia = NodePath("Skin/HurtboxPiña")
+hurtbox_giro = NodePath("Skin/HurtboxGiro")
 
 [node name="state" parent="." instance=ExtResource( 11 )]
 visible = false
@@ -266,6 +266,40 @@ anims/morir = SubResource( 5 )
 "anims/piña_windup" = SubResource( 12 )
 anims/salto = SubResource( 6 )
 
+[node name="HurtboxPiña" parent="Skin" instance=ExtResource( 13 )]
+collision_mask = 16
+agente_dir = NodePath("../..")
+dmg = 35
+fuerza_retroceso = 400.0
+dmg_tipo = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Skin/HurtboxPiña"]
+position = Vector2( 19.5, -20 )
+shape = SubResource( 14 )
+
+[node name="HurtboxContacto" parent="Skin" instance=ExtResource( 13 )]
+collision_mask = 16
+agente_dir = NodePath("../..")
+is_constant = true
+dmg = 15
+fuerza_retroceso = 400.0
+dmg_tipo = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Skin/HurtboxContacto"]
+position = Vector2( 0, -20 )
+shape = SubResource( 13 )
+
+[node name="HurtboxGiro" parent="Skin" instance=ExtResource( 13 )]
+collision_mask = 16
+agente_dir = NodePath("../..")
+dmg = 20
+fuerza_retroceso = 400.0
+dmg_tipo = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Skin/HurtboxGiro"]
+position = Vector2( 0, -20 )
+shape = SubResource( 15 )
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
 position = Vector2( 0, -24 )
@@ -292,40 +326,3 @@ script = ExtResource( 12 )
 
 [node name="Morir" type="Node" parent="StateMachine"]
 script = ExtResource( 4 )
-
-[node name="HurtboxContacto" parent="." instance=ExtResource( 13 )]
-collision_mask = 16
-agente_dir = NodePath("..")
-is_constant = true
-dmg = 15
-fuerza_retroceso = 400.0
-dmg_tipo = 1
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxContacto"]
-visible = false
-position = Vector2( 0, -20 )
-shape = SubResource( 13 )
-
-[node name="HurtboxPiña" parent="." instance=ExtResource( 13 )]
-collision_mask = 16
-agente_dir = NodePath("..")
-dmg = 35
-fuerza_retroceso = 400.0
-dmg_tipo = 1
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxPiña"]
-visible = false
-position = Vector2( 19.5, -20 )
-shape = SubResource( 14 )
-
-[node name="HurtboxGiro" parent="." instance=ExtResource( 13 )]
-collision_mask = 16
-agente_dir = NodePath("..")
-dmg = 20
-fuerza_retroceso = 400.0
-dmg_tipo = 1
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxGiro"]
-visible = false
-position = Vector2( 0, -20 )
-shape = SubResource( 15 )

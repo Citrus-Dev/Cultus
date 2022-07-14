@@ -14,6 +14,12 @@ var ataques := []
 
 var activo : bool
 
+func _ready():
+	connect("objetivo_encontrado", self, "alertar")
+	add_to_group("Enemigos")
+	add_to_group("Boss")
+
+
 # Activa un ciclo de ataques
 func empezar_boss():
 	activo = true
@@ -87,3 +93,11 @@ func set_animacion(anim : String):
 	yield(get_tree(), "idle_frame")
 	if animador.current_animation != anim: 
 		printerr("QUE CARAJO: " + anim + ", anim anterior: " + animanterior)
+
+
+func alertar():
+	if !muerto:
+		objetivo.connect("muerto", self, "perder_vista_jugador")
+		add_to_group("EnemigosAlertados")
+
+
