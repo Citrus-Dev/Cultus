@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/recarga_AR.wav-a9ddc60056d828ed653b2cb2c07a531a.sample"
+
+[deps]
+
+source_file="res://assets/sfx/armas/recarga/recarga_AR.wav"
+dest_files=[ "res://.import/recarga_AR.wav-a9ddc60056d828ed653b2cb2c07a531a.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
