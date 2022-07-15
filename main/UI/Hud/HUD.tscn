@@ -34,9 +34,11 @@ anchor_bottom = 1.0
 margin_bottom = -160.0
 
 [node name="Label" type="Label" parent="CenterContainer"]
-visible = false
-margin_left = 203.0
+margin_left = 96.0
 margin_top = 55.0
-margin_right = 308.0
+margin_right = 416.0
 margin_bottom = 72.0
+rect_min_size = Vector2( 320, 0 )
 text = "Partida Guardada"
+align = 1
+autowrap = true

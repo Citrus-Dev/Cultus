@@ -178,7 +178,7 @@ direccion_nivel = "res://niveles/posta/castillo/cast_boss2/cast_boss2.tscn"
 direccion_movimiento = 1
 
 [node name="SpawnJugador" type="Node2D" parent="." index="7"]
-position = Vector2( 763, 322 )
+position = Vector2( 952, 10 )
 script = ExtResource( 17 )
 
 [node name="PickupSlide" parent="." index="8" instance=ExtResource( 8 )]

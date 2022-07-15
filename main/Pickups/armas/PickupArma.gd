@@ -5,6 +5,7 @@ signal on_pickup
 
 export(NodePath) onready var area = get_node(area) as Area2D
 export(String) var id_arma
+export(String) var mensaje
 
 onready var armas := Armas.new()
 onready var altura_inicial := position.y
@@ -32,5 +33,6 @@ func es_valido() -> bool:
 func pickup(jug : Jugador):
 	emit_signal("on_pickup")
 	var cont : ControladorArmasJugador = jug.controlador_armas
+	ControladorUi.mostrar_mensaje("mensaje_ui", mensaje, 4.0)
 	cont.agregar_arma_string(id_arma)
 	call_deferred("free")

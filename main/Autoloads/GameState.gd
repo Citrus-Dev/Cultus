@@ -24,9 +24,9 @@ func entrar_estado(est : int):
 		Estados.MENU:
 			pass
 		Estados.NORMAL:
-			Musica.cambiar_musica(Musica.Tracks.MUS_NORMAL)
+			Musica.set_track(Musica.Tracks.MUS_NORMAL)
 		Estados.COMBATE:
-			Musica.cambiar_musica(Musica.Tracks.MUS_COMBATE)
+			Musica.set_track(Musica.Tracks.MUS_COMBATE)
 		Estados.MUERTE:
 			pass
 

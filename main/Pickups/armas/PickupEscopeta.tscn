@@ -5,6 +5,7 @@
 
 [node name="PickupEscopeta" instance=ExtResource( 1 )]
 id_arma = "ArmaEscopeta"
+mensaje = "Escopeta"
 
 [node name="Sprite" parent="." index="1"]
 texture = ExtResource( 2 )

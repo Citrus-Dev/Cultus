@@ -2,7 +2,7 @@ extends Node
 
 signal cambiar_salud(_cantidad)
 signal balas_cambio(_cantidad)
-signal partida_guardada
+signal mensaje_ui(mensaje, tiempo, no_brillo)
 
 var jugador : Jugador
 var hud : HUD
@@ -20,3 +20,7 @@ func actualizar_salud_jugador(_hp : int):
 
 func set_medidor_balas(_med : Control):
 	medidor_balas = _med
+
+
+func mensaje_ui(mensaje : String, tiempo := 1.4, no_brillo := false):
+	emit_signal(mensaje, tiempo, no_brillo)

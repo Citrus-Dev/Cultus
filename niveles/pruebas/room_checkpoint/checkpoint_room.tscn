@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://niveles/Nivel.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/fondos/back_cast.png" type="Texture" id=2]
@@ -6,6 +6,9 @@
 [ext_resource path="res://main/Objetos_mapa/SpawnJugador.gd" type="Script" id=4]
 [ext_resource path="res://assets/tilesets/tileset_castillo.tres" type="TileSet" id=5]
 [ext_resource path="res://main/Objetos_mapa/Checkpoint/Checkpoint.tscn" type="PackedScene" id=6]
+[ext_resource path="res://main/Pickups/skills/PickupSlide.tscn" type="PackedScene" id=7]
+[ext_resource path="res://main/Pickups/PickupBalasRevolver.tscn" type="PackedScene" id=8]
+[ext_resource path="res://main/Pickups/PickupHP.tscn" type="PackedScene" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 440, 142.5 )
@@ -71,3 +74,12 @@ __meta__ = {
 [node name="SpawnJugador" type="Node2D" parent="." index="8"]
 position = Vector2( 296, 224 )
 script = ExtResource( 4 )
+
+[node name="PickupSlide" parent="." index="10" instance=ExtResource( 7 )]
+position = Vector2( 336, 200 )
+
+[node name="PickupHP" parent="." index="11" instance=ExtResource( 9 )]
+position = Vector2( 224, 208 )
+
+[node name="PickupBalasRevolver" parent="." index="12" instance=ExtResource( 8 )]
+position = Vector2( 256, 208 )

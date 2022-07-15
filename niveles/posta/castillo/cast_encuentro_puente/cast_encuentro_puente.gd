@@ -35,16 +35,14 @@ func _ready():
 	conectar_spawns_a_contador()
 
 
-func _process(delta):
-	pass
-
-
 func registrar_escopeta_agarrada():
 	info_persist_nivel[NOMBRE_DATO_PICKUP] = true
 	comenzar_encuentro()
 
 
 func comenzar_encuentro():
+	Musica.set_override(2) # siempre musica de combate
+	
 	puerta_izq.cerrar()
 	puerta_der.cerrar()
 	yield(get_tree().create_timer(1), "timeout")
@@ -52,8 +50,10 @@ func comenzar_encuentro():
 
 
 func terminar_encuentro():
-	info_persist_nivel[NOMBRE_DATO] = true
+	Musica.set_override(2) # chau override
 	Musica.cambiar_musica(Musica.Tracks.MUS_NORMAL)
+	
+	info_persist_nivel[NOMBRE_DATO] = true
 	puerta_izq.abrir()
 	puerta_der.abrir()
 

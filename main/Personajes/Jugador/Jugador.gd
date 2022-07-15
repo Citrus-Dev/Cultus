@@ -23,6 +23,7 @@ var debug_muerte_bugeada : bool
 
 func _ready() -> void:
 	los.connect("nuevo_objeto_en_los", self, "detectar_enemigo")
+	connect("muerto", Musica, "set_override", [-1])
 	
 	crear_hud()
 	crear_camaras()

@@ -2,6 +2,7 @@ extends Casquillo
 
 export (NodePath) var path_area
 export (String) var nombre_bala
+export (String) var mensaje
 export (int) var cant_bala
 export(bool) var no_desaparecer
 
@@ -29,4 +30,10 @@ func agarrar(_jug):
 	inv.agregar_balas(cant_bala, nombre_bala)
 	if arma.has_method("actualizar_medidor"):
 		arma.actualizar_medidor()
+	
+	LabelsPickup.agregar_mensaje(
+		global_position,
+		mensaje.format([str(cant_bala)], "%cant%")
+	)
+	
 	call_deferred("free")

@@ -31,7 +31,7 @@ func guardar_checkpoint(jugador : Jugador):
 	TransicionesDePantalla.checkpoint_actual_escena = dir_escena_actual
 	Guardado.guardar_partida()
 	emit_signal("usado")
-	ControladorUi.emit_signal("partida_guardada")
+	ControladorUi.emit_signal("mensaje_ui", "Partida guardada", 2.5)
 	jugador.status.curar()
 	
 	var nivel = get_tree().get_nodes_in_group("Nivel")[0]

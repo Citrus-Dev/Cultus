@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://assets/tilesets/tileset_castillo.tres" type="TileSet" id=1]
 [ext_resource path="res://niveles/Nivel.tscn" type="PackedScene" id=2]
@@ -19,6 +19,7 @@
 [ext_resource path="res://main/Objetos_mapa/TransicionDeNivel/TransicionDeNivelConArea.tscn" type="PackedScene" id=17]
 [ext_resource path="res://main/SpawnerAuto/spawner_auto.gd" type="Script" id=18]
 [ext_resource path="res://main/Personajes/Caballero/Caballero.tscn" type="PackedScene" id=19]
+[ext_resource path="res://assets/tilesets/plataformas/plataforma.png" type="Texture" id=20]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 680, 372 )
@@ -113,10 +114,18 @@ __meta__ = {
 tiempo_de_intervalo = 0.6
 
 [node name="BlockinPolygon2" type="Polygon2D" parent="Platafformas/PlataformaTimer" index="0"]
-polygon = PoolVector2Array( -32, 0, -24, 8, 24, 8, 32, 0 )
+visible = false
+polygon = PoolVector2Array( -24, 0, -24, 16, 24, 16, 24, 0 )
 script = ExtResource( 8 )
 enable_collisions = true
 one_way = true
+
+[node name="Sprite" type="Sprite" parent="Platafformas/PlataformaTimer" index="1"]
+position = Vector2( 0, 8 )
+texture = ExtResource( 20 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 48, 16 )
+region_filter_clip = true
 
 [node name="PlataformaPropagacionTest1" parent="Platafformas" index="1" instance=ExtResource( 7 )]
 position = Vector2( 624, 120 )

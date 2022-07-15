@@ -429,6 +429,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://main/libs/LabelFuenteAdaptable.gd"
 }, {
+"base": "Label",
+"class": "LabelPickup",
+"language": "GDScript",
+"path": "res://main/UI/LabelPickup.gd"
+}, {
 "base": "Accion",
 "class": "LlamarFuncionNodo",
 "language": "GDScript",
@@ -834,6 +839,7 @@ _global_script_class_icons={
 "Jugador": "",
 "LOSCheck": "",
 "LabelFuenteAdaptable": "",
+"LabelPickup": "",
 "LlamarFuncionNodo": "",
 "MainMenu": "",
 "MedidorCooldown": "",
@@ -921,6 +927,7 @@ GameState="*res://main/Autoloads/GameState.gd"
 Musica="*res://main/Autoloads/Musica.gd"
 Pausa="*res://main/Autoloads/Pausa.gd"
 Config="*res://main/Autoloads/Config.gd"
+LabelsPickup="*res://main/Autoloads/LabelsPickup.gd"
 
 [debug]
 
