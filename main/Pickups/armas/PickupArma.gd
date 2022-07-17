@@ -33,6 +33,6 @@ func es_valido() -> bool:
 func pickup(jug : Jugador):
 	emit_signal("on_pickup")
 	var cont : ControladorArmasJugador = jug.controlador_armas
-	ControladorUi.mostrar_mensaje("mensaje_ui", mensaje, 4.0)
+	ControladorUi.emit_signal("mensaje_ui", mensaje, 4.0)
 	cont.agregar_arma_string(id_arma)
 	call_deferred("free")
