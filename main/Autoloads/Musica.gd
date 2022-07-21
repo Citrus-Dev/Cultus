@@ -132,9 +132,13 @@ func cambiar_musica(track : int):
 		crossfade(objetivo, pos_vieja)
 
 
-func hacer_sonido(stream : AudioStream, pos : Vector2):
+func hacer_sonido(stream : AudioStream, pos : Vector2, vol_over := 0.0):
 	var nivel = get_tree().root
 	var snd := AudioStreamPlayer2D.new()
+	snd.playing = false
+	snd.volume_db = vol_over
 	snd.stream = stream
 	snd.global_position = pos
 	snd.connect("finished", snd, "call_deferred", ["free"])
+	nivel.add_child(snd)
+	snd.play()

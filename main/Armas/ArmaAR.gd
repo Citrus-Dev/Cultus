@@ -9,6 +9,8 @@ const BALA = preload("res://main/Proyectiles/BalaAR.tscn")
 const SKIN_FLASH_ESCENA = preload("res://main/Armas/Skins/SkinARFlash.tscn")
 const PROY_GRANADA_ESCENA = preload("res://main/Proyectiles/GranadaAR.tscn")
 const PROY_GRANADA_FLASH_ESCENA = preload("res://main/Proyectiles/GranadaARFlash.tscn")
+const SONIDO_DISPARO := preload("res://assets/sfx/armas/disparo/5.56-AR15-shot.wav")
+const SONIDO_RECARGA := preload("res://assets/sfx/armas/recarga/recargaAr.wav")
 
 var balas_actual : int = MAX_BALAS
 var timer_recarga := Timer.new()
@@ -61,6 +63,8 @@ func disparar(_origin : Node, _dir : float):
 	if !puede_disparar(): 
 		return
 	
+	Musica.hacer_sonido(SONIDO_DISPARO, _origin.global_position)
+	
 	if skin_inst != null:
 		skin_inst.animador.stop()
 		skin_inst.animador.play("disparar")
@@ -106,6 +110,7 @@ func recargar():
 	if !hay_balas_reserva() or balas_actual == MAX_BALAS: return
 	skin_inst.animador.play("recargar")
 	timer_recarga.start()
+	Musica.hacer_sonido(SONIDO_RECARGA, skin_inst.global_position)
 
 
 func terminar_recarga():

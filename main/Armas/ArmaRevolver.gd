@@ -5,6 +5,8 @@ const BALA = preload("res://main/Proyectiles/BalaPistola.tscn")
 const TIEMPO_RECARGA := 1.3
 const MAX_BALAS := 6
 const TIPO_BALAS = "Pistola"
+const SONIDO_DISPARO := preload("res://assets/sfx/armas/disparo/Barrett-M82-.50-BMG-Single-Close-Gunshot-A-www.fesliyanstudios.com.mp3")
+const SONIDO_RECARGA := preload("res://assets/sfx/armas/recarga/recarga_revolver.wav")
 
 var timer_recarga := Timer.new()
 var balas_actual : int = MAX_BALAS
@@ -49,6 +51,8 @@ func disparar(_origin : Node, _dir : float):
 	if !puede_disparar(): 
 		return
 	
+	Musica.hacer_sonido(SONIDO_DISPARO, _origin.global_position)
+	
 	if skin_inst != null:
 		skin_inst.animador.stop()
 		skin_inst.animador.play("disparar")
@@ -71,6 +75,7 @@ func recargar():
 	if !hay_balas_reserva() or balas_actual == MAX_BALAS: return
 	skin_inst.animador.play("recargar")
 	timer_recarga.start()
+	Musica.hacer_sonido(SONIDO_RECARGA, skin_inst.global_position)
 
 
 func terminar_recarga():

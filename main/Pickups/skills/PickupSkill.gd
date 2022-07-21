@@ -1,6 +1,8 @@
 class_name PickupSkill
 extends Node2D
 
+signal agarrado
+
 export(NodePath) onready var area = get_node(area) as Area2D
 export(NodePath) onready var anim = get_node(anim) as AnimationPlayer
 export(String) var id_skill
@@ -34,3 +36,4 @@ func pickup(jug : Jugador):
 	jug.agregar_skill(id_skill)
 	call_deferred("free")
 	ControladorUi.emit_signal("mensaje_ui", mensaje, 10, true)
+	emit_signal("agarrado")

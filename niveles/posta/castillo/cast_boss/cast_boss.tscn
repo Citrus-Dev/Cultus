@@ -337,6 +337,7 @@ position = Vector2( -6.10352e-05, 23 )
 shape = SubResource( 4 )
 
 [connection signal="triggered" from="triggers/TriggerOnce" to="." method="spawnear_polillas"]
+[connection signal="agarrado" from="PickupSlide" to="." method="guardar_slide"]
 [connection signal="spawn_muerto" from="SpawnerAuto" to="." method="enemigo_puerta_muerto"]
 [connection signal="spawn_muerto" from="SpawnerAuto2" to="." method="enemigo_puerta_muerto"]
 [connection signal="spawn_muerto" from="SpawnerAuto3" to="." method="enemigo_puerta_muerto"]

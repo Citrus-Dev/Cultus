@@ -1,21 +1,31 @@
 class_name Checkpoint
 extends Node2D
 
+# El mensaje "E para guardar" no se va a mostrar por este tiempo despues de usar el checkpoint
+const PROMPT_COOLDOWN := 1.6
+const PROMPT_VEL_FADE := 2.0
+
 signal usado
 
 onready var area : Area2D = get_node("Area2D")
 onready var sprite : Sprite = get_node("Sprite")
+onready var prompt : Label = get_node("Label")
 
 var jugador : Jugador
 var usando : bool
+var prompt_timer : float
+var prompt_visible : bool
 
 func _ready() -> void:
 	add_to_group("Checkpoints")
 	area.connect("body_entered", self, "jug_alternar_area", [true])
 	area.connect("body_exited", self, "jug_alternar_area", [false])
+	prompt.modulate.a = 0.0
 
 
 func _process(delta: float) -> void:
+	procesar_vis_prompt(delta)
+	
 	if jugador:
 		if Input.is_action_just_pressed("usar"):
 			alternar_uso_checkpoint(!usando)
@@ -23,6 +33,20 @@ func _process(delta: float) -> void:
 	var strength = sprite.material.get_shader_param("hit_strength")
 	if strength > 0.0:
 		sprite.material.set_shader_param("hit_strength", strength - delta)
+
+
+func procesar_vis_prompt(delta : float):
+	prompt_visible = is_instance_valid(jugador) and prompt_timer <= 0
+	
+	if usando: prompt_timer = PROMPT_COOLDOWN
+	
+	if prompt_timer > 0:
+		prompt_timer -= delta
+	
+	if prompt_visible and prompt.modulate.a < 1.0:
+		prompt.modulate.a = min(prompt.modulate.a + delta * PROMPT_VEL_FADE, 1.0)
+	if !prompt_visible and prompt.modulate.a > 0.0:
+		prompt.modulate.a = max(prompt.modulate.a - delta * PROMPT_VEL_FADE, 0.0)
 
 
 func guardar_checkpoint(jugador : Jugador):
@@ -41,6 +65,7 @@ func guardar_checkpoint(jugador : Jugador):
 # Alternar la activacion de la zona que te deja usar el checkpoint
 func jug_alternar_area(_jug : Jugador, _bool : bool):
 	jugador = _jug if _bool else null
+#	if prompt_timer > 0: prompt_visible = false
 
 
 # Alternar la activacion del checkpoint en si (sentarse o salir)

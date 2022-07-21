@@ -33,3 +33,7 @@ func enemigo_puerta_muerto():
 func abrir_puerta():
 	puerta_pickup.abrir()
 
+
+func guardar_slide():
+	info_persist_nivel[NOMBRE_DATO] = true
+

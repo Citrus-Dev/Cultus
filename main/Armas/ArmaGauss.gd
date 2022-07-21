@@ -2,6 +2,7 @@ class_name Gauss
 extends Arma
 
 const BALA = preload("res://main/Proyectiles/ProyectilGaussV2.tscn")
+const SONIDO_DISPARO := preload("res://assets/sfx/armas/disparo/mixkit-sci-fi-plasma-gun-power-up-1679.wav")
 
 func _init() -> void:
 	medidor_balas_escena = preload("res://main/UI/BarrasBalas/BarraBalasGauss.tscn")
@@ -23,6 +24,8 @@ func puede_disparar() -> bool:
 func disparar(_origin : Node, _dir : float):
 	if !puede_disparar(): 
 		return
+	
+	Musica.hacer_sonido(SONIDO_DISPARO, _origin.global_position)
 	
 	if skin_inst != null:
 		skin_inst.animador.stop()

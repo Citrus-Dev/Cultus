@@ -73,3 +73,11 @@ anims/RESET = SubResource( 2 )
 anims/loop = SubResource( 3 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="Label" type="Label" parent="."]
+margin_left = -80.0
+margin_top = -88.0
+margin_right = 78.0
+margin_bottom = -71.0
+text = "[E] para guardar"
+align = 1

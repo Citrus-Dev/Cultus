@@ -25,6 +25,9 @@ func _ready() -> void:
 	if !info_persist_nivel.has(NOMBRE_DATO):
 		trigger_empezar_boss.connect("triggered", self, "empezar_boss")
 		return
+	
+	# Ya mataste al boss
+	puente.call_deferred("free")
 
 
 func _process(delta):
@@ -52,6 +55,8 @@ func empezar_boss():
 
 
 func terminar_boss():
+	info_persist_nivel[NOMBRE_DATO] = true
+	
 	primer_limite_camara_obj.get_new_limits()
 	nao_polillas()
 	
@@ -101,7 +106,7 @@ func polilla_time():
 
 func nao_polillas():
 	for i in get_tree().get_nodes_in_group("Enemigos"):
-		if i is Polilla: i.morir()
+		if i is Polilla: i.morir(InfoDmg.new())
 	polillas_activas = false
 
 
