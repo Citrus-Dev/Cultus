@@ -3,6 +3,7 @@ extends Personaje
 
 const CAMARA_FALSA = preload("res://main/Camaras/CamaraFalsa.tscn")
 const CAMARA_REAL = preload("res://main/Camaras/CamaraReal.tscn")
+const FUERZA_DE_ENTRADA := 4.0
 const HUD = preload("res://main/UI/Hud/HUD.tscn")
 
 export(NodePath) onready var stretcher = get_node(stretcher) as Stretcher

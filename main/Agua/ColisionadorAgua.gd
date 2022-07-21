@@ -3,6 +3,7 @@ class_name ColisionadorAgua
 extends Area2D
 
 signal tocado(_vector_movimiento)
+signal splash_signal(f, mult, pos)
 
 export(Color) var polygon_color
 
@@ -30,7 +31,7 @@ func _ready() -> void:
 	collider = get_child(0)
 	
 	polygon = Polygon2D.new()
-	add_child(polygon)
+#	add_child(polygon)
 	polygon.color = polygon_color
 
 
@@ -49,7 +50,7 @@ func _physics_process(delta: float) -> void:
 
 
 func tomar_fuerza_de_entrada(_obj) -> float:
-	var fuerza = _obj.get("fuerza_de_entrada")
+	var fuerza = _obj.get("FUERZA_DE_ENTRADA")
 	if fuerza == null:
 		fuerza = fuerza_de_entrada
 	return fuerza
@@ -57,17 +58,22 @@ func tomar_fuerza_de_entrada(_obj) -> float:
 
 func entrar_en_agua(_cuerpo : KinematicBody2D):
 	_cuerpo.add_to_group("CuerposEnAgua")
+	if _cuerpo is Personaje:
+		_cuerpo.set_agua(true)
 	
 	if can_splash(_cuerpo):
-		splash(_cuerpo, 1)
+		splash(_cuerpo, 1, _cuerpo.global_position.x)
 
 
 func salir_del_agua(_cuerpo : KinematicBody2D):
 	if _cuerpo.is_in_group("CuerposEnAgua"):
 		_cuerpo.remove_from_group("CuerposEnAgua")
 	
+	if _cuerpo is Personaje:
+		_cuerpo.set_agua(false)
+	
 	if can_splash(_cuerpo):
-		splash(_cuerpo, -1)
+		splash(_cuerpo, -1, _cuerpo.global_position.x)
 
 
 func can_splash(_cuerpo : KinematicBody2D) -> bool:
@@ -79,7 +85,7 @@ func can_splash(_cuerpo : KinematicBody2D) -> bool:
 	return false
 
 
-func splash(_cuerpo : KinematicBody2D, _mult : int):
+func splash(_cuerpo : KinematicBody2D, _mult : int, x_pos : float):
 	var mov := Vector2()
 	if _cuerpo.get("velocity") != null:
 		mov = _cuerpo.velocity
@@ -88,8 +94,9 @@ func splash(_cuerpo : KinematicBody2D, _mult : int):
 	var f = tomar_fuerza_de_entrada(_cuerpo)
 	
 	emit_signal("tocado", mov)
-	punto_izq.velocity.y = f * _mult
-	punto_der.velocity.y = f * _mult
+	emit_signal("splash_signal", f, _mult, x_pos)
+#	punto_izq.velocity.y = f * _mult
+#	punto_der.velocity.y = f * _mult
 
 
 # Detecta si un vector de movimiento esta llendo para abajo o arriba

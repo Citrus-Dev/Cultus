@@ -7,14 +7,21 @@ export(NodePath) onready var fsm = get_node(fsm) as StateMachine
 export(NodePath) onready var hurtbox_contacto = get_node(hurtbox_contacto) as Hurtbox
 export(NodePath) onready var hurtbox_pignia = get_node(hurtbox_pignia) as Hurtbox
 export(NodePath) onready var hurtbox_giro = get_node(hurtbox_giro) as Hurtbox
+export(Color) var color_fase2
 
 # Vamos a poner nombres de movimientos aca. El sistema va a ir agarrando movimientos de aca hasta que
 # no haya mas, y despues lo va a rellenar devuelta con empezar_ciclo
 var ataques := []
 
 var activo : bool
+var fase2 : bool
+
+var tween : Tween
 
 func _ready():
+	tween = Tween.new()
+	add_child(tween)
+	
 	connect("objetivo_encontrado", self, "alertar")
 	add_to_group("Enemigos")
 	add_to_group("Boss")
@@ -57,6 +64,10 @@ func empezar_ciclo():
 
 
 func determinar_siguiente_ataque():
+	if !fase2 and status.hp < status.hp_max / 2:
+		empezar_fase_2()
+		return
+	
 	if !ataques.empty():
 		var sig_atq_index : int = randi() % ataques.size()
 		var sig_ataque : String = ataques[sig_atq_index]
@@ -100,4 +111,33 @@ func alertar():
 		objetivo.connect("muerto", self, "perder_vista_jugador")
 		add_to_group("EnemigosAlertados")
 
+
+func empezar_fase_2():
+	fase2 = true
+	fsm.transition_to("TransFase2")
+
+
+func fase2_cambiar_color():
+	tween.interpolate_property(
+		self,
+		"modulate",
+		modulate,
+		color_fase2,
+		1.0,
+		Tween.TRANS_LINEAR
+	)
+	tween.start()
+
+
+func fase2_revertir_color():
+	if !fase2: return
+	tween.interpolate_property(
+		self,
+		"modulate",
+		modulate,
+		Color.white,
+		0.6,
+		Tween.TRANS_LINEAR
+	)
+	tween.start()
 

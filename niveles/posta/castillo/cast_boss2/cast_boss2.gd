@@ -53,6 +53,7 @@ func empezar_boss():
 
 func terminar_boss():
 	primer_limite_camara_obj.get_new_limits()
+	nao_polillas()
 	
 	yield(get_tree().create_timer(0.5), "timeout")
 	tembleque = true
@@ -96,6 +97,12 @@ func polilla_time():
 	polillas_totales += 1
 	empezar_timer_polillas()
 	alertar_todos_los_enemigos()
+
+
+func nao_polillas():
+	for i in get_tree().get_nodes_in_group("Enemigos"):
+		if i is Polilla: i.morir()
+	polillas_activas = false
 
 
 func polilla_muerta():

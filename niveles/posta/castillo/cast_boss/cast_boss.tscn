@@ -176,8 +176,12 @@ ID_objetivo = "del_boss"
 direccion_nivel = "res://niveles/posta/castillo/cast_boss2/cast_boss2.tscn"
 direccion_movimiento = 1
 
+[node name="TransicionDeNivelConArea2" parent="triggers" index="4" instance=ExtResource( 10 )]
+position = Vector2( 1040, -128 )
+direccion_nivel = "res://niveles/posta/castillo/cast_secreto/cast_secreto.tscn"
+
 [node name="SpawnJugador" type="Node2D" parent="." index="7"]
-position = Vector2( 952, 10 )
+position = Vector2( 600, 176 )
 script = ExtResource( 17 )
 
 [node name="PickupSlide" parent="." index="8" instance=ExtResource( 8 )]

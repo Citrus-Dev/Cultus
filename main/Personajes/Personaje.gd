@@ -6,6 +6,7 @@ extends KinematicBody2D
 const SHADER_HIT = preload("res://assets/shaders/shader_hitcolor.shader")
 const KNOCKBACK_FRICCION_HORIZONTAL := 0.4
 const KNOCKBACK_FRICCION_VERTICAL := 0.8
+const DAMP_AGUA := 500
 
 signal objetivo_encontrado
 signal borde_tocado(_borde)
@@ -36,6 +37,8 @@ export(bool) var no_limitar_velocidad
 onready var jump_velocity : float = ((2.0 * jump_height) / jump_time_to_peak) * -1.0
 onready var jump_gravity : float = ((-2.0 * jump_height) / (jump_time_to_peak * jump_time_to_peak)) * -1.0
 onready var fall_gravity : float = ((-2.0 * jump_height) / (jump_time_to_fall * jump_time_to_fall)) * -1.0
+onready var jump_gravity_agua : float = jump_gravity * DAMP_AGUA
+onready var fall_gravity_agua : float = fall_gravity * DAMP_AGUA
 onready var valores_default := {} # Dict de valores default por si queres cambiar uno temporalmente
 
 var animador : AnimationPlayer
@@ -58,6 +61,7 @@ var disparando : bool # Para IA
 var turning : bool
 var is_on_floor : bool
 var ciego : bool
+var agua : bool
 
 var timer_stun = Timer.new()
 var sprites_shader : Array # Lista de sprites que van a ser afectadas por un shader
@@ -197,13 +201,14 @@ func set_snap():
 func get_gravity() -> float:
 	if no_gravedad:
 		return 0.0
-	return jump_gravity if velocity.y < 0.0 else fall_gravity
+	if agua:
+		return jump_gravity - DAMP_AGUA if velocity.y < 0.0 else fall_gravity - DAMP_AGUA 
+	else:
+		return jump_gravity if velocity.y < 0.0 else fall_gravity
 
 
-#func set_dir(_dir : int):
-#	if _dir == 0: return
-#	dir = _dir
-#	skin.scale.x = _dir
+func set_agua(toggle : bool):
+	agua = toggle
 
 
 func set_dir(_dir : int):

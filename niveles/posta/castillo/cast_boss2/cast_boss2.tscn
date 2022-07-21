@@ -142,7 +142,7 @@ position = Vector2( 448, 128 )
 script = ExtResource( 11 )
 
 [node name="SpawnerBoss" type="Position2D" parent="." index="11"]
-position = Vector2( 774, 106 )
+position = Vector2( 776, 112 )
 script = ExtResource( 13 )
 spawn = ExtResource( 15 )
 spawn_group = "forro"

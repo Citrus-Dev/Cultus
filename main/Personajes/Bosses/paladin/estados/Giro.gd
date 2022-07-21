@@ -3,6 +3,7 @@ extends State
 # Quedarse quieto por unos segundos y cambiar de ataque.
 
 const TIEMPO_ESPERA_FINAL := .8
+const TIEMPO_ESPERA_FINAL_2 := .4
 
 var timer_final : float
 var descontando : bool
@@ -47,7 +48,7 @@ func animacion_terminada(__):
 	owner.set_animacion("idle")
 	
 	descontando = true
-	timer_final = TIEMPO_ESPERA_FINAL
+	timer_final = TIEMPO_ESPERA_FINAL if !owner.fase2 else TIEMPO_ESPERA_FINAL_2
 	
 	owner.input.x = 0
 

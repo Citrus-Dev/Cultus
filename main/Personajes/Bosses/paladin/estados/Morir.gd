@@ -7,6 +7,7 @@ func enter(msg : Dictionary = {}) -> void:
 	owner.hurtbox_giro.is_constant = false
 	
 	owner.input = Vector2.ZERO
+	owner.fase2_revertir_color()
 	
 	owner.set_animacion("morir")
 

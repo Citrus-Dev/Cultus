@@ -3,12 +3,13 @@ extends State
 # No descontar tiempo si el boss no esta activo (para la intro)
 
 const TIEMPO_DE_ESPERA := 1.3
+const TIEMPO_DE_ESPERA_2 := 0.7
 
 var timer_espera : float
 
 func enter(msg : Dictionary = {}) -> void:
 	owner.set_animacion("idle")
-	timer_espera = TIEMPO_DE_ESPERA
+	timer_espera = TIEMPO_DE_ESPERA if !owner.fase2 else TIEMPO_DE_ESPERA_2
 
 
 func unhandled_input(event : InputEvent) -> void:

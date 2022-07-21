@@ -2,7 +2,9 @@ extends Node
 # Mirar al jugador por unos momentos y despues impulsarte en su direccion
 
 const TIEMPO_WINDUP := 0.7
+const TIEMPO_WINDUP_2 := 1.0
 const FUERZA_IMPULSO := 260.0
+const FUERZA_IMPULSO_2 := 360.0
 const FRICCION_OVERRIDE := 0.97
 const TIEMPO_PARA_TERMINAR := 0.6
 const MINIMA_VELOCIDAD_PARA_TERMINAR := 50.0
@@ -13,12 +15,12 @@ var timer_final : float
 
 func enter(msg : Dictionary = {}) -> void:
 	windup = true
-	timer_windup = TIEMPO_WINDUP 
+	timer_windup = TIEMPO_WINDUP if !owner.fase2 else TIEMPO_WINDUP_2
 	timer_final = TIEMPO_PARA_TERMINAR
 	
-	owner.aceleracion = FUERZA_IMPULSO
+	owner.aceleracion = FUERZA_IMPULSO if !owner.fase2 else FUERZA_IMPULSO_2
 	owner.friccion = FRICCION_OVERRIDE
-	owner.max_velocidad_horizontal = FUERZA_IMPULSO
+	owner.max_velocidad_horizontal = FUERZA_IMPULSO if !owner.fase2 else FUERZA_IMPULSO_2
 	
 	owner.set_animacion("piña_windup")
 
