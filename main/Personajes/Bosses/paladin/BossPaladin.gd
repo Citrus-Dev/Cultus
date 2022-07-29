@@ -23,6 +23,7 @@ func _ready():
 	add_child(tween)
 	
 	connect("objetivo_encontrado", self, "alertar")
+	connect("borde_tocado", self, "on_borde_tocado")
 	add_to_group("Enemigos")
 	add_to_group("Boss")
 
@@ -140,4 +141,9 @@ func fase2_revertir_color():
 		Tween.TRANS_LINEAR
 	)
 	tween.start()
+
+
+func on_borde_tocado(borde : Borde):
+	var f : float = jump_velocity * borde.mult_fuerza_salto
+	jump(f)
 

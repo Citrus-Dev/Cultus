@@ -29,9 +29,6 @@ func _ready() -> void:
 	usador.controlador_armas = self
 	yield(get_tree(), "idle_frame")
 	
-	# IDEA FIX
-	# Hacer otra funcion que le da armas al jugador desde la tabla de armas, y no creando objetos nuevos
-	# Asi podemos guardar los strings de las armas que tenes
 	if TransicionesDePantalla.inv_armas.empty():
 		inicializar_inv_armas()
 	else:
@@ -47,8 +44,6 @@ func _process(delta: float) -> void:
 	if arma_actual != null and activo:
 		arma_actual.apuntar(angulo)
 	procesar_inventario_ruedita()
-	if Input.is_key_pressed(KEY_P):
-		agregar_arma_string("ArmaAR")
 
 
 func _physics_process(delta: float) -> void:
@@ -158,7 +153,7 @@ func tomar_slot_de_arma(arma : Arma) -> String:
 
 
 func seleccionar_arma(_slot : String):
-	if armas.has(_slot) and armas[_slot] != null:
+	if !tiene_slot_vacio(_slot):
 		if arma_actual: 
 			arma_actual.desequipar(self)
 			arma_actual.borrar_medidor()
@@ -176,12 +171,24 @@ func seleccionar_arma(_slot : String):
 		arma_actual.equipar(self)
 
 
+func tiene_slot_vacio(_slot : String) -> bool:
+	return not (armas.has(_slot) and armas[_slot] != null)
+
+
 # Selecciona un arma por numero en la lista en vez de string
-func seleccionar_arma_int(_slot : int):
+func seleccionar_arma_int(_slot : int, suma : int):
 	var rango_slots = Arma.SLOTS.keys().size()
-	if _slot == rango_slots: _slot = 0
-	var slot = Arma.SLOTS.keys()[_slot]
-	seleccionar_arma(slot)
+	
+	var contador_iter : int = rango_slots
+	var nuevo_slot : int = _slot
+	while contador_iter > 0:
+		nuevo_slot = wrapi(nuevo_slot + suma, 0, rango_slots)
+		var slot = Arma.SLOTS.keys()[nuevo_slot]
+		if !tiene_slot_vacio(slot):
+			seleccionar_arma(slot)
+			break
+		else:
+			contador_iter -= 1
 
 
 # Detecta el input para ver como cambiar las armas con los numeros.
@@ -213,10 +220,10 @@ func procesar_inventario_ruedita():
 	if !activo or inv_vacio(): return
 	var slot_arma_actual = arma_actual.slot
 	if Input.is_action_just_released("arma_siguiente"):
-		seleccionar_arma_int(slot_arma_actual + 1)
+		seleccionar_arma_int(slot_arma_actual, 1)
 		return
 	if Input.is_action_just_released("arma_anterior"):
-		seleccionar_arma_int(slot_arma_actual - 1)
+		seleccionar_arma_int(slot_arma_actual, -1)
 		return
 
 

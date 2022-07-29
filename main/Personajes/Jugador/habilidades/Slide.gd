@@ -16,6 +16,8 @@ var timer_cooldown := Timer.new()
 var area_test : Area2D
 
 func _ready():
+	name = "skill_slide"
+	
 	timer_cooldown.wait_time = TIEMPO_COOLDOWN
 	timer_cooldown.one_shot = true
 	add_child(timer_cooldown)
@@ -74,16 +76,6 @@ func activar():
 	
 	timer.start()
 	yield(timer, "timeout")
-	
-#	jugador.usando_habilidad = false
-#	jugador.valor_default("max_velocidad_horizontal")
-#
-#	# Manualmente reactivamos la hitbox porque la animacion RESET no lo hace por alguna razon.
-#	var hb : Hitbox = jugador.get_node("Hitbox")
-#	hb.monitorable = true
-#	hb.monitoring = true
-#	yield(get_tree(), "idle_frame")
-#	jugador.reiniciar_forma_de_colision()
 
 
 func instanciar_medidor_cooldown():
@@ -92,6 +84,7 @@ func instanciar_medidor_cooldown():
 	hud.instanciar_medidor_cooldown(inst)
 	inst.set_icono_textura(TEXTURA_ICONO)
 	inst.set_color(Color.lightblue)
+	inst.actualizar_nombre("SLIDE")
 	inst.progress_bar.max_value = TIEMPO_COOLDOWN
 	connect("cooldown_update", inst, "actualizar_valor")
 
@@ -101,6 +94,13 @@ func probar_fin() -> bool:
 	var test = area_test.get_overlapping_bodies()
 	return test.empty()
 
+
+func _exit_tree() -> void:
+	var hud = get_tree().get_nodes_in_group("HUD")[0]
+	for i in hud.cont_cooldowns.get_children():
+		if i.name == "SLIDE": 
+			i.call_deferred("free")
+			break
 
 
 

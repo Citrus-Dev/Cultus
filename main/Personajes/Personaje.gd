@@ -337,7 +337,6 @@ func efecto_brillo_dmg(_fuerza : float):
 
 
 func detectar_borde(_borde):
-	print("borde: " + str(_borde))
 	emit_signal("borde_tocado", _borde)
 
 

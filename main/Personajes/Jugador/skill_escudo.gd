@@ -22,6 +22,8 @@ var dir_mov : Vector2
 var desactivado : bool
 
 func _ready():
+	name = "skill_cruz"
+	
 	get_parent().connect("muerto", self, "set", ["desactivado", true])
 	
 	jug = get_parent()
@@ -29,6 +31,11 @@ func _ready():
 	area_escudo = get_child(0)
 	area_escudo.connect("body_entered", self, "determinar_bloqueo")
 	area_escudo.monitoring = false
+	
+	# Si esta el slide, borrarlo porque lo estamos reemplazando
+	var slide = jug.get_node("skill_slide")
+	if slide != null:
+		slide.call_deferred("free")
 	
 	timer_escudo = Timer.new()
 	add_child(timer_escudo)

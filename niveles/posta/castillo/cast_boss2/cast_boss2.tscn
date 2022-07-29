@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://assets/tilesets/tileset_castillo.tres" type="TileSet" id=1]
 [ext_resource path="res://niveles/Nivel.tscn" type="PackedScene" id=2]
@@ -17,6 +17,7 @@
 [ext_resource path="res://main/Personajes/Bosses/paladin/BossPaladin.tscn" type="PackedScene" id=15]
 [ext_resource path="res://main/Personajes/Polilla/Polilla.tscn" type="PackedScene" id=16]
 [ext_resource path="res://main/Musica/MusBossPaladin.tres" type="Resource" id=17]
+[ext_resource path="res://main/AI/Borde.tscn" type="PackedScene" id=18]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 365, 324 )
@@ -34,7 +35,7 @@ extents = Vector2( 267.5, 7.5 )
 extents = Vector2( 8, 24 )
 
 [sub_resource type="RectangleShape2D" id=5]
-extents = Vector2( 96, 36 )
+extents = Vector2( 108, 36 )
 
 [sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 16, 44 )
@@ -209,10 +210,15 @@ __meta__ = {
 dir = Vector2( -1, 0 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlataformaSpawnBoss/TriggerNPCMover" index="0"]
-position = Vector2( -22.0382, -13.4787 )
+position = Vector2( -34.0381, -13.4787 )
 shape = SubResource( 5 )
 
 [node name="PlataformaAlterna2" parent="PlataformaSpawnBoss" index="2" instance=ExtResource( 12 )]
 position = Vector2( 808, 152 )
+
+[node name="Borde" parent="PlataformaSpawnBoss" index="3" instance=ExtResource( 18 )]
+position = Vector2( 629, 152 )
+siempre_saltar = true
+mult_fuerza_salto = 0.81
 
 [editable path="triggers/TransicionDeNivelConArea2"]

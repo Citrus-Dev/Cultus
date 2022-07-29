@@ -13,7 +13,7 @@ var balas_actual : int = MAX_BALAS
 
 func _init() -> void:
 	skin_escena = preload("res://main/Armas/Skins/SkinRevolver.tscn")
-	medidor_balas_escena = preload("res://main/UI/BarrasBalas/BarraBalasRevolver.tscn")
+	medidor_balas_escena = preload("res://main/UI/BarrasBalas/BarraBalasNoRecarga.tscn")
 	damage_info.dmg_cantidad = 25
 	damage_info.fuerza_retroceso = 600
 	damage_info.dmg_stun = 35
@@ -41,6 +41,7 @@ func desequipar(_controlador):
 
 
 func procesar_arma(_delta : float):
+	return
 	if timer_recarga.is_stopped() and Input.is_action_just_pressed("recargar"):
 		recargar()
 
@@ -58,7 +59,6 @@ func disparar(_origin : Node, _dir : float):
 		skin_inst.animador.play("disparar")
 	crear_bala(_origin, BALA, _dir, spread)
 	_origin.inv_balas.bajar_balas(1, TIPO_BALAS)
-	balas_actual -= 1
 	actualizar_medidor()
 	aplicar_screenshake()
 
@@ -68,7 +68,7 @@ func disparar_secundario(_origin : Node, _dir : float):
 
 
 func puede_disparar() -> bool:
-	return balas_actual > 0 and timer_recarga.is_stopped() and inv_balas.hay_balas(TIPO_BALAS)
+	return inv_balas.hay_balas(TIPO_BALAS)
 
 
 func recargar():
@@ -100,8 +100,6 @@ func hay_balas_reserva() -> bool:
 
 func actualizar_medidor():
 	var tipo = hud_medidor_inst.id_balas
-	hud_medidor_inst.set_cantidad(min(balas_actual, inv_balas.dict_balas[tipo]["cant"]))
-	var reserva = max(0, inv_balas.dict_balas[tipo]["cant"] - balas_actual)
-	hud_medidor_inst.set_balas_reserva(reserva)
+	hud_medidor_inst.set_cantidad(inv_balas.dict_balas[TIPO_BALAS]["cant"])
 
 
