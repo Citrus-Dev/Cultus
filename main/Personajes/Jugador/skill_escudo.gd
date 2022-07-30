@@ -60,7 +60,7 @@ func _draw():
 func _process(delta):
 	emit_signal("cooldown_update", timer_cooldown.time_left)
 	update()
-	if puede_activar() and Input.is_action_just_pressed("escudo"):
+	if puede_activar() and Input.is_action_just_pressed("dodge"):
 		if sign(jug.input.x) == 0:
 			empezar_block_quieto()
 		else:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://niveles/Nivel.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/fondos/back_cast.png" type="Texture" id=2]
@@ -10,9 +10,14 @@
 [ext_resource path="res://main/Pickups/PickupBalasRevolver.tscn" type="PackedScene" id=8]
 [ext_resource path="res://main/Pickups/PickupHP.tscn" type="PackedScene" id=9]
 [ext_resource path="res://main/Pickups/skills/PickupEscudo.tscn" type="PackedScene" id=10]
+[ext_resource path="res://main/Objetos_mapa/Plataformas alternas/PlataformaRotatoria.gd" type="Script" id=11]
+[ext_resource path="res://assets/tilesets/plataformas/plataforma_larga.png" type="Texture" id=12]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 440, 142.5 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 64, 8 )
 
 [node name="checkpoint_room" instance=ExtResource( 1 )]
 primer_limite_camara = NodePath("camara limites/limit")
@@ -73,7 +78,7 @@ __meta__ = {
 }
 
 [node name="SpawnJugador" type="Node2D" parent="." index="8"]
-position = Vector2( 283, 224 )
+position = Vector2( 688, 160 )
 script = ExtResource( 4 )
 
 [node name="PickupSlide" parent="." index="10" instance=ExtResource( 7 )]
@@ -87,3 +92,22 @@ position = Vector2( 256, 208 )
 
 [node name="PickupEscudo" parent="." index="13" instance=ExtResource( 10 )]
 position = Vector2( 369, 200 )
+
+[node name="PlataformaRotatoria" type="StaticBody2D" parent="." index="14"]
+position = Vector2( 704, 184 )
+collision_layer = 513
+collision_mask = 0
+script = ExtResource( 11 )
+__meta__ = {
+"_edit_group_": true
+}
+velocidad_rotacion = 0.5
+tiempo_quieto = 1.6
+
+[node name="Sprite" type="Sprite" parent="PlataformaRotatoria" index="0"]
+texture = ExtResource( 12 )
+vframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlataformaRotatoria" index="1"]
+visible = false
+shape = SubResource( 2 )

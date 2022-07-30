@@ -259,9 +259,9 @@ func set_anim_level_trans(_bool : bool):
 
 
 func sacar_input():
-	input = Input.get_vector(
-		"mov_izq", "mov_der",
-		"mov_arr", "mov_abaj"
+	input = Vector2(
+		Input.get_axis("mov_izq", "mov_der"),
+		0
 	).normalized()
 
 

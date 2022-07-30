@@ -58,7 +58,7 @@ func disparar(_origin : Node, _dir : float):
 		skin_inst.animador.stop()
 		skin_inst.animador.play("disparar")
 	crear_bala(_origin, BALA, _dir, spread)
-	_origin.inv_balas.bajar_balas(1, TIPO_BALAS)
+#	_origin.inv_balas.bajar_balas(1, TIPO_BALAS)
 	actualizar_medidor()
 	aplicar_screenshake()
 
@@ -68,7 +68,8 @@ func disparar_secundario(_origin : Node, _dir : float):
 
 
 func puede_disparar() -> bool:
-	return inv_balas.hay_balas(TIPO_BALAS)
+	return true
+#	return inv_balas.hay_balas(TIPO_BALAS)
 
 
 func recargar():

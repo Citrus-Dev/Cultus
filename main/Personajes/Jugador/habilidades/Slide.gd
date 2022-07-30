@@ -60,7 +60,7 @@ func detectar_usable():
 
 
 func detectar_activacion(delta):
-	if Input.is_action_just_pressed("mov_abaj"):
+	if Input.is_action_just_pressed("dodge"):
 		activar()
 
 
@@ -96,6 +96,9 @@ func probar_fin() -> bool:
 
 
 func _exit_tree() -> void:
+	if get_tree().get_nodes_in_group("HUD").size() < 1:
+		return
+	
 	var hud = get_tree().get_nodes_in_group("HUD")[0]
 	for i in hud.cont_cooldowns.get_children():
 		if i.name == "SLIDE": 
