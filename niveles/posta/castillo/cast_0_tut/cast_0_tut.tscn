@@ -216,5 +216,3 @@ collision_layer = 8192
 collision_mask = 0
 
 [connection signal="body_entered" from="triggers/TriggerCultistaChau" to="." method="chau"]
-[connection signal="triggered" from="triggers/TriggerCultistaRajar" to="." method="rajemos"]
-[connection signal="on_pickup" from="PickupArma" to="." method="terminar_script"]

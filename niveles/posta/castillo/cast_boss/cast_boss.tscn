@@ -37,6 +37,7 @@ extents = Vector2( 17, 76 )
 extents = Vector2( 72, 8 )
 
 [sub_resource type="AtlasTexture" id=6]
+flags = 2
 atlas = ExtResource( 1 )
 region = Rect2( 64, 0, 48, 16 )
 
@@ -306,18 +307,43 @@ spawn = ExtResource( 13 )
 
 [node name="Cultista" parent="." index="16" instance=ExtResource( 9 )]
 position = Vector2( 1080, 160 )
+persistir = false
+tiempo_stun = 0.6
+jump_height = 96.0
+no_gravedad = false
+no_limitar_velocidad = false
 
 [node name="Cultista2" parent="." index="17" instance=ExtResource( 9 )]
 position = Vector2( 368, 325 )
+persistir = false
+tiempo_stun = 0.6
+jump_height = 96.0
+no_gravedad = false
+no_limitar_velocidad = false
 
 [node name="Cultista3" parent="." index="18" instance=ExtResource( 9 )]
 position = Vector2( 456, 336 )
+persistir = false
+tiempo_stun = 0.6
+jump_height = 96.0
+no_gravedad = false
+no_limitar_velocidad = false
 
 [node name="Cultista4" parent="." index="19" instance=ExtResource( 9 )]
 position = Vector2( 1144, 16 )
+persistir = false
+tiempo_stun = 0.6
+jump_height = 96.0
+no_gravedad = false
+no_limitar_velocidad = false
 
 [node name="Cultista5" parent="." index="20" instance=ExtResource( 9 )]
 position = Vector2( 1168, 16 )
+persistir = false
+tiempo_stun = 0.6
+jump_height = 96.0
+no_gravedad = false
+no_limitar_velocidad = false
 
 [node name="Caballero" parent="." index="21" instance=ExtResource( 21 )]
 position = Vector2( 424, 336 )
@@ -336,13 +362,9 @@ visible = false
 position = Vector2( -6.10352e-05, 23 )
 shape = SubResource( 4 )
 
-[connection signal="triggered" from="triggers/TriggerOnce" to="." method="spawnear_polillas"]
-[connection signal="agarrado" from="PickupSlide" to="." method="guardar_slide"]
 [connection signal="spawn_muerto" from="SpawnerAuto" to="." method="enemigo_puerta_muerto"]
 [connection signal="spawn_muerto" from="SpawnerAuto2" to="." method="enemigo_puerta_muerto"]
 [connection signal="spawn_muerto" from="SpawnerAuto3" to="." method="enemigo_puerta_muerto"]
 [connection signal="spawn_muerto" from="SpawnerAuto4" to="." method="enemigo_puerta_muerto"]
-[connection signal="muerto" from="Cultista4" to="." method="enemigo_puerta_muerto"]
-[connection signal="muerto" from="Cultista5" to="." method="enemigo_puerta_muerto"]
 
 [editable path="triggers/TransicionDeNivelConArea3"]

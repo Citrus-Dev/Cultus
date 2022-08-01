@@ -28,7 +28,7 @@ func _ready():
 
 
 # cuando tocas el trigger
-func colision_jugador(_jug : Jugador):
+func colision_jugador(_jug : Personaje):
 	if _jug.anim_level_trans:
 		return
 	
@@ -38,7 +38,7 @@ func colision_jugador(_jug : Jugador):
 
 
 # La animacion de moverse
-func activar_animacion(_jug : Jugador, _dir : int):
+func activar_animacion(_jug : Personaje, _dir : int):
 	mascara_anim(true)
 	_jug.anim_level_trans = true
 	_jug.input = Vector2.ZERO
@@ -51,7 +51,7 @@ func activar_animacion(_jug : Jugador, _dir : int):
 			_jug.velocity.y = _jug.jump_velocity
 
 
-func animacion_de_salida(_jug : Jugador, _direccion : int):
+func animacion_de_salida(_jug : Personaje, _direccion : int):
 	mascara_anim(false)
 	_jug.anim_level_trans = true
 	_jug.input = Vector2.ZERO
@@ -67,7 +67,7 @@ func animacion_de_salida(_jug : Jugador, _direccion : int):
 	_jug.anim_level_trans = false
 
 
-func transicion(_jug : Jugador):
+func transicion(_jug : Personaje):
 	TransicionesDePantalla.trigger_objetivo = ID_objetivo
 	TransicionesDePantalla.ultima_direccion = direccion_movimiento
 	TransicionesDePantalla.ultima_dir = _jug.dir

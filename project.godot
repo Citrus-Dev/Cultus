@@ -394,6 +394,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://main/InfoJuego.gd"
 }, {
+"base": "StaticBody2D",
+"class": "IntroJaula",
+"language": "GDScript",
+"path": "res://main/IntroJaula.gd"
+}, {
 "base": "Reference",
 "class": "InvBalas",
 "language": "GDScript",
@@ -493,6 +498,11 @@ _global_script_classes=[ {
 "class": "OneshotParticles",
 "language": "GDScript",
 "path": "res://main/particulas/OneshotParticles.gd"
+}, {
+"base": "Node2D",
+"class": "Palanca",
+"language": "GDScript",
+"path": "res://main/Objetos_mapa/Palanca.gd"
 }, {
 "base": "KinematicBody2D",
 "class": "Personaje",
@@ -670,6 +680,11 @@ _global_script_classes=[ {
 "path": "res://main/Personajes/Jugador/habilidades/Slide.gd"
 }, {
 "base": "Node2D",
+"class": "SonidoRandom",
+"language": "GDScript",
+"path": "res://main/Componentes/SonidoRandom.gd"
+}, {
+"base": "Node2D",
 "class": "SpawnJugador",
 "language": "GDScript",
 "path": "res://main/Objetos_mapa/SpawnJugador.gd"
@@ -837,6 +852,7 @@ _global_script_class_icons={
 "ImprimirTexto": "",
 "InfoDmg": "",
 "InfoJuego": "",
+"IntroJaula": "",
 "InvBalas": "",
 "InverseKinematic": "",
 "Inversor": "res://main/libs/BehaviorTree/icons/inverter.svg",
@@ -857,6 +873,7 @@ _global_script_class_icons={
 "NuevoJuegoPrompt": "",
 "OneJointIK": "",
 "OneshotParticles": "",
+"Palanca": "",
 "Personaje": "",
 "PickupArma": "",
 "PickupHP": "",
@@ -892,6 +909,7 @@ _global_script_class_icons={
 "SkillEscudo": "",
 "SkinArma": "",
 "Slide": "",
+"SonidoRandom": "",
 "SpawnJugador": "",
 "SpawnerAuto": "",
 "State": "",

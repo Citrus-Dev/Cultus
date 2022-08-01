@@ -23,7 +23,7 @@ func _init() -> void:
 	screenshake = 5.0
 	cooldown_tiempo = 0.4
 	cooldown_tiempo_sec = 0.2
-	spread = 2
+	spread = .4
 
 
 func equipar(_controlador):

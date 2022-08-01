@@ -1,9 +1,10 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://main/Personajes/Jugador/Jugador.gd" type="Script" id=1]
 [ext_resource path="res://main/SistemaDaño/StatusJugador.gd" type="Script" id=2]
 [ext_resource path="res://main/Personajes/Jugador/ControladorArmasJugador.gd" type="Script" id=3]
 [ext_resource path="res://main/Componentes/Stretcher.gd" type="Script" id=4]
+[ext_resource path="res://main/Componentes/SonidoRandom.gd" type="Script" id=5]
 [ext_resource path="res://main/SistemaDaño/Hitbox.tscn" type="PackedScene" id=6]
 [ext_resource path="res://main/libs/DebugMonitor/DebugMonitor.tscn" type="PackedScene" id=7]
 [ext_resource path="res://assets/jug/player.png" type="Texture" id=8]
@@ -539,3 +540,6 @@ i_frames_tiempo = 1.5
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2( 0, -8 )
 shape = SubResource( 2 )
+
+[node name="SonidoRandom" type="Node2D" parent="."]
+script = ExtResource( 5 )
