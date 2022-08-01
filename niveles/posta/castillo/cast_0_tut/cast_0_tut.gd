@@ -24,6 +24,7 @@ func _ready():
 	arma = get_node(path_arma)
 	
 	trigger_rajar.connect("triggered", self, "rajemos")
+	arma.connect("on_pickup", self, "terminar_script")
 	
 	if info_persist_nivel.has(NOMBRE_DATO): 
 		puertas.set_abierto(true)

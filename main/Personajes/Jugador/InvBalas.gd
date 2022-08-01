@@ -41,8 +41,8 @@ func set_medidor(_medidor : HudMedidorBalas):
 # Te da el inventario de balas con solo las armas que descubriste
 func tomar_balas_descubiertas() -> Dictionary:
 	var nuevo_inv : Dictionary
-	if TransicionesDePantalla.inv_armas.has("PISTOLA"):
-		nuevo_inv["Pistola"] = dict_balas["Pistola"]
+#	if TransicionesDePantalla.inv_armas.has("PISTOLA"):
+#		nuevo_inv["Pistola"] = dict_balas["Pistola"]
 	
 	if TransicionesDePantalla.inv_armas.has("ESCOPETA"):
 		nuevo_inv["Escopeta"] = dict_balas["Escopeta"]

@@ -19,6 +19,9 @@ label_g_path = NodePath("MarginContainer/Container/HBoxContainer/Label")
 [node name="Container" parent="MarginContainer" index="0"]
 margin_right = 66.0
 
+[node name="Label" parent="MarginContainer/Container" index="1"]
+visible = true
+
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Container" index="2"]
 margin_left = 29.0
 margin_right = 66.0

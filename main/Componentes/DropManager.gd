@@ -23,6 +23,7 @@ func drop():
 
 func elegir_drop(opciones : Dictionary):
 	var final : Array
+	
 	for o in opciones:
 		# La cantidad no va a ser el numero directo, va a ser un radio 
 		# (porque 1 bala de railgun no vale menos que 2 bala de rifle)
@@ -34,6 +35,8 @@ func elegir_drop(opciones : Dictionary):
 		)
 	
 	final.sort_custom(self, "sort_custom_lista_balas")
+	
+	if final.empty(): return
 	
 	var id_elegido : String = final[0]["id"]
 	convertir_id_a_escena(id_elegido)

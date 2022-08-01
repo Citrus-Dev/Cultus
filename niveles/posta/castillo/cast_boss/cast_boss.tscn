@@ -55,6 +55,9 @@ spawn_polilla1 = NodePath("SpawnerAuto")
 spawn_polilla2 = NodePath("SpawnerAuto2")
 spawn_polilla3 = NodePath("SpawnerAuto3")
 spawn_polilla4 = NodePath("SpawnerAuto4")
+cultista_forro1 = NodePath("Cultista4_forro")
+cultista_forro2 = NodePath("Cultista5_forro")
+trigger_polillas = NodePath("triggers/TriggerOnce")
 slide_pickup = NodePath("PickupSlide")
 puerta_pickup = NodePath("Puerta")
 
@@ -307,43 +310,18 @@ spawn = ExtResource( 13 )
 
 [node name="Cultista" parent="." index="16" instance=ExtResource( 9 )]
 position = Vector2( 1080, 160 )
-persistir = false
-tiempo_stun = 0.6
-jump_height = 96.0
-no_gravedad = false
-no_limitar_velocidad = false
 
 [node name="Cultista2" parent="." index="17" instance=ExtResource( 9 )]
 position = Vector2( 368, 325 )
-persistir = false
-tiempo_stun = 0.6
-jump_height = 96.0
-no_gravedad = false
-no_limitar_velocidad = false
 
 [node name="Cultista3" parent="." index="18" instance=ExtResource( 9 )]
 position = Vector2( 456, 336 )
-persistir = false
-tiempo_stun = 0.6
-jump_height = 96.0
-no_gravedad = false
-no_limitar_velocidad = false
 
-[node name="Cultista4" parent="." index="19" instance=ExtResource( 9 )]
+[node name="Cultista4_forro" parent="." index="19" instance=ExtResource( 9 )]
 position = Vector2( 1144, 16 )
-persistir = false
-tiempo_stun = 0.6
-jump_height = 96.0
-no_gravedad = false
-no_limitar_velocidad = false
 
-[node name="Cultista5" parent="." index="20" instance=ExtResource( 9 )]
+[node name="Cultista5_forro" parent="." index="20" instance=ExtResource( 9 )]
 position = Vector2( 1168, 16 )
-persistir = false
-tiempo_stun = 0.6
-jump_height = 96.0
-no_gravedad = false
-no_limitar_velocidad = false
 
 [node name="Caballero" parent="." index="21" instance=ExtResource( 21 )]
 position = Vector2( 424, 336 )
