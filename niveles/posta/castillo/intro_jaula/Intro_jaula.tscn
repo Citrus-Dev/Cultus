@@ -6,7 +6,7 @@
 [ext_resource path="res://main/Objetos_mapa/SpawnJugador.gd" type="Script" id=4]
 [ext_resource path="res://niveles/posta/castillo/intro_jaula/Intro_jaula.gd" type="Script" id=5]
 [ext_resource path="res://main/Personajes/Cultista/Cultista.tscn" type="PackedScene" id=6]
-[ext_resource path="res://main/Intro jaula.tscn" type="PackedScene" id=7]
+[ext_resource path="res://main/Jaula.tscn" type="PackedScene" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 252, 160 )

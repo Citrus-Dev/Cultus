@@ -397,7 +397,7 @@ _global_script_classes=[ {
 "base": "Node2D",
 "class": "IntroJaula",
 "language": "GDScript",
-"path": "res://main/IntroJaula.gd"
+"path": "res://main/Jaula.gd"
 }, {
 "base": "Reference",
 "class": "InvBalas",
