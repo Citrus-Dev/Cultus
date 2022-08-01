@@ -394,7 +394,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://main/InfoJuego.gd"
 }, {
-"base": "StaticBody2D",
+"base": "Node2D",
 "class": "IntroJaula",
 "language": "GDScript",
 "path": "res://main/IntroJaula.gd"
