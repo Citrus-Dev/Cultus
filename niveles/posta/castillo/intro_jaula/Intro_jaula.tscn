@@ -36,7 +36,7 @@ __meta__ = {
 }
 
 [node name="intro jaula" parent="Frente" index="0" instance=ExtResource( 7 )]
-position = Vector2( 80, 112 )
+position = Vector2( 80, 168 )
 
 [node name="CameraBounds" type="CollisionShape2D" parent="camara limites" index="0"]
 visible = false
@@ -45,7 +45,8 @@ shape = SubResource( 1 )
 script = ExtResource( 3 )
 
 [node name="SpawnJugador" type="Node2D" parent="." index="7"]
-position = Vector2( 80, 112 )
+position = Vector2( 80, 152 )
+scale = Vector2( 5, 1 )
 script = ExtResource( 4 )
 
 [node name="h2" parent="." index="8" instance=ExtResource( 6 )]
