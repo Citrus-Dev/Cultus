@@ -23,7 +23,9 @@ func _ready():
 
 
 func set_usado():
-	trigger(null)
+	anim.play("usado")
+	activado = true
+	area_trigger.disconnect("body_entered", self, "trigger")
 
 
 func trigger(__):
