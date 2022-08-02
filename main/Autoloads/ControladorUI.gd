@@ -4,8 +4,8 @@ signal cambiar_salud(_cantidad)
 signal balas_cambio(_cantidad)
 signal mensaje_ui(mensaje, tiempo, no_brillo)
 
-var jugador : Jugador
-var hud : HUD
+var jugador : Personaje
+var hud
 var medidor_balas : Control setget set_medidor_balas
 
 var jug_hp : int

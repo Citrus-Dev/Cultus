@@ -27,8 +27,8 @@ export(float) var tiempo_stun = 0.6
 
 # Variables de salto
 export(float) var jump_height = 96
-export(float) var jump_time_to_peak = 1.0
-export(float) var jump_time_to_fall = 1.0
+export(float) var jump_time_to_peak = 0.6
+export(float) var jump_time_to_fall = 0.6
 export(bool) var no_gravedad 
 export(bool) var no_limitar_velocidad
 

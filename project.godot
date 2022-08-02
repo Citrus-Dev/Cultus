@@ -619,6 +619,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://main/Componentes/Rotador.gd"
 }, {
+"base": "Personaje",
+"class": "Rueda",
+"language": "GDScript",
+"path": "res://main/Personajes/Rueda/Rueda.gd"
+}, {
 "base": "Accion",
 "class": "Saltar",
 "language": "GDScript",
@@ -897,6 +902,7 @@ _global_script_class_icons={
 "Resorte": "",
 "Revolver": "",
 "Rotador": "",
+"Rueda": "",
 "Saltar": "",
 "Secuencia": "res://main/libs/BehaviorTree/icons/sequencer.svg",
 "Selector": "res://main/libs/BehaviorTree/icons/selector.svg",

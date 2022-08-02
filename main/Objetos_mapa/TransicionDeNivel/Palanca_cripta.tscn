@@ -18,7 +18,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ 2 ]
+"values": [ 0 ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -45,10 +45,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.4 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ 0, 1, 2 ]
+"values": [ 1, 2 ]
 }
 
 [node name="PalancaCripta" type="Node2D"]
@@ -66,7 +66,6 @@ shape = SubResource( 1 )
 position = Vector2( 0, -5 )
 texture = ExtResource( 1 )
 vframes = 3
-frame = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 3 )
