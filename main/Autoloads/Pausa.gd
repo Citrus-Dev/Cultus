@@ -25,3 +25,5 @@ func instanciar_pausa():
 func borrar_pausa():
 	pausa_inst.queue_free()
 	pausa_inst = null
+
+

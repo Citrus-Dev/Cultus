@@ -13,7 +13,7 @@
 [ext_resource path="res://niveles/posta/castillo/cast_0_tut/cast_0_tut.gd" type="Script" id=11]
 [ext_resource path="res://main/SpawnerAuto/spawner_auto.gd" type="Script" id=12]
 [ext_resource path="res://main/Personajes/Cultista/Cultista.tscn" type="PackedScene" id=13]
-[ext_resource path="res://main/Pickups/armas/PickupArma.tscn" type="PackedScene" id=14]
+[ext_resource path="res://main/Pickups/armas/PickupRevolver.tscn" type="PackedScene" id=14]
 [ext_resource path="res://main/Musica/MusCastillo.tres" type="Resource" id=15]
 [ext_resource path="res://assets/objetos/puerta.png" type="Texture" id=16]
 [ext_resource path="res://assets/objetos/pillar_pickup.png" type="Texture" id=18]
@@ -39,7 +39,7 @@ path_spawner_cult = NodePath("SpawnerAuto")
 path_puertas = NodePath("Puerta")
 path_target_correr = NodePath("TargetCorrer")
 path_trigger_rajar = NodePath("triggers/TriggerCultistaRajar")
-path_arma = NodePath("PickupArma")
+path_arma = NodePath("PickupRevolver")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="FondoLejos" index="0"]
 
@@ -75,7 +75,7 @@ position = Vector2( 512, 4 )
 shape = SubResource( 1 )
 
 [node name="SpawnJugador" type="Node2D" parent="." index="6"]
-position = Vector2( 289.069, 192 )
+position = Vector2( 743.751, 258 )
 script = ExtResource( 3 )
 
 [node name="Puerta" type="KinematicBody2D" parent="." index="7"]
@@ -203,8 +203,8 @@ spawn = ExtResource( 13 )
 [node name="TargetCorrer" type="Position2D" parent="." index="14"]
 position = Vector2( 888, 272 )
 
-[node name="PickupArma" parent="." index="15" instance=ExtResource( 14 )]
-position = Vector2( 706.614, 240 )
+[node name="PickupRevolver" parent="." index="15" instance=ExtResource( 14 )]
+position = Vector2( 708.621, 246 )
 
 [node name="PillarPickup" type="Sprite" parent="." index="16"]
 position = Vector2( 706.614, 264 )

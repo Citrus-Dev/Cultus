@@ -273,3 +273,9 @@ func c_config_cargar(__ := "") -> String:
 func c_config_guardar(__ := "") -> String:
 	Config.guardar_config()
 	return "Configuracion guardada"
+
+
+func c_evento(__ := "") -> String:
+	GameState.evento()
+	return "?"
+

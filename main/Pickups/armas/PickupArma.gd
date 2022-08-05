@@ -6,6 +6,7 @@ signal on_pickup
 export(NodePath) onready var area = get_node(area) as Area2D
 export(String) var id_arma
 export(String) var mensaje
+export(PackedScene) var pantalla_tutorial
 
 onready var armas := Armas.new()
 onready var altura_inicial := position.y
@@ -30,9 +31,15 @@ func es_valido() -> bool:
 	return !armas.armas_lista.has(id_arma)
 
 
-func pickup(jug : Jugador):
+func pickup(jug : Personaje):
 	emit_signal("on_pickup")
 	var cont : ControladorArmasJugador = jug.controlador_armas
-	ControladorUi.emit_signal("mensaje_ui", mensaje, 4.0)
+#	ControladorUi.emit_signal("mensaje_ui", mensaje, 4.0)
 	cont.agregar_arma_string(id_arma)
 	call_deferred("free")
+	spawn_tutorial()
+
+
+func spawn_tutorial():
+	get_tree().root.add_child(pantalla_tutorial.instance())
+

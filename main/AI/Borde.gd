@@ -2,6 +2,8 @@
 class_name Borde
 extends Node2D
 
+signal usado
+
 enum OPCIONES_FILTRO {
 	NO,
 	IZQUIERDA,

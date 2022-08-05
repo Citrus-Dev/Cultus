@@ -7,6 +7,7 @@ export(NodePath) onready var area = get_node(area) as Area2D
 export(NodePath) onready var anim = get_node(anim) as AnimationPlayer
 export(String) var id_skill
 export(String) var mensaje
+export(PackedScene) var pantalla_tutorial
 
 onready var armas := Armas.new()
 onready var altura_inicial := position.y
@@ -32,8 +33,13 @@ func es_valido() -> bool:
 	return !armas.skills_lista.has(id_skill)
 
 
-func pickup(jug : Jugador):
+func pickup(jug : Personaje):
 	jug.agregar_skill(id_skill)
 	call_deferred("free")
-	ControladorUi.emit_signal("mensaje_ui", mensaje, 10, true)
 	emit_signal("agarrado")
+	spawn_tutorial()
+
+
+func spawn_tutorial():
+	get_tree().root.add_child(pantalla_tutorial.instance())
+

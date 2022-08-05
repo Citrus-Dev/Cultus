@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://main/UI/BarraHPBoss/BarraHPBossUI.gd" type="Script" id=1]
+[ext_resource path="res://assets/ui/barraboss_marco.png" type="Texture" id=2]
+[ext_resource path="res://assets/ui/barraboss_fondo.png" type="Texture" id=3]
+[ext_resource path="res://assets/ui/barraboss_relleno.png" type="Texture" id=4]
 
 [node name="BarraHPBossUI" type="Control"]
 anchor_right = 1.0
@@ -21,31 +24,38 @@ margin_bottom = 248.0
 
 [node name="Barra" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 margin_right = 472.0
-margin_bottom = 16.0
+margin_bottom = 32.0
 rect_min_size = Vector2( 0, 16 )
 
 [node name="relleno2" type="MarginContainer" parent="MarginContainer/VBoxContainer/Barra"]
 margin_right = 72.0
-margin_bottom = 16.0
+margin_bottom = 32.0
 size_flags_horizontal = 3
 
-[node name="ProgressBar" type="ProgressBar" parent="MarginContainer/VBoxContainer/Barra"]
-modulate = Color( 0.905882, 0, 0, 1 )
+[node name="ProgressBar" type="TextureProgress" parent="MarginContainer/VBoxContainer/Barra"]
 margin_left = 76.0
 margin_right = 396.0
-margin_bottom = 16.0
+margin_bottom = 32.0
 rect_min_size = Vector2( 320, 0 )
-size_flags_vertical = 1
-percent_visible = false
+value = 100.0
+texture_under = ExtResource( 3 )
+texture_over = ExtResource( 2 )
+texture_progress = ExtResource( 4 )
+tint_progress = Color( 0.556863, 0.25098, 0.780392, 1 )
+nine_patch_stretch = true
+stretch_margin_left = 16
+stretch_margin_top = 16
+stretch_margin_right = 16
+stretch_margin_bottom = 16
 
 [node name="relleno" type="MarginContainer" parent="MarginContainer/VBoxContainer/Barra"]
 margin_left = 400.0
 margin_right = 472.0
-margin_bottom = 16.0
+margin_bottom = 32.0
 size_flags_horizontal = 3
 
 [node name="relleno" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
-margin_top = 20.0
+margin_top = 36.0
 margin_right = 472.0
 margin_bottom = 248.0
 size_flags_vertical = 3

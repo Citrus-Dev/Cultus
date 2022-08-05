@@ -1,5 +1,7 @@
 extends Node
 
+const CHANCE_EVENTO := 60000
+
 enum Estados {
 	MENU = 0,
 	NORMAL = 1,
@@ -17,6 +19,10 @@ func _init() -> void:
 func _process(delta):
 #	DebugDraw.set_text("estado", Estados.keys()[estado_actual])
 	procesar_estado(estado_actual, delta)
+	
+	var rng = randi() % CHANCE_EVENTO
+	if rng == CHANCE_EVENTO:
+		evento()
 
 
 func entrar_estado(est : int):
@@ -77,4 +83,25 @@ func procesar_pausa(delta : float):
 func hack_tomar_inv_balas() -> InvBalas:
 	var jug = get_tree().get_nodes_in_group("Jugador")[0]
 	return jug.controlador_armas.inv_balas
+
+
+# Mati forro
+func evento():
+	if get_tree().get_nodes_in_group("Jugador").size() < 1: return
+	var jug : Node2D = get_tree().get_nodes_in_group("Jugador")[0]
+	jug.pause_mode = PAUSE_MODE_PROCESS
+	ControladorUi.mensaje_ui("Hola", 2.0, true)
+	get_tree().paused = true
+	jug.alternar_checkpoint(true)
+	
+	var timer = Timer.new()
+	jug.add_child(timer)
+	timer.start(2.0)
+	
+	yield(timer, "timeout")
+	
+	timer.call_deferred("free")
+	get_tree().paused = false
+	jug.alternar_checkpoint(false)
+	
 

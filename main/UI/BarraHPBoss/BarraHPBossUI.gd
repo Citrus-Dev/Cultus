@@ -3,7 +3,7 @@ extends Control
 
 signal objetivo_muerto
 
-onready var barra : ProgressBar = get_node("MarginContainer/VBoxContainer/Barra/ProgressBar")
+onready var barra : TextureProgress = get_node("MarginContainer/VBoxContainer/Barra/ProgressBar")
 var objetivo : Personaje
 
 func setup_barra(_objetivo : Personaje):

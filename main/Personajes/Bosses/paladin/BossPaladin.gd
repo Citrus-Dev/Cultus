@@ -145,5 +145,6 @@ func fase2_revertir_color():
 
 func on_borde_tocado(borde : Borde):
 	var f : float = jump_velocity * borde.mult_fuerza_salto
+	borde.call_deferred("free")
 	jump(f)
 
