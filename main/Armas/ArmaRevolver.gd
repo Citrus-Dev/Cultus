@@ -4,6 +4,7 @@ extends Arma
 const BALA = preload("res://main/Proyectiles/BalaPistola.tscn")
 const TIEMPO_RECARGA := 1.3
 const MAX_BALAS := 6
+const SPREAD_ALTFIRE := 3.8
 const TIPO_BALAS = "Pistola"
 const SONIDO_DISPARO := preload("res://assets/sfx/armas/disparo/Barrett-M82-.50-BMG-Single-Close-Gunshot-A-www.fesliyanstudios.com.mp3")
 const SONIDO_RECARGA := preload("res://assets/sfx/armas/recarga/recarga_revolver.wav")
@@ -64,7 +65,21 @@ func disparar(_origin : Node, _dir : float):
 
 
 func disparar_secundario(_origin : Node, _dir : float):
-	disparar(_origin, _dir)
+	if timer_recarga.is_stopped() and balas_actual == 0:
+		recargar()
+	if !puede_disparar(): 
+		return
+	
+	Musica.hacer_sonido(SONIDO_DISPARO, _origin.global_position)
+	
+	if skin_inst != null:
+		skin_inst.animador.stop()
+		skin_inst.animador.play("disparar")
+	crear_bala(_origin, BALA, _dir, SPREAD_ALTFIRE)
+	balas_actual -= 1
+#	_origin.inv_balas.bajar_balas(1, TIPO_BALAS)
+	actualizar_medidor()
+	aplicar_screenshake()
 
 
 func puede_disparar() -> bool:

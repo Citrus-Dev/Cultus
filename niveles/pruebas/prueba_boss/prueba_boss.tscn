@@ -27,6 +27,8 @@ extents = Vector2( 200, 48 )
 [node name="prueba_boss" instance=ExtResource( 1 )]
 script = ExtResource( 5 )
 primer_limite_camara = NodePath("camara limites/CameraBounds")
+print_fps = false
+musica = null
 limites_camara_boss = NodePath("camara limites/BossBounds")
 trigger_boss = NodePath("TriggerBoss")
 puerta1 = NodePath("Frente/Puerta")

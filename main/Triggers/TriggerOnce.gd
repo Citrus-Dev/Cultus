@@ -9,7 +9,7 @@ func _ready() -> void:
 	connect("body_entered", self, "trigger")
 
 
-func trigger(_jug : Jugador):
+func trigger(_jug : Personaje):
 	emit_signal("triggered")
 	set_usado(true)
 

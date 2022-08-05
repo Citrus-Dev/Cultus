@@ -153,6 +153,8 @@ max_velocidad_horizontal = 120.0
 max_velocidad_vertical = 500.0
 anim_girar = NodePath("Skin/AnimGirar")
 hurtbox = NodePath("Hurtbox")
+rc1 = NodePath("Skin/RayCast2D")
+rc2 = NodePath("Skin/RayCast2D2")
 
 [node name="DropManager" type="Node" parent="."]
 script = ExtResource( 7 )
@@ -177,6 +179,20 @@ offset = Vector2( 0, -1 )
 hframes = 2
 vframes = 5
 frame = 6
+
+[node name="RayCast2D" type="RayCast2D" parent="Skin"]
+position = Vector2( 0, -30 )
+rotation = 3.14159
+scale = Vector2( 1, -1 )
+enabled = true
+cast_to = Vector2( -23, 0 )
+
+[node name="RayCast2D2" type="RayCast2D" parent="Skin"]
+position = Vector2( 0, -2 )
+rotation = 3.14159
+scale = Vector2( 1, -1 )
+enabled = true
+cast_to = Vector2( -23, 0 )
 
 [node name="Status" type="Node" parent="."]
 script = ExtResource( 4 )

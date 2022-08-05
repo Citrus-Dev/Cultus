@@ -37,7 +37,7 @@ func pickup(jug : Personaje):
 #	ControladorUi.emit_signal("mensaje_ui", mensaje, 4.0)
 	cont.agregar_arma_string(id_arma)
 	call_deferred("free")
-	spawn_tutorial()
+	if pantalla_tutorial: spawn_tutorial()
 
 
 func spawn_tutorial():
