@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://niveles/Nivel.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/tilesets/tileset_castillo.tres" type="TileSet" id=2]
@@ -7,9 +7,16 @@
 [ext_resource path="res://niveles/posta/castillo/intro_jaula/Intro_jaula.gd" type="Script" id=5]
 [ext_resource path="res://main/Personajes/Cultista/Cultista.tscn" type="PackedScene" id=6]
 [ext_resource path="res://main/Jaula.tscn" type="PackedScene" id=7]
+[ext_resource path="res://main/Triggers/TriggerHurt.gd" type="Script" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 252, 160 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 64, 8 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 40, 10 )
 
 [node name="Nivel" instance=ExtResource( 1 )]
 script = ExtResource( 5 )
@@ -17,6 +24,7 @@ primer_limite_camara = NodePath("camara limites/CameraBounds")
 cult_hablar_1 = NodePath("h1")
 cult_hablar_2 = NodePath("h2")
 cult_ouch = NodePath("ouch")
+hurt = NodePath("triggers/TriggerHurt")
 
 [node name="TileMap" type="TileMap" parent="WorldEnvironment" index="0"]
 tile_set = ExtResource( 2 )
@@ -45,6 +53,34 @@ position = Vector2( 252, 160 )
 shape = SubResource( 1 )
 script = ExtResource( 3 )
 
+[node name="trigger splat" type="Area2D" parent="triggers" index="0"]
+position = Vector2( 72, 264 )
+collision_layer = 0
+collision_mask = 2
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="triggers/trigger splat" index="0"]
+modulate = Color( 1, 0.490196, 0.121569, 1 )
+shape = SubResource( 2 )
+
+[node name="TriggerHurt" type="Area2D" parent="triggers" index="1"]
+position = Vector2( 72, 296 )
+collision_layer = 0
+collision_mask = 4
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+dmg = 9999
+dmg_tipo = 3
+siempre_activo = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="triggers/TriggerHurt" index="0"]
+modulate = Color( 0.952941, 0.0745098, 0.0745098, 1 )
+shape = SubResource( 3 )
+
 [node name="SpawnJugador" type="Node2D" parent="." index="7"]
 position = Vector2( 80, 152 )
 scale = Vector2( 5, 1 )
@@ -58,3 +94,6 @@ position = Vector2( 296, 160 )
 
 [node name="ouch" parent="." index="10" instance=ExtResource( 6 )]
 position = Vector2( 72, 304 )
+
+[connection signal="caida_empezada" from="Frente/intro jaula" to="." method="asustar"]
+[connection signal="body_entered" from="triggers/trigger splat" to="." method="ouch"]

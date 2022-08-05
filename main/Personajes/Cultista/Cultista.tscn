@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://main/Personajes/PersonajeBase.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/enemies/Cultist.png" type="Texture" id=2]
@@ -17,6 +17,7 @@
 [ext_resource path="res://main/Personajes/Caballero/estados/Stun.gd" type="Script" id=15]
 [ext_resource path="res://main/Ragdolls/RagdollCultista.tscn" type="PackedScene" id=16]
 [ext_resource path="res://main/Componentes/DropManager.gd" type="Script" id=17]
+[ext_resource path="res://main/Componentes/Stretcher.gd" type="Script" id=18]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 6, 8.5 )
@@ -27,7 +28,7 @@ extents = Vector2( 8, 9 )
 [sub_resource type="Animation" id=3]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
+tracks/0/path = NodePath("Stretcher/Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -44,7 +45,7 @@ resource_name = "caer"
 length = 0.2
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
+tracks/0/path = NodePath("Stretcher/Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -60,7 +61,7 @@ tracks/0/keys = {
 resource_name = "caminar"
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
+tracks/0/path = NodePath("Stretcher/Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -77,7 +78,7 @@ resource_name = "correr"
 length = 0.5
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
+tracks/0/path = NodePath("Stretcher/Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -94,7 +95,7 @@ resource_name = "hurt"
 length = 0.2
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
+tracks/0/path = NodePath("Stretcher/Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -111,7 +112,7 @@ resource_name = "idle"
 length = 0.4
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
+tracks/0/path = NodePath("Stretcher/Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -126,7 +127,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id=10]
 resource_name = "mirar"
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
+tracks/0/path = NodePath("Stretcher/Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -141,7 +142,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id=11]
 resource_name = "mirar_der"
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
+tracks/0/path = NodePath("Stretcher/Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -158,7 +159,7 @@ resource_name = "saltar"
 length = 0.2
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
+tracks/0/path = NodePath("Stretcher/Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -174,7 +175,7 @@ tracks/0/keys = {
 resource_name = "turn"
 length = 0.3
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
+tracks/0/path = NodePath("Stretcher/Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -206,7 +207,7 @@ collision_mask = 513
 script = ExtResource( 13 )
 ragdoll_escena = ExtResource( 16 )
 skin = NodePath("Skin")
-skin_sprite_path = NodePath("Skin/Sprite")
+skin_sprite_path = NodePath("Skin/Stretcher/Sprite")
 aceleracion = 6.0
 friccion = 0.8
 max_velocidad_horizontal = 75.0
@@ -214,6 +215,7 @@ max_velocidad_vertical = 400.0
 arma = NodePath("ControladorArmasNPC")
 fsm = NodePath("StateMachine")
 hurtbox = NodePath("Hurtbox")
+stretcher = NodePath("Skin/Stretcher")
 arma_id = "ArmaCultista"
 
 [node name="DropManager" type="Node" parent="." index="0"]
@@ -306,14 +308,17 @@ estado_salida = "Perseguir"
 
 [node name="ScriptSetFrame" type="Node" parent="StateMachine" index="5"]
 script = ExtResource( 12 )
-sprite = NodePath("../../Skin/Sprite")
+sprite = NodePath("../../Skin/Stretcher/Sprite")
 
 [node name="ScriptIdle" type="Node" parent="StateMachine" index="6"]
 script = ExtResource( 14 )
 
 [node name="Skin" type="Node2D" parent="." index="9"]
 
-[node name="Sprite" type="Sprite" parent="Skin" index="0"]
+[node name="Stretcher" type="Node2D" parent="Skin" index="0"]
+script = ExtResource( 18 )
+
+[node name="Sprite" type="Sprite" parent="Skin/Stretcher" index="0"]
 position = Vector2( 0, -10 )
 texture = ExtResource( 2 )
 offset = Vector2( 0, -1 )

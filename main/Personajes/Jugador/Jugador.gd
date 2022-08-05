@@ -289,7 +289,7 @@ func confirmar_salto():
 
 func borrar_objetos_pisando():
 	for i in objetos_pisando:
-		if i == null: continue
+		if !is_instance_valid(i): continue
 		if i is PlataformaFragil or i is PlataformaMovible:
 			i.pisando = false
 	objetos_pisando.clear()

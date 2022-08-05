@@ -4,6 +4,7 @@ extends Personaje
 export(NodePath) onready var arma = get_node(arma) as ControladorArmasNPC
 export(NodePath) onready var fsm = get_node(fsm) as StateMachine
 export(NodePath) onready var hurtbox = get_node(hurtbox) as Hurtbox
+export(NodePath) onready var stretcher = get_node(stretcher) as Stretcher
 export(String) var arma_id = "ArmaAR"
 
 export(bool) var actor

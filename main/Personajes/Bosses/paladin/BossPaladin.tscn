@@ -273,6 +273,8 @@ friccion = 0.7
 max_velocidad_horizontal = 100.0
 max_velocidad_vertical = 500.0
 jump_height = 144.0
+jump_time_to_peak = 1.0
+jump_time_to_fall = 1.0
 fsm = NodePath("StateMachine")
 hurtbox_contacto = NodePath("Skin/HurtboxContacto")
 hurtbox_pignia = NodePath("Skin/HurtboxPiña")
@@ -286,19 +288,19 @@ monitor_target_node = NodePath("../StateMachine")
 monitor_target_property = "state"
 monitor_flavor_text = "state"
 
-[node name="input" parent="." instance=ExtResource( 11 )]
+[node name="velocity" parent="." instance=ExtResource( 11 )]
 visible = false
-position = Vector2( 24, -88 )
-monitor_target_node = NodePath("..")
-monitor_target_property = "input"
-monitor_flavor_text = "input"
-
-[node name="velñ" parent="." instance=ExtResource( 11 )]
-visible = false
-position = Vector2( 22, -54 )
+position = Vector2( -1, -83 )
 monitor_target_node = NodePath("..")
 monitor_target_property = "velocity"
 monitor_flavor_text = "velocity"
+
+[node name="anim" parent="." instance=ExtResource( 11 )]
+visible = false
+position = Vector2( 1, -55 )
+monitor_target_node = NodePath("../Skin/AnimationPlayer")
+monitor_target_property = "current_animation"
+monitor_flavor_text = "anim"
 
 [node name="Status" type="Node" parent="."]
 script = ExtResource( 10 )

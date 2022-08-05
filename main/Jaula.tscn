@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://assets/objetos/jaulas/jaula grande.png" type="Texture" id=1]
 [ext_resource path="res://main/Jaula.gd" type="Script" id=2]
@@ -53,16 +53,25 @@ extents = Vector2( 49, 3 )
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 2, 31 )
 
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 40, 1.5 )
+
 [node name="intro jaula" type="Node2D"]
 script = ExtResource( 2 )
+anim = NodePath("AnimationPlayer")
+area_salto = NodePath("jaula/DetectorSaltos")
+jaula = NodePath("jaula")
+rc = NodePath("jaula/RayCast2D")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "swing"
 anims/RESET = SubResource( 4 )
 anims/swing = SubResource( 5 )
 
-[node name="jaula" type="StaticBody2D" parent="."]
+[node name="jaula" type="KinematicBody2D" parent="."]
 position = Vector2( 0, 128 )
+collision_mask = 2
+motion/sync_to_physics = true
 __meta__ = {
 "_edit_group_": true
 }
@@ -86,3 +95,16 @@ shape = SubResource( 3 )
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="jaula"]
 position = Vector2( 42, -33 )
 shape = SubResource( 3 )
+
+[node name="DetectorSaltos" type="Area2D" parent="jaula"]
+modulate = Color( 0.866667, 0.509804, 0.164706, 1 )
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="jaula/DetectorSaltos"]
+position = Vector2( 0, -6.5 )
+shape = SubResource( 6 )
+
+[node name="RayCast2D" type="RayCast2D" parent="jaula"]
+enabled = true
+cast_to = Vector2( 0, 2 )

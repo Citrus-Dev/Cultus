@@ -43,7 +43,6 @@ extents = Vector2( 16, 44 )
 [node name="Nivel" instance=ExtResource( 2 )]
 script = ExtResource( 4 )
 primer_limite_camara = NodePath("camara limites/inicial")
-print_fps = false
 musica = ExtResource( 17 )
 limites_camara_boss = NodePath("camara limites/boss")
 puerta = NodePath("Puerta")

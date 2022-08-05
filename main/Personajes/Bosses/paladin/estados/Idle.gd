@@ -19,10 +19,10 @@ func process(delta : float) -> void:
 	owner.mirar_al_jugador()
 	
 	if owner.is_on_floor():
-		if owner.input.x != 0:
-			owner.set_animacion("caminar")
+		if owner.input.x != 0 or owner.input_override.x != 0:
+			if owner.animador.current_animation != "caminar": owner.set_animacion("caminar")
 		else:
-			owner.set_animacion("idle")
+			if owner.animador.current_animation != "idle": owner.set_animacion("idle")
 	else:
 		owner.set_animacion("salto")
 	
