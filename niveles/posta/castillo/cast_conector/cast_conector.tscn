@@ -12,7 +12,7 @@
 [ext_resource path="res://main/Personajes/Cultista/Cultista.tscn" type="PackedScene" id=10]
 [ext_resource path="res://main/AI/Borde.tscn" type="PackedScene" id=11]
 [ext_resource path="res://main/Objetos_mapa/TransicionDeNivel/TransicionDeNivelConArea.tscn" type="PackedScene" id=12]
-[ext_resource path="res://main/Pickups/PickupBalasRevolver.tscn" type="PackedScene" id=13]
+[ext_resource path="res://main/Pickups/PickupBalasAR.tscn" type="PackedScene" id=13]
 [ext_resource path="res://main/Pickups/PickupBalasEscopeta.tscn" type="PackedScene" id=14]
 [ext_resource path="res://main/Musica/MusCastillo.tres" type="Resource" id=15]
 
@@ -168,25 +168,21 @@ position = Vector2( 440, 160 )
 script = ExtResource( 9 )
 spawn = ExtResource( 10 )
 
-[node name="PickupBalasRevolver" parent="." index="16" instance=ExtResource( 13 )]
-position = Vector2( 565, -84 )
-no_desaparecer = true
-
-[node name="PickupBalasRevolver2" parent="." index="17" instance=ExtResource( 13 )]
-position = Vector2( 552, -84 )
-no_desaparecer = true
-
-[node name="PickupBalasRevolver3" parent="." index="18" instance=ExtResource( 13 )]
-position = Vector2( 536, -84 )
-no_desaparecer = true
-
-[node name="PickupBalasRevolver4" parent="." index="19" instance=ExtResource( 13 )]
-position = Vector2( 518, -84 )
-no_desaparecer = true
-
-[node name="PickupBalasEscopeta" parent="." index="20" instance=ExtResource( 14 )]
+[node name="PickupBalasEscopeta" parent="." index="16" instance=ExtResource( 14 )]
 position = Vector2( 591, -86 )
 no_desaparecer = true
+
+[node name="PickupBalasAR" parent="." index="17" instance=ExtResource( 13 )]
+position = Vector2( 504, -88 )
+
+[node name="PickupBalasAR2" parent="." index="18" instance=ExtResource( 13 )]
+position = Vector2( 520, -88 )
+
+[node name="PickupBalasAR3" parent="." index="19" instance=ExtResource( 13 )]
+position = Vector2( 536, -88 )
+
+[node name="PickupBalasAR4" parent="." index="20" instance=ExtResource( 13 )]
+position = Vector2( 552, -88 )
 
 [editable path="triggers/TransicionDeNivelConArea2"]
 [editable path="triggers/TransicionDeNivelConArea3"]

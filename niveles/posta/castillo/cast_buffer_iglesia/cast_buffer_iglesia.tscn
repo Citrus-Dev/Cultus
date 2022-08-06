@@ -1,11 +1,10 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://assets/tilesets/tileset_castillo.tres" type="TileSet" id=1]
 [ext_resource path="res://niveles/Nivel.tscn" type="PackedScene" id=2]
 [ext_resource path="res://main/Objetos_mapa/Plataformas alternas/PlataformaFragilChiquit.tscn" type="PackedScene" id=3]
 [ext_resource path="res://main/Pickups/PickupHP.tscn" type="PackedScene" id=4]
 [ext_resource path="res://main/Pickups/PickupBalasEscopeta.tscn" type="PackedScene" id=5]
-[ext_resource path="res://main/Pickups/PickupBalasRevolver.tscn" type="PackedScene" id=6]
 [ext_resource path="res://main/CameraLimitSystem/CameraBounds.gd" type="Script" id=7]
 [ext_resource path="res://main/Objetos_mapa/SpawnJugador.gd" type="Script" id=8]
 [ext_resource path="res://main/Objetos_mapa/TransicionDeNivel/TransicionDeNivelConArea.tscn" type="PackedScene" id=9]
@@ -79,20 +78,20 @@ position = Vector2( 344, -128 )
 position = Vector2( 456, 264 )
 no_desaparecer = true
 
-[node name="PickupBalasEscopeta2" parent="." index="12" instance=ExtResource( 5 )]
+[node name="PickupBalasEscopeta3" parent="." index="12" instance=ExtResource( 5 )]
+position = Vector2( 449, 133 )
+no_desaparecer = true
+
+[node name="PickupBalasEscopeta4" parent="." index="13" instance=ExtResource( 5 )]
+position = Vector2( 479, 133 )
+no_desaparecer = true
+
+[node name="PickupBalasEscopeta2" parent="." index="14" instance=ExtResource( 5 )]
 position = Vector2( 640, 192 )
 no_desaparecer = true
 
-[node name="PickupHP" parent="." index="13" instance=ExtResource( 4 )]
+[node name="PickupHP" parent="." index="15" instance=ExtResource( 4 )]
 position = Vector2( 480, 264 )
-no_desaparecer = true
-
-[node name="PickupBalasRevolver" parent="." index="14" instance=ExtResource( 6 )]
-position = Vector2( 480, 136 )
-no_desaparecer = true
-
-[node name="PickupBalasRevolver2" parent="." index="15" instance=ExtResource( 6 )]
-position = Vector2( 456, 136 )
 no_desaparecer = true
 
 [node name="SpawnJugador" type="Node2D" parent="." index="16"]

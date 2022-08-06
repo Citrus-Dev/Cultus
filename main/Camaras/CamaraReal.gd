@@ -20,6 +20,7 @@ func _ready() -> void:
 	
 	global_position = camara_falsa.global_position
 	camara_falsa.connect("cambio_de_limites", self, "actualizar_limites")
+	GameState.connect("jugador_muerto", self, "aplicar_screenshake", [35.0])
 	get_tree().get_nodes_in_group("Nivel")[0].init_primer_limite()
 
 

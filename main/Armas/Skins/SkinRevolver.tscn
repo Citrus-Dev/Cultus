@@ -83,7 +83,6 @@ una_mano = true
 position = Vector2( 10, 2 )
 texture = ExtResource( 2 )
 hframes = 3
-frame = 1
 
 [node name="AnimationPlayer" parent="." index="1"]
 reset_on_save = false

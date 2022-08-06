@@ -2,6 +2,8 @@ extends Node
 
 const CHANCE_EVENTO := 60000
 
+signal jugador_muerto
+
 enum Estados {
 	MENU = 0,
 	NORMAL = 1,

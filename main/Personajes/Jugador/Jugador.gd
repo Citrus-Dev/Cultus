@@ -169,6 +169,7 @@ func evento_dmg(_dmg : InfoDmg):
 
 func morir(_info : InfoDmg):
 	emit_signal("muerto")
+	GameState.emit_signal("jugador_muerto")
 	muerto = true
 	
 	if is_instance_valid(bufan):
@@ -184,7 +185,7 @@ func morir(_info : InfoDmg):
 
 func muerte_cambio_nivel():
 	var timer_muerte := Timer.new()
-	timer_muerte.wait_time = 2.0
+	timer_muerte.wait_time = 3.5
 	add_child(timer_muerte)
 	timer_muerte.start()
 	
