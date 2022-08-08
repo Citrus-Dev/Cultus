@@ -1,3 +1,4 @@
+# Castear projectiles con una animacion y volver a Ataque
 extends State
 
 func enter(msg : Dictionary = {}) -> void:

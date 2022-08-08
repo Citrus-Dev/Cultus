@@ -9,6 +9,26 @@ func _init():
 	add_to_group("Enemigos")
 
 
+func evento_dmg(_dmg : InfoDmg):
+	efecto_brillo_dmg(.6)
+	
+	# Si te ataca el jugador despertate (aunque este fuera del rango de deteccion)
+	if _dmg.atacante is Personaje:
+		objetivo = _dmg.atacante
+		alertar()
+
+
+func detectar_borde(_borde):
+	emit_signal("borde_tocado", _borde)
+
+
+func alertar():
+	if !ciego and !muerto:
+		fsm.transition_to("Perseguir")
+		objetivo.connect("muerto", self, "perder_vista_jugador")
+		add_to_group("EnemigosAlertados")
+
+
 func morir(_info : InfoDmg):
 	if muerto: return
 	emit_signal("muerto")

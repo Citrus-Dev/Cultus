@@ -1,7 +1,8 @@
+# No hacer nada hasta detectar al jugador
 extends State
 
 func enter(msg : Dictionary = {}) -> void:
-	return 
+	owner.connect("objetivo_encontrado", self, "alertar")
 
 
 func unhandled_input(event : InputEvent) -> void:
@@ -17,4 +18,9 @@ func physics_process(delta : float) -> void:
 
 
 func exit() -> void:
-	return 
+	owner.disconnect("objetivo_encontrado", self, "alertar")
+
+
+func alertar():
+	if !owner.ciego:
+		_state_machine.transition_to("Perseguir")

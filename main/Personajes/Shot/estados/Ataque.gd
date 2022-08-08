@@ -1,3 +1,4 @@
+# Caminar de un borde al otro y cada tanto tiempo hacer un ataque (Estado cast)
 extends State
 
 func enter(msg : Dictionary = {}) -> void:

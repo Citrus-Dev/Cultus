@@ -38,7 +38,7 @@ position = Vector2( 256, 512 )
 position = Vector2( 344, 512 )
 
 [node name="Borde3" parent="bordes" index="2" instance=ExtResource( 9 )]
-position = Vector2( 528, 512 )
+position = Vector2( 472, 512 )
 
 [node name="Borde4" parent="bordes" index="3" instance=ExtResource( 9 )]
 position = Vector2( 600, 512 )
