@@ -8,8 +8,13 @@ export(NodePath) onready var anim_girar = get_node(anim_girar) as AnimationPlaye
 export(NodePath) onready var hurtbox = get_node(hurtbox) as Hurtbox
 export(NodePath) onready var rc1 = get_node(rc1) as RayCast2D
 export(NodePath) onready var rc2 = get_node(rc2) as RayCast2D
+export(NodePath) onready var fsm = get_node(fsm) as StateMachine
 
 var girando: bool setget set_girando
+
+func _ready():
+	connect("stun_terminado", self, "hack_terminar_stun")
+
 
 func set_girando(toggle: bool):
 	girando = toggle
@@ -21,6 +26,10 @@ func set_girando(toggle: bool):
 
 func detectar_borde(_borde):
 	jump(randf() * jump_velocity)
+
+
+func hack_terminar_stun():
+	fsm.transition_to("Perseguir")
 
 
 func morir(_info : InfoDmg):

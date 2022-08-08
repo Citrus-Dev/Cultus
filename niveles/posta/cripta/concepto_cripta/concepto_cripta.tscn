@@ -5,9 +5,9 @@
 [ext_resource path="res://main/Objetos_mapa/SpawnJugador.gd" type="Script" id=3]
 [ext_resource path="res://main/CameraLimitSystem/CameraBounds.gd" type="Script" id=4]
 [ext_resource path="res://main/Pickups/PickupHP.tscn" type="PackedScene" id=5]
-[ext_resource path="res://main/Proyectiles/ProyectilHoming.tscn" type="PackedScene" id=6]
+[ext_resource path="res://main/Proyectiles/ProyectilHomingMejor.tscn" type="PackedScene" id=6]
 [ext_resource path="res://main/Objetos_mapa/TransicionDeNivel/Palanca_cripta.tscn" type="PackedScene" id=7]
-[ext_resource path="res://main/Personajes/Rueda/Rueda.tscn" type="PackedScene" id=8]
+[ext_resource path="res://main/Personajes/Shot/Shot.tscn" type="PackedScene" id=8]
 [ext_resource path="res://main/AI/Borde.tscn" type="PackedScene" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -55,30 +55,19 @@ position = Vector2( 512, 288 )
 shape = SubResource( 1 )
 script = ExtResource( 4 )
 
-[node name="ProyectilHoming" parent="." index="6" instance=ExtResource( 6 )]
-position = Vector2( 516, 109 )
-
-[node name="SpawnJugador" type="Node2D" parent="." index="7"]
-position = Vector2( 649, 412 )
+[node name="SpawnJugador" type="Node2D" parent="." index="6"]
+position = Vector2( 272, 247 )
 script = ExtResource( 3 )
 
-[node name="PalancaCripta" parent="." index="8" instance=ExtResource( 7 )]
+[node name="PalancaCripta" parent="." index="7" instance=ExtResource( 7 )]
 position = Vector2( 236, 160 )
 
-[node name="PickupHP" parent="." index="9" instance=ExtResource( 5 )]
+[node name="PickupHP" parent="." index="8" instance=ExtResource( 5 )]
 position = Vector2( 78, 172 )
 
-[node name="Rueda" parent="." index="11" instance=ExtResource( 8 )]
-position = Vector2( 784, 480 )
+[node name="ProyectilHomingMejor" parent="." index="10" instance=ExtResource( 6 )]
+position = Vector2( 114, 74 )
+move_speed = 125.0
 
-[node name="Rueda2" parent="." index="12" instance=ExtResource( 8 )]
-position = Vector2( 834, 427 )
-
-[node name="Rueda3" parent="." index="13" instance=ExtResource( 8 )]
-position = Vector2( 765, 414 )
-
-[node name="Rueda4" parent="." index="14" instance=ExtResource( 8 )]
-position = Vector2( 853, 498 )
-
-[node name="Rueda5" parent="." index="15" instance=ExtResource( 8 )]
-position = Vector2( 903, 448 )
+[node name="Shot" parent="." index="11" instance=ExtResource( 8 )]
+position = Vector2( 460, 365 )

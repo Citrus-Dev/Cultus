@@ -579,6 +579,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://main/Proyectiles/ProyectilHoming.gd"
 }, {
+"base": "ProyectilBase",
+"class": "ProyectilHomingMejor",
+"language": "GDScript",
+"path": "res://main/Proyectiles/ProyectilHomingMejor.gd"
+}, {
 "base": "Personaje",
 "class": "Prueba",
 "language": "GDScript",
@@ -668,6 +673,11 @@ _global_script_classes=[ {
 "class": "Shaker",
 "language": "GDScript",
 "path": "res://main/Shaker/Shaker.gd"
+}, {
+"base": "Personaje",
+"class": "Shot",
+"language": "GDScript",
+"path": "res://main/Personajes/Shot/Shot.gd"
 }, {
 "base": "Node",
 "class": "SkillBufanda",
@@ -904,6 +914,7 @@ _global_script_class_icons={
 "ProyectilBase": "",
 "ProyectilGaussV2": "",
 "ProyectilHoming": "",
+"ProyectilHomingMejor": "",
 "Prueba": "",
 "Puerta": "",
 "PuntoVerlet": "",
@@ -922,6 +933,7 @@ _global_script_class_icons={
 "SfxrGlobals": "",
 "SfxrStreamPlayerInterface": "",
 "Shaker": "",
+"Shot": "",
 "SkillBufanda": "",
 "SkillEscudo": "",
 "SkinArma": "",

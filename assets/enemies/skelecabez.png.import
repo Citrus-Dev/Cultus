@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/jaula.png-068916388844cdb4c447a970dbe60a12.stex"
+path="res://.import/skelecabez.png-baf81d2a79aec2ef81c9dba3f04379a8.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/objetos/jaulas/jaula.png"
-dest_files=[ "res://.import/jaula.png-068916388844cdb4c447a970dbe60a12.stex" ]
+source_file="res://assets/enemies/skelecabez.png"
+dest_files=[ "res://.import/skelecabez.png-baf81d2a79aec2ef81c9dba3f04379a8.stex" ]
 
 [params]
 

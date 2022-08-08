@@ -9,9 +9,6 @@ script = ExtResource( 1 )
 move_speed = 175.0
 lifetime = 100.0
 
-[node name="Sprite" parent="." index="0"]
-visible = false
-
 [node name="EstelaBase" type="Line2D" parent="." index="2"]
 width = 4.0
 default_color = Color( 10, 0.1, 0.1, 1 )

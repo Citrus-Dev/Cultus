@@ -12,6 +12,7 @@ signal objetivo_encontrado
 signal borde_tocado(_borde)
 signal muerto
 signal muerto_gib
+signal stun_terminado
 
 export(bool) var persistir 
 export(PackedScene) var ragdoll_escena
@@ -250,6 +251,7 @@ func aplicar_stun(_tiempo_stun := tiempo_stun):
 	timer_stun.start(t)
 	yield(timer_stun, "timeout")
 	
+	emit_signal("stun_terminado")
 	valor_default("friccion")
 	stun = false
 

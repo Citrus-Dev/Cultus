@@ -11,6 +11,7 @@ signal morir_info(_info) # Igual que morir pero pasa la info del ultimo daño re
 signal aplicar_dmg(_info)
 signal aplicar_knockback(_fuerza, _dir)
 signal aplicar_stun
+signal stun_terminado
 
 export(int) var hp_max
 export(int) var stun_threshold # Cuando el stun actual pasa este valor, stunea
@@ -38,6 +39,8 @@ func _process(delta: float) -> void:
 	if timer_stun.is_stopped():
 		if stun_actual > 0:
 			stun_actual -= VELOCIDAD_REDUCCION_STUN * delta
+			if stun_actual <= 0:
+				emit_signal("stun_terminado")
 		else:
 			stun_actual = 0
 

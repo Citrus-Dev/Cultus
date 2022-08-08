@@ -82,4 +82,4 @@ func instanciar_efecto(pos : Vector2, rot : float, objetivo : Node2D):
 	var new = efecto.instance()
 	objetivo.add_child(new)
 	new.rotation = rot
-	new.position = pos
+	new.global_position = pos
