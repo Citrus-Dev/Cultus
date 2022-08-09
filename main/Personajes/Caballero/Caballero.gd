@@ -38,6 +38,7 @@ func set_muerto(toggle : bool):
 
 
 func morir(_info : InfoDmg):
+	if muerto: return
 	emit_signal("muerto")
 	set_muerto(true)
 	remove_from_group("EnemigosAlertados")
@@ -45,8 +46,9 @@ func morir(_info : InfoDmg):
 	
 	var tipo = _info.dmg_tipo
 	
-	if tipo == InfoDmg.DMG_TIPOS.EXPLOSION:
+	if tipo == InfoDmg.DMG_TIPOS.EXPLOSION or tipo == InfoDmg.DMG_TIPOS.PLASMA:
 		instanciar_gibs()
+		emit_signal("muerto_gib")
 	else:
 		instanciar_ragdoll()
 

@@ -5,6 +5,7 @@
 
 [node name="PickupBalasAR" instance=ExtResource( 1 )]
 nombre_bala = "Rifle"
+mensaje = "+%cant% munición de rifle"
 cant_bala = 20
 
 [node name="Sprite" parent="." index="2"]

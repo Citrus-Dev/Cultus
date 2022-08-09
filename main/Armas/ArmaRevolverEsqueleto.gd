@@ -1,7 +1,7 @@
 class_name ArmaRevolverEsqueleto
 extends Arma
 
-const BALA = preload("res://main/Proyectiles/BalaRevolverEsqueleto.tscn")
+const BALA = preload("res://main/Personajes/Esqueleto/Proyectiles/BalaRevolverEsqueleto.tscn")
 
 func _init() -> void:
 	skin_escena = preload("res://main/Armas/Skins/SkinRevolverEsqueleto.tscn")

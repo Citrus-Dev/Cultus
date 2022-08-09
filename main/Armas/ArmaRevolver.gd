@@ -5,6 +5,8 @@ const BALA = preload("res://main/Proyectiles/BalaPistola.tscn")
 const TIEMPO_RECARGA := 1.3
 const MAX_BALAS := 6
 const TIPO_BALAS = "Pistola"
+const SONIDO_DISPARO := preload("res://assets/sfx/armas/disparo/Barrett-M82-.50-BMG-Single-Close-Gunshot-A-www.fesliyanstudios.com.mp3")
+const SONIDO_RECARGA := preload("res://assets/sfx/armas/recarga/recarga_revolver.wav")
 
 var timer_recarga := Timer.new()
 var balas_actual : int = MAX_BALAS
@@ -21,7 +23,7 @@ func _init() -> void:
 	screenshake = 5.0
 	cooldown_tiempo = 0.4
 	cooldown_tiempo_sec = 0.2
-	spread = 2
+	spread = .4
 
 
 func equipar(_controlador):
@@ -49,12 +51,14 @@ func disparar(_origin : Node, _dir : float):
 	if !puede_disparar(): 
 		return
 	
+	Musica.hacer_sonido(SONIDO_DISPARO, _origin.global_position)
+	
 	if skin_inst != null:
 		skin_inst.animador.stop()
 		skin_inst.animador.play("disparar")
 	crear_bala(_origin, BALA, _dir, spread)
-	_origin.inv_balas.bajar_balas(1, TIPO_BALAS)
 	balas_actual -= 1
+#	_origin.inv_balas.bajar_balas(1, TIPO_BALAS)
 	actualizar_medidor()
 	aplicar_screenshake()
 
@@ -64,13 +68,14 @@ func disparar_secundario(_origin : Node, _dir : float):
 
 
 func puede_disparar() -> bool:
-	return balas_actual > 0 and timer_recarga.is_stopped() and inv_balas.hay_balas(TIPO_BALAS)
+	return balas_actual > 0
 
 
 func recargar():
 	if !hay_balas_reserva() or balas_actual == MAX_BALAS: return
 	skin_inst.animador.play("recargar")
 	timer_recarga.start()
+	Musica.hacer_sonido(SONIDO_RECARGA, skin_inst.global_position)
 
 
 func terminar_recarga():
@@ -95,8 +100,6 @@ func hay_balas_reserva() -> bool:
 
 func actualizar_medidor():
 	var tipo = hud_medidor_inst.id_balas
-	hud_medidor_inst.set_cantidad(min(balas_actual, inv_balas.dict_balas[tipo]["cant"]))
-	var reserva = max(0, inv_balas.dict_balas[tipo]["cant"] - balas_actual)
-	hud_medidor_inst.set_balas_reserva(reserva)
+	hud_medidor_inst.set_cantidad(balas_actual)
 
 

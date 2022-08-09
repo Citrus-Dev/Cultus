@@ -1,9 +1,10 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://main/Personajes/Jugador/Jugador.gd" type="Script" id=1]
 [ext_resource path="res://main/SistemaDaño/StatusJugador.gd" type="Script" id=2]
 [ext_resource path="res://main/Personajes/Jugador/ControladorArmasJugador.gd" type="Script" id=3]
 [ext_resource path="res://main/Componentes/Stretcher.gd" type="Script" id=4]
+[ext_resource path="res://main/Componentes/SonidoRandom.gd" type="Script" id=5]
 [ext_resource path="res://main/SistemaDaño/Hitbox.tscn" type="PackedScene" id=6]
 [ext_resource path="res://main/libs/DebugMonitor/DebugMonitor.tscn" type="PackedScene" id=7]
 [ext_resource path="res://assets/jug/player.png" type="Texture" id=8]
@@ -471,17 +472,11 @@ los = NodePath("LOSCheck")
 [node name="monitores" type="Node2D" parent="."]
 visible = false
 
-[node name="hp" parent="monitores" instance=ExtResource( 7 )]
-position = Vector2( 10, -36 )
-monitor_target_node = NodePath("../../Status")
-monitor_target_property = "hp"
-monitor_flavor_text = "hp"
-
-[node name="kb" parent="monitores" instance=ExtResource( 7 )]
+[node name="agua" parent="monitores" instance=ExtResource( 7 )]
 position = Vector2( 10, -26 )
-monitor_target_node = NodePath("../../Hitbox")
-monitor_target_property = "monitorable"
-monitor_flavor_text = "monitorable"
+monitor_target_node = NodePath("../..")
+monitor_target_property = "agua"
+monitor_flavor_text = "agua"
 
 [node name="Status" type="Node" parent="."]
 script = ExtResource( 2 )
@@ -534,7 +529,7 @@ collision_layer = 0
 collision_mask = 0
 script = ExtResource( 10 )
 radio = 196.0
-mascara_colision = 4
+mascara_colision = 16388
 
 [node name="Hitbox" parent="." instance=ExtResource( 6 )]
 visible = false
@@ -545,3 +540,6 @@ i_frames_tiempo = 1.5
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2( 0, -8 )
 shape = SubResource( 2 )
+
+[node name="SonidoRandom" type="Node2D" parent="."]
+script = ExtResource( 5 )

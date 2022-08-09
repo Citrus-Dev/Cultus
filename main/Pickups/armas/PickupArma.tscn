@@ -10,6 +10,7 @@ extents = Vector2( 8, 8 )
 script = ExtResource( 2 )
 area = NodePath("Area2D")
 id_arma = "ArmaPistola"
+mensaje = "Revolver"
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 0

@@ -3,12 +3,15 @@ extends State
 # Quedarse quieto por unos segundos y cambiar de ataque.
 
 const TIEMPO_ESPERA_FINAL := .8
+const TIEMPO_ESPERA_FINAL_2 := .4
 
 var timer_final : float
 var descontando : bool
 
 func enter(msg : Dictionary = {}) -> void:
-	owner.animador.play("girar")
+	owner.set_animacion("giro_loop")
+	
+	owner.hurtbox_giro.is_constant = true
 	owner.input.x = owner.dir
 	owner.max_velocidad_horizontal = 120
 	
@@ -35,15 +38,17 @@ func physics_process(delta : float) -> void:
 
 
 func exit() -> void:
+	owner.animador.disconnect("animation_finished", self, "animacion_terminada")
 	owner.valor_default("max_velocidad_horizontal")
 	descontando = false
+	owner.hurtbox_giro.is_constant = false
 
 
 func animacion_terminada(__):
-	owner.animador.play("idle")
+	owner.set_animacion("idle")
 	
 	descontando = true
-	timer_final = TIEMPO_ESPERA_FINAL
+	timer_final = TIEMPO_ESPERA_FINAL if !owner.fase2 else TIEMPO_ESPERA_FINAL_2
 	
 	owner.input.x = 0
 

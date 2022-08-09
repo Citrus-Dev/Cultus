@@ -4,6 +4,7 @@ extends State
 
 const TIEMPO_DE_CAMINAR := 1.8
 const TIEMPO_ESPERA_FINAL := 0.7
+const TIEMPO_ESPERA_FINAL_2 := 0.3
 
 var timer : float
 
@@ -11,9 +12,11 @@ var timer_final : float
 var descontando : bool
 
 func enter(msg : Dictionary = {}) -> void:
+	descontando = false
 	timer = TIEMPO_DE_CAMINAR
-	timer_final = TIEMPO_ESPERA_FINAL
+	timer_final = TIEMPO_ESPERA_FINAL if !owner.fase2 else TIEMPO_ESPERA_FINAL_2
 	
+	owner.set_animacion("caminar")
 	owner.input.x = owner.dir
 
 
@@ -46,3 +49,4 @@ func exit() -> void:
 func terminar_de_moverse():
 	owner.input.x = 0
 	descontando = true
+	owner.set_animacion("idle")

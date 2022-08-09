@@ -1,15 +1,20 @@
 class_name Escopeta
 extends Arma
 
+const TIEMPO_DELAY_SONIDO_ESCOPETA := 0.2
+
 const BALA = preload("res://main/Proyectiles/BalaEscopeta.tscn")
 const BALA_FLAK = preload("res://main/Proyectiles/BalaFlak.tscn")
 const SKIN_ALT = preload("res://main/Armas/Skins/SkinShotgun_alt.tscn")
+const SONIDO_DISPARO := preload("res://assets/sfx/armas/disparo/Beefy-12-Gauge-Pump-Action-Shotgun-Close-Gunshot-D-www.fesliyanstudios.com-www.fesliyanstudios.com.mp3")
+const SONIDO_CHCK_CHCK := preload("res://assets/sfx/armas/recarga/mixkit-shotgun-pump-1659.wav")
 
 const COSTO_BALAS_FLAK := 3
 const COSTO_BALAS_SUPER := 3
 
 var perdigones : int = 5
 var perdigones_flak : int = 5
+var snd_timer_chck_chk : float
 
 func _init() -> void:
 	skin_escena = preload("res://main/Armas/Skins/SkinShotgun.tscn")
@@ -33,9 +38,19 @@ func _init() -> void:
 	]
 
 
+func procesar_arma(_delta : float):
+	if snd_timer_chck_chk > 0:
+		snd_timer_chck_chk -= _delta
+		if snd_timer_chck_chk <= 0:
+			Musica.hacer_sonido(SONIDO_CHCK_CHCK, skin_inst.global_position)
+
+
 func disparar(_origin : Node, _dir : float):
 	if !puede_disparar(): 
 		return
+	
+	Musica.hacer_sonido(SONIDO_DISPARO, _origin.global_position)
+	snd_timer_chck_chk = TIEMPO_DELAY_SONIDO_ESCOPETA
 	
 	if skin_inst != null:
 		skin_inst.animador.stop()

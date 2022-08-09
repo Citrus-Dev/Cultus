@@ -7,14 +7,15 @@ export(NodePath) onready var but_resumir = get_node(but_resumir) as Button
 export(NodePath) onready var but_opciones = get_node(but_opciones) as Button
 export(NodePath) onready var but_quit_menu = get_node(but_quit_menu) as Button
 export(NodePath) onready var but_quit_desk = get_node(but_quit_desk) as Button
+export(NodePath) onready var menu_config = get_node(menu_config) as MenuConfig
 
 
 func resumir():
 	emit_signal("resumido")
 
 
-func mostrar_opciones():
-	pass
+func mostrar_opciones(toggle : bool):
+	menu_config.visible = toggle
 
 
 func quit_menu():

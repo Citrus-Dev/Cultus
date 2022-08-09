@@ -36,3 +36,26 @@ func set_medidor(_medidor : HudMedidorBalas):
 	var balas_max = dict_balas[medidor.id_balas]["max"]
 	var balas_actual = dict_balas[medidor.id_balas]["cant"]
 	medidor.init_barra(balas_max, balas_actual)
+
+
+# Te da el inventario de balas con solo las armas que descubriste
+func tomar_balas_descubiertas() -> Dictionary:
+	var nuevo_inv : Dictionary
+#	if TransicionesDePantalla.inv_armas.has("PISTOLA"):
+#		nuevo_inv["Pistola"] = dict_balas["Pistola"]
+	
+	if TransicionesDePantalla.inv_armas.has("ESCOPETA"):
+		nuevo_inv["Escopeta"] = dict_balas["Escopeta"]
+	
+	if TransicionesDePantalla.inv_armas.has("RIFLE"):
+		nuevo_inv["Rifle"] = dict_balas["Rifle"]
+		nuevo_inv["Granadas"] = dict_balas["Granadas"]
+	
+	if TransicionesDePantalla.inv_armas.has("BALLESTA"):
+		nuevo_inv["Flechas"] = dict_balas["Flechas"]
+	
+	if TransicionesDePantalla.inv_armas.has("BAZUCA"):
+		nuevo_inv["Cohetes"] = dict_balas["Cohetes"]
+	
+	return nuevo_inv
+

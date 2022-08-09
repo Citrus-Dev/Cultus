@@ -1,11 +1,11 @@
 extends Node
 
 enum Tracks {
-	MUS_MENU,
-	MUS_NORMAL,
-	MUS_COMBATE
+	MUS_MENU = 0,
+	MUS_NORMAL = 1,
+	MUS_COMBATE = 2
 }
-var track_actual : int setget cambiar_musica
+var track_actual : int setget set_track
 var objetivo_actual : AudioStream
 
 var musica : ResCancion
@@ -17,6 +17,8 @@ var stream_player_no_actual : AudioStreamPlayer
 var tween : Tween
 
 var is_ready : bool
+# Forzar la musica a permanecer en un estado especifico. -1 para deactivar
+var override : int = -1 setget set_override
 
 func _ready():
 	stream_player_1 = AudioStreamPlayer.new()
@@ -42,6 +44,16 @@ func _process(delta):
 	DebugDraw.set_text("play1", str(stream_player_1.get_playback_position()) + (" - ") + str(stream_player_1.get_stream_playback()))
 	DebugDraw.set_text("play2", str(stream_player_2.get_playback_position()) + (" - ") + str(stream_player_2.get_stream_playback()))
 	DebugDraw.set_text("objetivo_actual", objetivo_actual)
+
+
+func set_override(value : int):
+	override = value
+	cambiar_musica(track_actual if override == -1 else override)
+
+
+func set_track(value : int):
+	track_actual = value
+	cambiar_musica(track_actual if override == -1 else override)
 
 
 func asignar_musica(cancion_res : ResCancion):
@@ -120,9 +132,13 @@ func cambiar_musica(track : int):
 		crossfade(objetivo, pos_vieja)
 
 
-func hacer_sonido(stream : AudioStream, pos : Vector2):
+func hacer_sonido(stream : AudioStream, pos : Vector2, vol_over := 0.0):
 	var nivel = get_tree().root
 	var snd := AudioStreamPlayer2D.new()
+	snd.playing = false
+	snd.volume_db = vol_over
 	snd.stream = stream
 	snd.global_position = pos
 	snd.connect("finished", snd, "call_deferred", ["free"])
+	nivel.add_child(snd)
+	snd.play()

@@ -1,14 +1,22 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://main/Objetos_mapa/Plataformas alternas/PlataformaFragil.gd" type="Script" id=1]
 [ext_resource path="res://main/libs/BlockinPolygon/BlockinPolygon.gd" type="Script" id=2]
+[ext_resource path="res://assets/tilesets/plataformas/plataforma_larga.png" type="Texture" id=3]
 
 [node name="PlataformaFragil" type="StaticBody2D"]
 collision_layer = 512
 collision_mask = 0
 script = ExtResource( 1 )
+sprite_path = NodePath("Sprite")
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0, 8 )
+texture = ExtResource( 3 )
+vframes = 2
 
 [node name="BlockinPolygon" type="Polygon2D" parent="."]
+visible = false
 position = Vector2( 8, 0 )
 color = Color( 0.129412, 0.129412, 0.129412, 1 )
 polygon = PoolVector2Array( 56, 0, -72, 0, -72, 8, -64, 16, 48, 16, 56, 8 )

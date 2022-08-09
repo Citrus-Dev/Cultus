@@ -22,6 +22,8 @@ var dir_mov : Vector2
 var desactivado : bool
 
 func _ready():
+	name = "skill_cruz"
+	
 	get_parent().connect("muerto", self, "set", ["desactivado", true])
 	
 	jug = get_parent()
@@ -29,6 +31,11 @@ func _ready():
 	area_escudo = get_child(0)
 	area_escudo.connect("body_entered", self, "determinar_bloqueo")
 	area_escudo.monitoring = false
+	
+	# Si esta el slide, borrarlo porque lo estamos reemplazando
+	var slide = jug.get_node("skill_slide")
+	if slide != null:
+		slide.call_deferred("free")
 	
 	timer_escudo = Timer.new()
 	add_child(timer_escudo)
@@ -53,7 +60,7 @@ func _draw():
 func _process(delta):
 	emit_signal("cooldown_update", timer_cooldown.time_left)
 	update()
-	if puede_activar() and Input.is_action_just_pressed("escudo"):
+	if puede_activar() and Input.is_action_just_pressed("dodge"):
 		if sign(jug.input.x) == 0:
 			empezar_block_quieto()
 		else:

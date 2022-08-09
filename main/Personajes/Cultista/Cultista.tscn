@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://main/Personajes/PersonajeBase.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/enemies/Cultist.png" type="Texture" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://main/Personajes/Cultista/ScripIdle.gd" type="Script" id=14]
 [ext_resource path="res://main/Personajes/Caballero/estados/Stun.gd" type="Script" id=15]
 [ext_resource path="res://main/Ragdolls/RagdollCultista.tscn" type="PackedScene" id=16]
+[ext_resource path="res://main/Componentes/DropManager.gd" type="Script" id=17]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 6, 8.5 )
@@ -210,14 +211,15 @@ aceleracion = 6.0
 friccion = 0.8
 max_velocidad_horizontal = 75.0
 max_velocidad_vertical = 400.0
-jump_time_to_peak = 0.6
-jump_time_to_fall = 0.6
 arma = NodePath("ControladorArmasNPC")
 fsm = NodePath("StateMachine")
 hurtbox = NodePath("Hurtbox")
 arma_id = "ArmaCultista"
 
-[node name="monitores" type="Node2D" parent="." index="0"]
+[node name="DropManager" type="Node" parent="." index="0"]
+script = ExtResource( 17 )
+
+[node name="monitores" type="Node2D" parent="." index="1"]
 visible = false
 
 [node name="piso" parent="monitores" index="0" instance=ExtResource( 9 )]
@@ -239,21 +241,21 @@ monitor_target_node = NodePath("../../ControladorArmasNPC")
 monitor_target_property = "input_disparar"
 monitor_flavor_text = "input_disparar"
 
-[node name="ControladorArmasNPC" type="Node2D" parent="." index="1"]
+[node name="ControladorArmasNPC" type="Node2D" parent="." index="2"]
 position = Vector2( 0, -9 )
 z_index = 2
 script = ExtResource( 8 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="3"]
 visible = false
 position = Vector2( 0, -8.5 )
 shape = SubResource( 1 )
 
-[node name="Status" parent="." index="3"]
+[node name="Status" parent="." index="4"]
 hp_max = 100
 stun_threshold = 50
 
-[node name="Hurtbox" parent="." index="4" instance=ExtResource( 7 )]
+[node name="Hurtbox" parent="." index="5" instance=ExtResource( 7 )]
 collision_mask = 16
 agente_dir = NodePath("..")
 is_constant = true
@@ -265,13 +267,13 @@ dmg_tipo = 1
 position = Vector2( 0, -9 )
 shape = SubResource( 2 )
 
-[node name="Hitbox" parent="." index="5"]
+[node name="Hitbox" parent="." index="6"]
 visible = false
 
 [node name="CollisionShape2D" parent="Hitbox" index="0"]
 position = Vector2( 0, -10 )
 
-[node name="LOSCheckDisparo" type="Area2D" parent="." index="6"]
+[node name="LOSCheckDisparo" type="Area2D" parent="." index="7"]
 position = Vector2( 0, -10 )
 collision_layer = 0
 collision_mask = 2
@@ -279,7 +281,7 @@ script = ExtResource( 4 )
 radio = 180.0
 mascara_colision = 2
 
-[node name="StateMachine" type="Node" parent="." index="7"]
+[node name="StateMachine" type="Node" parent="." index="8"]
 script = ExtResource( 3 )
 initial_state = NodePath("Patrullar")
 
@@ -309,7 +311,7 @@ sprite = NodePath("../../Skin/Sprite")
 [node name="ScriptIdle" type="Node" parent="StateMachine" index="6"]
 script = ExtResource( 14 )
 
-[node name="Skin" type="Node2D" parent="." index="8"]
+[node name="Skin" type="Node2D" parent="." index="9"]
 
 [node name="Sprite" type="Sprite" parent="Skin" index="0"]
 position = Vector2( 0, -10 )
@@ -329,3 +331,5 @@ anims/mirar = SubResource( 10 )
 anims/mirar_der = SubResource( 11 )
 anims/saltar = SubResource( 7 )
 anims/turn = SubResource( 6 )
+
+[connection signal="muerto" from="." to="DropManager" method="drop"]

@@ -5,6 +5,7 @@
 
 [node name="PickupGauss" instance=ExtResource( 1 )]
 nombre_bala = "Cohetes"
+mensaje = "+%cant% munición gauss"
 cant_bala = 1
 
 [node name="Sprite" parent="." index="2"]

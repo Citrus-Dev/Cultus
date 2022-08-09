@@ -1,9 +1,13 @@
 class_name Jugador
 extends Personaje
 
+const JUMP_BUFFER_T := 0.2
+const COYOTE_T := 0.1
 const CAMARA_FALSA = preload("res://main/Camaras/CamaraFalsa.tscn")
 const CAMARA_REAL = preload("res://main/Camaras/CamaraReal.tscn")
+const FUERZA_DE_ENTRADA := 4.0
 const HUD = preload("res://main/UI/Hud/HUD.tscn")
+const SNOIDO_HURT := preload("res://assets/sfx/hurt.wav")
 
 export(NodePath) onready var stretcher = get_node(stretcher) as Stretcher
 export(NodePath) onready var pos_bufanda = get_node(pos_bufanda) as Position2D
@@ -17,12 +21,26 @@ var usando_habilidad : bool
 var bufan
 var objetos_pisando : Array # Los objetos sobre el que estas parado
 var movimiento_desactivado : bool
+var timer_jump_buffer : Timer
+var timer_coyote : Timer
+var coyote_timed_out : bool
 
 # Va a mostrar un mensaje si no se encuentra nivel de checkpoint para respawnear
 var debug_muerte_bugeada : bool
 
 func _ready() -> void:
+	timer_jump_buffer = Timer.new()
+	add_child(timer_jump_buffer)
+	timer_jump_buffer.wait_time = JUMP_BUFFER_T
+	timer_jump_buffer.one_shot = true
+	
+	timer_coyote = Timer.new()
+	add_child(timer_coyote)
+	timer_coyote.wait_time = COYOTE_T
+	timer_coyote.one_shot = true
+	
 	los.connect("nuevo_objeto_en_los", self, "detectar_enemigo")
+	connect("muerto", Musica, "set_override", [-1])
 	
 	crear_hud()
 	crear_camaras()
@@ -67,8 +85,17 @@ func procesar_movimiento(delta: float) -> void:
 	borrar_objetos_pisando()
 	if is_on_floor(): 
 		tomar_objetos_pisando()
+		coyote_timed_out = false
+	else:
+		if !coyote_timed_out:
+			if !timer_coyote.is_stopped():
+				coyote_timed_out = true
+			else:
+				timer_coyote.start()
 	
 	if puede_moverse or puede_salto_en_largo(): input_jump()
+	if puede_saltar(): 
+		confirmar_salto()
 	determinar_animacion()
 	
 	procesar_knockback()
@@ -81,6 +108,14 @@ func puede_moverse() -> bool:
 		!usando_habilidad and
 		!usando_checkpoint and
 		!anim_level_trans
+	)
+
+
+func puede_saltar() -> bool:
+	return bool(
+		Comandos.noclip or
+		(!timer_jump_buffer.is_stopped() and is_on_floor()) or
+		(!timer_jump_buffer.is_stopped() and !timer_coyote.is_stopped())
 	)
 
 
@@ -128,6 +163,8 @@ func evento_dmg(_dmg : InfoDmg):
 	aplicar_stun()
 	if _dmg.atacante != null:
 		print("Jugador hit: " + str(_dmg.atacante.name))
+	
+	Musica.hacer_sonido(SNOIDO_HURT, global_position, 20.0)
 
 
 func morir(_info : InfoDmg):
@@ -222,25 +259,32 @@ func set_anim_level_trans(_bool : bool):
 
 
 func sacar_input():
-	input = Input.get_vector(
-		"mov_izq", "mov_der",
-		"mov_arr", "mov_abaj"
+	input = Vector2(
+		Input.get_axis("mov_izq", "mov_der"),
+		0
 	).normalized()
-	
-#	if input.x != 0.0:
-#		set_dir(sign(input.x))
 
 
 # Detecta el input si tenes que saltar.
 # Tambien cancela el salto si estas en el aire y soltas la tecla.
 func input_jump():
-	if is_on_floor() or Comandos.noclip:
-		if Input.is_action_just_pressed("mov_arr"):
-			jump()
-			stretcher.stretch(Vector2(0.8, 1.2), 1.0)
+	if Input.is_action_just_pressed("mov_arr"):
+		comandar_salto()
 	elif velocity.y < 0.0:
 		if Input.is_action_just_released("mov_arr"):
 			velocity.y *= 0.5
+
+
+func comandar_salto():
+	timer_jump_buffer.start()
+
+
+func confirmar_salto():
+	jump()
+	stretcher.stretch(Vector2(0.8, 1.2), 1.0)
+	timer_jump_buffer.stop()
+	timer_coyote.stop()
+	coyote_timed_out = true
 
 
 func borrar_objetos_pisando():

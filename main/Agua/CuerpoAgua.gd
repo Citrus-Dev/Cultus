@@ -20,11 +20,15 @@ export(float) var resorte_damp = 0.025
 export(int, 1, 8) var iteraciones = 1
 
 var line_rend : Line2D
+var polygons := []
 var puntos := []
 var mouse_x_pos : float
 var mov_random_timer : float
 
 func _draw():
+	for poly in polygons:
+		draw_colored_polygon(poly, color_agua)
+	
 	if !debug: return
 	
 	var pos_pasada := Vector2(0, -altura)
@@ -41,10 +45,11 @@ func _draw():
 
 func _process(delta):
 	for i in iteraciones:
-		update()
 		propagacion()
+	actualizar_render_polygon()
 	actualizar_linea()
 	if mov_random: movimiento_random(delta)
+	update()
 
 
 func _ready():
@@ -60,11 +65,28 @@ func _ready():
 		puntos.append(resorte)
 		resorte.init_target_pos()
 	
-	for i in cantidad_de_puntos:
-		if i != cantidad_de_puntos:
-			crear_col_agua(puntos[i], puntos[i + 1])
+	actualizar_render_polygon()
+	
+	crear_col_agua(puntos[0], puntos[cantidad_de_puntos])
 	
 	call_deferred("crear_linea")
+
+
+func actualizar_render_polygon():
+	polygons.clear()
+	for i in cantidad_de_puntos:
+		if i != cantidad_de_puntos:
+			var lista : PoolVector2Array
+			
+			var pos_punto_izq = (puntos[i].position)
+			var pos_punto_der = (puntos[i + 1].position)
+			
+			lista.append(pos_punto_izq)
+			lista.append(pos_punto_der)
+			lista.append(Vector2(pos_punto_der.x, 0))
+			lista.append(Vector2(pos_punto_izq.x, 0))
+			
+			polygons.append(lista)
 
 
 func crear_linea():
@@ -87,7 +109,21 @@ func crear_col_agua(_punto_izq : Resorte, _punto_der : Resorte):
 	col.punto_der = _punto_der
 	col.punto_izq = _punto_izq
 	col.polygon_color = color_agua
+	col.connect("splash_signal", self, "splash")
 	add_child(col)
+
+
+func splash(fuerza : float, mult : float, pos : float):
+	for punto_index in cantidad_de_puntos:
+		var punto_actual : Resorte = puntos[punto_index]
+		var otro_punto : Resorte
+		if punto_index < cantidad_de_puntos:
+			otro_punto = puntos[punto_index + 1]
+		else: return
+		
+		if pos > punto_actual.global_position.x and pos < otro_punto.global_position.x:
+			punto_actual.velocity.y = fuerza * mult
+			otro_punto.velocity.y = fuerza * mult
 
 
 # Mueve el agua aleatoriamente para que no este siempre quieta

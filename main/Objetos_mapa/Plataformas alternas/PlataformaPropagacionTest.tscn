@@ -1,10 +1,10 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://main/libs/BlockinPolygon/BlockinPolygon.gd" type="Script" id=1]
 [ext_resource path="res://main/Objetos_mapa/Plataformas alternas/PlataformaPropagacion.gd" type="Script" id=2]
+[ext_resource path="res://assets/tilesets/plataformas/plataforma.png" type="Texture" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 32, 4 )
+extents = Vector2( 24, 8 )
 
 [node name="PlataformaPropagacionTest" type="StaticBody2D"]
 collision_layer = 512
@@ -13,13 +13,16 @@ script = ExtResource( 2 )
 direccion_busqueda_vecinos = 2
 distancia_maxima_vecino = 36.0
 
-[node name="BlockinPolygon2" type="Polygon2D" parent="."]
-polygon = PoolVector2Array( -32, 0, -24, 8, 24, 8, 32, 0 )
-script = ExtResource( 1 )
-enable_collisions = true
-one_way = true
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0, 8 )
+scale = Vector2( 1, 1 )
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 48, 16 )
+region_filter_clip = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, 4 )
+visible = false
+position = Vector2( 0, 8 )
 shape = SubResource( 1 )
 one_way_collision = true

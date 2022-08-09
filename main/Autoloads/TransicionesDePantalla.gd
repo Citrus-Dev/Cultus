@@ -49,7 +49,7 @@ func spawn_jugador_transicion_muerte():
 	juginst.controlador_armas.inv_balas.dict_balas = inv_balas_estado
 
 
-func encontrar_trigger_objetivo() -> TransicionDeNivel:
+func encontrar_trigger_objetivo() -> Node2D:
 	var tran_group = get_tree().get_nodes_in_group("TriggersTransiciones")
 	for i in tran_group:
 		if i.ID == trigger_objetivo:
@@ -57,7 +57,7 @@ func encontrar_trigger_objetivo() -> TransicionDeNivel:
 	return null
 
 
-func encontrar_checkpoint() -> Checkpoint:
+func encontrar_checkpoint() -> Node2D:
 	var check_g = get_tree().get_nodes_in_group("Checkpoints")
 	if check_g.size() > 0:
 		return check_g[0]

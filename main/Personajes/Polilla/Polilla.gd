@@ -30,6 +30,7 @@ func set_muerto(toggle : bool):
 
 
 func morir(_info : InfoDmg):
+	if muerto: return
 	emit_signal("muerto")
 	set_muerto(true)
 	remove_from_group("EnemigosAlertados")
@@ -52,3 +53,8 @@ func instanciar_gibs():
 	gib.global_position = global_position
 	get_parent().add_child(gib)
 
+
+func alertar():
+	if !ciego and !muerto:
+		objetivo.connect("muerto", self, "perder_vista_jugador")
+		add_to_group("EnemigosAlertados")

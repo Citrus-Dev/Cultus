@@ -4,3 +4,4 @@
 
 [node name="PickupSlide" instance=ExtResource( 1 )]
 id_skill = "Slide"
+mensaje = "Usa 'Abajo' mientras corres para deslizarte. Esto te hace invencible por un tiempo."
