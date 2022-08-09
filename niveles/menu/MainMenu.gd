@@ -4,6 +4,7 @@ extends Control
 export(NodePath) onready var cont_botones = get_node(cont_botones) as Control
 export(NodePath) onready var boton_continuar = get_node(boton_continuar) as Control
 export(NodePath) onready var ng_prompt = get_node(ng_prompt) as Control
+export(NodePath) onready var menu_config = get_node(menu_config) as MenuConfig
 
 var GAME_INFO = preload("res://main/InfoJuego.tres")
 
@@ -30,7 +31,12 @@ func continuar():
 
 
 func mostrar_opciones(toggle : bool):
-	pass
+	esconder_menu(!toggle)
+	menu_config.visible = toggle
+
+
+func mostrar_config():
+	mostrar_opciones(true)
 
 
 func quit():
@@ -40,4 +46,5 @@ func quit():
 func esconder_menu(toggle : bool):
 	for i in cont_botones.get_children():
 		i.visible = toggle
+
 

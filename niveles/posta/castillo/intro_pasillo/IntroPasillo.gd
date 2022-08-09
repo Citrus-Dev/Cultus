@@ -6,11 +6,13 @@ export(NodePath) var path_cult1
 export(NodePath) var path_cult2
 export(NodePath) var path_trigger
 export(NodePath) var correr_obj_path
+export(NodePath) var anim_cerrar_puerta_path
 
 var cult1 : Cultista
 var cult2 : Cultista
 var trigger : Area2D
 var correr_obj : Node2D
+var anim_cerrar_puerta : AnimationPlayer
 
 func _ready():
 	yield(get_tree(), "idle_frame")
@@ -19,6 +21,7 @@ func _ready():
 	cult2 = get_node(path_cult2)
 	trigger = get_node(path_trigger)
 	correr_obj = get_node(correr_obj_path)
+	anim_cerrar_puerta = get_node(anim_cerrar_puerta_path)
 	
 	if info_persist_nivel.has(NOMBRE_DATO): 
 		cult1.call_deferred("free")
@@ -57,3 +60,5 @@ func comenzar_anim_mirar(__):
 	yield(get_tree().create_timer(3), "timeout")
 	cult1.call_deferred("free")
 	cult2.call_deferred("free")
+	
+	anim_cerrar_puerta.play("cerrar_puert")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://assets/tilesets/tileset_castillo.tres" type="TileSet" id=1]
 [ext_resource path="res://niveles/Nivel.tscn" type="PackedScene" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://main/Pickups/PickupHP.tscn" type="PackedScene" id=8]
 [ext_resource path="res://main/Objetos_mapa/Pinchos/Pinchos.tscn" type="PackedScene" id=9]
 [ext_resource path="res://main/Objetos_mapa/TransicionDeNivel/TransicionDeNivelConArea.tscn" type="PackedScene" id=10]
+[ext_resource path="res://main/Musica/MusCastillo.tres" type="Resource" id=11]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 793, 248 )
@@ -19,6 +20,7 @@ extents = Vector2( 64, 16 )
 
 [node name="Nivel" instance=ExtResource( 2 )]
 primer_limite_camara = NodePath("camara limites/CameraBounds")
+musica = ExtResource( 11 )
 
 [node name="TileMapFondo" type="TileMap" parent="Fondo" index="0"]
 modulate = Color( 0.188235, 0.188235, 0.188235, 1 )

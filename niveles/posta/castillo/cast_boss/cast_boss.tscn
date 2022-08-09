@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://assets/tilesets/tiles_castillo_full.png" type="Texture" id=1]
 [ext_resource path="res://niveles/posta/castillo/cast_boss/cast_boss.gd" type="Script" id=2]
@@ -22,6 +22,7 @@
 [ext_resource path="res://main/Objetos_mapa/Pinchos/Pinchos.tscn" type="PackedScene" id=20]
 [ext_resource path="res://main/Personajes/Caballero/Caballero.tscn" type="PackedScene" id=21]
 [ext_resource path="res://main/Objetos_mapa/Puertas/Puerta.tscn" type="PackedScene" id=22]
+[ext_resource path="res://main/Musica/MusCastillo.tres" type="Resource" id=23]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 776, 384 )
@@ -49,10 +50,14 @@ extents = Vector2( 8, 24 )
 [node name="Nivel" instance=ExtResource( 11 )]
 script = ExtResource( 2 )
 primer_limite_camara = NodePath("camara limites/CameraBounds")
+musica = ExtResource( 23 )
 spawn_polilla1 = NodePath("SpawnerAuto")
 spawn_polilla2 = NodePath("SpawnerAuto2")
 spawn_polilla3 = NodePath("SpawnerAuto3")
 spawn_polilla4 = NodePath("SpawnerAuto4")
+cultista_forro1 = NodePath("Cultista4_forro")
+cultista_forro2 = NodePath("Cultista5_forro")
+trigger_polillas = NodePath("triggers/TriggerOnce")
 slide_pickup = NodePath("PickupSlide")
 puerta_pickup = NodePath("Puerta")
 
@@ -175,8 +180,12 @@ ID_objetivo = "del_boss"
 direccion_nivel = "res://niveles/posta/castillo/cast_boss2/cast_boss2.tscn"
 direccion_movimiento = 1
 
+[node name="TransicionDeNivelConArea2" parent="triggers" index="4" instance=ExtResource( 10 )]
+position = Vector2( 1040, -128 )
+direccion_nivel = "res://niveles/posta/castillo/cast_secreto/cast_secreto.tscn"
+
 [node name="SpawnJugador" type="Node2D" parent="." index="7"]
-position = Vector2( 763, 322 )
+position = Vector2( 600, 176 )
 script = ExtResource( 17 )
 
 [node name="PickupSlide" parent="." index="8" instance=ExtResource( 8 )]
@@ -197,7 +206,7 @@ position = Vector2( 1464, 16 )
 collision_mask = 0
 
 [node name="PlataformaMovible" type="KinematicBody2D" parent="Plataformas" index="2"]
-position = Vector2( 1176, 136 )
+position = Vector2( 1136, 136 )
 collision_layer = 512
 collision_mask = 512
 script = ExtResource( 3 )
@@ -205,7 +214,7 @@ __meta__ = {
 "_edit_group_": true
 }
 camino = NodePath("../camino_plat")
-velocidad = 75.0
+velocidad = 45.0
 
 [node name="Sprite" type="Sprite" parent="Plataformas/PlataformaMovible" index="0"]
 texture = SubResource( 6 )
@@ -215,27 +224,51 @@ visible = false
 shape = SubResource( 7 )
 one_way_collision = true
 
-[node name="PlataformaFragil2" parent="Plataformas" index="3" instance=ExtResource( 6 )]
+[node name="PlataformaMovible2" type="KinematicBody2D" parent="Plataformas" index="3"]
+position = Vector2( 1392, 136 )
+collision_layer = 512
+collision_mask = 512
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_group_": true
+}
+camino = NodePath("../camino_plat2")
+velocidad = 45.0
+
+[node name="Sprite" type="Sprite" parent="Plataformas/PlataformaMovible2" index="0"]
+texture = SubResource( 6 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Plataformas/PlataformaMovible2" index="1"]
+visible = false
+shape = SubResource( 7 )
+one_way_collision = true
+
+[node name="PlataformaFragil2" parent="Plataformas" index="4" instance=ExtResource( 6 )]
 position = Vector2( 1496, 88 )
 
-[node name="PlataformaFragil3" parent="Plataformas" index="4" instance=ExtResource( 6 )]
+[node name="PlataformaFragil3" parent="Plataformas" index="5" instance=ExtResource( 6 )]
 position = Vector2( 24, -304 )
 
-[node name="PlataformaFragil4" parent="Plataformas" index="5" instance=ExtResource( 6 )]
+[node name="PlataformaFragil4" parent="Plataformas" index="6" instance=ExtResource( 6 )]
 position = Vector2( 136, -160 )
 
-[node name="PlataformaFragil5" parent="Plataformas" index="6" instance=ExtResource( 6 )]
+[node name="PlataformaFragil5" parent="Plataformas" index="7" instance=ExtResource( 6 )]
 position = Vector2( 24, -16 )
 
-[node name="PlataformaFragil6" parent="Plataformas" index="7" instance=ExtResource( 6 )]
+[node name="PlataformaFragil6" parent="Plataformas" index="8" instance=ExtResource( 6 )]
 position = Vector2( 40, 112 )
 
-[node name="PlataformaFragil7" parent="Plataformas" index="8" instance=ExtResource( 6 )]
+[node name="PlataformaFragil7" parent="Plataformas" index="9" instance=ExtResource( 6 )]
 position = Vector2( 40, 192 )
 
-[node name="camino_plat" type="Line2D" parent="Plataformas" index="9"]
+[node name="camino_plat" type="Line2D" parent="Plataformas" index="10"]
 visible = false
-points = PoolVector2Array( 1136, 136, 1400, 136 )
+points = PoolVector2Array( 1136, 136, 1248, 136 )
+width = 2.0
+
+[node name="camino_plat2" type="Line2D" parent="Plataformas" index="11"]
+visible = false
+points = PoolVector2Array( 1288, 136, 1392, 136 )
 width = 2.0
 
 [node name="Pinches" type="Node2D" parent="." index="11"]
@@ -284,10 +317,10 @@ position = Vector2( 368, 325 )
 [node name="Cultista3" parent="." index="18" instance=ExtResource( 9 )]
 position = Vector2( 456, 336 )
 
-[node name="Cultista4" parent="." index="19" instance=ExtResource( 9 )]
+[node name="Cultista4_forro" parent="." index="19" instance=ExtResource( 9 )]
 position = Vector2( 1144, 16 )
 
-[node name="Cultista5" parent="." index="20" instance=ExtResource( 9 )]
+[node name="Cultista5_forro" parent="." index="20" instance=ExtResource( 9 )]
 position = Vector2( 1168, 16 )
 
 [node name="Caballero" parent="." index="21" instance=ExtResource( 21 )]
@@ -307,12 +340,9 @@ visible = false
 position = Vector2( -6.10352e-05, 23 )
 shape = SubResource( 4 )
 
-[connection signal="triggered" from="triggers/TriggerOnce" to="." method="spawnear_polillas"]
 [connection signal="spawn_muerto" from="SpawnerAuto" to="." method="enemigo_puerta_muerto"]
 [connection signal="spawn_muerto" from="SpawnerAuto2" to="." method="enemigo_puerta_muerto"]
 [connection signal="spawn_muerto" from="SpawnerAuto3" to="." method="enemigo_puerta_muerto"]
 [connection signal="spawn_muerto" from="SpawnerAuto4" to="." method="enemigo_puerta_muerto"]
-[connection signal="muerto" from="Cultista4" to="." method="enemigo_puerta_muerto"]
-[connection signal="muerto" from="Cultista5" to="." method="enemigo_puerta_muerto"]
 
 [editable path="triggers/TransicionDeNivelConArea3"]

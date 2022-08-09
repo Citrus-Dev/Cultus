@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://assets/tilesets/tileset_castillo.tres" type="TileSet" id=1]
 [ext_resource path="res://niveles/posta/castillo/nivel_Agus/nivel_castillo_00.gd" type="Script" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://main/AI/Borde.tscn" type="PackedScene" id=7]
 [ext_resource path="res://main/Objetos_mapa/SpawnJugador.gd" type="Script" id=8]
 [ext_resource path="res://main/CameraLimitSystem/CameraBounds.gd" type="Script" id=9]
+[ext_resource path="res://assets/objetos/puerta.png" type="Texture" id=10]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 256, 144 )
@@ -77,6 +78,7 @@ position = Vector2( 496, 256 )
 tiempo_abrir = 1.0
 
 [node name="Polygon2D" type="Polygon2D" parent="Node2D/Puerta" index="0"]
+visible = false
 color = Color( 0.509804, 0.509804, 0.509804, 1 )
 polygon = PoolVector2Array( -8, 0, 8, 0, 8, -48, -8, -48 )
 
@@ -84,6 +86,10 @@ polygon = PoolVector2Array( -8, 0, 8, 0, 8, -48, -8, -48 )
 visible = false
 position = Vector2( 0, -24 )
 shape = SubResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="Node2D/Puerta" index="2"]
+position = Vector2( 0, -24 )
+texture = ExtResource( 10 )
 
 [node name="TransicionDeNivel" parent="." index="9" instance=ExtResource( 6 )]
 position = Vector2( 520, 256 )

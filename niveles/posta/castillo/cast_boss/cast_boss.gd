@@ -7,6 +7,10 @@ export(NodePath) onready var spawn_polilla2 = get_node(spawn_polilla2) as Spawne
 export(NodePath) onready var spawn_polilla3 = get_node(spawn_polilla3) as SpawnerAuto
 export(NodePath) onready var spawn_polilla4 = get_node(spawn_polilla4) as SpawnerAuto
 
+export(NodePath) onready var cultista_forro1 = get_node(cultista_forro1) as Cultista
+export(NodePath) onready var cultista_forro2 = get_node(cultista_forro2) as Cultista
+
+export(NodePath) onready var trigger_polillas = get_node(trigger_polillas) as TriggerOnce
 export(NodePath) onready var slide_pickup = get_node(slide_pickup) as PickupSkill
 export(NodePath) onready var puerta_pickup = get_node(puerta_pickup) as Puerta
 
@@ -15,6 +19,10 @@ var contador_kills_abrir_puerta : int = 6
 func _ready() -> void:
 	if info_persist_nivel.has(NOMBRE_DATO): 
 		slide_pickup.call_deferred("free")
+	else:
+		trigger_polillas.connect("triggered", self, "spawnear_polillas")
+		cultista_forro1.connect("muerto", self, "enemigo_puerta_muerto")
+		cultista_forro2.connect("muerto", self, "enemigo_puerta_muerto")
 
 
 func spawnear_polillas():
@@ -32,4 +40,8 @@ func enemigo_puerta_muerto():
 
 func abrir_puerta():
 	puerta_pickup.abrir()
+
+
+func guardar_slide():
+	info_persist_nivel[NOMBRE_DATO] = true
 

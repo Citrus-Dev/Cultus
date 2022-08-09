@@ -13,6 +13,7 @@ func _init() -> void:
 
 
 func _ready():
+	Musica.set_override(-1)
 	Musica.asignar_musica(musica)
 	GameState.determinar_estado_inicial(self)
 	
