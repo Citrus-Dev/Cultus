@@ -2,7 +2,7 @@
 
 [ext_resource path="res://main/Armas/Skins/SkinArma.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/armas/weapon_revolver.png" type="Texture" id=2]
-[ext_resource path="res://assets/sfx/armas/disparo/Barrett-M82-.50-BMG-Single-Close-Gunshot-A-www.fesliyanstudios.com.mp3" type="AudioStream" id=3]
+[ext_resource path="res://assets/sfx/armas/disparo/Barrett-M82-.50-BMG-Single-Close-Gunshot-A-www.fesliyanstudios.com.wav" type="AudioStream" id=3]
 [ext_resource path="res://assets/sfx/armas/recarga/recarga_revolver.wav" type="AudioStream" id=4]
 
 [sub_resource type="Animation" id=1]

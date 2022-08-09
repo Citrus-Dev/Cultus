@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Barrett-M82-.50-BMG-Single-Close-Gunshot-A-www.fesliyanstudios.com.wav-60e483d0801892243790e55e7f88f11d.sample"
+
+[deps]
+
+source_file="res://assets/sfx/armas/disparo/Barrett-M82-.50-BMG-Single-Close-Gunshot-A-www.fesliyanstudios.com.wav"
+dest_files=[ "res://.import/Barrett-M82-.50-BMG-Single-Close-Gunshot-A-www.fesliyanstudios.com.wav-60e483d0801892243790e55e7f88f11d.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

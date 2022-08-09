@@ -31,7 +31,7 @@ extents = Vector2( 7, 23 )
 primer_limite_camara = NodePath("camara limites/CameraBounds")
 
 [node name="TileMap" type="TileMap" parent="Fondo" index="0"]
-modulate = Color( 0.298039, 0.282353, 0.282353, 1 )
+modulate = Color( 0.509804, 0.501961, 0.501961, 1 )
 tile_set = ExtResource( 3 )
 cell_size = Vector2( 16, 16 )
 format = 1

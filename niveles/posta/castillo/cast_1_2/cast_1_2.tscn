@@ -31,7 +31,7 @@ primer_limite_camara = NodePath("camara limites/CameraBounds")
 musica = ExtResource( 14 )
 
 [node name="TileMap" type="TileMap" parent="Fondo" index="0"]
-modulate = Color( 0.188235, 0.188235, 0.188235, 1 )
+modulate = Color( 0.25098, 0.25098, 0.25098, 1 )
 tile_set = ExtResource( 3 )
 cell_size = Vector2( 16, 16 )
 format = 1
