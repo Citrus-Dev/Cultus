@@ -215,7 +215,8 @@ func set_agua(toggle : bool):
 func set_dir(_dir : int):
 	if _dir != dir:
 		turning = true
-		animador.play("turn")
+		if animador.has_animation("turn"):
+			animador.play("turn")
 	
 	dir = _dir
 	if _dir != 0: 

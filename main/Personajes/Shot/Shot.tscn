@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://main/Personajes/PersonajeBase.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/enemies/sprites_shot_attack.png" type="Texture" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://main/Personajes/Cultista/Muerte.gd" type="Script" id=8]
 [ext_resource path="res://main/Personajes/Shot/estados/Cast.gd" type="Script" id=9]
 [ext_resource path="res://main/Personajes/Shot/estados/Idle.gd" type="Script" id=10]
+[ext_resource path="res://main/libs/DebugMonitor/DebugMonitor.tscn" type="PackedScene" id=11]
 
 [sub_resource type="Animation" id=1]
 length = 0.001
@@ -98,8 +99,8 @@ extents = Vector2( 10, 16.5 )
 collision_layer = 4
 collision_mask = 5
 script = ExtResource( 5 )
-skin = NodePath("skin")
-skin_sprite_path = NodePath("skin/Sprite")
+skin = NodePath("Skin")
+skin_sprite_path = NodePath("Skin/Sprite")
 aceleracion = 25.0
 friccion = 0.5
 max_velocidad_horizontal = 75.0
@@ -107,38 +108,44 @@ max_velocidad_vertical = 300.0
 fsm = NodePath("StateMachine")
 hurtbox = NodePath("Hurtbox")
 
-[node name="Status" parent="." index="0"]
+[node name="DebugMonitor" parent="." index="0" instance=ExtResource( 11 )]
+position = Vector2( 6, -45 )
+monitor_target_node = NodePath("../StateMachine")
+monitor_target_property = "state"
+monitor_flavor_text = "state"
+
+[node name="Status" parent="." index="1"]
 hp_max = 155
 stun_threshold = 120
 
-[node name="skin" type="Node2D" parent="." index="1"]
+[node name="Skin" type="Node2D" parent="." index="2"]
 position = Vector2( 1, 0 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="skin" index="0"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Skin" index="0"]
 autoplay = "idle"
 anims/RESET = SubResource( 1 )
 anims/cast = SubResource( 4 )
 anims/idle = SubResource( 2 )
 anims/walk = SubResource( 3 )
 
-[node name="Sprite" type="Sprite" parent="skin" index="1"]
+[node name="Sprite" type="Sprite" parent="Skin" index="1"]
 position = Vector2( 0, -24 )
 texture = ExtResource( 3 )
 hframes = 9
 vframes = 3
 frame = 18
 
-[node name="Sprite2" type="Sprite" parent="skin" index="2"]
+[node name="Sprite2" type="Sprite" parent="Skin" index="2"]
 visible = false
 texture = ExtResource( 2 )
 
-[node name="Hitbox" parent="." index="2"]
+[node name="Hitbox" parent="." index="3"]
 visible = false
 
 [node name="CollisionShape2D" parent="Hitbox" index="0"]
 position = Vector2( 0, -16 )
 
-[node name="Hurtbox" parent="." index="3" instance=ExtResource( 4 )]
+[node name="Hurtbox" parent="." index="4" instance=ExtResource( 4 )]
 visible = false
 collision_mask = 16
 agente_dir = NodePath("..")
@@ -151,12 +158,12 @@ dmg_tipo = 1
 position = Vector2( 0, -17.5 )
 shape = SubResource( 5 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="4"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="5"]
 visible = false
 position = Vector2( 0, -16.5 )
 shape = SubResource( 6 )
 
-[node name="StateMachine" type="Node" parent="." index="5"]
+[node name="StateMachine" type="Node" parent="." index="6"]
 script = ExtResource( 6 )
 initial_state = NodePath("Idle")
 

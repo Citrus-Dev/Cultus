@@ -45,6 +45,13 @@ func morir(_info : InfoDmg):
 #		instanciar_ragdoll()
 
 
+func mirar_al_jugador():
+	var jug = get_tree().get_nodes_in_group("Jugador")[0]
+	var dir_a_jug = jug.global_position - global_position
+	
+	set_dir(sign(dir_a_jug.x))
+
+
 func set_muerto(toggle : bool):
 	muerto = toggle
 	if toggle:

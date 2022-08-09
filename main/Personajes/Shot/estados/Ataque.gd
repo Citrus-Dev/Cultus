@@ -10,7 +10,7 @@ func unhandled_input(event : InputEvent) -> void:
 
 
 func process(delta : float) -> void:
-	return
+	owner.mirar_al_jugador()
 
 
 func physics_process(delta : float) -> void:

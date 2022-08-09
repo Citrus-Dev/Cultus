@@ -23,4 +23,4 @@ func exit() -> void:
 
 func alertar():
 	if !owner.ciego:
-		_state_machine.transition_to("Perseguir")
+		_state_machine.transition_to("Ataque")
