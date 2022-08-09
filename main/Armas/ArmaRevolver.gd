@@ -6,7 +6,7 @@ const TIEMPO_RECARGA := 1.3
 const MAX_BALAS := 6
 const SPREAD_ALTFIRE := 3.8
 const TIPO_BALAS = "Pistola"
-const SONIDO_DISPARO := preload("res://assets/sfx/armas/disparo/Barrett-M82-.50-BMG-Single-Close-Gunshot-A-www.fesliyanstudios.com.mp3")
+const SONIDO_DISPARO := preload("res://assets/sfx/armas/disparo/Barrett-M82-.50-BMG-Single-Close-Gunshot-A-www.fesliyanstudios.com.wav")
 const SONIDO_RECARGA := preload("res://assets/sfx/armas/recarga/recarga_revolver.wav")
 
 var timer_recarga := Timer.new()
