@@ -47,7 +47,7 @@ spawn_r_2 = NodePath("spawns/sr2")
 spawn_r_3 = NodePath("spawns/sr3")
 
 [node name="TileMapFondo" type="TileMap" parent="Fondo" index="0"]
-modulate = Color( 0.188235, 0.188235, 0.188235, 1 )
+modulate = Color( 0.25098, 0.25098, 0.25098, 1 )
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 16, 16 )
 collision_layer = 0

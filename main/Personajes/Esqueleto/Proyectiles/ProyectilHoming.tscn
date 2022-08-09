@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://main/Personajes/Esqueleto/Proyectiles/ProyectilHoming.gd" type="Script" id=1]
+[ext_resource path="res://main/Personajes/Esqueleto/Proyectiles/ProyectilBase.tscn" type="PackedScene" id=2]
+[ext_resource path="res://main/Efectos/Estelas/EstelaBase.gd" type="Script" id=3]
+
+[node name="ProyectilHoming" instance=ExtResource( 2 )]
+script = ExtResource( 1 )
+move_speed = 175.0
+lifetime = 100.0
+
+[node name="Sprite" parent="." index="0"]
+visible = false
+
+[node name="EstelaBase" type="Line2D" parent="." index="2"]
+width = 4.0
+default_color = Color( 10, 0.1, 0.1, 1 )
+begin_cap_mode = 2
+script = ExtResource( 3 )
+numero_de_segmentos = 5

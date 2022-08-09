@@ -27,7 +27,7 @@ puerta = NodePath("Node2D/Puerta")
 checkpoint = NodePath("Node2D/Checkpoint")
 
 [node name="TileMap" type="TileMap" parent="Fondo" index="0"]
-modulate = Color( 0.501961, 0.501961, 0.501961, 1 )
+modulate = Color( 0.25098, 0.25098, 0.25098, 1 )
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 16, 16 )
 collision_layer = 0
