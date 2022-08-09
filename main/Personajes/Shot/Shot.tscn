@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://main/Personajes/PersonajeBase.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/enemies/sprites_shot_attack.png" type="Texture" id=2]
@@ -38,10 +38,34 @@ tracks/1/keys = {
 "update": 0,
 "values": [ Vector2( 0, 2 ) ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("../SpriteCirc:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("../SpriteCirc:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
 
 [sub_resource type="Animation" id=4]
 resource_name = "cast"
-length = 0.9
+length = 1.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -49,10 +73,48 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 18, 19, 20, 21, 22, 23, 24, 25, 26 ]
+"values": [ 18, 19, 20, 21, 22, 24, 25, 24, 25, 24, 25, 24, 25, 24, 25 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../SpriteCirc:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../SpriteCirc:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13 ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath("..")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 1.2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "hacer_proyectiles"
+} ]
 }
 
 [sub_resource type="Animation" id=2]
@@ -70,6 +132,21 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 0, 1, 2, 3, 4, 5 ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "muerte"
+tracks/0/type = "value"
+tracks/0/path = NodePath("../SpriteCirc:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -103,22 +180,37 @@ skin = NodePath("Skin")
 skin_sprite_path = NodePath("Skin/Sprite")
 aceleracion = 25.0
 friccion = 0.5
-max_velocidad_horizontal = 75.0
+max_velocidad_horizontal = 45.0
 max_velocidad_vertical = 300.0
 fsm = NodePath("StateMachine")
 hurtbox = NodePath("Hurtbox")
 
-[node name="DebugMonitor" parent="." index="0" instance=ExtResource( 11 )]
+[node name="st" parent="." index="0" instance=ExtResource( 11 )]
+visible = false
 position = Vector2( 6, -45 )
 monitor_target_node = NodePath("../StateMachine")
 monitor_target_property = "state"
 monitor_flavor_text = "state"
 
-[node name="Status" parent="." index="1"]
-hp_max = 155
-stun_threshold = 120
+[node name="input" parent="." index="1" instance=ExtResource( 11 )]
+visible = false
+position = Vector2( 6, -62 )
+monitor_target_node = NodePath("..")
+monitor_target_property = "input"
+monitor_flavor_text = "input"
 
-[node name="Skin" type="Node2D" parent="." index="2"]
+[node name="Status" parent="." index="2"]
+hp_max = 300
+stun_threshold = 150
+
+[node name="SpriteCirc" type="Sprite" parent="." index="3"]
+visible = false
+position = Vector2( 1, -59 )
+texture = ExtResource( 2 )
+hframes = 15
+vframes = 2
+
+[node name="Skin" type="Node2D" parent="." index="4"]
 position = Vector2( 1, 0 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Skin" index="0"]
@@ -126,6 +218,7 @@ autoplay = "idle"
 anims/RESET = SubResource( 1 )
 anims/cast = SubResource( 4 )
 anims/idle = SubResource( 2 )
+anims/muerte = SubResource( 7 )
 anims/walk = SubResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="Skin" index="1"]
@@ -135,17 +228,13 @@ hframes = 9
 vframes = 3
 frame = 18
 
-[node name="Sprite2" type="Sprite" parent="Skin" index="2"]
-visible = false
-texture = ExtResource( 2 )
-
-[node name="Hitbox" parent="." index="3"]
+[node name="Hitbox" parent="." index="5"]
 visible = false
 
 [node name="CollisionShape2D" parent="Hitbox" index="0"]
 position = Vector2( 0, -16 )
 
-[node name="Hurtbox" parent="." index="4" instance=ExtResource( 4 )]
+[node name="Hurtbox" parent="." index="6" instance=ExtResource( 4 )]
 visible = false
 collision_mask = 16
 agente_dir = NodePath("..")
@@ -158,12 +247,12 @@ dmg_tipo = 1
 position = Vector2( 0, -17.5 )
 shape = SubResource( 5 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="5"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="7"]
 visible = false
 position = Vector2( 0, -16.5 )
 shape = SubResource( 6 )
 
-[node name="StateMachine" type="Node" parent="." index="6"]
+[node name="StateMachine" type="Node" parent="." index="8"]
 script = ExtResource( 6 )
 initial_state = NodePath("Idle")
 
@@ -176,5 +265,5 @@ script = ExtResource( 7 )
 [node name="Cast" type="Node" parent="StateMachine" index="2"]
 script = ExtResource( 9 )
 
-[node name="Morir" type="Node" parent="StateMachine" index="3"]
+[node name="Muerte" type="Node" parent="StateMachine" index="3"]
 script = ExtResource( 8 )

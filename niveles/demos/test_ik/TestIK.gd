@@ -36,7 +36,7 @@ func _process(delta):
 	if ik_target_path != "":
 		target = get_node(ik_target_path).global_position
 	else:
-		target = get_global_mouse_position()
+		target = get_viewport().get_mouse_position()
 	calc_ik()
 	update()
 

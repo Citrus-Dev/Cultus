@@ -2,6 +2,8 @@
 class_name Shot
 extends Personaje
 
+const PROYECTILES = preload("res://main/Proyectiles/ProyectilHomingMejor.tscn")
+
 export(NodePath) onready var fsm = get_node(fsm) as StateMachine
 export(NodePath) onready var hurtbox = get_node(hurtbox) as Hurtbox
 
@@ -37,12 +39,6 @@ func morir(_info : InfoDmg):
 	remove_from_group("Enemigos")
 	
 	var tipo = _info.dmg_tipo
-	
-#	if tipo == InfoDmg.DMG_TIPOS.EXPLOSION or tipo == InfoDmg.DMG_TIPOS.PLASMA:
-#		instanciar_gibs()
-#		emit_signal("muerto_gib")
-#	else:
-#		instanciar_ragdoll()
 
 
 func mirar_al_jugador():
@@ -62,3 +58,25 @@ func set_muerto(toggle : bool):
 		hurtbox.collision_mask = 0 
 	cambiar_visibilidad(!toggle)
 	fsm.transition_to("Muerte")
+
+
+func hacer_proyectiles():
+	var cantidad := 3
+	var proys := []
+	
+	var dmg = InfoDmg.new()
+	dmg.dmg_cantidad = 8
+	dmg.dmg_tipo = InfoDmg.DMG_TIPOS.EXPLOSION
+	
+	for i in cantidad:
+		proys.append(PROYECTILES.instance())
+		proys[i].global_position.y -= 48.0
+		proys[i].target = objetivo
+		proys[i].info_dmg = dmg
+		add_child(proys[i])
+	
+	proys[1].global_position.x -= 16
+	proys[1].global_position.y -= 16
+	proys[2].global_position.x += 16
+	proys[2].global_position.y -= 16
+

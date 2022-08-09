@@ -2,7 +2,9 @@
 extends State
 
 func enter(msg : Dictionary = {}) -> void:
-	return 
+	owner.input = Vector2.ZERO
+	owner.animador.connect("animation_finished", self, "terminar")
+	owner.animador.play("cast")
 
 
 func unhandled_input(event : InputEvent) -> void:
@@ -18,4 +20,8 @@ func physics_process(delta : float) -> void:
 
 
 func exit() -> void:
-	return 
+	owner.animador.disconnect("animation_finished", self, "terminar")
+
+
+func terminar(__):
+	owner.fsm.transition_to("Ataque")
