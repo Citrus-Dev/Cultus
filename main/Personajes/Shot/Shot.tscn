@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://main/Personajes/PersonajeBase.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/enemies/sprites_shot_attack.png" type="Texture" id=2]
@@ -172,6 +172,9 @@ extents = Vector2( 10, 17.5 )
 [sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 10, 16.5 )
 
+[sub_resource type="RectangleShape2D" id=8]
+extents = Vector2( 10, 24 )
+
 [node name="Shot" instance=ExtResource( 1 )]
 collision_layer = 4
 collision_mask = 5
@@ -184,6 +187,7 @@ max_velocidad_horizontal = 45.0
 max_velocidad_vertical = 300.0
 fsm = NodePath("StateMachine")
 hurtbox = NodePath("Hurtbox")
+trigger_block = NodePath("TriggerBlock")
 
 [node name="st" parent="." index="0" instance=ExtResource( 11 )]
 visible = false
@@ -252,7 +256,16 @@ visible = false
 position = Vector2( 0, -16.5 )
 shape = SubResource( 6 )
 
-[node name="StateMachine" type="Node" parent="." index="8"]
+[node name="TriggerBlock" type="Area2D" parent="." index="8"]
+visible = false
+modulate = Color( 0.94902, 0.941176, 0.0980392, 1 )
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TriggerBlock" index="0"]
+position = Vector2( 0, -56 )
+shape = SubResource( 8 )
+
+[node name="StateMachine" type="Node" parent="." index="9"]
 script = ExtResource( 6 )
 initial_state = NodePath("Idle")
 

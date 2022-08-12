@@ -49,6 +49,7 @@ func _physics_process(delta: float) -> void:
 	)
 	
 	if !res.empty():
+		hit()
 		if efecto:
 			instanciar_efecto(res["position"], res["normal"].angle(), res["collider"])
 		var collider = res["collider"]
@@ -83,3 +84,7 @@ func instanciar_efecto(pos : Vector2, rot : float, objetivo : Node2D):
 	objetivo.add_child(new)
 	new.rotation = rot
 	new.global_position = pos
+
+
+func hit():
+	pass

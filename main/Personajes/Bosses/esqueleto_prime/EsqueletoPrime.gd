@@ -3,6 +3,7 @@ extends Personaje
 
 const VEL_AJUSTE_MANO := 2.0
 const VEL_AJUSTE_MANO_GOLPE := 15.0
+const BALA_ESCENA := preload("res://main/Proyectiles/ProyCultista.tscn")
 
 signal activo
 
@@ -10,11 +11,16 @@ export(NodePath) onready var target_mano_1 = get_node(target_mano_1) as Position
 export(NodePath) onready var target_mano_2 = get_node(target_mano_2) as Position2D
 export(NodePath) onready var mano_1 = get_node(mano_1) as Node2D
 export(NodePath) onready var mano_2 = get_node(mano_2) as Node2D
+export(NodePath) onready var punto_de_disparo = get_node(punto_de_disparo  ) as Node2D
 export(Array, NodePath) var shaker_paths
 export(Array, NodePath) var hurtbox_paths
+export(int) var dmg_rayos
 
 export(bool) var atacando: bool
 export(bool) var muriendo: bool
+export(bool) var mirando: bool
+
+var jugref: Jugador
 
 # Vamos a poner nombres de movimientos aca. El sistema va a ir agarrando movimientos de aca hasta que
 # no haya mas, y despues lo va a rellenar devuelta con empezar_ciclo
@@ -24,7 +30,10 @@ var counter_idle: int
 var shakers := []
 var hurtboxes := []
 
+var bala_dmg: InfoDmg
+
 func _ready():
+	set_process(false)
 	add_to_group("Enemigos")
 	add_to_group("Boss")
 	mano_1.global_position = target_mano_1.global_position
@@ -47,13 +56,18 @@ func _process(delta):
 	if muriendo:
 		for i in shakers:
 			i.add_trauma(5)
+	
+	if mirando:
+		mirar(delta)
 
 
 # Activa un ciclo de ataques
 func empezar_boss():
 	activo = true
 	emit_signal("activo")
+	jugref = get_tree().get_nodes_in_group("Jugador")[0]
 	empezar_ciclo()
+	set_process(true)
 
 
 func animador_trigger(anim: String):
@@ -72,17 +86,12 @@ func empezar_ciclo():
 	if !activo: return
 	
 	ataques = [
-		"golpe1",
-		"golpe_mucho"
+		"rayos1"
 	]
 	call_deferred("determinar_siguiente_ataque")
 
 
 func determinar_siguiente_ataque():
-#	if !fase2 and status.hp < status.hp_max / 2:
-#		empezar_fase_2()
-#		return
-	
 	if !ataques.empty():
 		var sig_atq_index : int = randi() % ataques.size()
 		var sig_ataque : String = ataques[sig_atq_index]
@@ -94,7 +103,7 @@ func determinar_siguiente_ataque():
 
 
 func reset_counter_idle():
-	counter_idle = randi() % 3 + 1
+	counter_idle = randi() % 2 + 1
 
 
 func bajar_counter_idle():
@@ -138,6 +147,41 @@ func golpe_mano2():
 
 
 func golpe(pos: Vector2):
-	pass
+	var efecto := EfectoCirculo.new(
+		Color.whitesmoke,
+		0.0,
+		64.0,
+		0.35
+	)
+	get_tree().root.add_child(efecto)
+	efecto.global_position = pos + (Vector2(20, 32))
 
+
+func mirar(delta: float):
+	var dir: Vector2 = jugref.global_position - skin.global_position
+	skin.rotation = lerp_angle(skin.rotation, dir.angle(), delta)
+
+
+func disparar():
+	# Entre 6 y 8 disparos
+#	var disparos = randi() % 8 + 6
+	var disparos = 8
+	
+	for i in disparos:
+		yield(get_tree().create_timer(0.2), "timeout")
+		crear_bala(punto_de_disparo.global_position, skin.rotation)
+
+
+func crear_bala(pos: Vector2, rot: float):
+	if bala_dmg == null:
+		bala_dmg = InfoDmg.new()
+		bala_dmg.dmg_cantidad = dmg_rayos
+	
+	var proy: ProyectilBase = BALA_ESCENA.instance()
+	proy.global_position = pos
+	proy.rotation = rot + rand_range(-0.2, 0.2)
+	proy.info_dmg = bala_dmg
+	proy.move_speed = 250
+	
+	get_tree().root.add_child(proy)
 

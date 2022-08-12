@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://main/SistemaDaño/Status.gd" type="Script" id=1]
 [ext_resource path="res://main/Personajes/Bosses/esqueleto_prime/EsqueletoPrime.gd" type="Script" id=2]
@@ -8,12 +8,16 @@
 [ext_resource path="res://main/Shaker/Shaker.gd" type="Script" id=6]
 [ext_resource path="res://main/SistemaDaño/Hitbox.tscn" type="PackedScene" id=7]
 [ext_resource path="res://main/UI/BarraHPBoss/BarraHPBoss.gd" type="Script" id=8]
+[ext_resource path="res://assets/luz/luz.png" type="Texture" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 24, 24 )
 
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 22.5, 22.5 )
+
+[sub_resource type="CanvasItemMaterial" id=11]
+blend_mode = 1
 
 [sub_resource type="Animation" id=4]
 length = 0.001
@@ -531,6 +535,30 @@ tracks/7/keys = {
 "method": "golpe_mano2"
 } ]
 }
+tracks/8/type = "value"
+tracks/8/path = NodePath("../Mano1/Mano1:frame")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 0.2, 0.3, 0.4, 0.5, 3.2, 3.3, 3.4, 3.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 0, 1, 2, 3, 3, 2, 1, 0 ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("../Mano2/Mano2:frame")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0, 0.4, 0.5, 0.6, 0.7, 3.8, 3.9, 4, 4.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 0, 1, 2, 3, 3, 2, 1, 0 ]
+}
 
 [sub_resource type="Animation" id=5]
 resource_name = "idle"
@@ -782,6 +810,120 @@ tracks/13/keys = {
 "values": [ 1, 2 ]
 }
 
+[sub_resource type="Animation" id=10]
+resource_name = "rayos1"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../TargetMano1:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.8, 2.3, 3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 64, 17 ), Vector2( -80, 41 ), Vector2( -80, 41 ), Vector2( 64, 17 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("../TargetMano2:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.8, 2.3, 3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 120, 9 ), Vector2( -80, 73 ), Vector2( -80, 73 ), Vector2( 120, 9 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("..:mirando")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.5, 2.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("..:muriendo")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = false
+tracks/5/keys = {
+"times": PoolRealArray( 0.1, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Cabeza:frame")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.3, 0.7, 2.5, 2.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 1, 0 ]
+}
+tracks/7/type = "method"
+tracks/7/path = NodePath("..")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "disparar"
+} ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Cabeza/PuntoDisparo:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0.5, 2.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
 [sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 12, 20.5 )
 
@@ -798,10 +940,11 @@ target_mano_1 = NodePath("TargetMano1")
 target_mano_2 = NodePath("TargetMano2")
 mano_1 = NodePath("Mano1")
 mano_2 = NodePath("Mano2")
+punto_de_disparo = NodePath("Skin/Cabeza/PuntoDisparo")
 shaker_paths = [ NodePath("Skin/Shaker"), NodePath("Mano1/Shaker"), NodePath("Mano2/Shaker") ]
 hurtbox_paths = [ NodePath("Skin/Cabeza/Hurtbox"), NodePath("Mano1/Hurtbox"), NodePath("Mano2/Hurtbox") ]
-atacando = true
 muriendo = true
+mirando = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
@@ -828,10 +971,14 @@ target_path = NodePath("../Cabeza")
 use_offset_value = true
 
 [node name="Cabeza" type="Sprite" parent="Skin"]
+position = Vector2( 13, 0 )
 texture = ExtResource( 3 )
 flip_h = true
 hframes = 3
 frame = 1
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="Hitbox" parent="Skin/Cabeza" instance=ExtResource( 7 )]
 visible = false
@@ -857,6 +1004,13 @@ dmg_tipo = 1
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Skin/Cabeza/Hurtbox"]
 polygon = PoolVector2Array( 9, -37, 23, -35, 29, -24, 33, -3, 27, 12, 2, 3, -16, 8, -16, -22, -6, -37 )
 
+[node name="PuntoDisparo" type="Sprite" parent="Skin/Cabeza"]
+modulate = Color( 1, 0, 0, 1 )
+material = SubResource( 11 )
+position = Vector2( 22, -20 )
+scale = Vector2( 0.0390625, 0.0390625 )
+texture = ExtResource( 9 )
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Skin"]
 autoplay = "emerger"
 anims/RESET = SubResource( 4 )
@@ -865,6 +1019,7 @@ anims/golpe1 = SubResource( 7 )
 anims/golpe_mucho = SubResource( 8 )
 anims/idle = SubResource( 5 )
 anims/muerte = SubResource( 9 )
+anims/rayos1 = SubResource( 10 )
 
 [node name="TargetMano1" type="Position2D" parent="."]
 position = Vector2( 64, 17 )
@@ -889,6 +1044,7 @@ use_offset_value = true
 rotation = 1.5708
 texture = ExtResource( 5 )
 offset = Vector2( 2, -32 )
+flip_h = true
 hframes = 5
 frame = 4
 
@@ -922,9 +1078,13 @@ target_path = NodePath("../Mano2")
 use_offset_value = true
 
 [node name="Mano2" type="Sprite" parent="Mano2"]
+modulate = Color( 0.686275, 0.686275, 0.686275, 1 )
 rotation = 1.5708
+scale = Vector2( 0.95, 0.95 )
+z_index = -2
 texture = ExtResource( 5 )
 offset = Vector2( 2, -32 )
+flip_h = true
 hframes = 5
 frame = 4
 

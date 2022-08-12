@@ -15,3 +15,14 @@ func set_velocity():
 
 func reflejar():
 	velocity = -velocity
+
+
+func hit():
+	var efecto := EfectoCirculo.new(
+		$EstelaBase.gradient.colors[1],
+		0.0,
+		32.0,
+		0.35
+	)
+	get_tree().root.add_child(efecto)
+	efecto.global_position = global_position

@@ -20,7 +20,7 @@ func unhandled_input(event : InputEvent) -> void:
 func process(delta : float) -> void:
 	owner.mirar_al_jugador()
 	timer_cast -= delta
-	if timer_cast <= 0:
+	if timer_cast <= 0 and !owner.esta_bloqueado():
 		owner.fsm.transition_to("Cast")
 
 

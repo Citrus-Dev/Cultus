@@ -265,6 +265,11 @@ _global_script_classes=[ {
 "path": "res://main/Componentes/DropManager.gd"
 }, {
 "base": "Node2D",
+"class": "EfectoCirculo",
+"language": "GDScript",
+"path": "res://main/Efectos/EfectoCirculo.gd"
+}, {
+"base": "Node2D",
 "class": "EfectoParticulas",
 "language": "GDScript",
 "path": "res://main/particulas/EfectoParticulas.gd"
@@ -861,6 +866,7 @@ _global_script_class_icons={
 "Decorador": "res://main/libs/BehaviorTree/icons/category_decorator.svg",
 "Demian": "",
 "DropManager": "",
+"EfectoCirculo": "",
 "EfectoParticulas": "",
 "EjecutorComando": "",
 "EsVectorCero": "",
