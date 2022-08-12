@@ -94,7 +94,7 @@ direccion_nivel = "res://niveles/posta/castillo/cast_encuentro2/cast_encuentro2.
 direccion_movimiento = 1
 
 [node name="SpawnJugador" type="Node2D" parent="." index="7"]
-position = Vector2( 88, 88 )
+position = Vector2( 105, 512 )
 script = ExtResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="." index="8"]

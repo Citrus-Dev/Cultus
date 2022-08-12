@@ -33,6 +33,7 @@ func instanciar_barra():
 
 func borrar_barra():
 	yield(get_tree().create_timer(0.8), "timeout")
+	if !is_instance_valid(barra): return
 	barra.call_deferred("free")
 
 

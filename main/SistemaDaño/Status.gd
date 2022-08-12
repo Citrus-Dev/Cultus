@@ -64,6 +64,7 @@ func aplicar_dmg(_info : InfoDmg):
 			var pos_agente = agente.global_position
 			dir = pos_agente - pos_atacante
 		emit_signal("aplicar_knockback", _info.fuerza_retroceso, dir)
+	
 	if _info.dmg_stun:
 		stun_actual += _info.dmg_stun
 		timer_stun.start()

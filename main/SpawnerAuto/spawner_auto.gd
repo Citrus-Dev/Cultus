@@ -2,12 +2,15 @@ tool
 class_name SpawnerAuto
 extends Position2D
 
+const SPAWN_EFFECT := preload("res://main/particulas/ParticulasSpawn.tscn")
+
 signal spawn_muerto
 
 export(PackedScene) var spawn setget set_spawn_object
 export(String) var spawn_group
 export(bool) var spawn_on_ready
 export(bool) var one_shot
+export(bool) var efecto = true
 
 var cont_spawns : int 
 
@@ -18,6 +21,11 @@ func _ready():
 func spawn():
 	if Engine.editor_hint or spawn == null:
 		return
+	
+	if efecto:
+		var inst = SPAWN_EFFECT.instance()
+		get_tree().root.add_child(inst)
+		inst.global_position = global_position
 	
 	var new_inst = spawn.instance()
 	

@@ -294,6 +294,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://main/Personajes/Esqueleto/Esqueleto.gd"
 }, {
+"base": "Personaje",
+"class": "EsqueletoPrime",
+"language": "GDScript",
+"path": "res://main/Personajes/Bosses/esqueleto_prime/EsqueletoPrime.gd"
+}, {
 "base": "AntialiasedLine2D",
 "class": "EstelaBase",
 "language": "GDScript",
@@ -862,6 +867,7 @@ _global_script_class_icons={
 "Escopeta": "",
 "EscribirEnBlackboard": "",
 "Esqueleto": "",
+"EsqueletoPrime": "",
 "EstelaBase": "",
 "ExplFlash": "",
 "ExplHE": "",

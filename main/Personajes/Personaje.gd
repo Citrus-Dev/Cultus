@@ -32,6 +32,7 @@ export(float) var jump_time_to_peak = 0.6
 export(float) var jump_time_to_fall = 0.6
 export(bool) var no_gravedad 
 export(bool) var no_limitar_velocidad
+export(bool) var no_knockback
 
 # Ignoren esta matematica la saque de internet ni yo la entiendo.
 # Controla la velocidad de saltar.
@@ -91,8 +92,9 @@ func _ready() -> void:
 	
 	status.connect("aplicar_dmg", self, "evento_dmg")
 	status.connect("morir_info", self, "morir")
-	status.connect("aplicar_knockback", self, "aplicar_knockback")
-	status.connect("aplicar_stun", self, "aplicar_stun")
+	if !no_knockback: 
+		status.connect("aplicar_knockback", self, "aplicar_knockback")
+		status.connect("aplicar_stun", self, "aplicar_stun")
 	
 	cargar_shader_hit()
 
@@ -132,8 +134,9 @@ func procesar_movimiento(_delta : float):
 	velocity = move_and_slide_with_snap(velocity + knockback_procesable, snap, Vector2.UP, true)
 	movement_vertical(_delta)
 	
-	knockback_procesable = Vector2.ZERO
-	procesar_knockback()
+	if !no_knockback:
+		knockback_procesable = Vector2.ZERO
+		procesar_knockback()
 
 
 func movement_horizontal(_delta : float):

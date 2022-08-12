@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://assets/proyectiles/skelepgolpe.png" type="Texture" id=1]
+
+[node name="ParticulasSkeleGolpe" type="Node2D"]
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+frame = 3

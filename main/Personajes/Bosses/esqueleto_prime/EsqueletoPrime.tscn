@@ -1,0 +1,952 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://main/SistemaDaño/Status.gd" type="Script" id=1]
+[ext_resource path="res://main/Personajes/Bosses/esqueleto_prime/EsqueletoPrime.gd" type="Script" id=2]
+[ext_resource path="res://assets/enemies/skelecabez.png" type="Texture" id=3]
+[ext_resource path="res://main/SistemaDaño/Hurtbox.gd" type="Script" id=4]
+[ext_resource path="res://assets/enemies/skelebrazo.png" type="Texture" id=5]
+[ext_resource path="res://main/Shaker/Shaker.gd" type="Script" id=6]
+[ext_resource path="res://main/SistemaDaño/Hitbox.tscn" type="PackedScene" id=7]
+[ext_resource path="res://main/UI/BarraHPBoss/BarraHPBoss.gd" type="Script" id=8]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 24, 24 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 22.5, 22.5 )
+
+[sub_resource type="Animation" id=4]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("../TargetMano1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 64, 17 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../TargetMano2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 120, 9 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath(".:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 74.5621 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("../Mano1/Mano1:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 4 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("../Mano2/Mano2:frame")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 4 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("../TargetMano1:rotation_degrees")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("../TargetMano2:rotation_degrees")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("../Mano1/Mano1:texture")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ ExtResource( 5 ) ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("../Mano2/Mano2:texture")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ ExtResource( 5 ) ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("../Mano1:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -61, 93 ) ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("../Mano1:rotation_degrees")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("../Mano2:position")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 8, 92 ) ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("../Mano2:rotation_degrees")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/14/type = "value"
+tracks/14/path = NodePath("Cabeza:frame")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1 ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "emerger"
+length = 2.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("../TargetMano1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -32, 65 ), Vector2( 64, 17 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../TargetMano2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -32, 57 ), Vector2( 120, 9 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 2.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -40, 57 ), Vector2( 0, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath(".:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 2.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 74.5621, 0.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("../Mano1/Mano1:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6, 0.9, 1.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 4, 3, 2, 1, 0 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("../Mano2/Mano2:frame")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6, 0.9, 1.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 4, 3, 2, 1, 0 ]
+}
+tracks/6/type = "method"
+tracks/6/path = NodePath("..")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 2.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "empezar_boss"
+} ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "golpe1"
+length = 2.0
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("../TargetMano1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 0.8, 0.9, 1.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 64, 17 ), Vector2( 79, -22 ), Vector2( 79, -25 ), Vector2( 79, 156 ), Vector2( 64, 17 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../TargetMano2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3, 1.3, 1.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 120, 9 ), Vector2( 29, 31 ), Vector2( 29, 31 ), Vector2( 120, 9 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../TargetMano1:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.4, 0.8, 0.9, 1.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, -69.0, -69.0, 0.0, 0.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("../TargetMano2:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.3, 1.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, -29.6, 0.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("..:atacando")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.3, 1.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("../Mano1/Mano1:frame")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0.2, 0.25, 0.3, 0.35, 1, 1.05, 1.1, 1.15 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 2, 3, 4, 3, 2, 1, 0 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("../Mano2/Mano2:frame")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0.2, 0.25, 0.3, 1.15, 1.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 1, 0 ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("../Mano1/Mano1:texture")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 5 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("../Mano2/Mano2:texture")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 5 ) ]
+}
+tracks/9/type = "method"
+tracks/9/path = NodePath("..")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0.9 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "golpe_mano1"
+} ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "golpe_mucho"
+length = 4.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("../TargetMano1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.7, 1, 1.3, 1.6, 1.9, 2.2, 2.5, 2.6, 2.9, 3.2, 4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 64, 25 ), Vector2( 59, -25 ), Vector2( 59, -25 ), Vector2( 59, 150 ), Vector2( 59, -25 ), Vector2( 59, -25 ), Vector2( 59, 150 ), Vector2( 59, -25 ), Vector2( 59, -25 ), Vector2( 59, 150 ), Vector2( 59, -25 ), Vector2( 64, 17 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../TargetMano2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.9, 1.3, 1.6, 1.8, 2.2, 2.5, 2.8, 3.2, 3.5, 3.8, 4.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 120, 14 ), Vector2( 103, -8 ), Vector2( 103, -8 ), Vector2( 103, 150 ), Vector2( 103, -8 ), Vector2( 103, -8 ), Vector2( 103, 150 ), Vector2( 103, -8 ), Vector2( 103, -8 ), Vector2( 103, 150 ), Vector2( 103, -8 ), Vector2( 120, 9 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0.666667 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath(".:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.5, 1.1, 1.4, 4.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 1.0, 0.0, -28.6, 40.4, 1.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("../TargetMano1:rotation_degrees")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.7, 1, 1.2, 1.6, 1.9, 2.1, 2.5, 2.6, 2.8, 3.2, 3.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, -59.2, -59.2, 0.0, -59.2, -59.2, 0.0, -59.2, -59.2, 0.0, -59.2, 0.0 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("../TargetMano2:rotation_degrees")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.9, 1.3, 1.5, 1.8, 2.2, 2.4, 2.8, 3.2, 3.4, 3.8, 4.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, -61.0, -61.0, 0.0, -61.0, -61.0, 0.0, -61.0, -61.0, 0.0, -61.0, 0.0 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("..:atacando")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0.7, 3.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/7/type = "method"
+tracks/7/path = NodePath("..")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 1.3, 1.6, 2.2, 2.5, 2.9, 3.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "golpe_mano1"
+}, {
+"args": [  ],
+"method": "golpe_mano2"
+}, {
+"args": [  ],
+"method": "golpe_mano1"
+}, {
+"args": [  ],
+"method": "golpe_mano2"
+}, {
+"args": [  ],
+"method": "golpe_mano1"
+}, {
+"args": [  ],
+"method": "golpe_mano2"
+} ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "idle"
+length = 2.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("../TargetMano1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.8, 2.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 64, 17 ), Vector2( 64, 49 ), Vector2( 64, 17 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../TargetMano2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1.6, 2.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 120, 9 ), Vector2( 120, 49 ), Vector2( 120, 9 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1.2, 2.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 4 ), Vector2( 0, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath(".:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1.2, 2.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 6.0, 0.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("../Mano1/Mano1:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 1, 0 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("../Mano2/Mano2:frame")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 2, 2.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 1, 0 ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "muerte"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, -59.2, -59.2 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.9, 4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( -31, 48 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../Mano1:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -61, 93 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("../Mano1:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("../Mano2:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 1.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 8, 92 ), Vector2( 8, 92 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("../Mano2:rotation_degrees")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 1.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("../TargetMano1:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 1.7, 2.8, 4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 59, -5 ), Vector2( 59, -5 ), Vector2( 75, 129 ), Vector2( -170, 180 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("../TargetMano2:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 1.2, 2.8, 4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 88, -21 ), Vector2( 88, -21 ), Vector2( 31, 164 ), Vector2( -104, 212 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("../TargetMano2:rotation_degrees")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -49.3 ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("../TargetMano1:rotation_degrees")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0, 1.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -39.5, -39.5 ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("..:muriendo")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0, 4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/11/type = "method"
+tracks/11/path = NodePath("..")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 4 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "borrar"
+} ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("..:atacando")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("Cabeza:frame")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 1, 2 ]
+}
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 12, 20.5 )
+
+[node name="EsqueletoPrime" type="KinematicBody2D"]
+position = Vector2( 0, -113 )
+collision_layer = 0
+collision_mask = 0
+script = ExtResource( 2 )
+skin = NodePath("Skin")
+skin_sprite_path = NodePath("Skin/Cabeza")
+status = NodePath("Status")
+no_gravedad = true
+target_mano_1 = NodePath("TargetMano1")
+target_mano_2 = NodePath("TargetMano2")
+mano_1 = NodePath("Mano1")
+mano_2 = NodePath("Mano2")
+shaker_paths = [ NodePath("Skin/Shaker"), NodePath("Mano1/Shaker"), NodePath("Mano2/Shaker") ]
+hurtbox_paths = [ NodePath("Skin/Cabeza/Hurtbox"), NodePath("Mano1/Hurtbox"), NodePath("Mano2/Hurtbox") ]
+atacando = true
+muriendo = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2( 8, -15 )
+shape = SubResource( 1 )
+
+[node name="Status" type="Node" parent="."]
+script = ExtResource( 1 )
+hp_max = 3200
+stun_threshold = 100000000000000000
+agente = NodePath("..")
+
+[node name="Skin" type="Node2D" parent="."]
+rotation = 1.30135
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Shaker" type="Node" parent="Skin"]
+script = ExtResource( 6 )
+max_offset = Vector2( 10, 10 )
+max_roll = 1.0
+target_path = NodePath("../Cabeza")
+use_offset_value = true
+
+[node name="Cabeza" type="Sprite" parent="Skin"]
+texture = ExtResource( 3 )
+flip_h = true
+hframes = 3
+frame = 1
+
+[node name="Hitbox" parent="Skin/Cabeza" instance=ExtResource( 7 )]
+visible = false
+collision_layer = 32
+status = NodePath("../../../Status")
+i_frames_tiempo = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Skin/Cabeza/Hitbox"]
+position = Vector2( 6.5, -14.5 )
+shape = SubResource( 3 )
+
+[node name="Hurtbox" type="Area2D" parent="Skin/Cabeza"]
+modulate = Color( 1, 0.0705882, 0.0705882, 1 )
+collision_layer = 0
+collision_mask = 16
+script = ExtResource( 4 )
+agente_dir = NodePath("../../..")
+is_constant = true
+dmg = 30
+fuerza_retroceso = 500.0
+dmg_tipo = 1
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Skin/Cabeza/Hurtbox"]
+polygon = PoolVector2Array( 9, -37, 23, -35, 29, -24, 33, -3, 27, 12, 2, 3, -16, 8, -16, -22, -6, -37 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Skin"]
+autoplay = "emerger"
+anims/RESET = SubResource( 4 )
+anims/emerger = SubResource( 2 )
+anims/golpe1 = SubResource( 7 )
+anims/golpe_mucho = SubResource( 8 )
+anims/idle = SubResource( 5 )
+anims/muerte = SubResource( 9 )
+
+[node name="TargetMano1" type="Position2D" parent="."]
+position = Vector2( 64, 17 )
+
+[node name="TargetMano2" type="Position2D" parent="."]
+position = Vector2( 120, 9 )
+
+[node name="Mano1" type="Node2D" parent="."]
+position = Vector2( -61, 93 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Shaker" type="Node" parent="Mano1"]
+script = ExtResource( 6 )
+max_offset = Vector2( 10, 10 )
+max_roll = 1.0
+target_path = NodePath("../Mano1")
+use_offset_value = true
+
+[node name="Mano1" type="Sprite" parent="Mano1"]
+rotation = 1.5708
+texture = ExtResource( 5 )
+offset = Vector2( 2, -32 )
+hframes = 5
+frame = 4
+
+[node name="Hurtbox" type="Area2D" parent="Mano1"]
+modulate = Color( 1, 0.0705882, 0.0705882, 1 )
+rotation = 1.5708
+collision_layer = 0
+collision_mask = 16
+script = ExtResource( 4 )
+agente_dir = NodePath("../../..")
+is_constant = true
+dmg = 20
+fuerza_retroceso = 500.0
+dmg_tipo = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mano1/Hurtbox"]
+position = Vector2( 0, -21.5 )
+shape = SubResource( 6 )
+
+[node name="Mano2" type="Node2D" parent="."]
+position = Vector2( 8, 92 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Shaker" type="Node" parent="Mano2"]
+script = ExtResource( 6 )
+max_offset = Vector2( 10, 10 )
+max_roll = 1.0
+target_path = NodePath("../Mano2")
+use_offset_value = true
+
+[node name="Mano2" type="Sprite" parent="Mano2"]
+rotation = 1.5708
+texture = ExtResource( 5 )
+offset = Vector2( 2, -32 )
+hframes = 5
+frame = 4
+
+[node name="Hurtbox" type="Area2D" parent="Mano2"]
+modulate = Color( 1, 0.0705882, 0.0705882, 1 )
+rotation = 1.5708
+collision_layer = 0
+collision_mask = 16
+script = ExtResource( 4 )
+agente_dir = NodePath("../..")
+is_constant = true
+dmg = 20
+fuerza_retroceso = 500.0
+dmg_tipo = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mano2/Hurtbox"]
+position = Vector2( 0, -21.5 )
+shape = SubResource( 6 )
+
+[node name="BarraHPBoss" type="Node2D" parent="."]
+script = ExtResource( 8 )
+objetivo_dir = NodePath("..")
+
+[connection signal="activo" from="." to="BarraHPBoss" method="set_activo" binds= [ true ]]
+[connection signal="muerto" from="." to="BarraHPBoss" method="set_activo" binds= [ false ]]
