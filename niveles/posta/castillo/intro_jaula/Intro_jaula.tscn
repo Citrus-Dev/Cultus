@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://niveles/Nivel.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/tilesets/tileset_castillo.tres" type="TileSet" id=2]
@@ -8,6 +8,40 @@
 [ext_resource path="res://main/Personajes/Cultista/Cultista.tscn" type="PackedScene" id=6]
 [ext_resource path="res://main/Jaula.tscn" type="PackedScene" id=7]
 [ext_resource path="res://main/Triggers/TriggerHurt.gd" type="Script" id=8]
+[ext_resource path="res://main/Objetos_mapa/Puertas/Puerta.tscn" type="PackedScene" id=9]
+[ext_resource path="res://assets/objetos/puerta.png" type="Texture" id=10]
+[ext_resource path="res://main/Triggers/TriggerOnce.tscn" type="PackedScene" id=11]
+[ext_resource path="res://main/Objetos_mapa/TransicionDeNivel/TransicionDeNivel.tscn" type="PackedScene" id=12]
+
+[sub_resource type="Animation" id=6]
+resource_name = "Nueva Animación"
+tracks/0/type = "value"
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ) ]
+}
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 252, 160 )
@@ -18,6 +52,12 @@ extents = Vector2( 64, 8 )
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 40, 10 )
 
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 17, 10 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 43, 8 )
+
 [node name="Nivel" instance=ExtResource( 1 )]
 script = ExtResource( 5 )
 primer_limite_camara = NodePath("camara limites/CameraBounds")
@@ -25,6 +65,23 @@ cult_hablar_1 = NodePath("h1")
 cult_hablar_2 = NodePath("h2")
 cult_ouch = NodePath("ouch")
 hurt = NodePath("triggers/TriggerHurt")
+jaula = NodePath("Frente/intro jaula")
+target_correr = NodePath("TargetCorrer")
+puerta = NodePath("Puerta")
+trigger_cerrar_puerta = NodePath("TriggerOnce")
+
+[node name="fade" type="CanvasLayer" parent="." index="0"]
+layer = 128
+
+[node name="ColorRect" type="ColorRect" parent="fade" index="0"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="fade" index="1"]
+autoplay = "Nueva Animación"
+"anims/Nueva Animación" = SubResource( 6 )
+anims/RESET = SubResource( 7 )
 
 [node name="TileMap" type="TileMap" parent="WorldEnvironment" index="0"]
 tile_set = ExtResource( 2 )
@@ -81,19 +138,51 @@ siempre_activo = false
 modulate = Color( 0.952941, 0.0745098, 0.0745098, 1 )
 shape = SubResource( 3 )
 
-[node name="SpawnJugador" type="Node2D" parent="." index="7"]
-position = Vector2( 80, 152 )
+[node name="SpawnJugador" type="Node2D" parent="." index="8"]
+position = Vector2( 80, 171 )
 scale = Vector2( 5, 1 )
 script = ExtResource( 4 )
 
-[node name="h2" parent="." index="8" instance=ExtResource( 6 )]
+[node name="h2" parent="." index="9" instance=ExtResource( 6 )]
 position = Vector2( 272, 160 )
 
-[node name="h1" parent="." index="9" instance=ExtResource( 6 )]
+[node name="h1" parent="." index="10" instance=ExtResource( 6 )]
 position = Vector2( 296, 160 )
 
-[node name="ouch" parent="." index="10" instance=ExtResource( 6 )]
+[node name="ouch" parent="." index="11" instance=ExtResource( 6 )]
 position = Vector2( 72, 304 )
 
+[node name="TargetCorrer" type="Position2D" parent="." index="12"]
+position = Vector2( 563, 159 )
+
+[node name="Puerta" parent="." index="13" instance=ExtResource( 9 )]
+position = Vector2( 504, 112 )
+altura_mov = 45.0
+tiempo_abrir = 0.5
+tiempo_cerrar = 0.5
+empezar_abierto = true
+
+[node name="Sprite" type="Sprite" parent="Puerta" index="0"]
+position = Vector2( -3.05176e-05, 24 )
+texture = ExtResource( 10 )
+
+[node name="TriggerOnce" parent="." index="14" instance=ExtResource( 11 )]
+modulate = Color( 0.6, 0.878431, 0.152941, 1 )
+position = Vector2( 419.995, 143.167 )
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TriggerOnce" index="0"]
+position = Vector2( 132.005, 0.83287 )
+shape = SubResource( 4 )
+
+[node name="TransicionDeNivel2" parent="." index="15" instance=ExtResource( 12 )]
+position = Vector2( 408, 320 )
+ID_objetivo = "caida"
+direccion_nivel = "res://niveles/posta/castillo/nivel_Agus/nivel_castillo_00.tscn"
+direccion_movimiento = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TransicionDeNivel2" index="0"]
+shape = SubResource( 5 )
+
 [connection signal="caida_empezada" from="Frente/intro jaula" to="." method="asustar"]
-[connection signal="body_entered" from="triggers/trigger splat" to="." method="ouch"]
+[connection signal="body_entered" from="triggers/trigger splat" to="." method="ouch" flags=6]

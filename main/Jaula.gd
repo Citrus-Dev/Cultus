@@ -5,7 +5,7 @@
 class_name IntroJaula
 extends Node2D
 
-const MAX_TENSION := 4
+const MAX_TENSION := 8
 const COOLDOWN_AREA_SALTO := 0.5
 const VEL_CAIDA := 350.0
 

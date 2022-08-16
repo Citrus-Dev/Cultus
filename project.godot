@@ -379,6 +379,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://main/libs/BehaviorTree/hojas/Hoja.gd"
 }, {
+"base": "Node2D",
+"class": "Hookpoint",
+"language": "GDScript",
+"path": "res://main/Objetos_mapa/Hookpoint.gd"
+}, {
 "base": "Control",
 "class": "HudMedidorBalas",
 "language": "GDScript",
@@ -894,6 +899,7 @@ _global_script_class_icons={
 "Habilidad": "",
 "Hitbox": "",
 "Hoja": "",
+"Hookpoint": "",
 "HudMedidorBalas": "",
 "Hurtbox": "",
 "ImprimirTexto": "",
@@ -1152,6 +1158,7 @@ dodge={
 2d_physics/layer_13="EnemigoFondo"
 2d_physics/layer_14="ParedInvisJug"
 2d_physics/layer_15="Bosses"
+2d_physics/layer_16="Gancho"
 
 [physics]
 

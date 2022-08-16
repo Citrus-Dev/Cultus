@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://niveles/Nivel.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/tilesets/tileset_cripta.tres" type="TileSet" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://main/Personajes/Bosses/esqueleto_prime/EsqueletoPrime.tscn" type="PackedScene" id=7]
 [ext_resource path="res://main/Triggers/TriggerOnce.gd" type="Script" id=8]
 [ext_resource path="res://niveles/posta/cripta/cripta_boss/cripta_boss.gd" type="Script" id=9]
+[ext_resource path="res://main/Musica/MusBossPaladin.tres" type="Resource" id=10]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 448, 144 )
@@ -28,6 +29,7 @@ extents = Vector2( 8, 25 )
 [node name="Nivel" instance=ExtResource( 1 )]
 script = ExtResource( 9 )
 primer_limite_camara = NodePath("camara limites/CameraBounds")
+musica = ExtResource( 10 )
 boss = NodePath("EsqueletoPrime")
 limites_boss = NodePath("camara limites/limites_boss")
 puerta = NodePath("Puerta")
@@ -105,7 +107,7 @@ position = Vector2( 0, 23 )
 shape = SubResource( 2 )
 
 [node name="SpawnJugador" type="Node2D" parent="." index="8"]
-position = Vector2( 168, 248 )
+position = Vector2( 488, 248 )
 script = ExtResource( 6 )
 
 [node name="EsqueletoPrime" parent="." index="9" instance=ExtResource( 7 )]

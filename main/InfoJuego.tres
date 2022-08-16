@@ -6,4 +6,4 @@
 script = ExtResource( 1 )
 version_actual = "Beta 2"
 creditos = [ "Programador, Coordinador - Agustín García", "Diseño gráfico - Martín Maggi", "Programador, investigación - Manuel Avalos", "Diseño gráfico, investigación - Demian Lozano", "Diseño gráfico - Valentín paz" ]
-primer_nivel = "res://niveles/posta/castillo/nivel_Agus/nivel_castillo_00.tscn"
+primer_nivel = "res://niveles/posta/castillo/intro_jaula/Intro_jaula.tscn"
