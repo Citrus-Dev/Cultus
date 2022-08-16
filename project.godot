@@ -544,6 +544,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://main/Pickups/variantes/PickupVarianteArma.gd"
 }, {
+"base": "KinematicBody2D",
+"class": "PiedraBoss",
+"language": "GDScript",
+"path": "res://main/Proyectiles/PiedraBoss.gd"
+}, {
 "base": "StaticBody2D",
 "class": "PlataformaAlterna",
 "language": "GDScript",
@@ -922,6 +927,7 @@ _global_script_class_icons={
 "PickupHP": "",
 "PickupSkill": "",
 "PickupVarianteArma": "",
+"PiedraBoss": "",
 "PlataformaAlterna": "",
 "PlataformaFragil": "",
 "PlataformaMovible": "",

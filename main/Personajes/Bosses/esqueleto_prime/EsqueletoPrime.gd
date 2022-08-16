@@ -4,6 +4,7 @@ extends Personaje
 const VEL_AJUSTE_MANO := 2.0
 const VEL_AJUSTE_MANO_GOLPE := 15.0
 const BALA_ESCENA := preload("res://main/Proyectiles/ProyCultista.tscn")
+const PIEDRA_ESCENA := preload("res://main/Proyectiles/PiedraBoss.tscn")
 
 signal activo
 
@@ -20,7 +21,8 @@ export(bool) var atacando: bool
 export(bool) var muriendo: bool
 export(bool) var mirando: bool
 
-var jugref: Jugador
+var jugref: Personaje
+var jugador_en_lugar_de_mierda: bool
 
 # Vamos a poner nombres de movimientos aca. El sistema va a ir agarrando movimientos de aca hasta que
 # no haya mas, y despues lo va a rellenar devuelta con empezar_ciclo
@@ -71,22 +73,32 @@ func empezar_boss():
 
 
 func animador_trigger(anim: String):
+	if jugador_en_lugar_de_mierda:
+		animador.play("golpe_no_estes_ahi")
+		return
+	
 	if anim == "idle":
 		bajar_counter_idle()
 	
 	if anim != "emerger" and counter_idle <= 0:
 		determinar_siguiente_ataque()
 		reset_counter_idle()
+		return
 	
 	if counter_idle > 0:
 		animador.play("idle")
+		return
 
 
 func empezar_ciclo():
 	if !activo: return
 	
 	ataques = [
-		"rayos1"
+		"golpe1",
+		"golpe1",
+		"golpe1",
+		"rayos1",
+		"rayos1",
 	]
 	call_deferred("determinar_siguiente_ataque")
 
@@ -147,6 +159,7 @@ func golpe_mano2():
 
 
 func golpe(pos: Vector2):
+	var offset := (Vector2(20, 32))
 	var efecto := EfectoCirculo.new(
 		Color.whitesmoke,
 		0.0,
@@ -154,7 +167,12 @@ func golpe(pos: Vector2):
 		0.35
 	)
 	get_tree().root.add_child(efecto)
-	efecto.global_position = pos + (Vector2(20, 32))
+	efecto.global_position = pos + offset
+	
+	var vel_x := 25.0
+	var vel_y := -75.0
+	spawnear_piedra(pos, offset + Vector2(vel_x, vel_y * randf()))
+	spawnear_piedra(pos, offset + Vector2(-vel_x, vel_y + randf()))
 
 
 func mirar(delta: float):
@@ -181,7 +199,21 @@ func crear_bala(pos: Vector2, rot: float):
 	proy.global_position = pos
 	proy.rotation = rot + rand_range(-0.2, 0.2)
 	proy.info_dmg = bala_dmg
-	proy.move_speed = 250
+	proy.move_speed = 350
 	
 	get_tree().root.add_child(proy)
+
+
+func set_jugador_en_lugar_de_mierda(__, valor: bool):
+	jugador_en_lugar_de_mierda = valor
+	if animador.current_animation == "idle":
+		animador_trigger("idle")
+
+
+func spawnear_piedra(pos: Vector2, dir: Vector2):
+	var inst = PIEDRA_ESCENA.instance() as PiedraBoss
+	inst.velocity = dir
+	inst.velocidad_rotacion = 0.2 * sign(velocity.x)
+	get_tree().root.add_child(inst)
+	inst.global_position = pos
 
