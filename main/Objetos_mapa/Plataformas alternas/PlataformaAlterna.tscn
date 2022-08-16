@@ -11,7 +11,6 @@ script = ExtResource( 1 )
 color_inactivo = Color( 0.121569, 0.121569, 0.121569, 1 )
 
 [node name="BlockinPolygon" type="Polygon2D" parent="."]
-visible = false
 position = Vector2( 8, 0 )
 color = Color( 0.129412, 0.129412, 0.129412, 1 )
 polygon = PoolVector2Array( 56, 0, -72, 0, -72, 16, 56, 16 )
