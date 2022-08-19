@@ -10,13 +10,18 @@ const TIEMPO_COOLDOWN := 1.6
 const TIEMPO_COOLDOWN_DURO := 2.5
 const VEL_DASH := 150.0
 
+const velocidad := 200
+const tiempo := 0.5
+
 signal cooldown_update(valor)
 
-var jug : Jugador
+var jug : Personaje
 var jug_hitbox : Hitbox
 var area_escudo : Area2D
 var timer_escudo : Timer
 var timer_cooldown : Timer
+var timer_slide := Timer.new()
+var area_test : Area2D
 
 var dir_mov : Vector2
 var desactivado : bool
@@ -32,7 +37,7 @@ func _ready():
 	area_escudo.connect("body_entered", self, "determinar_bloqueo")
 	area_escudo.monitoring = false
 	
-	# Si esta el slide, borrarlo porque lo estamos reemplazando
+	# Si esta el slide, borrarlo porque lo reemplazamos
 	var slide = jug.get_node("skill_slide")
 	if slide != null:
 		slide.call_deferred("free")
@@ -45,6 +50,12 @@ func _ready():
 	timer_cooldown = Timer.new()
 	add_child(timer_cooldown)
 	timer_cooldown.one_shot = true
+	
+	timer_slide.wait_time = tiempo
+	timer_slide.one_shot = true
+	add_child(timer_slide)
+	
+	area_test = get_node("Area2DSlide")
 	
 	yield(get_tree(), "idle_frame")
 	instanciar_medidor_cooldown()
@@ -61,15 +72,31 @@ func _process(delta):
 	emit_signal("cooldown_update", timer_cooldown.time_left)
 	update()
 	if puede_activar() and Input.is_action_just_pressed("dodge"):
-		if sign(jug.input.x) == 0:
-			empezar_block_quieto()
-		else:
+		if jug.is_on_floor():
+			if sign(jug.input.x) == 0:
+				empezar_block_quieto()
+			else:
+				slide_activar()
+		elif sign(jug.input.x) != 0:
 			empezar_dash(jug.input.x)
 
 
 func _physics_process(delta):
 	if !timer_escudo.is_stopped():
 		jug.move_and_slide(dir_mov * VEL_DASH)
+	
+	
+	if timer_slide.is_stopped():
+		if slide_probar_fin():
+			jug.usando_habilidad = false
+			jug.valor_default("max_velocidad_horizontal")
+			
+			# Manualmente reactivamos la hitbox porque la animacion RESET no lo hace por alguna razon.
+			var hb : Hitbox = jug.get_node("Hitbox")
+			hb.monitorable = true
+			hb.monitoring = true
+			yield(get_tree(), "idle_frame")
+			jug.reiniciar_forma_de_colision()
 
 
 func puede_activar() -> bool:
@@ -83,6 +110,8 @@ func puede_activar() -> bool:
 func activar():
 	jug.movimiento_desactivado = true
 	jug_hitbox.monitorable = false
+	
+	emit_signal("usado")
 
 
 func terminar():
@@ -139,3 +168,28 @@ func instanciar_medidor_cooldown():
 	inst.progress_bar.max_value = TIEMPO_COOLDOWN
 	connect("cooldown_update", inst, "actualizar_valor")
 
+
+func activar_cooldown():
+	timer_cooldown.start(TIEMPO_COOLDOWN)
+
+
+func slide_activar():
+	timer_cooldown.start(TIEMPO_COOLDOWN)
+	
+	emit_signal("usado")
+	
+	jug.set_dir(sign(jug.input.x))
+	jug.turning = false
+	jug.usando_habilidad = true
+	jug.max_velocidad_horizontal = velocidad
+	jug.input.x = velocidad * sign(jug.input.x)
+	jug.animador.play("slide_start")
+	
+	timer_slide.start()
+	yield(timer_slide, "timeout")
+
+
+# Prueba si hay lugar para que se pare el jugador. Si no, continuamos el slide asi no te quedas trabado
+func slide_probar_fin() -> bool:
+	var test = area_test.get_overlapping_bodies()
+	return test.empty()

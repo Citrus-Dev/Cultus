@@ -2,7 +2,9 @@
 class_name Habilidad
 extends Node
 
-var jugador : Jugador 
+signal usado
+
+var jugador : Personaje 
 var contexto_usable : bool # Si podes usar la habilidad
 
 func _ready():

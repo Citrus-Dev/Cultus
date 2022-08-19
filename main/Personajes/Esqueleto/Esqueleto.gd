@@ -34,6 +34,15 @@ func set_muerto(toggle : bool):
 		collision_mask = 1 # No colisionas con nada mas que el escenario
 		hitbox.collision_layer = 0 # desactiva la hitbox totalmente
 		hurtbox.collision_mask = 0 
-#	instanciar_ragdoll()
 #	cambiar_visibilidad(!toggle)
 	fsm.transition_to("Muerte")
+
+
+func instanciar_gibs():
+	if gibs_escena == null:
+		return
+	var gib = ragdoll_escena.instance() as Gibs
+	gib.global_position = global_position
+	get_parent().add_child(gib)
+
+

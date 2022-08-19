@@ -4,7 +4,7 @@ extends Arma
 const BALA = preload("res://main/Proyectiles/BalaPistola.tscn")
 const TIEMPO_RECARGA := 1.3
 const MAX_BALAS := 6
-const SPREAD_ALTFIRE := 3.8
+const SPREAD_ALTFIRE := 5.0
 const TIPO_BALAS = "Pistola"
 const SONIDO_DISPARO := preload("res://assets/sfx/armas/disparo/Barrett-M82-.50-BMG-Single-Close-Gunshot-A-www.fesliyanstudios.com.wav")
 const SONIDO_RECARGA := preload("res://assets/sfx/armas/recarga/recarga_revolver.wav")
@@ -23,7 +23,7 @@ func _init() -> void:
 	recoil_visual_duracion = 0.25
 	screenshake = 5.0
 	cooldown_tiempo = 0.4
-	cooldown_tiempo_sec = 0.2
+	cooldown_tiempo_sec = 0.15
 	spread = .4
 
 

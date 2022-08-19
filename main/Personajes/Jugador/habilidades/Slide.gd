@@ -67,6 +67,8 @@ func detectar_activacion(delta):
 func activar():
 	timer_cooldown.start()
 	
+	emit_signal("usado")
+	
 	jugador.set_dir(sign(jugador.input.x))
 	jugador.turning = false
 	jugador.usando_habilidad = true
@@ -105,6 +107,9 @@ func _exit_tree() -> void:
 			i.call_deferred("free")
 			break
 
+
+func activar_cooldown():
+	timer_cooldown.start(TIEMPO_COOLDOWN)
 
 
 

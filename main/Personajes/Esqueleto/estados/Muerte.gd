@@ -23,4 +23,5 @@ func exit() -> void:
 
 
 func terminar_de_morir():
+	owner.instanciar_gibs()
 	owner.cambiar_visibilidad(false)

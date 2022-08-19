@@ -13,7 +13,7 @@ const TIEMPO_COOLDOWN := 1.2
 
 signal cooldown_update(valor)
 
-var jug : Jugador
+var jug : Personaje
 var bufan_sprite : BufanString
 var timer_gancho : Timer
 var timer_cooldown : Timer
@@ -105,7 +105,15 @@ func encontrar_punto_de_agarre():
 	)
 	
 	if !rc.empty():
-		return rc["position"]
+		if rc["collider"].get_parent() is Hookpoint:
+			var hp: Hookpoint = rc["collider"].get_parent()
+			if !hp.activo:
+				return null
+			
+			hp.usado()
+			return hp.global_position
+		else:
+			return rc["position"]
 
 
 func limitar_distancia(pos : Vector2):

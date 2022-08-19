@@ -1,9 +1,12 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://main/Personajes/Jugador/skill_escudo.gd" type="Script" id=1]
 
 [sub_resource type="CircleShape2D" id=15]
 radius = 23.0
+
+[sub_resource type="RectangleShape2D" id=16]
+extents = Vector2( 4, 5 )
 
 [node name="skill_escudo" type="Node2D"]
 script = ExtResource( 1 )
@@ -18,3 +21,10 @@ monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RadioParry"]
 shape = SubResource( 15 )
+
+[node name="Area2DSlide" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2DSlide"]
+position = Vector2( 0, -12 )
+shape = SubResource( 16 )
