@@ -63,7 +63,7 @@ func _ready():
 
 func _draw():
 	if !timer_escudo.is_stopped():
-		var color = Color.blue if dir_mov == Vector2.ZERO else Color.lightblue
+		var color = Color.blue if (dir_mov == Vector2.ZERO and timer_slide.time_left <= 0) else Color.lightblue
 		color.a = 0.35
 		draw_circle(area_escudo.position, 32.0, color)
 
@@ -174,6 +174,8 @@ func activar_cooldown():
 
 
 func slide_activar():
+	timer_escudo.start(DURACION_PARRY)
+	
 	timer_cooldown.start(TIEMPO_COOLDOWN)
 	
 	emit_signal("usado")
