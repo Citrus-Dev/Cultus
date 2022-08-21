@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/checkopointo v1.wav-c4961c0eba3045e49b7972d741eea492.sample"
+
+[deps]
+
+source_file="res://assets/sfx/checkopointo v1.wav"
+dest_files=[ "res://.import/checkopointo v1.wav-c4961c0eba3045e49b7972d741eea492.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

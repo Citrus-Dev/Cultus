@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/recarga_AR.wav-11d0d0b691c38040019d31f901deef70.sample"
+path="res://.import/habilidades.wav-5e970ddcbc153420e076cd88f5dc44e1.sample"
 
 [deps]
 
-source_file="res://assets/sonidos/armas/recarga_AR.wav"
-dest_files=[ "res://.import/recarga_AR.wav-11d0d0b691c38040019d31f901deef70.sample" ]
+source_file="res://assets/sfx/habilidades.wav"
+dest_files=[ "res://.import/habilidades.wav-5e970ddcbc153420e076cd88f5dc44e1.sample" ]
 
 [params]
 
