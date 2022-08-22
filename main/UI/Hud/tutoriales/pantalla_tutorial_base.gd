@@ -1,11 +1,14 @@
 class_name PantTutorialBase
 extends CanvasLayer
 
+const SONIDO := preload("res://assets/sfx/habilidades.wav")
+
 onready var anim = $AnimationPlayer as AnimationPlayer
 var aparicion_terminada : bool
 
 func _ready():
 	get_tree().paused = true
+	Musica.hacer_sonido(SONIDO, Vector2.ZERO, 5.0, false)
 
 
 func _process(delta):
