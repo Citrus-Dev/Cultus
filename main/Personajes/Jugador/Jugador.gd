@@ -165,6 +165,10 @@ func evento_dmg(_dmg : InfoDmg):
 		print("Jugador hit: " + str(_dmg.atacante.name))
 	
 	Musica.hacer_sonido(SNOIDO_HURT, global_position, 20.0)
+	
+	if !muerto and _dmg.dmg_tipo == InfoDmg.DMG_TIPOS.PINCHES:
+		yield(get_tree().create_timer(0.5), "timeout")
+		volver_a_punto_seguro()
 
 
 func morir(_info : InfoDmg):
@@ -364,6 +368,12 @@ func detectar_punto_seguro():
 		is_on_floor()
 	):
 		TransicionesDePantalla.ultimo_punto_seguro = global_position
+
+
+func volver_a_punto_seguro():
+	input = Vector2.ZERO
+	velocity = Vector2.ZERO
+	global_position = TransicionesDePantalla.ultimo_punto_seguro
 
 
 func agregar_skill(skill_id : String):

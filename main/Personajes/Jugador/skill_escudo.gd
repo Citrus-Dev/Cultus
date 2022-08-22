@@ -25,6 +25,7 @@ var area_test : Area2D
 
 var dir_mov : Vector2
 var desactivado : bool
+var is_sliding: bool
 
 func _ready():
 	name = "skill_cruz"
@@ -63,7 +64,7 @@ func _ready():
 
 func _draw():
 	if !timer_escudo.is_stopped():
-		var color = Color.blue if (dir_mov == Vector2.ZERO and timer_slide.time_left <= 0) else Color.lightblue
+		var color = Color.blue if (dir_mov == Vector2.ZERO and !is_sliding) else Color.lightblue
 		color.a = 0.35
 		draw_circle(area_escudo.position, 32.0, color)
 
@@ -85,9 +86,9 @@ func _physics_process(delta):
 	if !timer_escudo.is_stopped():
 		jug.move_and_slide(dir_mov * VEL_DASH)
 	
-	
 	if timer_slide.is_stopped():
 		if slide_probar_fin():
+			is_sliding = false
 			jug.usando_habilidad = false
 			jug.valor_default("max_velocidad_horizontal")
 			
@@ -95,7 +96,7 @@ func _physics_process(delta):
 			var hb : Hitbox = jug.get_node("Hitbox")
 			hb.monitorable = true
 			hb.monitoring = true
-			yield(get_tree(), "idle_frame")
+#			yield(get_tree(), "idle_frame")
 			jug.reiniciar_forma_de_colision()
 
 
@@ -119,6 +120,7 @@ func terminar():
 	jug_hitbox.monitorable = true
 	jug.movimiento_desactivado = false
 	jug.velocity = Vector2.ZERO
+	dir_mov = Vector2.ZERO
 
 
 func empezar_block_quieto():
@@ -174,6 +176,7 @@ func activar_cooldown():
 
 
 func slide_activar():
+	is_sliding = true
 	timer_escudo.start(DURACION_PARRY)
 	
 	timer_cooldown.start(TIEMPO_COOLDOWN)

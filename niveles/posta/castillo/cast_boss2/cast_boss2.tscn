@@ -107,9 +107,10 @@ direccion_nivel = "res://niveles/posta/castillo/cast_boss/cast_boss.tscn"
 
 [node name="TransicionDeNivelConArea2" parent="triggers" index="2" instance=ExtResource( 10 )]
 position = Vector2( 487, 681 )
-ID = "del_boss"
-ID_objetivo = "al_boss"
-direccion_nivel = "res://niveles/posta/castillo/cast_boss/cast_boss.tscn"
+ID = "boss_caida"
+ID_objetivo = "entrada_arriba"
+direccion_nivel = "res://niveles/posta/cripta/cripta_entrada/cripta_entrada.tscn"
+direccion_movimiento = 3
 
 [node name="CollisionShape2D" parent="triggers/TransicionDeNivelConArea2" index="0"]
 position = Vector2( -2, 2 )
@@ -118,7 +119,7 @@ shape = SubResource( 7 )
 [node name="Puente" parent="." index="7" instance=ExtResource( 3 )]
 
 [node name="SpawnJugador" type="Node2D" parent="." index="8"]
-position = Vector2( 115.046, 238.913 )
+position = Vector2( 336, 352 )
 script = ExtResource( 6 )
 
 [node name="Puerta" parent="." index="9" instance=ExtResource( 7 )]

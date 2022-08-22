@@ -10,7 +10,8 @@ enum DMG_TIPOS {
 	BALA,
 	EXPLOSION,
 	FUEGO,
-	PLASMA
+	PLASMA,
+	PINCHES
 }
 
 var atacante : Node # Lo que esta causando el daño
