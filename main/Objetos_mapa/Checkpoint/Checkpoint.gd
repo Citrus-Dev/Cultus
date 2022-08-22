@@ -4,6 +4,7 @@ extends Node2D
 # El mensaje "E para guardar" no se va a mostrar por este tiempo despues de usar el checkpoint
 const PROMPT_COOLDOWN := 1.6
 const PROMPT_VEL_FADE := 2.0
+const SONIDO := preload("res://assets/sfx/checkopointo v1.wav")
 
 signal usado
 
@@ -56,6 +57,7 @@ func guardar_checkpoint(jugador : Jugador):
 	Guardado.guardar_partida()
 	emit_signal("usado")
 	ControladorUi.emit_signal("mensaje_ui", "Partida guardada", 2.5)
+	Musica.hacer_sonido(SONIDO, global_position, 20.0)
 	jugador.status.curar()
 	
 	var nivel = get_tree().get_nodes_in_group("Nivel")[0]
