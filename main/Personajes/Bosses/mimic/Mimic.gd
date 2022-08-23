@@ -8,6 +8,8 @@ export(NodePath) onready var sprite_activo = get_node(sprite_activo) as Sprite
 export(NodePath) onready var col = get_node(col) as CollisionShape2D
 export(NodePath) onready var hurtbox = get_node(hurtbox) as Hurtbox
 export(NodePath) onready var trigger_wake = get_node(trigger_wake) as TriggerOnce
+export(NodePath) onready var shaker = get_node(shaker) as Shaker
+export(NodePath) onready var fsm = get_node(fsm) as StateMachine
 
 export(NodePath) onready var rc_piso = get_node(rc_piso) as RayCast2D
 export(NodePath) onready var rc_izq = get_node(rc_izq) as RayCast2D
@@ -32,6 +34,10 @@ func set_activo(toggle: bool):
 		hitbox.set_collision_layer_bit(32, true)
 		
 		position.y -= 32.0
+		fsm.set_process(true)
+		fsm.set_physics_process(true)
+		
+		fsm.transition_to("DisparoIdle")
 	else:
 		trigger_wake.connect("triggered", self, "wake", [], CONNECT_ONESHOT)
 		
@@ -41,6 +47,9 @@ func set_activo(toggle: bool):
 		col.disabled = true
 		hurtbox.monitoring = false
 		hitbox.set_collision_layer_bit(32, false)
+		
+		fsm.set_process(false)
+		fsm.set_physics_process(false)
 
 
 func _ready():
