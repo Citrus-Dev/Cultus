@@ -28,7 +28,7 @@ func _process(delta: float) -> void:
 	if timer_cooldown > 0:
 		timer_cooldown -= delta
 	
-	if has_valid_targets():
+	if monitoring and has_valid_targets():
 		deal_damage(dmg)
 
 

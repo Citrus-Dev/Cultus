@@ -38,3 +38,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.77647 )
 width = 2.97924
 height = 0.177951
 depth = 7.72406
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.691715, 0.722171, 0, -0.722171, 0.691715, 0, 3.19168, 5.1131 )
