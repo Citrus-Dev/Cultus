@@ -9,9 +9,9 @@
 [ext_resource path="res://main/Pickups/PickupBalasEscopeta.tscn" type="PackedScene" id=7]
 [ext_resource path="res://main/Pickups/PickupBalasAR.tscn" type="PackedScene" id=8]
 [ext_resource path="res://main/Pickups/PickupHP.tscn" type="PackedScene" id=9]
+[ext_resource path="res://assets/objetos/puerta_cripta.png" type="Texture" id=10]
 [ext_resource path="res://main/Objetos_mapa/Puertas/Puerta.gd" type="Script" id=11]
 [ext_resource path="res://main/AI/Borde.gd" type="Script" id=12]
-[ext_resource path="res://assets/objetos/puerta.png" type="Texture" id=13]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 368, 236 )
@@ -138,7 +138,7 @@ script = ExtResource( 11 )
 
 [node name="Sprite" type="Sprite" parent="Puerta" index="0"]
 position = Vector2( 0, 21 )
-texture = ExtResource( 13 )
+texture = ExtResource( 10 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Puerta" index="1"]
 position = Vector2( 0, 21 )
