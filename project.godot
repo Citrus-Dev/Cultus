@@ -479,6 +479,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://main/UI/Hud/MenuPausa.gd"
 }, {
+"base": "Personaje",
+"class": "Mimic",
+"language": "GDScript",
+"path": "res://main/Personajes/Bosses/mimic/Mimic.gd"
+}, {
 "base": "Accion",
 "class": "MoverHaciaPos",
 "language": "GDScript",
@@ -919,6 +924,7 @@ _global_script_class_icons={
 "MedidorCooldown": "",
 "MenuConfig": "",
 "MenuPausa": "",
+"Mimic": "",
 "MoverHaciaPos": "",
 "MoverseEnDireccion": "",
 "Negador": "res://main/libs/BehaviorTree/icons/fail.svg",
