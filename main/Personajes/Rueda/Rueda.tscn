@@ -199,8 +199,8 @@ cast_to = Vector2( -23, 0 )
 
 [node name="Status" type="Node" parent="."]
 script = ExtResource( 4 )
-hp_max = 75
-stun_threshold = 30
+hp_max = 100
+stun_threshold = 50
 agente = NodePath("..")
 
 [node name="Hurtbox" parent="." instance=ExtResource( 6 )]
@@ -208,7 +208,7 @@ visible = false
 collision_mask = 16
 agente_dir = NodePath("..")
 is_constant = true
-dmg = 5
+dmg = 50
 fuerza_retroceso = 100.0
 dmg_tipo = 1
 

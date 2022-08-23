@@ -6,7 +6,7 @@ const BALA = preload("res://main/Proyectiles/Flecha.tscn")
 func _init() -> void:
 	skin_escena = preload("res://main/Armas/Skins/SkinBallesta.tscn")
 	medidor_balas_escena = preload("res://main/UI/BarrasBalas/BarraBalasNoRecarga.tscn")
-	damage_info.dmg_cantidad = 7500000
+	damage_info.dmg_cantidad = 100
 	damage_info.dmg_stun = 120
 	damage_info.fuerza_retroceso = 150
 	damage_info.dmg_tipo = damage_info.DMG_TIPOS.BALA
