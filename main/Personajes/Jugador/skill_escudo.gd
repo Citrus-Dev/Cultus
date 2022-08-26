@@ -104,8 +104,7 @@ func puede_activar() -> bool:
 	return bool(
 		!desactivado and
 		!jug.usando_habilidad and
-		timer_cooldown.is_stopped()
-	)
+		timer_cooldown.is_stopped())
 
 
 func activar():

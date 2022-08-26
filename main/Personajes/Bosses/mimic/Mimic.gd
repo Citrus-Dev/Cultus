@@ -2,9 +2,11 @@ class_name Mimic
 extends Personaje
 
 const CAST_PISO_DIST := 160.0
+const PROYECTIL_ESCENA := preload("res://main/Proyectiles/ProyectilMimic.tscn")
 
 export(NodePath) onready var sprite_inactivo = get_node(sprite_inactivo) as Sprite
 export(NodePath) onready var sprite_activo = get_node(sprite_activo) as Sprite
+export(NodePath) onready var sprite_laser_impacto = get_node(sprite_laser_impacto) as Sprite
 export(NodePath) onready var col = get_node(col) as CollisionShape2D
 export(NodePath) onready var hurtbox = get_node(hurtbox) as Hurtbox
 export(NodePath) onready var trigger_wake = get_node(trigger_wake) as TriggerOnce
@@ -15,13 +17,18 @@ export(NodePath) onready var rc_piso = get_node(rc_piso) as RayCast2D
 export(NodePath) onready var rc_izq = get_node(rc_izq) as RayCast2D
 export(NodePath) onready var rc_der = get_node(rc_der) as RayCast2D
 
-# Ataques:
-# Volar tirando proyectiles
-# Cargar al jugador
-# Rayo de sans
-
+var balas_dmg: InfoDmg
 var activo: bool setget set_activo
 var input_actual: int = 1
+
+var timer_cooldown: Timer
+var dist_del_suelo :float
+
+func _init():
+	balas_dmg = InfoDmg.new()
+	balas_dmg.dmg_cantidad = 12
+	balas_dmg.dmg_tipo = InfoDmg.DMG_TIPOS.PLASMA
+
 
 func set_activo(toggle: bool):
 	activo = toggle
@@ -53,6 +60,10 @@ func set_activo(toggle: bool):
 
 
 func _ready():
+	timer_cooldown = Timer.new()
+	timer_cooldown.one_shot = true
+	add_child(timer_cooldown)
+	
 	set_activo(false)
 
 
@@ -63,6 +74,10 @@ func _draw():
 func _process(delta):
 	update()
 	rc_piso.cast_to.y = osciliar(CAST_PISO_DIST, 0.8, 32.0)
+	
+	if rc_piso.is_colliding():
+		dist_del_suelo = global_position.y - rc_piso.get_collision_point().y
+		sprite_laser_impacto.position.y = -dist_del_suelo
 
 
 func _physics_process(delta):
@@ -104,3 +119,42 @@ func volar(delta: float):
 func osciliar(_x :float, _freq : float, _amplitud : float) -> float:
 	_x += cos(OS.get_ticks_msec() * _freq) * _amplitud
 	return _x
+
+
+func hacer_ataque_disparo():
+	var funcion: String = "disparar_" + str(randi() % 2 + 1)
+	call(funcion)
+
+
+func disparar_1():
+	var p: Node2D = get_tree().get_nodes_in_group("Jugador")[0]
+	var contador: int = 16
+	var intervalo: float = 0.1
+	while contador > 0:
+		var bala = PROYECTIL_ESCENA.instance()
+		bala.info_dmg = balas_dmg
+		bala.rotation = (p.global_position - global_position).angle()
+		add_child(bala)
+		
+		timer_cooldown.start(intervalo)
+		yield(timer_cooldown, "timeout")
+		
+		contador -= 1
+
+
+func disparar_2():
+	var contador: int = 28
+	var intervalo: float = 0.08
+	while contador > 0:
+		var bala = PROYECTIL_ESCENA.instance()
+		bala.info_dmg = balas_dmg
+		var rotmod: float = inverse_lerp(0.0, deg2rad(360), contador)
+		bala.rotation = (Vector2.DOWN).angle() + rotmod * 3.5
+#		bala.rotador = true
+		add_child(bala)
+		
+		timer_cooldown.start(intervalo)
+		yield(timer_cooldown, "timeout")
+		
+		contador -= 1
+

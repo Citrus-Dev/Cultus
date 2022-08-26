@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://main/Personajes/PersonajeBase.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/enemies/check_mimic_anim2.png" type="Texture" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://main/libs/DebugMonitor/DebugMonitor.tscn" type="PackedScene" id=12]
 [ext_resource path="res://main/Personajes/Bosses/mimic/states/Morir.gd" type="Script" id=13]
 [ext_resource path="res://main/Shaker/Shaker.gd" type="Script" id=14]
+[ext_resource path="res://assets/enemies/mimic_hit.png" type="Texture" id=15]
 [ext_resource path="res://assets/enemies/mimic_rayo2.tres" type="Texture" id=16]
 [ext_resource path="res://assets/enemies/mimic_orb.png" type="Texture" id=17]
 [ext_resource path="res://assets/enemies/mimic_rayo3.tres" type="Texture" id=18]
@@ -62,6 +63,20 @@ tracks/1/keys = {
 [sub_resource type="Animation" id=8]
 resource_name = "disparo_idle"
 length = 3.5
+tracks/0/type = "method"
+tracks/0/path = NodePath("..")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "hacer_ataque_disparo"
+} ]
+}
 
 [sub_resource type="Animation" id=3]
 resource_name = "idle_fake"
@@ -93,7 +108,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id=9]
 resource_name = "rayo_sans"
-length = 2.5
+length = 4.5
 tracks/0/type = "method"
 tracks/0/path = NodePath("Sprite_activo/Shaker")
 tracks/0/interp = 1
@@ -118,7 +133,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 1, 2.5 ),
+"times": PoolRealArray( 1, 4.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "values": [ {
 "args": [ true ],
@@ -197,6 +212,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [ 0 ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("impacto:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 3 ]
+}
 
 [sub_resource type="Animation" id=11]
 resource_name = "loop"
@@ -227,6 +254,18 @@ tracks/1/keys = {
 "update": 1,
 "values": [ 0, 1, 2 ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("impacto:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 3, 4, 5 ]
+}
 
 [sub_resource type="RectangleShape2D" id=12]
 extents = Vector2( 5.5, 141.5 )
@@ -244,6 +283,7 @@ no_gravedad = true
 no_knockback = true
 sprite_inactivo = NodePath("Skin/Sprite_inactivo")
 sprite_activo = NodePath("Skin/Sprite_activo")
+sprite_laser_impacto = NodePath("RayoSans/impacto")
 col = NodePath("CollisionShape2D")
 hurtbox = NodePath("Hurtbox")
 trigger_wake = NodePath("TriggerOnce")
@@ -366,6 +406,13 @@ dmg_tipo = 5
 position = Vector2( -0.5, 132.5 )
 shape = SubResource( 12 )
 
+[node name="impacto" type="Sprite" parent="RayoSans" index="4"]
+texture = ExtResource( 15 )
+offset = Vector2( 0, -30 )
+hframes = 2
+vframes = 3
+frame = 3
+
 [node name="StateMachine" type="Node" parent="." index="10"]
 script = ExtResource( 8 )
 initial_state = NodePath("Fake")
@@ -386,19 +433,22 @@ script = ExtResource( 11 )
 script = ExtResource( 13 )
 
 [node name="DebugMonitor" parent="." index="11" instance=ExtResource( 12 )]
+visible = false
 position = Vector2( -8, -40 )
 monitor_target_node = NodePath("../StateMachine")
 monitor_target_property = "state"
 monitor_flavor_text = "state"
 
 [node name="DebugMonitor2" parent="." index="12" instance=ExtResource( 12 )]
+visible = false
 position = Vector2( -8, -24 )
 monitor_target_node = NodePath("../StateMachine/DisparoIdle")
 monitor_target_property = "veces"
 monitor_flavor_text = "veces"
 
 [node name="DebugMonitor3" parent="." index="13" instance=ExtResource( 12 )]
+visible = false
 position = Vector2( -8, -8 )
-monitor_target_node = NodePath("../StateMachine/DisparoIdle")
-monitor_target_property = "contador"
-monitor_flavor_text = "contador"
+monitor_target_node = NodePath("..")
+monitor_target_property = "dist_del_suelo"
+monitor_flavor_text = "dist_del_suelo"
