@@ -634,6 +634,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://main/Ragdolls/Ragdoll.gd"
 }, {
+"base": "Node2D",
+"class": "RayoSans",
+"language": "GDScript",
+"path": "res://main/Personajes/Bosses/mimic/RayoSans.gd"
+}, {
 "base": "Decorador",
 "class": "Repetidor",
 "language": "GDScript",
@@ -955,6 +960,7 @@ _global_script_class_icons={
 "Puerta": "",
 "PuntoVerlet": "",
 "Ragdoll": "",
+"RayoSans": "",
 "Repetidor": "",
 "ResCancion": "",
 "Resorte": "",
