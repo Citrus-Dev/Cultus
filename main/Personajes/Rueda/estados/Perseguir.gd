@@ -36,6 +36,7 @@ func exit() -> void:
 
 
 func calcular_distancia_a_jugador():
+	if obj == null: return
 	var dir_to_jug = obj.global_position - owner.global_position
 	target_dir = sign(dir_to_jug.x)
 #	dist = abs(dir_to_jug.length())
