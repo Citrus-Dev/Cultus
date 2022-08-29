@@ -54,6 +54,7 @@ func guardar_checkpoint(jugador : Jugador):
 	var dir_escena_actual : String = get_tree().current_scene.filename
 	print(dir_escena_actual + " guardado como checkpoint")
 	TransicionesDePantalla.checkpoint_actual_escena = dir_escena_actual
+	TransicionesDePantalla.checkpoint_actual_pos = global_position
 	Guardado.guardar_partida()
 	emit_signal("usado")
 	ControladorUi.emit_signal("mensaje_ui", "Partida guardada", 2.5)
