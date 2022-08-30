@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://niveles/Nivel.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/tilesets/tileset_cripta.tres" type="TileSet" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://main/Pickups/PickupHP.tscn" type="PackedScene" id=5]
 [ext_resource path="res://main/Objetos_mapa/Pinchos/PinchosRestart.tscn" type="PackedScene" id=6]
 [ext_resource path="res://main/Objetos_mapa/TransicionDeNivel/Palanca_cripta.tscn" type="PackedScene" id=7]
+[ext_resource path="res://main/Personajes/Cultista/Cultista.tscn" type="PackedScene" id=8]
 [ext_resource path="res://main/AI/Borde.tscn" type="PackedScene" id=9]
 [ext_resource path="res://main/Objetos_mapa/Hookpoint.tscn" type="PackedScene" id=11]
 
@@ -79,3 +80,6 @@ position = Vector2( 136, 504 )
 
 [node name="PinchosRestart2" parent="." index="12" instance=ExtResource( 6 )]
 position = Vector2( 192, 504 )
+
+[node name="Cultista" parent="." index="13" instance=ExtResource( 8 )]
+position = Vector2( 157.924, 481.629 )

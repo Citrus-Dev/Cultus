@@ -19,6 +19,9 @@ func empezar_nuevo_juego():
 	get_tree().change_scene(GAME_INFO.primer_nivel)
 	TransicionesDePantalla.checkpoint_actual_escena = GAME_INFO.primer_nivel
 	TransicionesDePantalla.inv_balas_estado = GAME_INFO.INV_BALAS_DEFAULT
+	TransicionesDePantalla.inv_armas = {}
+	TransicionesDePantalla.inv_variantes = {}
+	TransicionesDePantalla.inv_skills = {}
 
 
 func mostrar_prompt_nuevo_juego(toggle : bool):
