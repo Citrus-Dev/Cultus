@@ -2,6 +2,7 @@ extends State
 
 func enter(msg : Dictionary = {}) -> void:
 	owner.input = Vector2.ZERO
+	owner.animador.stop()
 
 
 func unhandled_input(event : InputEvent) -> void:
@@ -13,6 +14,8 @@ func process(delta : float) -> void:
 
 
 func physics_process(delta : float) -> void:
+	if owner.muerto_enserio: 
+		return
 	
 	owner.global_position.x = lerp(owner.global_position.x, owner.pos_muerte.global_position.x, delta * 1.0)
 	owner.global_position.y = lerp(owner.global_position.y, owner.pos_muerte.global_position.y, delta * 1.0)

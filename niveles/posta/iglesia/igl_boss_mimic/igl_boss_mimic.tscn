@@ -45,7 +45,7 @@ shape = SubResource( 2 )
 script = ExtResource( 3 )
 
 [node name="SpawnJugador" type="Node2D" parent="." index="7"]
-position = Vector2( 72, 216 )
+position = Vector2( 274, 227 )
 script = ExtResource( 2 )
 
 [node name="Puerta" type="KinematicBody2D" parent="." index="8"]
