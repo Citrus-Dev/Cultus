@@ -174,15 +174,19 @@ no_desaparecer = true
 
 [node name="PickupBalasAR" parent="." index="17" instance=ExtResource( 13 )]
 position = Vector2( 504, -88 )
+no_desaparecer = true
 
 [node name="PickupBalasAR2" parent="." index="18" instance=ExtResource( 13 )]
 position = Vector2( 520, -88 )
+no_desaparecer = true
 
 [node name="PickupBalasAR3" parent="." index="19" instance=ExtResource( 13 )]
 position = Vector2( 536, -88 )
+no_desaparecer = true
 
 [node name="PickupBalasAR4" parent="." index="20" instance=ExtResource( 13 )]
 position = Vector2( 552, -88 )
+no_desaparecer = true
 
 [editable path="triggers/TransicionDeNivelConArea2"]
 [editable path="triggers/TransicionDeNivelConArea3"]
