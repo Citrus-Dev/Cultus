@@ -12,7 +12,7 @@ onready var area : Area2D = get_node("Area2D")
 onready var sprite : Sprite = get_node("Sprite")
 onready var prompt : Label = get_node("Label")
 
-var jugador : Jugador
+var jugador : Personaje
 var usando : bool
 var prompt_timer : float
 var prompt_visible : bool
@@ -50,7 +50,7 @@ func procesar_vis_prompt(delta : float):
 		prompt.modulate.a = max(prompt.modulate.a - delta * PROMPT_VEL_FADE, 0.0)
 
 
-func guardar_checkpoint(jugador : Jugador):
+func guardar_checkpoint(jugador : Personaje):
 	var dir_escena_actual : String = get_tree().current_scene.filename
 	print(dir_escena_actual + " guardado como checkpoint")
 	TransicionesDePantalla.checkpoint_actual_escena = dir_escena_actual
@@ -66,7 +66,7 @@ func guardar_checkpoint(jugador : Jugador):
 
 
 # Alternar la activacion de la zona que te deja usar el checkpoint
-func jug_alternar_area(_jug : Jugador, _bool : bool):
+func jug_alternar_area(_jug : Personaje, _bool : bool):
 	jugador = _jug if _bool else null
 #	if prompt_timer > 0: prompt_visible = false
 

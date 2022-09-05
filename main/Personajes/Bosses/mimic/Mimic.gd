@@ -1,6 +1,9 @@
 class_name Mimic
 extends Personaje
 
+const PROMPT_COOLDOWN := 1.6
+const PROMPT_VEL_FADE := 2.0
+
 const CAST_PISO_DIST := 160.0
 const PROYECTIL_ESCENA := preload("res://main/Proyectiles/ProyectilMimic.tscn")
 
@@ -11,11 +14,12 @@ export(NodePath) onready var sprite_activo = get_node(sprite_activo) as Sprite
 export(NodePath) onready var sprite_laser_impacto = get_node(sprite_laser_impacto) as Sprite
 export(NodePath) onready var col = get_node(col) as CollisionShape2D
 export(NodePath) onready var hurtbox = get_node(hurtbox) as Hurtbox
-export(NodePath) onready var trigger_wake = get_node(trigger_wake) as TriggerOnce
+export(NodePath) onready var trigger_wake = get_node(trigger_wake) as Area2D
 export(NodePath) onready var shaker = get_node(shaker) as Shaker
 export(NodePath) onready var fsm = get_node(fsm) as StateMachine
 export(NodePath) onready var pos_muerte = get_node(pos_muerte) as Position2D
 export(NodePath) onready var barra_hp = get_node(barra_hp) as BarraHPBoss
+export(NodePath) onready var drops = get_node(drops) as DropManager
 
 export(NodePath) onready var rc_piso = get_node(rc_piso) as RayCast2D
 export(NodePath) onready var rc_izq = get_node(rc_izq) as RayCast2D
@@ -25,9 +29,25 @@ var balas_dmg: InfoDmg
 var activo: bool setget set_activo
 var input_actual: int = 1
 
+var jugador : Personaje
 var timer_cooldown: Timer
+var timer_graciso: Timer
+var camara: Camera2D
+
 var dist_del_suelo: float
 var dejar_de_disparar: bool
+var muerto_enserio: bool
+var anim_waking: bool
+
+var prompt_timer : float
+var prompt_visible : bool
+var tembleque: bool
+
+var contador_drop: int
+
+onready var prompt : Label = get_node("Label")
+onready var gibs_escena = preload("res://main/Personajes/Bosses/mimic/gibs_mimic.tscn")
+onready var gibs_escena_piedra = preload("res://main/Personajes/Bosses/mimic/gibs_mimic_piedra.tscn")
 
 func _init():
 	balas_dmg = InfoDmg.new()
@@ -43,7 +63,7 @@ func set_activo(toggle: bool):
 		
 		col.disabled = false
 		hurtbox.monitoring = true
-		hitbox.set_collision_layer_bit(32, true)
+		hitbox.call_deferred("set_collision_layer_bit", 5, true)
 		
 		position.y -= 32.0
 		fsm.set_process(true)
@@ -51,14 +71,14 @@ func set_activo(toggle: bool):
 		
 		fsm.transition_to("DisparoIdle")
 	else:
-		trigger_wake.connect("triggered", self, "wake", [], CONNECT_ONESHOT)
+#		trigger_wake.connect("triggered", self, "wake", [], CONNECT_ONESHOT)
 		
 		sprite_activo.visible = false
 		sprite_inactivo.visible = true
 		
 		col.disabled = true
 		hurtbox.monitoring = false
-		hitbox.set_collision_layer_bit(32, false)
+		hitbox.call_deferred("set_collision_layer_bit", 5, false)
 		
 		fsm.set_process(false)
 		fsm.set_physics_process(false)
@@ -69,7 +89,17 @@ func _ready():
 	timer_cooldown.one_shot = true
 	add_child(timer_cooldown)
 	
+	timer_graciso = Timer.new()
+	timer_graciso.one_shot = true
+	add_child(timer_graciso)
+	
 	set_activo(false)
+	prompt.modulate.a = 0.0
+	
+	trigger_wake.connect("body_entered", self, "jug_alternar_area", [true])
+	trigger_wake.connect("body_exited", self, "jug_alternar_area", [false])
+	
+	reiniciar_contador_drop()
 
 
 func _process(delta):
@@ -78,6 +108,12 @@ func _process(delta):
 	if rc_piso.is_colliding():
 		dist_del_suelo = global_position.y - rc_piso.get_collision_point().y
 		sprite_laser_impacto.position.y = -dist_del_suelo
+	
+	if !activo and !anim_waking:
+		procesar_vis_prompt(delta)
+	
+	if tembleque:
+		procesar_screenshake(delta)
 
 
 func _physics_process(delta):
@@ -92,16 +128,55 @@ func procesar_movimiento(_delta : float):
 #	input = Vector2.ZERO
 
 
+func procesar_screenshake(delta: float):
+	if !camara:
+		if get_tree().get_nodes_in_group("CamaraReal").size() > 0:
+			camara = get_tree().get_nodes_in_group("CamaraReal")[0]
+		else:
+			return
+	
+	camara.aplicar_screenshake(2.0)
+
+
+# Alternar la activacion de la zona que te deja usar el checkpoint
+func jug_alternar_area(_jug : Personaje, _bool : bool):
+	jugador = _jug if _bool else null
+
+
+# Llamado cuando recibis daño
+func evento_dmg(_dmg : InfoDmg):
+	efecto_brillo_dmg(.6)
+	check_drops(_dmg.dmg_cantidad)
+
+
 func start_wake():
+	emit_signal("activado")
+	anim_waking = true
 	trigger_wake.disconnect("triggered", self, "start_wake")
 	efecto_wakeup()
+	jugador.aplicar_knockback(1200, (jugador.global_position - global_position))
+	prompt.visible = false
+	
+	timer_graciso.start(1.2)
+	yield(timer_graciso, "timeout")
+	
+	tembleque = true
+	
+	timer_graciso.start(1.2)
+	yield(timer_graciso, "timeout")
+	
+	tembleque = false
+	animador.play("wake")
+	
+	yield(timer_graciso, "timeout")
+	
 	animador.play("wake")
 
 
 func wake():
+	instanciar_gibs_piedra()
 	barra_hp.setup()
 	set_activo(true)
-	emit_signal("activado")
 
 
 func efecto_wakeup():
@@ -127,6 +202,21 @@ func osciliar(_x :float, _freq : float, _amplitud : float) -> float:
 func hacer_ataque_disparo():
 	var funcion: String = "disparar_" + str(randi() % 2 + 1)
 	call(funcion)
+
+
+func procesar_vis_prompt(delta : float):
+	prompt_visible = is_instance_valid(jugador) and prompt_timer <= 0
+	
+	if prompt_timer > 0:
+		prompt_timer -= delta
+	
+	if prompt_visible and prompt.modulate.a < 1.0:
+		prompt.modulate.a = min(prompt.modulate.a + delta * PROMPT_VEL_FADE, 1.0)
+	if !prompt_visible and prompt.modulate.a > 0.0:
+		prompt.modulate.a = max(prompt.modulate.a - delta * PROMPT_VEL_FADE, 0.0)
+	
+	if prompt_visible and Input.is_action_just_pressed("usar"):
+		start_wake()
 
 
 func disparar_1():
@@ -190,6 +280,43 @@ func set_muerto(toggle : bool):
 
 
 func morir_enserio():
+	muerto_enserio = true
+	
+	timer_graciso.start(1.2)
+	yield(timer_graciso, "timeout")
+	
 	emit_signal("muerto")
 	cambiar_visibilidad(false)
+	
+	instanciar_gibs()
+	
+	# anda a cagar no quiero arreglar mas bugs
+	call_deferred("free")
 
+
+func reiniciar_contador_drop():
+	contador_drop = status.hp_max / 5
+
+
+func check_drops(dmg: int):
+	contador_drop -= dmg
+	if contador_drop <= 0:
+		shaker.add_trauma(15.0)
+		drops.drop()
+		reiniciar_contador_drop()
+
+
+func instanciar_gibs():
+	if gibs_escena == null:
+		return
+	var gib = gibs_escena.instance() as Gibs
+	gib.global_position = global_position
+	get_parent().add_child(gib)
+
+
+func instanciar_gibs_piedra():
+	if gibs_escena_piedra == null:
+		return
+	var gib = gibs_escena_piedra.instance() as Gibs
+	gib.global_position = global_position
+	get_parent().add_child(gib)
