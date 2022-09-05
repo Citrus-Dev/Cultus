@@ -70,7 +70,7 @@ func hacer_proyectiles():
 	var proys := []
 	
 	var dmg = InfoDmg.new()
-	dmg.dmg_cantidad = 8
+	dmg.dmg_cantidad = 30
 	dmg.dmg_tipo = InfoDmg.DMG_TIPOS.EXPLOSION
 	
 	for i in cantidad:
