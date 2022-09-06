@@ -16,6 +16,8 @@ func _ready() -> void:
 	set("motion/sync_to_physics", true)
 	add_child(path_follow)
 	puntos = camino.points
+	camino.visible = false
+	global_position = puntos[0]
 
 
 func _physics_process(delta: float) -> void:

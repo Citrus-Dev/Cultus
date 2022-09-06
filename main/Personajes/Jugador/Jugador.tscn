@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://main/Personajes/Jugador/Jugador.gd" type="Script" id=1]
 [ext_resource path="res://main/SistemaDaño/StatusJugador.gd" type="Script" id=2]
@@ -449,6 +449,9 @@ extents = Vector2( 4, 8 )
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 6, 8 )
 
+[sub_resource type="RectangleShape2D" id=15]
+extents = Vector2( 4, 8 )
+
 [node name="Jugador" type="KinematicBody2D" groups=["Jugador"]]
 z_index = 1
 collision_layer = 2
@@ -466,6 +469,7 @@ stretcher = NodePath("Skin/Stretcher")
 pos_bufanda = NodePath("Skin/PosBufanda")
 shaker = NodePath("Skin/Shaker")
 los = NodePath("LOSCheck")
+detector_inse = NodePath("DetectorAreasInseguras")
 
 [node name="monitores" type="Node2D" parent="."]
 visible = false
@@ -519,6 +523,7 @@ position = Vector2( 0, -9 )
 script = ExtResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2( 0, -8 )
 shape = SubResource( 1 )
 
@@ -541,3 +546,13 @@ shape = SubResource( 2 )
 
 [node name="SonidoRandom" type="Node2D" parent="."]
 script = ExtResource( 5 )
+
+[node name="DetectorAreasInseguras" type="Area2D" parent="."]
+visible = false
+collision_layer = 0
+collision_mask = 65536
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectorAreasInseguras"]
+modulate = Color( 0.909804, 0.415686, 0.2, 1 )
+position = Vector2( 0, -8 )
+shape = SubResource( 15 )
