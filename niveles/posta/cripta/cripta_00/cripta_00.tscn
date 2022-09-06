@@ -1,7 +1,6 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://assets/tilesets/plataformas/plataforma.png" type="Texture" id=1]
-[ext_resource path="res://main/Objetos_mapa/Plataformas alternas/PlataformaFragil.gd" type="Script" id=2]
+[ext_resource path="res://main/Objetos_mapa/Plataformas alternas/PlataformaFragilCripta.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/tilesets/tileset_cripta.tres" type="TileSet" id=3]
 [ext_resource path="res://niveles/Nivel.tscn" type="PackedScene" id=4]
 [ext_resource path="res://main/Personajes/Polilla/Polilla.tscn" type="PackedScene" id=5]
@@ -12,14 +11,6 @@
 
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 432, 148 )
-
-[sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 24, 8 )
-
-[sub_resource type="AtlasTexture" id=2]
-flags = 2
-atlas = ExtResource( 1 )
-region = Rect2( 0, 0, 48, 16 )
 
 [node name="cripta_00" instance=ExtResource( 4 )]
 primer_limite_camara = NodePath("camara limites/CameraBounds")
@@ -51,55 +42,20 @@ script = ExtResource( 8 )
 
 [node name="Plataformas_Fragiles" type="Node" parent="." index="9"]
 
-[node name="PlataformaFragil" type="StaticBody2D" parent="Plataformas_Fragiles" index="0"]
-position = Vector2( 160, 96 )
-script = ExtResource( 2 )
+[node name="PlataformaFragilCripta" parent="Plataformas_Fragiles" index="0" instance=ExtResource( 1 )]
+position = Vector2( 176, 88 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Plataformas_Fragiles/PlataformaFragil" index="0"]
-shape = SubResource( 3 )
+[node name="PlataformaFragilCripta2" parent="Plataformas_Fragiles" index="1" instance=ExtResource( 1 )]
+position = Vector2( 528, 88 )
 
-[node name="Sprite" type="Sprite" parent="Plataformas_Fragiles/PlataformaFragil" index="1"]
-texture = SubResource( 2 )
+[node name="PlataformaFragilCripta3" parent="Plataformas_Fragiles" index="2" instance=ExtResource( 1 )]
+position = Vector2( 352, 88 )
 
-[node name="PlataformaFragil3" type="StaticBody2D" parent="Plataformas_Fragiles" index="1"]
-position = Vector2( 256, 96 )
-script = ExtResource( 2 )
+[node name="PlataformaFragilCripta4" parent="Plataformas_Fragiles" index="3" instance=ExtResource( 1 )]
+position = Vector2( 264, 88 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Plataformas_Fragiles/PlataformaFragil3" index="0"]
-shape = SubResource( 3 )
-
-[node name="Sprite" type="Sprite" parent="Plataformas_Fragiles/PlataformaFragil3" index="1"]
-texture = SubResource( 2 )
-
-[node name="PlataformaFragil4" type="StaticBody2D" parent="Plataformas_Fragiles" index="2"]
-position = Vector2( 352, 96 )
-script = ExtResource( 2 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Plataformas_Fragiles/PlataformaFragil4" index="0"]
-shape = SubResource( 3 )
-
-[node name="Sprite" type="Sprite" parent="Plataformas_Fragiles/PlataformaFragil4" index="1"]
-texture = SubResource( 2 )
-
-[node name="PlataformaFragil5" type="StaticBody2D" parent="Plataformas_Fragiles" index="3"]
-position = Vector2( 448, 96 )
-script = ExtResource( 2 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Plataformas_Fragiles/PlataformaFragil5" index="0"]
-shape = SubResource( 3 )
-
-[node name="Sprite" type="Sprite" parent="Plataformas_Fragiles/PlataformaFragil5" index="1"]
-texture = SubResource( 2 )
-
-[node name="PlataformaFragil7" type="StaticBody2D" parent="Plataformas_Fragiles" index="4"]
-position = Vector2( 544, 96 )
-script = ExtResource( 2 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Plataformas_Fragiles/PlataformaFragil7" index="0"]
-shape = SubResource( 3 )
-
-[node name="Sprite" type="Sprite" parent="Plataformas_Fragiles/PlataformaFragil7" index="1"]
-texture = SubResource( 2 )
+[node name="PlataformaFragilCripta5" parent="Plataformas_Fragiles" index="4" instance=ExtResource( 1 )]
+position = Vector2( 440, 88 )
 
 [node name="Polilla" parent="." index="10" instance=ExtResource( 5 )]
 position = Vector2( 360, 16 )

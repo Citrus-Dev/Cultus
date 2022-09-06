@@ -60,6 +60,7 @@ position = Vector2( 0, 24 )
 texture = ExtResource( 5 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Puerta" index="1"]
+visible = false
 position = Vector2( 0, 24 )
 shape = SubResource( 3 )
 
@@ -68,6 +69,7 @@ position = Vector2( 512, 24 )
 texture = ExtResource( 5 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Puerta" index="3"]
+visible = false
 position = Vector2( 512, 24 )
 shape = SubResource( 3 )
 
