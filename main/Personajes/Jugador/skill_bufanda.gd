@@ -10,7 +10,7 @@ const DISTANCIA := 230.0
 const VEL_GANCHO := 350.0
 const DIST_MINIMA := 25.0
 const TIEMPO_COOLDOWN := 1.2
-const TIEMPO_COOLDOWN_GANCHO := 0.4
+const TIEMPO_COOLDOWN_GANCHO := 0.9
 
 signal cooldown_update(valor)
 

@@ -40,10 +40,12 @@ position = Vector2( 264, 160 )
 position = Vector2( 120, 160 )
 
 [node name="CameraBounds" type="CollisionShape2D" parent="camara limites" index="0"]
-visible = false
 position = Vector2( 163, -57 )
 shape = SubResource( 1 )
 script = ExtResource( 2 )
+
+[node name="triggers" parent="." index="6"]
+visible = false
 
 [node name="SpawnJugador" type="Node2D" parent="." index="7"]
 position = Vector2( 24, 80 )
