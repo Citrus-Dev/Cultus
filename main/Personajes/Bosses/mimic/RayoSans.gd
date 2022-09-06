@@ -2,6 +2,7 @@ class_name RayoSans
 extends Node2D
 
 export(NodePath) onready var hurtbox = get_node(hurtbox) as Hurtbox
+export(NodePath) onready var audio = get_node(audio) as AudioStreamPlayer2D
 
 var activo: bool setget set_activo
 
@@ -13,3 +14,7 @@ func set_activo(value: bool):
 	activo = value
 	visible = activo
 	hurtbox.monitoring = value
+	if value:
+		audio.play()
+	else:
+		audio.stop()

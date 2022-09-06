@@ -1,6 +1,8 @@
 # Hacer una animacion de ataque y cambiar a perseguir
 extends State
 
+const SND_MELEE := preload("res://assets/sfx/melee_whiff.wav")
+
 var animador : AnimationPlayer
 
 func enter(msg : Dictionary = {}) -> void:
@@ -11,6 +13,7 @@ func enter(msg : Dictionary = {}) -> void:
 #	animador.play("att" + str(rng + 1))
 	animador.play("att1")
 	animador.connect("animation_finished", self, "terminar")
+	Musica.hacer_sonido(SND_MELEE, owner.global_position)
 
 
 func terminar(__):

@@ -58,7 +58,7 @@ func guardar_checkpoint(jugador : Personaje):
 	Guardado.guardar_partida()
 	emit_signal("usado")
 	ControladorUi.emit_signal("mensaje_ui", "Partida guardada", 2.5)
-	Musica.hacer_sonido(SONIDO, global_position, 20.0)
+	Musica.hacer_sonido(SONIDO, global_position, 2.0)
 	jugador.status.curar()
 	
 	var nivel = get_tree().get_nodes_in_group("Nivel")[0]

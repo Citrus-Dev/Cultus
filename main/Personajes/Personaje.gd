@@ -7,6 +7,8 @@ const SHADER_HIT = preload("res://assets/shaders/shader_hitcolor.shader")
 const KNOCKBACK_FRICCION_HORIZONTAL := 0.4
 const KNOCKBACK_FRICCION_VERTICAL := 0.8
 const DAMP_AGUA := 500
+const SND_GIB := preload("res://assets/sfx/gib.wav")
+const SND_HIT := preload("res://assets/sfx/hit2.wav")
 
 signal objetivo_encontrado
 signal borde_tocado(_borde)
@@ -263,6 +265,7 @@ func aplicar_stun(_tiempo_stun := tiempo_stun):
 # Llamado cuando recibis daño
 func evento_dmg(_dmg : InfoDmg):
 	efecto_brillo_dmg(.6)
+	Musica.hacer_sonido(SND_HIT, global_position)
 
 
 func morir(_info : InfoDmg):

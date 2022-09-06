@@ -73,6 +73,8 @@ func alertar():
 func evento_dmg(_dmg : InfoDmg):
 	efecto_brillo_dmg(.6)
 	
+	Musica.hacer_sonido(SND_HIT, global_position)
+	
 	# Si te ataca el jugador despertate (aunque este fuera del rango de deteccion)
 	if _dmg.atacante is Personaje:
 		objetivo = _dmg.atacante
@@ -139,4 +141,5 @@ func instanciar_gibs():
 	var gib = gibs_escena.instance() as Gibs
 	gib.global_position = global_position
 	get_parent().add_child(gib)
+	Musica.hacer_sonido(SND_GIB, global_position)
 
