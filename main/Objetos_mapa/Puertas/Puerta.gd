@@ -1,6 +1,10 @@
 class_name Puerta
 extends KinematicBody2D
 
+const SND_START := preload("res://assets/sfx/door_start.wav")
+const SND_STOP := preload("res://assets/sfx/door_stop.wav")
+const SND_LOOP := preload("res://assets/sfx/door_loop.wav")
+
 enum EaseType {
 	EASE_IN,
 	EASE_OUT,
@@ -55,6 +59,8 @@ func abrir():
 	if moving:
 		return
 	
+	Musica.hacer_sonido(SND_START, global_position)
+	
 	abierto = true
 	moving = true
 	tween.interpolate_property(
@@ -69,12 +75,17 @@ func abrir():
 	tween.start()
 	
 	yield(tween, "tween_all_completed")
+	
+	Musica.hacer_sonido(SND_STOP, global_position)
+	
 	moving = false
 
 
 func cerrar():
 	if moving:
 		return
+	
+	Musica.hacer_sonido(SND_START, global_position)
 	
 	moving = true
 	tween.interpolate_property(
@@ -89,5 +100,8 @@ func cerrar():
 	tween.start()
 	
 	yield(tween, "tween_all_completed")
+	
+	Musica.hacer_sonido(SND_STOP, global_position)
+	
 	abierto = false
 	moving = false

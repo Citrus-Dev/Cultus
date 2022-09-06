@@ -79,6 +79,7 @@ func instanciar_gibs():
 	var gib = gibs_escena.instance() as Gibs
 	gib.global_position = global_position
 	get_parent().add_child(gib)
+	Musica.hacer_sonido(SND_GIB, global_position)
 
 
 

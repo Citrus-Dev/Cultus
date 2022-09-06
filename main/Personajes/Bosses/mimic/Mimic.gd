@@ -7,6 +7,10 @@ const PROMPT_VEL_FADE := 2.0
 const CAST_PISO_DIST := 160.0
 const PROYECTIL_ESCENA := preload("res://main/Proyectiles/ProyectilMimic.tscn")
 
+const SND_MIMIC_HIT1 := preload("res://assets/sfx/mimic_hit1.wav")
+const SND_MIMIC_HIT2 := preload("res://assets/sfx/mimic_hit2.wav")
+const SND_MIMIC_MORIR := preload("res://assets/sfx/mimic_morir.wav")
+
 signal activado
 
 export(NodePath) onready var sprite_inactivo = get_node(sprite_inactivo) as Sprite
@@ -20,10 +24,12 @@ export(NodePath) onready var fsm = get_node(fsm) as StateMachine
 export(NodePath) onready var pos_muerte = get_node(pos_muerte) as Position2D
 export(NodePath) onready var barra_hp = get_node(barra_hp) as BarraHPBoss
 export(NodePath) onready var drops = get_node(drops) as DropManager
+export(NodePath) onready var snd_sike = get_node(snd_sike) as AudioStreamPlayer
 
 export(NodePath) onready var rc_piso = get_node(rc_piso) as RayCast2D
 export(NodePath) onready var rc_izq = get_node(rc_izq) as RayCast2D
 export(NodePath) onready var rc_der = get_node(rc_der) as RayCast2D
+export(NodePath) onready var rayosnas = get_node(rayosnas) as RayoSans
 
 var balas_dmg: InfoDmg
 var activo: bool setget set_activo
@@ -147,9 +153,14 @@ func jug_alternar_area(_jug : Personaje, _bool : bool):
 func evento_dmg(_dmg : InfoDmg):
 	efecto_brillo_dmg(.6)
 	check_drops(_dmg.dmg_cantidad)
+	
+	var snd = get("SND_MIMIC_HIT" + str(randi() % 2 + 1))
+	Musica.hacer_sonido(snd, global_position)
 
 
 func start_wake():
+	snd_sike.play()
+	
 	emit_signal("activado")
 	anim_waking = true
 	trigger_wake.disconnect("triggered", self, "start_wake")
@@ -270,6 +281,7 @@ func morir(_info : InfoDmg):
 
 
 func set_muerto(toggle : bool):
+	rayosnas.set_activo(false)
 	muerto = toggle
 	if toggle:
 		collision_mask = 1 # No colisionas con nada mas que el escenario
@@ -289,6 +301,7 @@ func morir_enserio():
 	cambiar_visibilidad(false)
 	
 	instanciar_gibs()
+	Musica.hacer_sonido(SND_MIMIC_MORIR, global_position)
 	
 	# anda a cagar no quiero arreglar mas bugs
 	call_deferred("free")

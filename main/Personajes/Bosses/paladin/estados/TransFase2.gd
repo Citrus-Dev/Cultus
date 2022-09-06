@@ -1,9 +1,12 @@
 extends State
 
+const SND_FASE2 := preload("res://assets/sfx/paladin_fase2.wav")
+
 func enter(msg : Dictionary = {}) -> void:
 	owner.animador.connect("animation_finished", self, "terminar")
 	owner.animador.play("fase2")
 	owner.fase2_cambiar_color()
+	Musica.hacer_sonido(SND_FASE2, owner.global_position)
 
 
 func unhandled_input(event : InputEvent) -> void:

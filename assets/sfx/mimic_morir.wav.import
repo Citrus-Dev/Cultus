@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/mimic_morir.wav-8ed5afe3c69a53fcafe4c50594f16def.sample"
+
+[deps]
+
+source_file="res://assets/sfx/mimic_morir.wav"
+dest_files=[ "res://.import/mimic_morir.wav-8ed5afe3c69a53fcafe4c50594f16def.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

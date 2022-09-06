@@ -26,6 +26,8 @@ func _ready() -> void:
 	noise.octaves = 2
 	
 	base_position = target.position
+	
+	target.connect("tree_exited", self, "queue_free")
 
 
 func _process(delta : float) -> void:

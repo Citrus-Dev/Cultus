@@ -119,7 +119,7 @@ shape = SubResource( 7 )
 [node name="Puente" parent="." index="7" instance=ExtResource( 3 )]
 
 [node name="SpawnJugador" type="Node2D" parent="." index="8"]
-position = Vector2( 336, 352 )
+position = Vector2( 133, 263 )
 script = ExtResource( 6 )
 
 [node name="Puerta" parent="." index="9" instance=ExtResource( 7 )]

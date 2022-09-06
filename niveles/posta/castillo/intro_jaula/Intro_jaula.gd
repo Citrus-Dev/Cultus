@@ -40,4 +40,4 @@ func asustar():
 
 func ouch(__):
 	hurt.trigger()
-	jaula.call_deferred("free")
+	jaula.jaula.call_deferred("free")

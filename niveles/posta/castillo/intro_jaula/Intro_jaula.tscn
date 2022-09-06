@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://niveles/Nivel.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/tilesets/tileset_castillo.tres" type="TileSet" id=2]
@@ -12,6 +12,9 @@
 [ext_resource path="res://assets/objetos/puerta.png" type="Texture" id=10]
 [ext_resource path="res://main/Triggers/TriggerOnce.tscn" type="PackedScene" id=11]
 [ext_resource path="res://main/Objetos_mapa/TransicionDeNivel/TransicionDeNivel.tscn" type="PackedScene" id=12]
+[ext_resource path="res://assets/objetos/jaulas/jaula_chiquit.png" type="Texture" id=13]
+[ext_resource path="res://assets/objetos/jaulas/jaula.png" type="Texture" id=14]
+[ext_resource path="res://assets/objetos/jaulas/jaula grande.png" type="Texture" id=15]
 
 [sub_resource type="Animation" id=6]
 resource_name = "Nueva Animación"
@@ -74,6 +77,7 @@ trigger_cerrar_puerta = NodePath("TriggerOnce")
 layer = 128
 
 [node name="ColorRect" type="ColorRect" parent="fade" index="0"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0, 0, 0, 1 )
@@ -183,6 +187,51 @@ direccion_movimiento = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TransicionDeNivel2" index="0"]
 shape = SubResource( 5 )
+
+[node name="JaulaChiquit" type="Sprite" parent="." index="16"]
+modulate = Color( 0.745098, 0.745098, 0.745098, 1 )
+position = Vector2( 160, 63 )
+z_index = -5
+texture = ExtResource( 13 )
+
+[node name="JaulaChiquit2" type="Sprite" parent="." index="17"]
+position = Vector2( 202, 79 )
+z_index = -2
+texture = ExtResource( 13 )
+
+[node name="JaulaChiquit3" type="Sprite" parent="." index="18"]
+position = Vector2( 21, 64 )
+z_index = -2
+texture = ExtResource( 13 )
+
+[node name="JaulaChiquit4" type="Sprite" parent="." index="19"]
+position = Vector2( 274, 200 )
+z_index = -2
+texture = ExtResource( 13 )
+
+[node name="JaulaChiquit5" type="Sprite" parent="." index="20"]
+modulate = Color( 0.607843, 0.6, 0.6, 1 )
+position = Vector2( 432, 217 )
+z_index = -2
+texture = ExtResource( 13 )
+
+[node name="Jaula" type="Sprite" parent="." index="21"]
+modulate = Color( 0.756863, 0.756863, 0.756863, 1 )
+position = Vector2( 38, 291 )
+z_index = -2
+texture = ExtResource( 14 )
+
+[node name="Jaula2" type="Sprite" parent="." index="22"]
+modulate = Color( 0.756863, 0.756863, 0.756863, 1 )
+position = Vector2( 315, 291 )
+z_index = -2
+texture = ExtResource( 14 )
+
+[node name="JaulaGrande" type="Sprite" parent="." index="23"]
+modulate = Color( 0.45098, 0.45098, 0.45098, 1 )
+position = Vector2( 259, 266 )
+z_index = -5
+texture = ExtResource( 15 )
 
 [connection signal="caida_empezada" from="Frente/intro jaula" to="." method="asustar"]
 [connection signal="body_entered" from="triggers/trigger splat" to="." method="ouch" flags=6]

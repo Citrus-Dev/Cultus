@@ -2,6 +2,7 @@ class_name Palanca
 extends Node2D
 
 const PROMPT_VEL_FADE := 2.0
+const SND_PALANCA := preload("res://assets/sfx/palanca.wav")
 
 signal activado
 
@@ -29,6 +30,8 @@ func set_usado():
 
 
 func trigger(__):
+	Musica.hacer_sonido(SND_PALANCA, global_position)
+	
 	activado = true
 	area_trigger.disconnect("body_entered", self, "trigger")
 	emit_signal("activado")

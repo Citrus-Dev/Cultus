@@ -44,9 +44,9 @@ func spawn_jugador_transicion_muerte():
 		return
 	var juginst = JUGADOR_SCENE.instance()
 	var nivel = get_tree().get_nodes_in_group("Nivel")[0]
-	juginst.global_position = checkpoint_actual_pos
 	nivel.add_child(juginst)
 	yield(get_tree(), "idle_frame")
+	juginst.global_position = checkpoint_actual_pos
 	juginst.controlador_armas.inv_balas.dict_balas = inv_balas_estado
 
 

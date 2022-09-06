@@ -1,7 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://assets/objetos/jaulas/jaula grande.png" type="Texture" id=1]
 [ext_resource path="res://main/Jaula.gd" type="Script" id=2]
+[ext_resource path="res://assets/objetos/jaulas/jaula_chiquit.png" type="Texture" id=3]
+[ext_resource path="res://assets/objetos/jaulas/jaula_part1.png" type="Texture" id=4]
+[ext_resource path="res://assets/objetos/jaulas/jaula_part2.png" type="Texture" id=5]
+[ext_resource path="res://assets/objetos/jaulas/jaula_part3.png" type="Texture" id=6]
 
 [sub_resource type="Animation" id=4]
 length = 0.001
@@ -56,12 +60,29 @@ extents = Vector2( 2, 31 )
 [sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 40, 1.5 )
 
+[sub_resource type="AtlasTexture" id=7]
+flags = 2
+atlas = ExtResource( 3 )
+region = Rect2( 22, 0, 4, 31 )
+filter_clip = true
+
+[sub_resource type="ParticlesMaterial" id=8]
+flag_disable_z = true
+spread = 180.0
+gravity = Vector3( 0, 98, 0 )
+initial_velocity = 95.45
+angular_velocity = 422.4
+angular_velocity_random = 0.65
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+
 [node name="intro jaula" type="Node2D"]
 script = ExtResource( 2 )
 anim = NodePath("AnimationPlayer")
 area_salto = NodePath("jaula/DetectorSaltos")
 jaula = NodePath("jaula")
 rc = NodePath("jaula/RayCast2D")
+cadenas_paths = [ NodePath("cadena1"), NodePath("cadena2") ]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "swing"
@@ -108,3 +129,43 @@ shape = SubResource( 6 )
 [node name="RayCast2D" type="RayCast2D" parent="jaula"]
 enabled = true
 cast_to = Vector2( 0, 2 )
+
+[node name="cadena1" type="Sprite" parent="."]
+position = Vector2( 0, 16 )
+z_index = -1
+texture = SubResource( 7 )
+
+[node name="cadena2" type="Sprite" parent="."]
+position = Vector2( 0, 47 )
+z_index = -1
+texture = SubResource( 7 )
+
+[node name="parts1" type="Particles2D" parent="."]
+position = Vector2( 0, 227 )
+z_index = 1
+emitting = false
+lifetime = 5.0
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource( 8 )
+texture = ExtResource( 4 )
+
+[node name="parts2" type="Particles2D" parent="."]
+position = Vector2( 0, 227 )
+z_index = 1
+emitting = false
+lifetime = 5.0
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource( 8 )
+texture = ExtResource( 5 )
+
+[node name="parts3" type="Particles2D" parent="."]
+position = Vector2( 0, 227 )
+z_index = 1
+emitting = false
+lifetime = 5.0
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource( 8 )
+texture = ExtResource( 6 )

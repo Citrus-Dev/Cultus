@@ -82,4 +82,7 @@ position = Vector2( 136, 504 )
 position = Vector2( 192, 504 )
 
 [node name="Cultista" parent="." index="13" instance=ExtResource( 8 )]
-position = Vector2( 157.924, 481.629 )
+position = Vector2( 295, 440 )
+
+[node name="Cultista2" parent="." index="14" instance=ExtResource( 8 )]
+position = Vector2( 860, 434 )

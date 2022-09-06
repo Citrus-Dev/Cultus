@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://main/Personajes/PersonajeBase.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/enemies/check_mimic_anim2.png" type="Texture" id=2]
@@ -22,6 +22,8 @@
 [ext_resource path="res://main/Personajes/Bosses/mimic/RayoSans.gd" type="Script" id=20]
 [ext_resource path="res://main/UI/BarraHPBoss/BarraHPBoss.gd" type="Script" id=21]
 [ext_resource path="res://main/Personajes/Bosses/mimic/gibs_mimic.tscn" type="PackedScene" id=22]
+[ext_resource path="res://assets/sfx/laser.wav" type="AudioStream" id=23]
+[ext_resource path="res://assets/sfx/ui_botton_tocar.wav" type="AudioStream" id=24]
 
 [sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 88, 56 )
@@ -60,6 +62,20 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ ExtResource( 2 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath("../RayoSans")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ false ],
+"method": "set_activo"
+} ]
 }
 
 [sub_resource type="Animation" id=8]
@@ -326,14 +342,21 @@ shaker = NodePath("Skin/Sprite_activo/Shaker")
 fsm = NodePath("StateMachine")
 barra_hp = NodePath("BarraHPBoss")
 drops = NodePath("DropManager")
+snd_sike = NodePath("SonidoSike")
 rc_piso = NodePath("rc_piso")
 rc_izq = NodePath("rc_pared_izquierda")
 rc_der = NodePath("rc_pared_derecho")
+rayosnas = NodePath("RayoSans")
 
-[node name="DropManager" type="Node" parent="." index="0"]
+[node name="SonidoSike" type="AudioStreamPlayer" parent="." index="0"]
+stream = ExtResource( 24 )
+volume_db = 5.0
+pitch_scale = 0.2
+
+[node name="DropManager" type="Node" parent="." index="1"]
 script = ExtResource( 5 )
 
-[node name="TriggerOnce" type="Area2D" parent="." index="1"]
+[node name="TriggerOnce" type="Area2D" parent="." index="2"]
 collision_layer = 0
 collision_mask = 2
 
@@ -343,21 +366,21 @@ modulate = Color( 0.92549, 0.533333, 0.215686, 0.172549 )
 position = Vector2( 0, -56 )
 shape = SubResource( 7 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="3"]
 visible = false
 shape = SubResource( 6 )
 
-[node name="Status" parent="." index="3"]
+[node name="Status" parent="." index="4"]
 hp_max = 2500
 
-[node name="Hitbox" parent="." index="4"]
+[node name="Hitbox" parent="." index="5"]
 position = Vector2( 0, 32 )
 
 [node name="CollisionShape2D" parent="Hitbox" index="0"]
 position = Vector2( 0, -32 )
 shape = SubResource( 1 )
 
-[node name="Hurtbox" parent="." index="5" instance=ExtResource( 4 )]
+[node name="Hurtbox" parent="." index="6" instance=ExtResource( 4 )]
 position = Vector2( 0, 12 )
 collision_mask = 16
 agente_dir = NodePath("..")
@@ -370,7 +393,7 @@ dmg_tipo = 1
 position = Vector2( 0, -12 )
 shape = SubResource( 5 )
 
-[node name="Skin" type="Node2D" parent="." index="6"]
+[node name="Skin" type="Node2D" parent="." index="7"]
 
 [node name="Sprite_inactivo" type="Sprite" parent="Skin" index="0"]
 position = Vector2( 0, -34 )
@@ -404,27 +427,28 @@ autoplay = "idle_real"
 anims/RESET = SubResource( 13 )
 anims/idle_real = SubResource( 14 )
 
-[node name="rc_piso" type="RayCast2D" parent="." index="7"]
+[node name="rc_piso" type="RayCast2D" parent="." index="8"]
 modulate = Color( 0.278431, 0.815686, 0.12549, 1 )
 position = Vector2( 0, -17 )
 enabled = true
 cast_to = Vector2( 0, 168 )
 
-[node name="rc_pared_izquierda" type="RayCast2D" parent="." index="8"]
+[node name="rc_pared_izquierda" type="RayCast2D" parent="." index="9"]
 modulate = Color( 0.894118, 0.376471, 0.0901961, 1 )
 position = Vector2( 0, -17 )
 enabled = true
 cast_to = Vector2( -64, 0 )
 
-[node name="rc_pared_derecho" type="RayCast2D" parent="." index="9"]
+[node name="rc_pared_derecho" type="RayCast2D" parent="." index="10"]
 modulate = Color( 0.894118, 0.376471, 0.0901961, 1 )
 position = Vector2( 0, -17 )
 enabled = true
 cast_to = Vector2( 64, 0 )
 
-[node name="RayoSans" type="Node2D" parent="." index="10"]
+[node name="RayoSans" type="Node2D" parent="." index="11"]
 script = ExtResource( 20 )
 hurtbox = NodePath("Hurtbox")
+audio = NodePath("AudioStreamPlayer2D")
 
 [node name="orbe" type="Sprite" parent="RayoSans" index="0"]
 position = Vector2( -1, 16 )
@@ -461,7 +485,10 @@ hframes = 2
 vframes = 3
 frame = 3
 
-[node name="StateMachine" type="Node" parent="." index="11"]
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="RayoSans" index="5"]
+stream = ExtResource( 23 )
+
+[node name="StateMachine" type="Node" parent="." index="12"]
 script = ExtResource( 8 )
 initial_state = NodePath("Fake")
 
@@ -480,32 +507,32 @@ script = ExtResource( 11 )
 [node name="Morir" type="Node" parent="StateMachine" index="4"]
 script = ExtResource( 13 )
 
-[node name="DebugMonitor" parent="." index="12" instance=ExtResource( 12 )]
+[node name="DebugMonitor" parent="." index="13" instance=ExtResource( 12 )]
 visible = false
 position = Vector2( -8, -40 )
 monitor_target_node = NodePath("../StateMachine")
 monitor_target_property = "state"
 monitor_flavor_text = "state"
 
-[node name="DebugMonitor2" parent="." index="13" instance=ExtResource( 12 )]
+[node name="DebugMonitor2" parent="." index="14" instance=ExtResource( 12 )]
 visible = false
 position = Vector2( -8, -24 )
 monitor_target_node = NodePath("../StateMachine/DisparoIdle")
 monitor_target_property = "veces"
 monitor_flavor_text = "veces"
 
-[node name="DebugMonitor3" parent="." index="14" instance=ExtResource( 12 )]
+[node name="DebugMonitor3" parent="." index="15" instance=ExtResource( 12 )]
 visible = false
 position = Vector2( -8, -8 )
 monitor_target_node = NodePath("..")
 monitor_target_property = "input"
 monitor_flavor_text = "input"
 
-[node name="BarraHPBoss" type="Node2D" parent="." index="15"]
+[node name="BarraHPBoss" type="Node2D" parent="." index="16"]
 script = ExtResource( 21 )
 objetivo_dir = NodePath("..")
 
-[node name="Label" type="Label" parent="." index="16"]
+[node name="Label" type="Label" parent="." index="17"]
 margin_left = -80.0
 margin_top = -88.0
 margin_right = 78.0

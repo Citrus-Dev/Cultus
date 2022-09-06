@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/palanca.wav-29e149641931147b2bf299f9ba414a50.sample"
+
+[deps]
+
+source_file="res://assets/sfx/palanca.wav"
+dest_files=[ "res://.import/palanca.wav-29e149641931147b2bf299f9ba414a50.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
