@@ -10,6 +10,7 @@ const DISTANCIA := 230.0
 const VEL_GANCHO := 350.0
 const DIST_MINIMA := 25.0
 const TIEMPO_COOLDOWN := 1.2
+const TIEMPO_COOLDOWN_GANCHO := 0.4
 
 signal cooldown_update(valor)
 
@@ -21,6 +22,7 @@ var timer_cooldown : Timer
 var pos_objetivo : Vector2
 var dir_gancho : Vector2
 var attached : bool
+var ultimo_objeto_agarrado: Node
 var usando : bool
 
 func _ready():
@@ -60,7 +62,7 @@ func _process(delta):
 		else:
 			pos_objetivo = limitar_distancia(pos_objetivo)
 		
-		timer_cooldown.start(TIEMPO_COOLDOWN)
+		timer_cooldown.start(TIEMPO_COOLDOWN_GANCHO if ultimo_objeto_agarrado is Hookpoint else TIEMPO_COOLDOWN)
 		timer_gancho.start(TIEMPO_GANCHO if agarre == null else TIEMPO_GANCHO_AGARRADO)
 	
 	if attached:
@@ -105,6 +107,7 @@ func encontrar_punto_de_agarre():
 	)
 	
 	if !rc.empty():
+		ultimo_objeto_agarrado = rc["collider"].get_parent()
 		if rc["collider"].get_parent() is Hookpoint:
 			var hp: Hookpoint = rc["collider"].get_parent()
 			if !hp.activo:
