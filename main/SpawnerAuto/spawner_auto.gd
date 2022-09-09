@@ -14,6 +14,10 @@ export(bool) var efecto = true
 
 var cont_spawns : int 
 
+func _init():
+	add_to_group("spawners")
+
+
 func _ready():
 	if spawn_on_ready: call_deferred("spawn")
 

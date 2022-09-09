@@ -13,6 +13,7 @@ export(NodePath) onready var stretcher = get_node(stretcher) as Stretcher
 export(NodePath) onready var pos_bufanda = get_node(pos_bufanda) as Position2D
 export(NodePath) onready var shaker = get_node(shaker) as Shaker
 export(NodePath) onready var los = get_node(los) as LOSCheck
+export(NodePath) onready var detector_inse = get_node(detector_inse) as Area2D
 
 var controlador_armas 
 var anim_level_trans : bool setget set_anim_level_trans
@@ -24,6 +25,7 @@ var movimiento_desactivado : bool
 var timer_jump_buffer : Timer
 var timer_coyote : Timer
 var coyote_timed_out : bool
+var lugar_inseguro: bool # TODO terminar este sistema
 
 # Va a mostrar un mensaje si no se encuentra nivel de checkpoint para respawnear
 var debug_muerte_bugeada : bool
@@ -364,10 +366,17 @@ func crear_hud():
 
 
 func detectar_punto_seguro():
+	lugar_inseguro = true if detector_inse.get_overlapping_areas().size() > 0 else false
+	for i in objetos_pisando:
+		if !i is TileMap and !i is StaticBody2D:
+			lugar_inseguro = true 
+	
 	if bool(
-		is_on_floor()
+		is_on_floor() and
+		!lugar_inseguro
 	):
 		TransicionesDePantalla.ultimo_punto_seguro = global_position
+
 
 
 func volver_a_punto_seguro():

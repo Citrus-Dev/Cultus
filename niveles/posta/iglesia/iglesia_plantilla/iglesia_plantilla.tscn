@@ -208,6 +208,7 @@ primer_limite_camara = NodePath("camara limites/CameraBounds")
 modulate = Color( 0.215686, 0.215686, 0.215686, 1 )
 tile_set = SubResource( 9 )
 cell_size = Vector2( 16, 16 )
+collision_layer = 0
 collision_mask = 0
 format = 1
 
