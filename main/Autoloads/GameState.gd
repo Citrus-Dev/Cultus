@@ -13,6 +13,7 @@ enum Estados {
 
 var estado_actual : int
 var combate_terminado : bool
+var vio_tutorial_variantes: bool
 
 func _init() -> void:
 	pause_mode = Node.PAUSE_MODE_PROCESS

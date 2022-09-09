@@ -54,7 +54,20 @@ func instanciar_gibs():
 	get_parent().add_child(gib)
 
 
+# Llamado cuando recibis daño
+func evento_dmg(_dmg : InfoDmg):
+	efecto_brillo_dmg(.6)
+	Musica.hacer_sonido(SND_HIT, global_position)
+	
+	if _dmg.atacante is Personaje:
+		objetivo = _dmg.atacante
+		objetivo.connect("muerto", self, "perder_vista_jugador")
+		fsm.transition_to("Perseguir")
+	
+	alertar()
+
+
 func alertar():
 	if !ciego and !muerto:
-		objetivo.connect("muerto", self, "perder_vista_jugador")
 		add_to_group("EnemigosAlertados")
+		

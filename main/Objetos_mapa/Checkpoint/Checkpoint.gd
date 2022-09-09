@@ -27,9 +27,12 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	procesar_vis_prompt(delta)
 	
-	if jugador:
+	if jugador and !usando:
 		if Input.is_action_just_pressed("usar"):
-			alternar_uso_checkpoint(!usando)
+#			alternar_uso_checkpoint(!usando)
+			alternar_uso_checkpoint(true)
+			yield(get_tree().create_timer(0.3), "timeout")
+			alternar_uso_checkpoint(false)
 	
 	var strength = sprite.material.get_shader_param("hit_strength")
 	if strength > 0.0:
