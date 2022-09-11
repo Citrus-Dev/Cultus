@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/The-fire-is-gone.mp3-c773665bb7c13d9d4d6baef5705b344f.mp3str"
+
+[deps]
+
+source_file="res://assets/musica/The-fire-is-gone.mp3"
+dest_files=[ "res://.import/The-fire-is-gone.mp3-c773665bb7c13d9d4d6baef5705b344f.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

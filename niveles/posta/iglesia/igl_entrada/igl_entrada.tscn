@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://niveles/Nivel.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/tilesets/Iglesia_tileset_1.png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://main/Objetos_mapa/SpawnJugador.gd" type="Script" id=5]
 [ext_resource path="res://main/Objetos_mapa/Checkpoint/Checkpoint.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/enemies/summoner.png" type="Texture" id=7]
+[ext_resource path="res://main/Musica/MusIglesia.tres" type="Resource" id=8]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
@@ -207,6 +208,7 @@ extents = Vector2( 296, 160 )
 
 [node name="Nivel" instance=ExtResource( 1 )]
 primer_limite_camara = NodePath("camara limites/CameraBounds")
+musica = ExtResource( 8 )
 
 [node name="fondo" type="TileMap" parent="Fondo" index="0"]
 modulate = Color( 0.215686, 0.215686, 0.215686, 1 )

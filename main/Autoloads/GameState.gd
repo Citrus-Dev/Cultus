@@ -28,10 +28,15 @@ func _process(delta):
 		evento()
 
 
+func cambiar_estado(est : int):
+	estado_actual = est
+	entrar_estado(est)
+
+
 func entrar_estado(est : int):
 	match est:
 		Estados.MENU:
-			pass
+			Musica.set_track(0)
 		Estados.NORMAL:
 			Musica.set_track(Musica.Tracks.MUS_NORMAL)
 		Estados.COMBATE:
@@ -55,11 +60,6 @@ func procesar_estado(est : int, delta : float):
 				cambiar_estado(Estados.NORMAL)
 		Estados.MUERTE:
 			procesar_pausa(delta)
-
-
-func cambiar_estado(est : int):
-	estado_actual = est
-	entrar_estado(est)
 
 
 func buscar_enemigos_alertados() -> int:

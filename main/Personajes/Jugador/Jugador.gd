@@ -198,6 +198,8 @@ func muerte_cambio_nivel():
 	
 	yield(timer_muerte, "timeout")
 	
+	Guardado.cargar_partida()
+	return
 	TransicionesDePantalla.muerte = true
 	var err = get_tree().change_scene(TransicionesDePantalla.checkpoint_actual_escena)
 	if err != OK: # Algo salio mal al cambiar el nivel
@@ -369,6 +371,8 @@ func crear_hud():
 func detectar_punto_seguro():
 	lugar_inseguro = true if detector_inse.get_overlapping_areas().size() > 0 else false
 	for i in objetos_pisando:
+		if !is_instance_valid(i):
+			continue
 		if !i is TileMap and !i is StaticBody2D:
 			lugar_inseguro = true 
 	

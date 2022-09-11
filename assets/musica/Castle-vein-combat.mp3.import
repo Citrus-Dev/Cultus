@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Castle-vein-combat.mp3-8c27a0d96b7da7f7ac04e77b8171397d.mp3str"
+
+[deps]
+
+source_file="res://assets/musica/Castle-vein-combat.mp3"
+dest_files=[ "res://.import/Castle-vein-combat.mp3-8c27a0d96b7da7f7ac04e77b8171397d.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

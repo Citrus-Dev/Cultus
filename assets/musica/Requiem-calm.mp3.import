@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Requiem-calm.mp3-f12dbbd9c25039f66ecf3a4a193b69de.mp3str"
+
+[deps]
+
+source_file="res://assets/musica/Requiem-calm.mp3"
+dest_files=[ "res://.import/Requiem-calm.mp3-f12dbbd9c25039f66ecf3a4a193b69de.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
