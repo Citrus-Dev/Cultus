@@ -789,6 +789,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://main/libs/BehaviorTree/hojas/Acciones/Succeder.gd"
 }, {
+"base": "Node2D",
+"class": "SummonRandom",
+"language": "GDScript",
+"path": "res://main/Personajes/Summoner/SummonRandom.gd"
+}, {
+"base": "Personaje",
+"class": "Summoner",
+"language": "GDScript",
+"path": "res://main/Personajes/Summoner/Summoner.gd"
+}, {
 "base": "Accion",
 "class": "TomarDireccionAObjeto",
 "language": "GDScript",
@@ -991,6 +1001,8 @@ _global_script_class_icons={
 "SteeringContexto": "",
 "Stretcher": "",
 "Succeder": "",
+"SummonRandom": "",
+"Summoner": "",
 "TomarDireccionAObjeto": "",
 "TomarElementoMasCercano": "",
 "TomarNodosDeGrupo": "",

@@ -198,8 +198,10 @@ func muerte_cambio_nivel():
 	
 	yield(timer_muerte, "timeout")
 	
-	Guardado.cargar_partida()
+	if Guardado.existe_partida():
+		Guardado.cargar_partida()
 	return
+	
 	TransicionesDePantalla.muerte = true
 	var err = get_tree().change_scene(TransicionesDePantalla.checkpoint_actual_escena)
 	if err != OK: # Algo salio mal al cambiar el nivel

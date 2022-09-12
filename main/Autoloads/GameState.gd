@@ -83,7 +83,7 @@ func procesar_pausa(delta : float):
 
 
 # Funcion horrible nunca voy a volver a hacer esto
-func hack_tomar_inv_balas() -> InvBalas:
+func hack_tomar_inv_balas() -> Object:
 	var jug = get_tree().get_nodes_in_group("Jugador")[0]
 	return jug.controlador_armas.inv_balas
 

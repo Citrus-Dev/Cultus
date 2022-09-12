@@ -79,7 +79,7 @@ func existe_directorio():
 			printerr("Error " + str(err) + " al crear directorio de guardado.")
 
 
-func existe_partida(_slot : String):
+func existe_partida(_slot : String = slot_actual):
 	var file := File.new()
 	var archivo_camino = CAMINO_GUARDADO + ARCHIVO_GUARDADO + _slot + SUFIJO_GUARDADO
 	var err = file.open(archivo_camino, File.READ)
