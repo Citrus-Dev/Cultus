@@ -137,18 +137,21 @@ max_velocidad_vertical = 300.0
 hurtbox = NodePath("Hurtbox")
 
 [node name="DebugMonitor3" parent="." index="0" instance=ExtResource( 5 )]
+visible = false
 position = Vector2( 14, -64 )
 monitor_target_node = NodePath("..")
 monitor_target_property = "estado_actual"
 monitor_flavor_text = "estado_actual"
 
 [node name="DebugMonitor" parent="." index="1" instance=ExtResource( 5 )]
+visible = false
 position = Vector2( 15, -51 )
 monitor_target_node = NodePath("..")
 monitor_target_property = "peso_actual"
 monitor_flavor_text = "peso_actual"
 
 [node name="DebugMonitor2" parent="." index="2" instance=ExtResource( 5 )]
+visible = false
 position = Vector2( 15, -39 )
 monitor_target_node = NodePath("..")
 monitor_target_property = "objetivo"
