@@ -1,17 +1,22 @@
 extends Nivel
 
+# TODO bloquear movimiento cuando se esta por romper el puente
+
 const NOMBRE_DATO := "boss_muerto"
+const NOMBRE_DATO_PUENTE_ROTO := "puente_roto"
 const TIEMPO_POLILLAS := 6.0
 const MAX_POLILLAS := 3
 
 export(NodePath) onready var limites_camara_boss = get_node(limites_camara_boss) as CameraBounds
 export(NodePath) onready var puerta = get_node(puerta) as Puerta
 export(NodePath) onready var trigger_empezar_boss = get_node(trigger_empezar_boss) as TriggerOnce
+export(NodePath) onready var trigger_romper_puente = get_node(trigger_romper_puente) as TriggerOnce
 export(NodePath) onready var barra_hp = get_node(barra_hp) as BarraHPBoss
 export(NodePath) onready var spawner_boss = get_node(spawner_boss) as SpawnerAuto
 export(NodePath) onready var spawner_pol_1 = get_node(spawner_pol_1) as SpawnerAuto
 export(NodePath) onready var spawner_pol_2 = get_node(spawner_pol_2) as SpawnerAuto
 export(NodePath) onready var puente = get_node(puente) as Node2D
+export(NodePath) onready var pared = get_node(pared) as Node2D
 export(NodePath) onready var plataforma_spawn_boss = get_node(plataforma_spawn_boss) as Node2D
 
 var boss : Personaje
@@ -22,12 +27,23 @@ var polillas_totales : int
 var polilla_timer : float
 
 func _ready() -> void:
+	# No hicimos nada aca
 	if !info_persist_nivel.has(NOMBRE_DATO):
 		trigger_empezar_boss.connect("triggered", self, "empezar_boss")
-		return
+		trigger_romper_puente.call_deferred("free")
 	
-	# Ya mataste al boss
-	puente.call_deferred("free")
+	# Matamos al boss pero no rompimos el puente
+	if info_persist_nivel.has(NOMBRE_DATO):
+		pared.call_deferred("free")
+		trigger_romper_puente.connect("triggered", self, "cutscene_romper_puente")
+		trigger_empezar_boss.call_deferred("free")
+	
+	# Ya rompimos el puente
+	if info_persist_nivel.has(NOMBRE_DATO_PUENTE_ROTO):
+		pared.call_deferred("free")
+		puente.call_deferred("free")
+		trigger_empezar_boss.call_deferred("free")
+		trigger_romper_puente.call_deferred("free")
 
 
 func _process(delta):
@@ -65,6 +81,25 @@ func terminar_boss():
 	
 	yield(get_tree().create_timer(2.0), "timeout")
 	tembleque = false
+	romper_pared()
+
+
+func romper_pared():
+	pared.call_deferred("free")
+
+
+func cutscene_romper_puente():
+	info_persist_nivel[NOMBRE_DATO_PUENTE_ROTO] = true
+	tembleque = true
+	
+	yield(get_tree().create_timer(2.0), "timeout")
+	
+	tembleque = false
+	romper_puente()
+	pass
+
+
+func romper_puente():
 	puente.destruir()
 
 
