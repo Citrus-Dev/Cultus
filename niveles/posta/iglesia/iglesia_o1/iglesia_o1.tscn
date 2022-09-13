@@ -269,6 +269,7 @@ position = Vector2( 120, 752 )
 position = Vector2( 156, 576 )
 
 [node name="CameraBounds" type="CollisionShape2D" parent="camara limites" index="0"]
+visible = false
 position = Vector2( 320, 388 )
 shape = SubResource( 18 )
 script = ExtResource( 4 )
@@ -318,37 +319,31 @@ texture = ExtResource( 9 )
 position = Vector2( 192, 560 )
 script = ExtResource( 10 )
 spawn = ExtResource( 11 )
-one_shot = true
 
 [node name="SpawnerAuto3" type="Position2D" parent="." index="14"]
 position = Vector2( 576, 496 )
 script = ExtResource( 10 )
 spawn = ExtResource( 14 )
-one_shot = true
 
 [node name="SpawnerAuto4" type="Position2D" parent="." index="15"]
 position = Vector2( 552, 496 )
 script = ExtResource( 10 )
 spawn = ExtResource( 14 )
-one_shot = true
 
 [node name="SpawnerAuto6" type="Position2D" parent="." index="16"]
 position = Vector2( 480, 752 )
 script = ExtResource( 10 )
 spawn = ExtResource( 14 )
-one_shot = true
 
 [node name="SpawnerAuto7" type="Position2D" parent="." index="17"]
 position = Vector2( 480, 752 )
 script = ExtResource( 10 )
 spawn = ExtResource( 15 )
-one_shot = true
 
 [node name="SpawnerAuto8" type="Position2D" parent="." index="18"]
 position = Vector2( 448, 752 )
 script = ExtResource( 10 )
 spawn = ExtResource( 15 )
-one_shot = true
 
 [node name="TriggerOnce" parent="." index="19" instance=ExtResource( 12 )]
 

@@ -23,6 +23,7 @@ func guardar_partida(_slot := ""):
 	datos["armas"] = TransicionesDePantalla.inv_armas
 	datos["variantes"] = TransicionesDePantalla.inv_variantes
 	datos["info_persist_global"] = info_persist_global
+	datos["vio_tutorial_variantes"] = GameState.vio_tutorial_variantes
 	
 	var data_string = var2str(datos)
 	
@@ -61,6 +62,7 @@ func cargar_partida(_slot := ""):
 	TransicionesDePantalla.inv_armas = datos["armas"]
 	TransicionesDePantalla.inv_variantes = datos["variantes"]
 	info_persist_global = datos["info_persist_global"]
+	GameState.vio_tutorial_variantes = datos["vio_tutorial_variantes"]
 	
 	TransicionesDePantalla.muerte = true
 	get_tree().change_scene(TransicionesDePantalla.checkpoint_actual_escena)

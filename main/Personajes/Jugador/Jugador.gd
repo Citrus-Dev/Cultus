@@ -26,6 +26,7 @@ var timer_jump_buffer : Timer
 var timer_coyote : Timer
 var coyote_timed_out : bool
 var lugar_inseguro: bool # TODO terminar este sistema
+var contador_input_checkpoint_etc: float
 
 # Va a mostrar un mensaje si no se encuentra nivel de checkpoint para respawnear
 var debug_muerte_bugeada : bool

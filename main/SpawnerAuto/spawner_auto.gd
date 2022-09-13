@@ -9,7 +9,6 @@ signal spawn_muerto
 export(PackedScene) var spawn setget set_spawn_object
 export(String) var spawn_group
 export(bool) var spawn_on_ready
-export(bool) var one_shot
 export(bool) var efecto = true
 
 var cont_spawns : int 
@@ -43,7 +42,6 @@ func spawn():
 	new_inst.name += name + str(cont_spawns)
 	cont_spawns += 1
 	
-	if one_shot: call_deferred("free")
 	return new_inst
 
 

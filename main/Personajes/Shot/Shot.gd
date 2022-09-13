@@ -31,7 +31,7 @@ func detectar_borde(_borde):
 
 func alertar():
 	if !ciego and !muerto:
-		fsm.transition_to("Perseguir")
+		fsm.transition_to("Ataque")
 		objetivo.connect("muerto", self, "perder_vista_jugador")
 		add_to_group("EnemigosAlertados")
 
