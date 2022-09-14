@@ -24,6 +24,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://main/libs/BehaviorTree/hojas/Acciones/AgregarDisparoRafaga.gd"
 }, {
+"base": "Node",
+"class": "AgregarMetadata",
+"language": "GDScript",
+"path": "res://main/AgregarMetadata.gd"
+}, {
 "base": "Line2D",
 "class": "AntialiasedLine2D",
 "language": "GDScript",
@@ -848,6 +853,7 @@ _global_script_class_icons={
 "AR": "",
 "Accion": "res://main/libs/BehaviorTree/icons/action.svg",
 "AgregarDisparoRafaga": "",
+"AgregarMetadata": "",
 "AntialiasedLine2D": "res://addons/antialiased_line2d/antialiased_line2d.svg",
 "AntialiasedPolygon2D": "res://addons/antialiased_line2d/antialiased_polygon2d.svg",
 "AntialiasedRegularPolygon2D": "res://addons/antialiased_line2d/antialiased_regular_polygon2d.svg",
@@ -1201,6 +1207,7 @@ dodge={
 2d_physics/layer_15="Bosses"
 2d_physics/layer_16="Gancho"
 2d_physics/layer_17="LugarInseguro"
+2d_physics/layer_18="BloquearGancho"
 
 [physics]
 
