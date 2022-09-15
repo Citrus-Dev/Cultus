@@ -304,7 +304,6 @@ los_check = NodePath("../../LOSCheckDisparo")
 [node name="Disparar" type="Node" parent="StateMachine"]
 script = ExtResource( 1 )
 controlador_armas = NodePath("../../ControladorArmasNPC")
-rafaga = 1
 
 [node name="Muerte" type="Node" parent="StateMachine"]
 script = ExtResource( 4 )

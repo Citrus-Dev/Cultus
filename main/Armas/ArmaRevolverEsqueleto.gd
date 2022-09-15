@@ -14,6 +14,8 @@ func _init() -> void:
 	recoil_visual_duracion = 0.2
 	spread = 2
 	screenshake = 2.5
+	
+	ia_largo_rafaga = 1
 
 
 func disparar(_origin : Node, _dir : float):

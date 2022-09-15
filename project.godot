@@ -59,6 +59,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://main/Armas/ArmaRevolverEsqueleto.gd"
 }, {
+"base": "Arma",
+"class": "ArmaSubditoSniper",
+"language": "GDScript",
+"path": "res://main/Armas/ArmaSubditoSniper.gd"
+}, {
 "base": "Reference",
 "class": "Armas",
 "language": "GDScript",
@@ -458,6 +463,11 @@ _global_script_classes=[ {
 "class": "LabelPickup",
 "language": "GDScript",
 "path": "res://main/UI/LabelPickup.gd"
+}, {
+"base": "Node2D",
+"class": "Laser",
+"language": "GDScript",
+"path": "res://main/Personajes/Subdito/Laser.gd"
 }, {
 "base": "Accion",
 "class": "LlamarFuncionNodo",
@@ -860,6 +870,7 @@ _global_script_class_icons={
 "Arma": "",
 "ArmaCultista": "",
 "ArmaRevolverEsqueleto": "",
+"ArmaSubditoSniper": "",
 "Armas": "",
 "BTBase": "",
 "BalaFlak": "",
@@ -940,6 +951,7 @@ _global_script_class_icons={
 "LOSCheck": "",
 "LabelFuenteAdaptable": "",
 "LabelPickup": "",
+"Laser": "",
 "LlamarFuncionNodo": "",
 "MainMenu": "",
 "MedidorCooldown": "",

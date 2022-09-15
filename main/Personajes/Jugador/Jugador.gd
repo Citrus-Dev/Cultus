@@ -172,9 +172,13 @@ func evento_dmg(_dmg : InfoDmg):
 	if !muerto and _dmg.dmg_tipo == InfoDmg.DMG_TIPOS.PINCHES:
 		yield(get_tree().create_timer(0.5), "timeout")
 		volver_a_punto_seguro()
+	
+	ultimo_dmg = _dmg
 
 
 func morir(_info : InfoDmg):
+	ultimo_dmg = _info
+	
 	emit_signal("muerto")
 	GameState.emit_signal("jugador_muerto")
 	muerto = true

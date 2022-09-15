@@ -188,6 +188,7 @@ max_velocidad_vertical = 300.0
 fsm = NodePath("StateMachine")
 hurtbox = NodePath("Hurtbox")
 trigger_block = NodePath("TriggerBlock")
+sprite_circ = NodePath("SpriteCirc")
 
 [node name="st" parent="." index="0" instance=ExtResource( 11 )]
 visible = false

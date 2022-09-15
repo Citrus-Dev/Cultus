@@ -7,6 +7,7 @@ const PROYECTILES = preload("res://main/Proyectiles/ProyectilHomingMejor.tscn")
 export(NodePath) onready var fsm = get_node(fsm) as StateMachine
 export(NodePath) onready var hurtbox = get_node(hurtbox) as Hurtbox
 export(NodePath) onready var trigger_block = get_node(trigger_block) as Area2D
+export(NodePath) onready var sprite_circ = get_node(sprite_circ) as Sprite
 
 func esta_bloqueado() -> bool:
 	return trigger_block.get_overlapping_bodies().size() > 0

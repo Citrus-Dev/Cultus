@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://main/Personajes/Cultista/Cultista.gd" type="Script" id=1]
 [ext_resource path="res://main/Personajes/Cultista/Disparar.gd" type="Script" id=2]
@@ -7,7 +7,7 @@
 [ext_resource path="res://main/Personajes/Cultista/ScripIdle.gd" type="Script" id=5]
 [ext_resource path="res://main/Personajes/Cultista/Patrullar.gd" type="Script" id=6]
 [ext_resource path="res://main/Personajes/Cultista/ScriptSetFrame.gd" type="Script" id=7]
-[ext_resource path="res://main/Personajes/Esqueleto/estados/Muerte.gd" type="Script" id=8]
+[ext_resource path="res://main/Personajes/Cultista/Muerte.gd" type="Script" id=8]
 [ext_resource path="res://main/Personajes/Cultista/Perseguir.gd" type="Script" id=9]
 [ext_resource path="res://main/SistemaDaño/Hurtbox.tscn" type="PackedScene" id=10]
 [ext_resource path="res://main/libs/DebugMonitor/DebugMonitor.tscn" type="PackedScene" id=11]
@@ -16,6 +16,7 @@
 [ext_resource path="res://main/Componentes/LOSCheck.gd" type="Script" id=14]
 [ext_resource path="res://main/libs/HSM/StateMachine.gd" type="Script" id=15]
 [ext_resource path="res://main/Componentes/Stretcher.gd" type="Script" id=16]
+[ext_resource path="res://main/Personajes/Caballero/estados/Stun.gd" type="Script" id=17]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 6, 8.5 )
@@ -301,14 +302,17 @@ los_check = NodePath("../../LOSCheckDisparo")
 [node name="Disparar" type="Node" parent="StateMachine"]
 script = ExtResource( 2 )
 controlador_armas = NodePath("../../ControladorArmasNPC")
-rafaga = 4
 
 [node name="Muerte" type="Node" parent="StateMachine"]
 script = ExtResource( 8 )
 
+[node name="Stun" type="Node" parent="StateMachine"]
+script = ExtResource( 17 )
+estado_salida = "Perseguir"
+
 [node name="ScriptSetFrame" type="Node" parent="StateMachine"]
 script = ExtResource( 7 )
-sprite = NodePath("../../Skin/Sprite")
+sprite = NodePath("../../Skin/Stretcher/Sprite")
 
 [node name="ScriptIdle" type="Node" parent="StateMachine"]
 script = ExtResource( 5 )

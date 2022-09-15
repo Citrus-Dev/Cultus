@@ -1,6 +1,9 @@
 class_name Arma
 extends Reference
 
+signal empezado_a_apuntar
+signal dejado_de_apuntar
+
 var skin_escena = preload("res://main/Armas/Skins/SkinArma.tscn")
 var medidor_balas_escena
 var ui_escena
@@ -37,6 +40,7 @@ var skin_inst : SkinArma
 var hud_medidor_inst : HudMedidorBalas
 var inv_balas : InvBalas
 var cont 
+var ia_largo_rafaga : float
 
 var variantes := [
 	"NORMAL"
@@ -205,6 +209,14 @@ func tomar_variantes_desbloqueadas() -> Array:
 	if TransicionesDePantalla.inv_variantes.has(nombre):
 		return TransicionesDePantalla.inv_variantes[nombre]
 	else: return []
+
+
+func ai_empezar_a_apuntar():
+	emit_signal("empezado_a_apuntar")
+
+func ai_terminar_de_apuntar():
+	emit_signal("dejado_de_apuntar")
+
 
 
 
