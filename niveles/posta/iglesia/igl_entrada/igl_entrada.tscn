@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://niveles/Nivel.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/tilesets/Iglesia_tileset_1.png" type="Texture" id=2]
@@ -6,9 +6,7 @@
 [ext_resource path="res://main/CameraLimitSystem/CameraBounds.gd" type="Script" id=4]
 [ext_resource path="res://main/Objetos_mapa/SpawnJugador.gd" type="Script" id=5]
 [ext_resource path="res://main/Objetos_mapa/Checkpoint/Checkpoint.tscn" type="PackedScene" id=6]
-[ext_resource path="res://main/Personajes/Subdito/SubditoSniper.tscn" type="PackedScene" id=7]
 [ext_resource path="res://main/Musica/MusIglesia.tres" type="Resource" id=8]
-[ext_resource path="res://main/Personajes/Subdito/Subdito.tscn" type="PackedScene" id=9]
 [ext_resource path="res://main/AI/Borde.tscn" type="PackedScene" id=10]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
@@ -247,9 +245,3 @@ script = ExtResource( 5 )
 
 [node name="Checkpoint" parent="." index="8" instance=ExtResource( 6 )]
 position = Vector2( 280, 272 )
-
-[node name="Subdito" parent="." index="9" instance=ExtResource( 9 )]
-position = Vector2( 326, 248 )
-
-[node name="SubditoSniper" parent="." index="10" instance=ExtResource( 7 )]
-position = Vector2( 252, 161 )
