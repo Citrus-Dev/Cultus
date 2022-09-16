@@ -23,9 +23,9 @@ gradient = SubResource( 1 )
 [node name="RayCast2D" type="RayCast2D" parent="ControladorArmasNPC/Laser" index="1"]
 cast_to = Vector2( 500, 0 )
 
+[node name="LOSCheckDisparo" parent="." index="6"]
+radio = 420.0
+
 [node name="Disparar" parent="StateMachine" index="2"]
 tiempo_de_disparo = 1.2
 tiempo_de_espera = 1.0
-
-[connection signal="dejado_de_apuntar" from="ControladorArmasNPC" to="ControladorArmasNPC/Laser" method="set" binds= [ "visible", false ]]
-[connection signal="empezado_a_apuntar" from="ControladorArmasNPC" to="ControladorArmasNPC/Laser" method="set" binds= [ "visible", true ]]

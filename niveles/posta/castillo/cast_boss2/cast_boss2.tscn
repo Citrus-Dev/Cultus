@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://assets/tilesets/tileset_castillo.tres" type="TileSet" id=1]
 [ext_resource path="res://niveles/Nivel.tscn" type="PackedScene" id=2]
@@ -31,6 +31,9 @@ extents = Vector2( 10.25, 104 )
 
 [sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 267.5, 7.5 )
+
+[sub_resource type="RectangleShape2D" id=8]
+extents = Vector2( 10, 56 )
 
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 8, 24 )
@@ -125,6 +128,17 @@ direccion_movimiento = 3
 [node name="CollisionShape2D" parent="triggers/TransicionDeNivelConArea2" index="0"]
 position = Vector2( -2, 2 )
 shape = SubResource( 7 )
+
+[node name="TransicionDeNivelConArea3" parent="triggers" index="4" instance=ExtResource( 10 )]
+position = Vector2( 720, 256 )
+z_index = 5
+ID = "salida"
+ID_objetivo = "puertas_castillo"
+direccion_nivel = "res://niveles/posta/castillo/afuera_puerta_iglesia/afuera_puerta_iglesia.tscn"
+direccion_movimiento = 1
+
+[node name="CollisionShape2D" parent="triggers/TransicionDeNivelConArea3" index="0"]
+shape = SubResource( 8 )
 
 [node name="Puente" parent="." index="7" instance=ExtResource( 3 )]
 
@@ -235,6 +249,9 @@ mult_fuerza_salto = 0.81
 [node name="Pared" type="StaticBody2D" parent="." index="17"]
 position = Vector2( 720, 224 )
 collision_mask = 0
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="BlockinPolygon" type="Polygon2D" parent="Pared" index="0"]
 color = Color( 0.239216, 0.172549, 0.117647, 1 )
@@ -243,3 +260,4 @@ script = ExtResource( 19 )
 enable_collisions = true
 
 [editable path="triggers/TransicionDeNivelConArea2"]
+[editable path="triggers/TransicionDeNivelConArea3"]

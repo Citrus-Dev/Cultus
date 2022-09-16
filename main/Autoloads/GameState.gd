@@ -72,7 +72,9 @@ func buscar_enemigos() -> int:
 
 func determinar_estado_inicial(nivel):
 	combate_terminado = false
-	if nivel is MainMenu:
+	# if nivel is MainMenu
+	# El editor se caga encima si ponemos esto asi que ponemos
+	if nivel.get("GAME_INFO") != null:
 		cambiar_estado(Estados.MENU)
 		return
 	cambiar_estado(Estados.NORMAL)

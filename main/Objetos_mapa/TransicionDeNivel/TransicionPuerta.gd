@@ -1,0 +1,2 @@
+class_name TransicionPuerta
+extends Area2D

@@ -26,7 +26,7 @@ func set_medidor_balas(_med : Control):
 
 
 func mensaje_ui(mensaje : String, tiempo := 1.4, no_brillo := false):
-	emit_signal(mensaje, tiempo, no_brillo)
+	emit_signal("mensaje_ui", mensaje, tiempo, no_brillo)
 
 
 func instanciar_overlay_muerte():

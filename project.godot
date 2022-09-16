@@ -559,6 +559,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://main/Pickups/PickupHP.gd"
 }, {
+"base": "KinematicBody2D",
+"class": "PickupLlaveIglesia",
+"language": "GDScript",
+"path": "res://main/Pickups/PickupLlaveIglesia.gd"
+}, {
 "base": "Node2D",
 "class": "PickupSkill",
 "language": "GDScript",
@@ -840,6 +845,11 @@ _global_script_classes=[ {
 "path": "res://main/UI/Transicion/TransicionMascara.gd"
 }, {
 "base": "Area2D",
+"class": "TransicionPuerta",
+"language": "GDScript",
+"path": "res://main/Objetos_mapa/TransicionDeNivel/TransicionPuerta.gd"
+}, {
+"base": "Area2D",
 "class": "TriggerChangeCamBounds",
 "language": "GDScript",
 "path": "res://main/CameraLimitSystem/TriggerChangeCamBounds.gd"
@@ -970,6 +980,7 @@ _global_script_class_icons={
 "Personaje": "",
 "PickupArma": "",
 "PickupHP": "",
+"PickupLlaveIglesia": "",
 "PickupSkill": "",
 "PickupVarianteArma": "",
 "PiedraBoss": "",
@@ -1026,6 +1037,7 @@ _global_script_class_icons={
 "TomarNodosDeGrupo": "",
 "TransicionDeNivel": "",
 "TransicionMascara": "",
+"TransicionPuerta": "",
 "TriggerChangeCamBounds": "",
 "TriggerHurt": "",
 "TriggerNPCMover": "",
