@@ -185,7 +185,7 @@ position = Vector2( 1040, -128 )
 direccion_nivel = "res://niveles/posta/castillo/cast_secreto/cast_secreto.tscn"
 
 [node name="SpawnJugador" type="Node2D" parent="." index="7"]
-position = Vector2( 960, 0 )
+position = Vector2( 1432, -32 )
 script = ExtResource( 17 )
 
 [node name="PickupSlide" parent="." index="8" instance=ExtResource( 8 )]

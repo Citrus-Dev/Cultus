@@ -1,0 +1,241 @@
+[gd_scene load_steps=20 format=2]
+
+[ext_resource path="res://main/Personajes/PersonajeBase.tscn" type="PackedScene" id=1]
+[ext_resource path="res://main/Personajes/Bosses/john_ultrakill/JohnUltrakill.gd" type="Script" id=2]
+[ext_resource path="res://assets/enemies/john_ultrakill.png" type="Texture" id=3]
+[ext_resource path="res://main/SistemaDaño/Hurtbox.tscn" type="PackedScene" id=4]
+[ext_resource path="res://main/UI/BarraHPBoss/BarraHPBoss.gd" type="Script" id=5]
+[ext_resource path="res://main/Personajes/Bosses/john_ultrakill/Monedita.tscn" type="PackedScene" id=6]
+[ext_resource path="res://main/Componentes/ControladorArmasNPC.gd" type="Script" id=7]
+
+[sub_resource type="RectangleShape2D" id=12]
+extents = Vector2( 7, 10 )
+
+[sub_resource type="Animation" id=1]
+length = 0.001
+
+[sub_resource type="Animation" id=8]
+resource_name = "caer"
+length = 0.2
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 30, 31 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "correr"
+length = 0.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 10, 11, 12, 13, 14 ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "hurt"
+length = 0.2
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 20, 21 ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "idle"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame_coords")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 1, 0 ), Vector2( 2, 0 ), Vector2( 3, 0 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "mirar_arriba"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 15 ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "saltar"
+length = 0.2
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 25, 26 ]
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "slide"
+length = 0.3
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 40, 41, 42 ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "slide_start"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 35 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "turn"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 7, 6, 5 ]
+}
+
+[sub_resource type="RectangleShape2D" id=11]
+extents = Vector2( 7, 13 )
+
+[node name="JohnUltrakill" instance=ExtResource( 1 )]
+collision_layer = 4
+collision_mask = 513
+script = ExtResource( 2 )
+skin = NodePath("Skin")
+skin_sprite_path = NodePath("Skin/Sprite")
+aceleracion = 20.0
+friccion = 0.8
+max_velocidad_horizontal = 140.0
+max_velocidad_vertical = 300.0
+barra_hp = NodePath("BarraHPBoss")
+controlador_armas = NodePath("ControladorArmasNPC")
+
+[node name="BarraHPBoss" type="Node2D" parent="." index="0"]
+script = ExtResource( 5 )
+objetivo_dir = NodePath("..")
+
+[node name="Monedita" parent="BarraHPBoss" index="0" instance=ExtResource( 6 )]
+position = Vector2( 19, -17 )
+
+[node name="Status" parent="." index="1"]
+hp_max = 2300
+stun_threshold = 100
+
+[node name="ControladorArmasNPC" type="Node2D" parent="." index="2"]
+position = Vector2( 0, -15 )
+z_index = 5
+script = ExtResource( 7 )
+nombre_arma = "ArmaRevolver"
+
+[node name="Hurtbox" parent="." index="3" instance=ExtResource( 4 )]
+collision_mask = 16
+agente_dir = NodePath("..")
+is_constant = true
+dmg = 15
+dmg_tipo = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" index="0"]
+position = Vector2( 0, -10 )
+shape = SubResource( 12 )
+
+[node name="Hitbox" parent="." index="4"]
+visible = false
+
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+position = Vector2( 0, -12 )
+
+[node name="Skin" type="Node2D" parent="." index="5"]
+
+[node name="Sprite" type="Sprite" parent="Skin" index="0"]
+position = Vector2( 0, -13 )
+texture = ExtResource( 3 )
+hframes = 5
+vframes = 9
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Skin" index="1"]
+autoplay = "idle"
+anims/RESET = SubResource( 1 )
+anims/caer = SubResource( 8 )
+anims/correr = SubResource( 4 )
+anims/hurt = SubResource( 6 )
+anims/idle = SubResource( 2 )
+anims/mirar_arriba = SubResource( 5 )
+anims/saltar = SubResource( 7 )
+anims/slide = SubResource( 10 )
+anims/slide_start = SubResource( 9 )
+anims/turn = SubResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="6"]
+visible = false
+position = Vector2( 0, -13 )
+shape = SubResource( 11 )
