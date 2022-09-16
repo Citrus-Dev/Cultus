@@ -28,10 +28,15 @@ func _process(delta):
 		evento()
 
 
+func cambiar_estado(est : int):
+	estado_actual = est
+	entrar_estado(est)
+
+
 func entrar_estado(est : int):
 	match est:
 		Estados.MENU:
-			pass
+			Musica.set_track(0)
 		Estados.NORMAL:
 			Musica.set_track(Musica.Tracks.MUS_NORMAL)
 		Estados.COMBATE:
@@ -57,11 +62,6 @@ func procesar_estado(est : int, delta : float):
 			procesar_pausa(delta)
 
 
-func cambiar_estado(est : int):
-	estado_actual = est
-	entrar_estado(est)
-
-
 func buscar_enemigos_alertados() -> int:
 	return get_tree().get_nodes_in_group("EnemigosAlertados").size()
 
@@ -72,7 +72,9 @@ func buscar_enemigos() -> int:
 
 func determinar_estado_inicial(nivel):
 	combate_terminado = false
-	if nivel is MainMenu:
+	# if nivel is MainMenu
+	# El editor se caga encima si ponemos esto asi que ponemos
+	if nivel.get("GAME_INFO") != null:
 		cambiar_estado(Estados.MENU)
 		return
 	cambiar_estado(Estados.NORMAL)
@@ -83,7 +85,7 @@ func procesar_pausa(delta : float):
 
 
 # Funcion horrible nunca voy a volver a hacer esto
-func hack_tomar_inv_balas() -> InvBalas:
+func hack_tomar_inv_balas() -> Object:
 	var jug = get_tree().get_nodes_in_group("Jugador")[0]
 	return jug.controlador_armas.inv_balas
 

@@ -297,7 +297,6 @@ los_check = NodePath("../../LOSCheckDisparo")
 [node name="Disparar" type="Node" parent="StateMachine" index="2"]
 script = ExtResource( 10 )
 controlador_armas = NodePath("../../ControladorArmasNPC")
-rafaga = 4
 
 [node name="Muerte" type="Node" parent="StateMachine" index="3"]
 script = ExtResource( 11 )
@@ -336,5 +335,3 @@ anims/mirar = SubResource( 10 )
 anims/mirar_der = SubResource( 11 )
 anims/saltar = SubResource( 7 )
 anims/turn = SubResource( 6 )
-
-[connection signal="muerto" from="." to="DropManager" method="drop"]

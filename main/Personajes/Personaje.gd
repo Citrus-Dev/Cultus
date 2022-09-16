@@ -50,6 +50,8 @@ var collider : CollisionShape2D
 var hitbox : Hitbox
 var behavior_tree : BehaviorTree
 
+var ultimo_dmg: InfoDmg
+
 var velocity : Vector2
 var knockback : Vector2
 var knockback_procesable : Vector2
@@ -266,6 +268,7 @@ func aplicar_stun(_tiempo_stun := tiempo_stun):
 func evento_dmg(_dmg : InfoDmg):
 	efecto_brillo_dmg(.6)
 	Musica.hacer_sonido(SND_HIT, global_position)
+	ultimo_dmg = _dmg
 
 
 func morir(_info : InfoDmg):
@@ -300,7 +303,9 @@ func instanciar_ragdoll():
 	rag.global_position = global_position
 	rag.set_dir(dir)
 	var body = rag.get_child(0) as RigidBody2D
+	
 	body.apply_impulse(global_position, velocity)
+	body.apply_impulse(global_position, knockback_procesable * ultimo_dmg.fuerza_retroceso)
 
 
 func set_valores_default(_valores : Array):

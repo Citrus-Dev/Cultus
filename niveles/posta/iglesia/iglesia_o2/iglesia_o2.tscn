@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://niveles/Nivel.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/tilesets/Iglesia_tileset_1.png" type="Texture" id=2]
@@ -12,6 +12,8 @@
 [ext_resource path="res://assets/armas/weapon_machinegun_alt.png" type="Texture" id=10]
 [ext_resource path="res://assets/objetos/pillar_pickup.png" type="Texture" id=11]
 [ext_resource path="res://niveles/posta/iglesia/igl_pickup/igl_pickup.gd" type="Script" id=12]
+[ext_resource path="res://main/Musica/MusIglesia.tres" type="Resource" id=13]
+[ext_resource path="res://main/Objetos_mapa/Pinchos/Pinchos.tscn" type="PackedScene" id=14]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
@@ -214,6 +216,7 @@ extents = Vector2( 320, 200 )
 [node name="Nivel" instance=ExtResource( 1 )]
 script = ExtResource( 12 )
 primer_limite_camara = NodePath("camara limites/CameraBounds")
+musica = ExtResource( 13 )
 pickup = NodePath("PickupVarianteArma")
 
 [node name="fondo" type="TileMap" parent="Fondo" index="0"]
@@ -278,52 +281,52 @@ position = Vector2( 560, 360 )
 [node name="PinchosRestart8" parent="pinches" index="7" instance=ExtResource( 6 )]
 position = Vector2( 624, 360 )
 
-[node name="PinchosRestart9" parent="pinches" index="8" instance=ExtResource( 6 )]
-position = Vector2( 104, 104 )
-rotation = 3.14159
-
-[node name="PinchosRestart10" parent="pinches" index="9" instance=ExtResource( 6 )]
-position = Vector2( 40, 104 )
-rotation = 3.14159
-
-[node name="PinchosRestart11" parent="pinches" index="10" instance=ExtResource( 6 )]
+[node name="PinchosRestart11" parent="pinches" index="8" instance=ExtResource( 6 )]
 position = Vector2( 168, 40 )
 rotation = 3.14159
 
-[node name="PinchosRestart12" parent="pinches" index="11" instance=ExtResource( 6 )]
+[node name="PinchosRestart12" parent="pinches" index="9" instance=ExtResource( 6 )]
 position = Vector2( 232, 40 )
 rotation = 3.14159
 
-[node name="PinchosRestart13" parent="pinches" index="12" instance=ExtResource( 6 )]
+[node name="PinchosRestart13" parent="pinches" index="10" instance=ExtResource( 6 )]
 position = Vector2( 296, 40 )
 rotation = 3.14159
 
-[node name="PinchosRestart19" parent="pinches" index="13" instance=ExtResource( 6 )]
-position = Vector2( 328, 104 )
-rotation = 3.14159
-
-[node name="PinchosRestart20" parent="pinches" index="14" instance=ExtResource( 6 )]
-position = Vector2( 296, 104 )
-rotation = 3.14159
-
-[node name="PinchosRestart14" parent="pinches" index="15" instance=ExtResource( 6 )]
+[node name="PinchosRestart14" parent="pinches" index="11" instance=ExtResource( 6 )]
 position = Vector2( 360, 40 )
 rotation = 3.14159
 
-[node name="PinchosRestart15" parent="pinches" index="16" instance=ExtResource( 6 )]
+[node name="PinchosRestart15" parent="pinches" index="12" instance=ExtResource( 6 )]
 position = Vector2( 424, 40 )
 rotation = 3.14159
 
-[node name="PinchosRestart16" parent="pinches" index="17" instance=ExtResource( 6 )]
+[node name="PinchosRestart16" parent="pinches" index="13" instance=ExtResource( 6 )]
 position = Vector2( 488, 40 )
 rotation = 3.14159
 
-[node name="PinchosRestart17" parent="pinches" index="18" instance=ExtResource( 6 )]
+[node name="PinchosRestart17" parent="pinches" index="14" instance=ExtResource( 6 )]
 position = Vector2( 552, 40 )
 rotation = 3.14159
 
-[node name="PinchosRestart18" parent="pinches" index="19" instance=ExtResource( 6 )]
+[node name="PinchosRestart18" parent="pinches" index="15" instance=ExtResource( 6 )]
 position = Vector2( 616, 40 )
+rotation = 3.14159
+
+[node name="Pinchos" parent="pinches" index="16" instance=ExtResource( 14 )]
+position = Vector2( 48, 104 )
+rotation = 3.14159
+
+[node name="Pinchos2" parent="pinches" index="17" instance=ExtResource( 14 )]
+position = Vector2( 112, 104 )
+rotation = 3.14159
+
+[node name="Pinchos3" parent="pinches" index="18" instance=ExtResource( 14 )]
+position = Vector2( 288, 104 )
+rotation = 3.14159
+
+[node name="Pinchos4" parent="pinches" index="19" instance=ExtResource( 14 )]
+position = Vector2( 336, 104 )
 rotation = 3.14159
 
 [node name="SpawnJugador" type="Node2D" parent="." index="10"]

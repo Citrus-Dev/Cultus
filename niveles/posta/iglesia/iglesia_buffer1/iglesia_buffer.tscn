@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://assets/tilesets/Iglesia_tileset_1.png" type="Texture" id=1]
 [ext_resource path="res://assets/tilesets/Iglesia_tileset_2.png" type="Texture" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://main/Objetos_mapa/Plataformas alternas/PlataformaAlternaIglesia.tscn" type="PackedScene" id=10]
 [ext_resource path="res://main/Objetos_mapa/Pinchos/PinchosRestart.tscn" type="PackedScene" id=11]
 [ext_resource path="res://main/Objetos_mapa/Hookpoint.tscn" type="PackedScene" id=12]
+[ext_resource path="res://main/Musica/MusIglesia.tres" type="Resource" id=13]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
@@ -213,6 +214,7 @@ extents = Vector2( 496, 136 )
 
 [node name="Nivel" instance=ExtResource( 9 )]
 primer_limite_camara = NodePath("bordes/CameraBounds")
+musica = ExtResource( 13 )
 
 [node name="fondo" type="TileMap" parent="Fondo" index="0"]
 modulate = Color( 0.215686, 0.215686, 0.215686, 1 )

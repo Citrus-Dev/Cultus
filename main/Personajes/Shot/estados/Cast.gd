@@ -21,6 +21,7 @@ func physics_process(delta : float) -> void:
 
 func exit() -> void:
 	owner.animador.disconnect("animation_finished", self, "terminar")
+	owner.sprite_circ.visible = false
 
 
 func terminar(__):

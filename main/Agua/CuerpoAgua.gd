@@ -13,8 +13,8 @@ export(Color) var color_agua
 export(Color) var color_superficie
 export(bool) var debug
 export(bool) var mov_random 
-export(float) var intervalo_movimiento_random = 5 # Cada X tiempo mover un resorte al azar
-export(float) var fuerza_movimiento_random = 1 # Con Y fuerza
+export(float) var intervalo_movimiento_random = 2 # Cada X tiempo mover un resorte al azar
+export(float) var fuerza_movimiento_random = 20 # Con Y fuerza
 export(float) var resorte_dureza = 0.025
 export(float) var resorte_damp = 0.025
 export(int, 1, 8) var iteraciones = 1
@@ -130,7 +130,7 @@ func splash(fuerza : float, mult : float, pos : float):
 func movimiento_random(_delta : float):
 	if mov_random_timer <= 0:
 		var p = puntos[rand_range(0, puntos.size())]
-		p.position.y += fuerza_movimiento_random
+		p.position.y += fuerza_movimiento_random * _delta
 	else:
 		mov_random_timer -= _delta
 

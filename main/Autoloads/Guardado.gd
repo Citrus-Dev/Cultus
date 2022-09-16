@@ -24,6 +24,7 @@ func guardar_partida(_slot := ""):
 	datos["variantes"] = TransicionesDePantalla.inv_variantes
 	datos["info_persist_global"] = info_persist_global
 	datos["vio_tutorial_variantes"] = GameState.vio_tutorial_variantes
+	datos["tiene_llave_iglesia"] = TransicionesDePantalla.tiene_llave_iglesia
 	
 	var data_string = var2str(datos)
 	
@@ -63,6 +64,7 @@ func cargar_partida(_slot := ""):
 	TransicionesDePantalla.inv_variantes = datos["variantes"]
 	info_persist_global = datos["info_persist_global"]
 	GameState.vio_tutorial_variantes = datos["vio_tutorial_variantes"]
+	TransicionesDePantalla.tiene_llave_iglesia = datos["tiene_llave_iglesia"]
 	
 	TransicionesDePantalla.muerte = true
 	get_tree().change_scene(TransicionesDePantalla.checkpoint_actual_escena)
@@ -79,7 +81,7 @@ func existe_directorio():
 			printerr("Error " + str(err) + " al crear directorio de guardado.")
 
 
-func existe_partida(_slot : String):
+func existe_partida(_slot : String = slot_actual):
 	var file := File.new()
 	var archivo_camino = CAMINO_GUARDADO + ARCHIVO_GUARDADO + _slot + SUFIJO_GUARDADO
 	var err = file.open(archivo_camino, File.READ)

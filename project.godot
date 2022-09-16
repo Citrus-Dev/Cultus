@@ -24,6 +24,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://main/libs/BehaviorTree/hojas/Acciones/AgregarDisparoRafaga.gd"
 }, {
+"base": "Node",
+"class": "AgregarMetadata",
+"language": "GDScript",
+"path": "res://main/AgregarMetadata.gd"
+}, {
 "base": "Line2D",
 "class": "AntialiasedLine2D",
 "language": "GDScript",
@@ -53,6 +58,11 @@ _global_script_classes=[ {
 "class": "ArmaRevolverEsqueleto",
 "language": "GDScript",
 "path": "res://main/Armas/ArmaRevolverEsqueleto.gd"
+}, {
+"base": "Arma",
+"class": "ArmaSubditoSniper",
+"language": "GDScript",
+"path": "res://main/Armas/ArmaSubditoSniper.gd"
 }, {
 "base": "Reference",
 "class": "Armas",
@@ -454,6 +464,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://main/UI/LabelPickup.gd"
 }, {
+"base": "Node2D",
+"class": "Laser",
+"language": "GDScript",
+"path": "res://main/Personajes/Subdito/Laser.gd"
+}, {
 "base": "Accion",
 "class": "LlamarFuncionNodo",
 "language": "GDScript",
@@ -543,6 +558,11 @@ _global_script_classes=[ {
 "class": "PickupHP",
 "language": "GDScript",
 "path": "res://main/Pickups/PickupHP.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "PickupLlaveIglesia",
+"language": "GDScript",
+"path": "res://main/Pickups/PickupLlaveIglesia.gd"
 }, {
 "base": "Node2D",
 "class": "PickupSkill",
@@ -789,6 +809,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://main/libs/BehaviorTree/hojas/Acciones/Succeder.gd"
 }, {
+"base": "Node2D",
+"class": "SummonRandom",
+"language": "GDScript",
+"path": "res://main/Personajes/Summoner/SummonRandom.gd"
+}, {
+"base": "Personaje",
+"class": "Summoner",
+"language": "GDScript",
+"path": "res://main/Personajes/Summoner/Summoner.gd"
+}, {
 "base": "Accion",
 "class": "TomarDireccionAObjeto",
 "language": "GDScript",
@@ -815,6 +845,11 @@ _global_script_classes=[ {
 "path": "res://main/UI/Transicion/TransicionMascara.gd"
 }, {
 "base": "Area2D",
+"class": "TransicionPuerta",
+"language": "GDScript",
+"path": "res://main/Objetos_mapa/TransicionDeNivel/TransicionPuerta.gd"
+}, {
+"base": "Area2D",
 "class": "TriggerChangeCamBounds",
 "language": "GDScript",
 "path": "res://main/CameraLimitSystem/TriggerChangeCamBounds.gd"
@@ -838,12 +873,14 @@ _global_script_class_icons={
 "AR": "",
 "Accion": "res://main/libs/BehaviorTree/icons/action.svg",
 "AgregarDisparoRafaga": "",
+"AgregarMetadata": "",
 "AntialiasedLine2D": "res://addons/antialiased_line2d/antialiased_line2d.svg",
 "AntialiasedPolygon2D": "res://addons/antialiased_line2d/antialiased_polygon2d.svg",
 "AntialiasedRegularPolygon2D": "res://addons/antialiased_line2d/antialiased_regular_polygon2d.svg",
 "Arma": "",
 "ArmaCultista": "",
 "ArmaRevolverEsqueleto": "",
+"ArmaSubditoSniper": "",
 "Armas": "",
 "BTBase": "",
 "BalaFlak": "",
@@ -924,6 +961,7 @@ _global_script_class_icons={
 "LOSCheck": "",
 "LabelFuenteAdaptable": "",
 "LabelPickup": "",
+"Laser": "",
 "LlamarFuncionNodo": "",
 "MainMenu": "",
 "MedidorCooldown": "",
@@ -942,6 +980,7 @@ _global_script_class_icons={
 "Personaje": "",
 "PickupArma": "",
 "PickupHP": "",
+"PickupLlaveIglesia": "",
 "PickupSkill": "",
 "PickupVarianteArma": "",
 "PiedraBoss": "",
@@ -991,11 +1030,14 @@ _global_script_class_icons={
 "SteeringContexto": "",
 "Stretcher": "",
 "Succeder": "",
+"SummonRandom": "",
+"Summoner": "",
 "TomarDireccionAObjeto": "",
 "TomarElementoMasCercano": "",
 "TomarNodosDeGrupo": "",
 "TransicionDeNivel": "",
 "TransicionMascara": "",
+"TransicionPuerta": "",
 "TriggerChangeCamBounds": "",
 "TriggerHurt": "",
 "TriggerNPCMover": "",
@@ -1027,6 +1069,23 @@ LabelsPickup="*res://main/Autoloads/LabelsPickup.gd"
 
 [debug]
 
+gdscript/warnings/unassigned_variable=false
+gdscript/warnings/unassigned_variable_op_assign=false
+gdscript/warnings/unused_variable=false
+gdscript/warnings/shadowed_variable=false
+gdscript/warnings/unused_argument=false
+gdscript/warnings/unreachable_code=false
+gdscript/warnings/standalone_expression=false
+gdscript/warnings/void_assignment=false
+gdscript/warnings/narrowing_conversion=false
+gdscript/warnings/function_may_yield=false
+gdscript/warnings/variable_conflicts_function=false
+gdscript/warnings/function_conflicts_variable=false
+gdscript/warnings/function_conflicts_constant=false
+gdscript/warnings/incompatible_ternary=false
+gdscript/warnings/unused_signal=false
+gdscript/warnings/return_value_discarded=false
+gdscript/warnings/integer_division=false
 shapes/collision/shape_color=Color( 1, 1, 1, 0.419608 )
 
 [display]
@@ -1172,6 +1231,7 @@ dodge={
 2d_physics/layer_15="Bosses"
 2d_physics/layer_16="Gancho"
 2d_physics/layer_17="LugarInseguro"
+2d_physics/layer_18="BloquearGancho"
 
 [physics]
 

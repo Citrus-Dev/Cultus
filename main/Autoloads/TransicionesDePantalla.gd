@@ -5,6 +5,7 @@ const JUGADOR_SCENE = preload("res://main/Personajes/Jugador/Jugador.tscn")
 var checkpoint_actual_escena : String
 var checkpoint_actual_pos : Vector2
 var muerte : bool
+var tiene_llave_iglesia : bool
 
 # ID de la transicion de nivel donde tenes que aparecer cuando 
 # pases a otro nivel

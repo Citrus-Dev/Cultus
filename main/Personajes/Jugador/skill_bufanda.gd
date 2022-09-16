@@ -50,6 +50,7 @@ func _process(delta):
 		call_deferred("free")
 		return
 	
+
 	if timer_cooldown.is_stopped() and Input.is_action_just_pressed("gancho"):
 		pos_objetivo = jug.get_global_mouse_position()
 		attached = true
@@ -65,6 +66,7 @@ func _process(delta):
 		timer_cooldown.start(TIEMPO_COOLDOWN_GANCHO if ultimo_objeto_agarrado is Hookpoint else TIEMPO_COOLDOWN)
 		timer_gancho.start(TIEMPO_GANCHO if agarre == null else TIEMPO_GANCHO_AGARRADO)
 	
+
 	if attached:
 		bufan_sprite.pos[bufan_sprite.pos.size() - 1] = pos_objetivo
 	
@@ -108,13 +110,19 @@ func encontrar_punto_de_agarre():
 	
 	if !rc.empty():
 		ultimo_objeto_agarrado = rc["collider"].get_parent()
-		if rc["collider"].get_parent() is Hookpoint:
+		print("ultimo_objeto_agarrado: " + ultimo_objeto_agarrado.name)
+
+		if ultimo_objeto_agarrado is Hookpoint:
 			var hp: Hookpoint = rc["collider"].get_parent()
 			if !hp.activo:
 				return null
 			
 			hp.usado()
 			return hp.global_position
+
+		elif ultimo_objeto_agarrado.has_meta("bloquear_gancho"):
+			return
+
 		else:
 			return rc["position"]
 

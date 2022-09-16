@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/castle-vein-calm.mp3-20dc2b2fdc870d9f83f533bcafa77bf8.mp3str"
+
+[deps]
+
+source_file="res://assets/musica/castle-vein-calm.mp3"
+dest_files=[ "res://.import/castle-vein-calm.mp3-20dc2b2fdc870d9f83f533bcafa77bf8.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

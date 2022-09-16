@@ -64,6 +64,8 @@ func _init():
 func set_activo(toggle: bool):
 	activo = toggle
 	if activo:
+		Musica.override = 2
+		
 		sprite_activo.visible = true
 		sprite_inactivo.visible = false
 		
@@ -78,6 +80,8 @@ func set_activo(toggle: bool):
 		fsm.transition_to("DisparoIdle")
 	else:
 #		trigger_wake.connect("triggered", self, "wake", [], CONNECT_ONESHOT)
+		Musica.override = 1
+		Musica.override = -1
 		
 		sprite_activo.visible = false
 		sprite_inactivo.visible = true
@@ -185,6 +189,7 @@ func start_wake():
 
 
 func wake():
+	Musica.reiniciar_musica()
 	instanciar_gibs_piedra()
 	barra_hp.setup()
 	set_activo(true)
@@ -278,6 +283,7 @@ func morir(_info : InfoDmg):
 	input_actual = 0
 	
 	fsm.transition_to("Morir")
+	Musica.override = -1
 
 
 func set_muerto(toggle : bool):

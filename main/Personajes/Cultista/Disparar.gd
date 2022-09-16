@@ -5,7 +5,7 @@ export(float) var tiempo_de_disparo = 0.5
 # Tiempo de esperar antes de volver al estado perseguir
 export(float) var tiempo_de_espera = 0.3
 export(NodePath) onready var controlador_armas = get_node(controlador_armas) as ControladorArmasNPC
-export(int) var rafaga
+var rafaga: int
 
 var timer := Timer.new()
 var jug : Jugador
@@ -17,6 +17,7 @@ func _ready():
 
 
 func enter(msg : Dictionary = {}) -> void:
+	rafaga = controlador_armas.arma_actual.ia_largo_rafaga
 	owner.input.x = 0.0
 	if owner.objetivo is Jugador:
 		jug = owner.objetivo

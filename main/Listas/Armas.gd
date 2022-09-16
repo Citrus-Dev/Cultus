@@ -18,7 +18,8 @@ const armas_lista := {
 	"ArmaBallesta" : "res://main/Armas/ArmaBallesta.gd",
 	"ArmaGauss" : "res://main/Armas/ArmaGauss.gd",
 	"ArmaCultista" : "res://main/Armas/ArmaCultista.gd",
-	"ArmaRevolverEsqueleto" : "res://main/Armas/ArmaRevolverEsqueleto.gd"
+	"ArmaRevolverEsqueleto" : "res://main/Armas/ArmaRevolverEsqueleto.gd",
+	"ArmaSubditoSniper" : "res://main/Armas/ArmaSubditoSniper.gd"
 }
 
 

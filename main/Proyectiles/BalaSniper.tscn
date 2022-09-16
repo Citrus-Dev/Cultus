@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://main/Proyectiles/ProyectilBase.tscn" type="PackedScene" id=1]
+[ext_resource path="res://main/particulas/ImpactoBala.tscn" type="PackedScene" id=2]
+[ext_resource path="res://main/Efectos/Estelas/EstelaBase.gd" type="Script" id=3]
+
+[sub_resource type="Gradient" id=1]
+colors = PoolColorArray( 1, 0, 0, 0, 1, 0, 0, 1 )
+
+[node name="BalaSniper" instance=ExtResource( 1 )]
+efecto = ExtResource( 2 )
+move_speed = 1200.0
+lifetime = 1.5
+
+[node name="Sprite" parent="." index="0"]
+visible = false
+
+[node name="EstelaBase" type="Line2D" parent="." index="2"]
+width = 4.0
+gradient = SubResource( 1 )
+joint_mode = 2
+end_cap_mode = 2
+script = ExtResource( 3 )
+numero_de_segmentos = 6

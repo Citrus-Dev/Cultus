@@ -120,7 +120,7 @@ func cambiar_musica(track : int):
 	if musica != null:
 		match track:
 			Tracks.MUS_MENU:
-				return
+				objetivo_actual = null
 			Tracks.MUS_NORMAL:
 				objetivo = musica.mus_normal
 			Tracks.MUS_COMBATE:
@@ -142,3 +142,8 @@ func hacer_sonido(stream : AudioStream, pos : Vector2, vol_over := 0.0, usar_2d 
 	snd.connect("finished", snd, "call_deferred", ["free"])
 	nivel.add_child(snd)
 	snd.play()
+
+
+func reiniciar_musica():
+	stream_player_1.play(0.0)
+	stream_player_2.play(0.0)

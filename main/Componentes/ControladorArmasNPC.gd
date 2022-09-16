@@ -4,6 +4,8 @@ class_name ControladorArmasNPC
 extends Node2D
 
 signal termino_de_disparar
+signal empezado_a_apuntar
+signal dejado_de_apuntar
 
 # Angulo default al que gira el arma si no hay objetivos
 const DEFAULT_ANGULO := 50.0
@@ -13,11 +15,19 @@ export(String) var nombre_arma
 var angulo : float
 var arma_actual : Arma
 var activo : bool = true setget set_activo
-var target_obj : Node2D
+var target_obj : Node2D setget set_target_obj
 var input_disparar : int
 
 onready var usador : Personaje = owner
 onready var tabla_armas := Armas.new()
+
+func set_target_obj(new_target: Node2D):
+	target_obj = new_target
+	if target_obj != null:
+		arma_actual.ai_empezar_a_apuntar()
+	elif target_obj == null:
+		arma_actual.ai_terminar_de_apuntar()
+
 
 func _ready() -> void:
 	if nombre_arma:
@@ -27,6 +37,9 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if arma_actual != null and activo:
 		arma_actual.apuntar(angulo)
+	
+	for i in get_children():
+		i.rotation = angulo
 
 
 func _physics_process(delta: float) -> void:
@@ -48,6 +61,9 @@ func equipar_arma(_nombre : String):
 	ref.set_script(carga)
 	arma_actual = ref
 	arma_actual.usador = owner
+	
+	arma_actual.connect("empezado_a_apuntar", self, "emit_signal", ["empezado_a_apuntar"])
+	arma_actual.connect("dejado_de_apuntar", self, "emit_signal", ["dejado_de_apuntar"])
 	
 	arma_actual.instanciar_skin(self)
 

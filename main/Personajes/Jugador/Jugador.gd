@@ -172,9 +172,13 @@ func evento_dmg(_dmg : InfoDmg):
 	if !muerto and _dmg.dmg_tipo == InfoDmg.DMG_TIPOS.PINCHES:
 		yield(get_tree().create_timer(0.5), "timeout")
 		volver_a_punto_seguro()
+	
+	ultimo_dmg = _dmg
 
 
 func morir(_info : InfoDmg):
+	ultimo_dmg = _info
+	
 	emit_signal("muerto")
 	GameState.emit_signal("jugador_muerto")
 	muerto = true
@@ -197,6 +201,10 @@ func muerte_cambio_nivel():
 	timer_muerte.start()
 	
 	yield(timer_muerte, "timeout")
+	
+	if Guardado.existe_partida():
+		Guardado.cargar_partida()
+	return
 	
 	TransicionesDePantalla.muerte = true
 	var err = get_tree().change_scene(TransicionesDePantalla.checkpoint_actual_escena)
@@ -369,6 +377,8 @@ func crear_hud():
 func detectar_punto_seguro():
 	lugar_inseguro = true if detector_inse.get_overlapping_areas().size() > 0 else false
 	for i in objetos_pisando:
+		if !is_instance_valid(i):
+			continue
 		if !i is TileMap and !i is StaticBody2D:
 			lugar_inseguro = true 
 	
