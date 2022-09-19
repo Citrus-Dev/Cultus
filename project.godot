@@ -445,6 +445,11 @@ _global_script_classes=[ {
 "path": "res://main/libs/BehaviorTree/hojas/Acciones/InvertirVector.gd"
 }, {
 "base": "Personaje",
+"class": "JohnUltrakill",
+"language": "GDScript",
+"path": "res://main/Personajes/Bosses/john_ultrakill/JohnUltrakill.gd"
+}, {
+"base": "Personaje",
 "class": "Jugador",
 "language": "GDScript",
 "path": "res://main/Personajes/Jugador/Jugador.gd"
@@ -498,6 +503,11 @@ _global_script_classes=[ {
 "class": "Mimic",
 "language": "GDScript",
 "path": "res://main/Personajes/Bosses/mimic/Mimic.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "Monedita",
+"language": "GDScript",
+"path": "res://main/Personajes/Bosses/john_ultrakill/Monedita.gd"
 }, {
 "base": "Accion",
 "class": "MoverHaciaPos",
@@ -957,6 +967,7 @@ _global_script_class_icons={
 "InverseKinematic": "",
 "Inversor": "res://main/libs/BehaviorTree/icons/inverter.svg",
 "InvertirVector": "",
+"JohnUltrakill": "",
 "Jugador": "",
 "LOSCheck": "",
 "LabelFuenteAdaptable": "",
@@ -968,6 +979,7 @@ _global_script_class_icons={
 "MenuConfig": "",
 "MenuPausa": "",
 "Mimic": "",
+"Monedita": "",
 "MoverHaciaPos": "",
 "MoverseEnDireccion": "",
 "Negador": "res://main/libs/BehaviorTree/icons/fail.svg",

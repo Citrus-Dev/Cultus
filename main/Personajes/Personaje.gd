@@ -305,7 +305,7 @@ func instanciar_ragdoll():
 	var body = rag.get_child(0) as RigidBody2D
 	
 	body.apply_impulse(global_position, velocity)
-	body.apply_impulse(global_position, knockback_procesable * ultimo_dmg.fuerza_retroceso)
+#	body.apply_impulse(global_position, knockback_procesable * ultimo_dmg.fuerza_retroceso)
 
 
 func set_valores_default(_valores : Array):

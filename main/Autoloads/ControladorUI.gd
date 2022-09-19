@@ -1,6 +1,7 @@
 extends Node
 
 const OVERLAY_MUERTE_ESCENA = preload("res://main/UI/OverlayMuerte/OverlayMuerte.tscn")
+const SONIDO := preload("res://assets/sfx/habilidades.wav")
 
 signal cambiar_salud(_cantidad)
 signal balas_cambio(_cantidad)
@@ -27,6 +28,7 @@ func set_medidor_balas(_med : Control):
 
 func mensaje_ui(mensaje : String, tiempo := 1.4, no_brillo := false):
 	emit_signal("mensaje_ui", mensaje, tiempo, no_brillo)
+	Musica.hacer_sonido(SONIDO, Vector2.ZERO, 0.0, false)
 
 
 func instanciar_overlay_muerte():
