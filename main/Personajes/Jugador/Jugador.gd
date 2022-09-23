@@ -8,6 +8,7 @@ const CAMARA_REAL = preload("res://main/Camaras/CamaraReal.tscn")
 const FUERZA_DE_ENTRADA := 4.0
 const HUD = preload("res://main/UI/Hud/HUD.tscn")
 const SNOIDO_HURT := preload("res://assets/sfx/hurt.wav")
+const GIBS = preload("res://main/Personajes/Jugador/GibsJugador.tscn")
 
 export(NodePath) onready var stretcher = get_node(stretcher) as Stretcher
 export(NodePath) onready var pos_bufanda = get_node(pos_bufanda) as Position2D
@@ -189,7 +190,15 @@ func morir(_info : InfoDmg):
 	collision_layer = 0
 	hitbox.collision_layer = 0 # desactiva la hitbox totalmente
 	controlador_armas.activo = false
-	instanciar_ragdoll()
+	
+	
+	if InfoDmg.puede_gibear(_info.dmg_tipo):
+		var gibs = GIBS.instance() as Gibs
+		gibs.global_position = global_position
+		get_parent().add_child(gibs)
+	else:
+		instanciar_ragdoll()
+	
 	muerte_cambio_nivel()
 	cambiar_visibilidad(false)
 

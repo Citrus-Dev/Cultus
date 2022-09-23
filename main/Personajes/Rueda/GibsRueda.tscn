@@ -1,0 +1,166 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://assets/gibs/wheel_gib.png" type="Texture" id=1]
+[ext_resource path="res://main/Gibs.gd" type="Script" id=2]
+[ext_resource path="res://main/GibFisicas.gd" type="Script" id=3]
+
+[sub_resource type="AtlasTexture" id=1]
+flags = 2
+atlas = ExtResource( 1 )
+region = Rect2( -1, 2, 10, 6 )
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id=2]
+flags = 2
+atlas = ExtResource( 1 )
+region = Rect2( 12, 1, 12, 9 )
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id=3]
+flags = 2
+atlas = ExtResource( 1 )
+region = Rect2( -1, 13, 13, 8 )
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id=4]
+flags = 2
+atlas = ExtResource( 1 )
+region = Rect2( 15, 14, 9, 5 )
+filter_clip = true
+
+[node name="GibsRueda" type="Node2D"]
+script = ExtResource( 2 )
+gibs_paths = [ NodePath("1"), NodePath("2"), NodePath("3"), NodePath("4"), NodePath("5"), NodePath("6"), NodePath("7"), NodePath("8") ]
+punto_de_expulsion_path = NodePath("Position2D")
+
+[node name="Position2D" type="Position2D" parent="."]
+position = Vector2( 0, -12 )
+
+[node name="1" type="KinematicBody2D" parent="."]
+position = Vector2( -14, -12 )
+collision_layer = 0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_group_": true
+}
+gravedad = 500.0
+friccion = 0.8
+vel_rotacion_base = 50.0
+
+[node name="Sprite" type="Sprite" parent="1"]
+texture = SubResource( 1 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="1"]
+polygon = PoolVector2Array( -3.94691, 0.974976, 0.053093, -3.02502, 4.05309, -3.02502, 4.05309, 1.97498, -1.94691, 2.97498 )
+
+[node name="2" type="KinematicBody2D" parent="."]
+position = Vector2( 13, -14 )
+collision_layer = 0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_group_": true
+}
+gravedad = 500.0
+friccion = 0.8
+
+[node name="Sprite" type="Sprite" parent="2"]
+texture = SubResource( 1 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="2"]
+polygon = PoolVector2Array( -3.94691, 0.974976, 0.053093, -3.02502, 4.05309, -3.02502, 4.05309, 1.97498, -1.94691, 2.97498 )
+
+[node name="3" type="KinematicBody2D" parent="."]
+position = Vector2( -6, -23 )
+collision_layer = 0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_group_": true
+}
+gravedad = 500.0
+friccion = 0.8
+
+[node name="Sprite" type="Sprite" parent="3"]
+texture = SubResource( 2 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="3"]
+polygon = PoolVector2Array( -3.94691, 0.974976, 0.053093, -3.02502, 4.05309, -3.02502, 4.05309, 1.97498, -1.94691, 2.97498 )
+
+[node name="4" type="KinematicBody2D" parent="."]
+position = Vector2( -6, -4 )
+collision_layer = 0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_group_": true
+}
+gravedad = 500.0
+friccion = 0.8
+
+[node name="Sprite" type="Sprite" parent="4"]
+texture = SubResource( 3 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="4"]
+polygon = PoolVector2Array( -6, -3, 4, 2, -1.94691, 2.97498 )
+
+[node name="5" type="KinematicBody2D" parent="."]
+position = Vector2( 10, -8 )
+collision_layer = 0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_group_": true
+}
+gravedad = 500.0
+friccion = 0.8
+
+[node name="Sprite" type="Sprite" parent="5"]
+texture = SubResource( 3 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="5"]
+polygon = PoolVector2Array( -6, -3, 4, 2, -1.94691, 2.97498 )
+
+[node name="6" type="KinematicBody2D" parent="."]
+position = Vector2( 10, -20 )
+collision_layer = 0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_group_": true
+}
+gravedad = 500.0
+friccion = 0.8
+
+[node name="Sprite" type="Sprite" parent="6"]
+texture = SubResource( 3 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="6"]
+polygon = PoolVector2Array( -6, -3, 4, 2, -1.94691, 2.97498 )
+
+[node name="7" type="KinematicBody2D" parent="."]
+position = Vector2( 6, -4 )
+collision_layer = 0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_group_": true
+}
+gravedad = 500.0
+friccion = 0.8
+
+[node name="Sprite" type="Sprite" parent="7"]
+texture = SubResource( 4 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="7"]
+polygon = PoolVector2Array( -5, 1, 3, -1, -1, 2 )
+
+[node name="8" type="KinematicBody2D" parent="."]
+position = Vector2( -13, -18 )
+collision_layer = 0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_group_": true
+}
+gravedad = 500.0
+friccion = 0.8
+
+[node name="Sprite" type="Sprite" parent="8"]
+texture = SubResource( 4 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="8"]
+polygon = PoolVector2Array( -5, 1, 3, -1, -1, 2 )

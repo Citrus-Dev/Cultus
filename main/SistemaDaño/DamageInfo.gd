@@ -11,7 +11,8 @@ enum DMG_TIPOS {
 	EXPLOSION,
 	FUEGO,
 	PLASMA,
-	PINCHES
+	PINCHES,
+	APLASTAR
 }
 
 var atacante : Node # Lo que esta causando el daño
@@ -20,3 +21,11 @@ var dmg_cantidad : int
 var dmg_tipo : int
 var dmg_stun : int # El daño de stun es separado al daño normal
 var fuerza_retroceso : float
+
+
+static func puede_gibear(tipo: int) -> bool:
+	match tipo:
+		DMG_TIPOS.EXPLOSION, DMG_TIPOS.PLASMA, DMG_TIPOS.APLASTAR:
+			return true
+		_:
+			return false

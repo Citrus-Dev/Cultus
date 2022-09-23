@@ -40,4 +40,5 @@ func asustar():
 
 func ouch(__):
 	hurt.trigger()
-	jaula.jaula.call_deferred("free")
+	if is_instance_valid(jaula.jaula):
+		jaula.jaula.call_deferred("free")

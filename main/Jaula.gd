@@ -57,7 +57,7 @@ func _physics_process(delta):
 	if cayendo and is_instance_valid(jaula):
 #		jaula.move_and_collide(Vector2.DOWN * VEL_CAIDA * delta)
 		jaula.global_position += Vector2.DOWN * VEL_CAIDA * delta
-		if rc.is_colliding():
+		if jaula.global_position.y > 260.0:
 			terminar_de_caer()
 
 
@@ -75,7 +75,7 @@ func caer():
 	cayendo = true
 	emit_signal("caida_empezada")
 
-
+ 
 func terminar_de_caer():
 	var gibs = GIBS.instance()
 	gibs.global_position = jaula.global_position

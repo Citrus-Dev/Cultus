@@ -210,7 +210,7 @@ agente_dir = NodePath("..")
 is_constant = true
 dmg = 50
 fuerza_retroceso = 100.0
-dmg_tipo = 1
+dmg_tipo = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 position = Vector2( 0, -16 )

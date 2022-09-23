@@ -3,6 +3,7 @@ extends Personaje
 
 const DIST_TEST := 23.0
 const TEST_ARRIBA := 30.0
+const GIBS = preload("res://main/Personajes/Rueda/GibsRueda.tscn")
 
 export(NodePath) onready var anim_girar = get_node(anim_girar) as AnimationPlayer
 export(NodePath) onready var hurtbox = get_node(hurtbox) as Hurtbox
@@ -49,6 +50,10 @@ func set_muerto(toggle : bool):
 		hitbox.collision_layer = 0 # desactiva la hitbox totalmente
 		hurtbox.collision_mask = 0 
 	cambiar_visibilidad(!toggle)
+	
+	var gibs = GIBS.instance()
+	gibs.global_position = global_position
+	get_parent().add_child(gibs)
 
 
 func probar_pared() -> bool:
