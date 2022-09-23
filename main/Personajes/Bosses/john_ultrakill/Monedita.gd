@@ -2,8 +2,8 @@ class_name Monedita
 extends KinematicBody2D
 
 const VEL_MAX := 250.0
-const GRAVEDAD := 100.0
-const FRICCION_HORIZONTAL := 0.98
+const GRAVEDAD := 300.0
+const FRICCION_HORIZONTAL := 1.0
 
 var velocity: Vector2
 
