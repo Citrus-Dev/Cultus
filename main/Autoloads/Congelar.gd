@@ -15,6 +15,7 @@ func _process(delta):
 func congelar(_obj : Node, _t : float):
 	objs[_obj] = {"t" : _t}
 	alternar_proceso(_obj, false)
+	print(_obj.name + " congelado por " + str(_t) + " segundos")
 
 
 func alternar_proceso(_nodo : Node, _bool : bool):

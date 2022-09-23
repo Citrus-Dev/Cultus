@@ -58,6 +58,7 @@ func _physics_process(delta: float) -> void:
 			var col = collider.owner.name
 			collider.recibir_dmg(info_dmg)
 		global_position = res["position"]
+		
 		call_deferred("free")
 	
 	if estela.points.size() > estela.numero_de_segmentos + 1:

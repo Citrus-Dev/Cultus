@@ -58,6 +58,7 @@ func _draw():
 
 func enemigo_detectado(enemigo):
 	enemigo.aplicar_stun(1.2)
+	Congelar.congelar(enemigo, 5.0)
 
 
 func terminar():
