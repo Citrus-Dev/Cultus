@@ -179,6 +179,8 @@ func evento_dmg(_dmg : InfoDmg):
 
 func morir(_info : InfoDmg):
 	ultimo_dmg = _info
+
+	Musica.set_override(Musica.Tracks.SIN_MUSICA) # Paramos la musica
 	
 	emit_signal("muerto")
 	GameState.emit_signal("jugador_muerto")
@@ -210,8 +212,10 @@ func muerte_cambio_nivel():
 	timer_muerte.start()
 	
 	yield(timer_muerte, "timeout")
+
+	Musica.set_override(-1) # Devolver la musica a lo normal
 	
-	if Guardado.existe_partida():
+	if Guardado.existe_partida() == OK:
 		Guardado.cargar_partida()
 	return
 	

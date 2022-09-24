@@ -33,6 +33,10 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
+	cosas_de_proyectil(delta)
+
+
+func cosas_de_proyectil(delta: float):
 	var pos_frame_anterior = global_position
 	
 	global_position += velocity * delta
@@ -49,10 +53,12 @@ func _physics_process(delta: float) -> void:
 	)
 	
 	if !res.empty():
-		hit()
 		if efecto:
 			instanciar_efecto(res["position"], res["normal"].angle(), res["collider"])
 		var collider = res["collider"]
+		
+		hit(collider)
+		
 		if collider is Hitbox:
 			if !collider.monitorable: return
 			var col = collider.owner.name
@@ -87,5 +93,5 @@ func instanciar_efecto(pos : Vector2, rot : float, objetivo : Node2D):
 	new.global_position = pos
 
 
-func hit():
+func hit(target: Node):
 	pass

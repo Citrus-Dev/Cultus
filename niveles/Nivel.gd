@@ -3,6 +3,7 @@ extends Node2D
 
 export(NodePath) var primer_limite_camara
 export(bool) var print_fps
+export(bool) var impulse_automatico
 export(Resource) var musica
 
 var primer_limite_camara_obj : CameraBounds
@@ -49,6 +50,11 @@ func _ready():
 		s_group[0].spawn()
 	
 	ControladorUi.emit_signal("cambiar_salud", ControladorUi.jug_hp)
+
+	yield(get_tree(), "idle_frame")
+
+	if impulse_automatico:
+		Comandos.c_impulse_200()
 
 
 func init_primer_limite():

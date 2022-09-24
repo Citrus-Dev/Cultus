@@ -3,7 +3,8 @@ extends Node
 enum Tracks {
 	MUS_MENU = 0,
 	MUS_NORMAL = 1,
-	MUS_COMBATE = 2
+	MUS_COMBATE = 2,
+	SIN_MUSICA = 3
 }
 var track_actual : int setget set_track
 var objetivo_actual : AudioStream
@@ -125,6 +126,8 @@ func cambiar_musica(track : int):
 				objetivo = musica.mus_normal
 			Tracks.MUS_COMBATE:
 				objetivo = musica.mus_combate
+			Tracks.SIN_MUSICA:
+				objetivo = null
 			_:
 				return
 	

@@ -23,6 +23,7 @@ func _ready() -> void:
 		trigger_polillas.connect("triggered", self, "spawnear_polillas")
 		cultista_forro1.connect("muerto", self, "enemigo_puerta_muerto")
 		cultista_forro2.connect("muerto", self, "enemigo_puerta_muerto")
+		slide_pickup.connect("agarrado", self, "guardar_slide")
 
 
 func spawnear_polillas():

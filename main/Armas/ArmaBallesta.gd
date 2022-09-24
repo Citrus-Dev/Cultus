@@ -2,6 +2,9 @@ class_name Ballesta
 extends Arma
 
 const BALA = preload("res://main/Proyectiles/Flecha.tscn")
+const BALA_FUEGO = preload("res://main/Proyectiles/FlechaFuego.tscn")
+
+const COSTO_FLECHAS_FUEGO: int = 2
 
 func _init() -> void:
 	skin_escena = preload("res://main/Armas/Skins/SkinBallesta.tscn")
@@ -14,6 +17,11 @@ func _init() -> void:
 	
 	cooldown_tiempo = 0.8
 	slot = SLOTS.BALLESTA
+	
+	variantes = [
+	"PIERCING",
+	"FUEGO"
+	]
 
 
 func disparar(_origin : Node, _dir : float):
@@ -23,8 +31,15 @@ func disparar(_origin : Node, _dir : float):
 	if skin_inst != null:
 		skin_inst.animador.stop()
 		skin_inst.animador.play("disparar")
-	crear_bala(_origin, BALA, _dir, spread)
-	_origin.inv_balas.bajar_balas(1, "Flechas")
+	
+	match variantes[variante_actual]:
+		"PIERCING":
+			crear_bala(_origin, BALA, _dir, spread)
+			_origin.inv_balas.bajar_balas(1, "Flechas")
+		"FUEGO":
+			crear_bala(_origin, BALA_FUEGO, _dir, spread)
+			_origin.inv_balas.bajar_balas(2, "Flechas")
+	
 	actualizar_medidor()
 
 
