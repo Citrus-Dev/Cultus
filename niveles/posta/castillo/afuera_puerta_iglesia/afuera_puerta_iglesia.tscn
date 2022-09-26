@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://niveles/Nivel.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/tilesets/tileset_castillo.tres" type="TileSet" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://main/Objetos_mapa/Puertas/Puerta.gd" type="Script" id=11]
 [ext_resource path="res://main/Objetos_mapa/TransicionDeNivel/TransicionDeNivelConArea.tscn" type="PackedScene" id=12]
 [ext_resource path="res://assets/fondos/paisaje grande real.png" type="Texture" id=13]
+[ext_resource path="res://assets/objetos/puerta_iglesia_pared.png" type="Texture" id=14]
 
 [sub_resource type="Gradient" id=3]
 colors = PoolColorArray( 0.266667, 0.572549, 0.792157, 1, 0.568627, 0.737255, 0.854902, 1 )
@@ -234,13 +235,15 @@ shape = SubResource( 10 )
 position = Vector2( 1088, 112 )
 collision_mask = 0
 script = ExtResource( 11 )
-__meta__ = {
-"_edit_group_": true
-}
 altura_mov = 72.0
 
 [node name="BlockinPolygon" type="Polygon2D" parent="Puerta" index="0"]
+visible = false
 color = Color( 0.611765, 0.533333, 0.556863, 1 )
 polygon = PoolVector2Array( -8, 0, -8, 80, 24, 80, 24, 0 )
 script = ExtResource( 10 )
 enable_collisions = true
+
+[node name="Sprite" type="Sprite" parent="Puerta" index="1"]
+position = Vector2( 9, 43 )
+texture = ExtResource( 14 )

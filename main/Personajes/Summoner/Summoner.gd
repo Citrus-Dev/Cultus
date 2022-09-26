@@ -48,6 +48,9 @@ func alertar():
 		set_estado(Estados.ALERTA)
 		objetivo.connect("muerto", self, "perder_vista_jugador")
 		add_to_group("EnemigosAlertados")
+		
+		# La primera vez que entra en alerta tarda menos en sumonear
+		timer_alerta = 1.0
 
 
 func set_estado(nuevo_estado: int):

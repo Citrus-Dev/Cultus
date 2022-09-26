@@ -29,3 +29,5 @@ radio = 420.0
 [node name="Disparar" parent="StateMachine" index="2"]
 tiempo_de_disparo = 1.2
 tiempo_de_espera = 1.0
+
+[connection signal="morir" from="Status" to="ControladorArmasNPC/Laser" method="set" binds= [ "visible", false ]]

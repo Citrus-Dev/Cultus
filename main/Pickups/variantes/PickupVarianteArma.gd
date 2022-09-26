@@ -21,15 +21,23 @@ func _process(delta):
 		sprite.position.y = anim_levitar(sprite.position.y, 0.4 * delta, 0.3)
 
 
-func agarrar(jug: Jugador):
+func agarrar(jug: Personaje):
+	
 	emit_signal("agarrado")
-	if !TransicionesDePantalla.inv_variantes.has(arma):
-		TransicionesDePantalla.inv_variantes[arma] = []
-	TransicionesDePantalla.inv_variantes[arma].append(id_variante)
 	
 	if !GameState.vio_tutorial_variantes:
 		get_tree().root.add_child(ESCENA_TUT.instance())
 		GameState.vio_tutorial_variantes = true
+	
+	if !TransicionesDePantalla.inv_variantes.has(arma):
+		TransicionesDePantalla.inv_variantes[arma] = []
+		ControladorUi.mensaje_ui(
+			"Atencion: Agarraste una variante para un arma que aun no encontraste",
+			2.5,
+			true
+		)
+	
+	TransicionesDePantalla.inv_variantes[arma].append(id_variante)
 	
 	call_deferred("free")
 
