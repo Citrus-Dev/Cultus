@@ -1,21 +1,17 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://niveles/Nivel.tscn" type="PackedScene" id=1]
 [ext_resource path="res://main/CameraLimitSystem/CameraBounds.gd" type="Script" id=2]
 [ext_resource path="res://assets/tilesets/tileset_cripta.tres" type="TileSet" id=3]
 [ext_resource path="res://main/Objetos_mapa/SpawnJugador.gd" type="Script" id=4]
-[ext_resource path="res://main/Objetos_mapa/Puertas/Puerta.gd" type="Script" id=5]
-[ext_resource path="res://assets/objetos/puerta_cripta.png" type="Texture" id=6]
 [ext_resource path="res://main/Objetos_mapa/Plataformas alternas/PlataformaAlterna.gd" type="Script" id=7]
 [ext_resource path="res://assets/tilesets/plataformas/cripta_plataforma.png" type="Texture" id=8]
 [ext_resource path="res://main/Objetos_mapa/Hookpoint.tscn" type="PackedScene" id=9]
 [ext_resource path="res://main/Objetos_mapa/Plataformas alternas/PlataformaFragilCripta.tscn" type="PackedScene" id=10]
+[ext_resource path="res://main/Objetos_mapa/TransicionDeNivel/TransicionDeNivelConArea.tscn" type="PackedScene" id=11]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 260, 340 )
-
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 8, 25.5 )
 
 [sub_resource type="AtlasTexture" id=3]
 flags = 2
@@ -48,65 +44,53 @@ position = Vector2( 52, -204 )
 shape = SubResource( 1 )
 script = ExtResource( 2 )
 
+[node name="TransicionDeNivelConArea" parent="triggers" index="0" instance=ExtResource( 11 )]
+position = Vector2( -184, -440 )
+ID = "puerta_izq_arriba"
+ID_objetivo = "puerta_der"
+direccion_nivel = "res://niveles/posta/cripta/cripta_00/cripta_00.tscn"
+
+[node name="TransicionDeNivelConArea2" parent="triggers" index="1" instance=ExtResource( 11 )]
+position = Vector2( -184, 88 )
+ID = "puerta_izq_abajo"
+ID_objetivo = "caida_abajo"
+direccion_nivel = "res://niveles/posta/cripta/cripta_06/cripta_06.tscn"
+
+[node name="TransicionDeNivelConArea3" parent="triggers" index="2" instance=ExtResource( 11 )]
+position = Vector2( 8, 112 )
+rotation = 1.5708
+ID = "caida"
+ID_objetivo = "arriba"
+direccion_nivel = "res://niveles/posta/cripta/cripta_09/cripta_09.tscn"
+direccion_movimiento = 3
+
+[node name="TransicionDeNivelConArea4" parent="triggers" index="3" instance=ExtResource( 11 )]
+position = Vector2( 272, 88 )
+ID = "puerta_der"
+ID_objetivo = "puerta_izq"
+direccion_nivel = "res://niveles/posta/cripta/cripta_encuentro/cripta_encuentro.tscn"
+direccion_movimiento = 1
+
 [node name="SpawnJugador" type="Node2D" parent="." index="7"]
 position = Vector2( -40, 80 )
 script = ExtResource( 4 )
 
-[node name="Puerta" type="KinematicBody2D" parent="." index="8"]
-position = Vector2( -160, 64 )
-script = ExtResource( 5 )
-empezar_abierto = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Puerta" index="0"]
-position = Vector2( 0, -4.5 )
-shape = SubResource( 2 )
-
-[node name="Sprite" type="Sprite" parent="Puerta" index="1"]
-position = Vector2( 0, -4 )
-texture = ExtResource( 6 )
-
-[node name="Puerta2" type="KinematicBody2D" parent="." index="9"]
-position = Vector2( 240, 64 )
-script = ExtResource( 5 )
-empezar_abierto = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Puerta2" index="0"]
-position = Vector2( 0, -4.5 )
-shape = SubResource( 2 )
-
-[node name="Sprite" type="Sprite" parent="Puerta2" index="1"]
-position = Vector2( 0, -4 )
-texture = ExtResource( 6 )
-
-[node name="Puerta3" type="KinematicBody2D" parent="." index="10"]
-position = Vector2( -144, -464 )
-script = ExtResource( 5 )
-empezar_abierto = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Puerta3" index="0"]
-position = Vector2( 0, -4.5 )
-shape = SubResource( 2 )
-
-[node name="Sprite" type="Sprite" parent="Puerta3" index="1"]
-position = Vector2( 0, -4 )
-texture = ExtResource( 6 )
-
-[node name="Hookpoint" parent="." index="11" instance=ExtResource( 9 )]
+[node name="Hookpoint" parent="." index="8" instance=ExtResource( 9 )]
 position = Vector2( -56, -56 )
 
-[node name="Hookpoint3" parent="." index="12" instance=ExtResource( 9 )]
+[node name="Hookpoint3" parent="." index="9" instance=ExtResource( 9 )]
 position = Vector2( 32, -248 )
 
-[node name="Hookpoint4" parent="." index="13" instance=ExtResource( 9 )]
+[node name="Hookpoint4" parent="." index="10" instance=ExtResource( 9 )]
 position = Vector2( 32, -440 )
 
-[node name="Hookpoint5" parent="." index="14" instance=ExtResource( 9 )]
+[node name="Hookpoint5" parent="." index="11" instance=ExtResource( 9 )]
 position = Vector2( -80, -488 )
 
-[node name="Hookpoint2" parent="." index="15" instance=ExtResource( 9 )]
+[node name="Hookpoint2" parent="." index="12" instance=ExtResource( 9 )]
 position = Vector2( 120, -56 )
 
-[node name="PlataformaAlterna" type="StaticBody2D" parent="." index="16"]
+[node name="PlataformaAlterna" type="StaticBody2D" parent="." index="13"]
 position = Vector2( -96, -436 )
 script = ExtResource( 7 )
 
@@ -118,5 +102,5 @@ position = Vector2( -0.5, 0 )
 shape = SubResource( 4 )
 one_way_collision = true
 
-[node name="PlataformaFragilCripta" parent="." index="17" instance=ExtResource( 10 )]
+[node name="PlataformaFragilCripta" parent="." index="14" instance=ExtResource( 10 )]
 position = Vector2( 40, 85 )

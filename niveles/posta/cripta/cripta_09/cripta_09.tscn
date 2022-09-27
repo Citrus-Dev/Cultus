@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://niveles/Nivel.tscn" type="PackedScene" id=1]
 [ext_resource path="res://main/CameraLimitSystem/CameraBounds.gd" type="Script" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://main/Pickups/PickupBalasEscopeta.tscn" type="PackedScene" id=8]
 [ext_resource path="res://main/Pickups/PickupBalasBallesta.tscn" type="PackedScene" id=9]
 [ext_resource path="res://main/Personajes/Polilla/Polilla.tscn" type="PackedScene" id=10]
+[ext_resource path="res://main/Objetos_mapa/TransicionDeNivel/TransicionDeNivelConArea.tscn" type="PackedScene" id=11]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 296, 177.5 )
@@ -34,6 +35,27 @@ visible = false
 position = Vector2( 0, 167.5 )
 shape = SubResource( 1 )
 script = ExtResource( 2 )
+
+[node name="TransicionDeNivelConArea" parent="triggers" index="0" instance=ExtResource( 11 )]
+position = Vector2( 296, 320 )
+ID = "puerta_der"
+ID_objetivo = "puerta_izq"
+direccion_nivel = "res://niveles/posta/cripta/cripta_08/cripta_08.tscn"
+direccion_movimiento = 1
+
+[node name="TransicionDeNivelConArea2" parent="triggers" index="1" instance=ExtResource( 11 )]
+position = Vector2( -16, 16 )
+rotation = 1.5708
+ID = "arriba"
+ID_objetivo = "caida"
+direccion_nivel = "res://niveles/posta/cripta/cripta_salto/cripta_salto.tscn"
+direccion_movimiento = 2
+
+[node name="TransicionDeNivelConArea3" parent="triggers" index="2" instance=ExtResource( 11 )]
+position = Vector2( -280, 320 )
+ID = "puerta_izq"
+ID_objetivo = "puerta_der"
+direccion_nivel = "res://niveles/posta/cripta/cripta_arena/cripta_arena.tscn"
 
 [node name="SpawnJugador" type="Node2D" parent="." index="7"]
 position = Vector2( 3, 317 )
