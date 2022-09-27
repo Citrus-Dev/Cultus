@@ -38,6 +38,7 @@ position = Vector2( -56, 176 )
 position = Vector2( 328, 176 )
 
 [node name="CameraBounds" type="CollisionShape2D" parent="camara limites" index="0"]
+visible = false
 position = Vector2( 196, 48 )
 shape = SubResource( 1 )
 script = ExtResource( 2 )
@@ -64,5 +65,8 @@ no_desaparecer = true
 [node name="Esqueleto" parent="." index="12" instance=ExtResource( 7 )]
 position = Vector2( 64, 176 )
 
-[node name="Esqueleto2" parent="." index="13" instance=ExtResource( 7 )]
+[node name="Esqueleto3" parent="." index="13" instance=ExtResource( 7 )]
+position = Vector2( 160, 176 )
+
+[node name="Esqueleto2" parent="." index="14" instance=ExtResource( 7 )]
 position = Vector2( 240, 176 )

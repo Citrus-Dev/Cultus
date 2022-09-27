@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://main/Objetos_mapa/Plataformas alternas/PlataformaFragilCripta.tscn" type="PackedScene" id=1]
+[ext_resource path="res://main/Objetos_mapa/TransicionDeNivel/TransicionDeNivelConArea.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/tilesets/tileset_cripta.tres" type="TileSet" id=3]
 [ext_resource path="res://niveles/Nivel.tscn" type="PackedScene" id=4]
 [ext_resource path="res://main/Personajes/Polilla/Polilla.tscn" type="PackedScene" id=5]
@@ -34,8 +35,13 @@ position = Vector2( 256, 76 )
 shape = SubResource( 4 )
 script = ExtResource( 7 )
 
+[node name="TransicionDeNivelConArea" parent="triggers" index="0" instance=ExtResource( 2 )]
+position = Vector2( -152, 80 )
+ID = "puerta_izquierda"
+direccion_movimiento = 1
+
 [node name="SpawnJugador" type="Node2D" parent="." index="7"]
-position = Vector2( -152, 72 )
+position = Vector2( -56, 64 )
 script = ExtResource( 8 )
 
 [node name="Enemigos" type="Node" parent="." index="8"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://niveles/Nivel.tscn" type="PackedScene" id=1]
 [ext_resource path="res://main/CameraLimitSystem/CameraBounds.gd" type="Script" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://main/Personajes/Rueda/Rueda.tscn" type="PackedScene" id=13]
 [ext_resource path="res://main/SpawnerAuto/spawner_auto.tscn" type="PackedScene" id=14]
 [ext_resource path="res://main/Personajes/Shot/Shot.tscn" type="PackedScene" id=15]
+[ext_resource path="res://main/Personajes/Polilla/Polilla.tscn" type="PackedScene" id=16]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 291, 200 )
@@ -150,26 +151,44 @@ position = Vector2( -232, 256 )
 [node name="Rueda2" parent="." index="22" instance=ExtResource( 13 )]
 position = Vector2( 152, 256 )
 
-[node name="sp mason" parent="." index="23" instance=ExtResource( 14 )]
+[node name="Spawns" type="Node2D" parent="." index="23"]
+
+[node name="sp polilla" parent="Spawns" index="0" instance=ExtResource( 14 )]
+position = Vector2( -203, 139 )
+spawn = ExtResource( 16 )
+
+[node name="sp polilla2" parent="Spawns" index="1" instance=ExtResource( 14 )]
+position = Vector2( -157, 138 )
+spawn = ExtResource( 16 )
+
+[node name="sp polilla3" parent="Spawns" index="2" instance=ExtResource( 14 )]
+position = Vector2( 136, 137 )
+spawn = ExtResource( 16 )
+
+[node name="sp polilla4" parent="Spawns" index="3" instance=ExtResource( 14 )]
+position = Vector2( 103, 138 )
+spawn = ExtResource( 16 )
+
+[node name="sp mason" parent="Spawns" index="4" instance=ExtResource( 14 )]
 position = Vector2( -288, 128 )
 spawn = ExtResource( 15 )
 
-[node name="sp rueda" parent="." index="24" instance=ExtResource( 14 )]
+[node name="sp rueda" parent="Spawns" index="5" instance=ExtResource( 14 )]
 position = Vector2( -32, 168 )
 spawn = ExtResource( 13 )
 
-[node name="sp mason2" parent="." index="25" instance=ExtResource( 14 )]
+[node name="sp mason2" parent="Spawns" index="6" instance=ExtResource( 14 )]
 position = Vector2( 208, 128 )
 spawn = ExtResource( 15 )
 
-[node name="sp esqueleto3" parent="." index="26" instance=ExtResource( 14 )]
+[node name="sp esqueleto3" parent="Spawns" index="7" instance=ExtResource( 14 )]
 position = Vector2( 64, 240 )
 spawn = ExtResource( 12 )
 
-[node name="sp esqueleto2" parent="." index="27" instance=ExtResource( 14 )]
+[node name="sp esqueleto2" parent="Spawns" index="8" instance=ExtResource( 14 )]
 position = Vector2( -128, 240 )
 spawn = ExtResource( 12 )
 
-[node name="sp esqueleto" parent="." index="28" instance=ExtResource( 14 )]
+[node name="sp esqueleto" parent="Spawns" index="9" instance=ExtResource( 14 )]
 position = Vector2( -288, 240 )
 spawn = ExtResource( 12 )
