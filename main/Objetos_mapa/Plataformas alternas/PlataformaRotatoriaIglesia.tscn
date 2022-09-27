@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://main/Objetos_mapa/Plataformas alternas/PlataformaRotatoria.gd" type="Script" id=1]
+[ext_resource path="res://assets/tilesets/plataforma_iglesia_larga.png" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=19]
+extents = Vector2( 40, 8 )
+
+[node name="PlataformaRotatoria" type="StaticBody2D"]
+position = Vector2( 488, -136 )
+collision_layer = 513
+collision_mask = 0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource( 19 )

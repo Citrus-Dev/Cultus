@@ -17,7 +17,7 @@ func reflejar():
 	velocity = -velocity
 
 
-func hit():
+func hit(__):
 	var efecto := EfectoCirculo.new(
 		$EstelaBase.gradient.colors[1],
 		0.0,

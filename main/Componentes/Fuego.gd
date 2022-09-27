@@ -2,6 +2,9 @@
 class_name Fuego
 extends Node
 
+const ESCENA_FUEGO_CHIQUIT := preload("res://main/particulas/FuegoChiquit.tscn")
+const ESCENA_FUEGO_GRANDE := preload("res://main/particulas/FuegoGrande.tscn")
+
 const ES_FUEGO: bool = true
 const FRECUENCIA: float = 0.8
 const DMG_POR_TICK: int = 18
@@ -13,6 +16,8 @@ var dmg: InfoDmg
 
 var target: Personaje
 var target_status: Status
+
+var particulas_fuego: Node2D
 
 func _init(duracion: float = 6.0) -> void:
 	vida = duracion
@@ -33,7 +38,7 @@ func _ready() -> void:
 		dar_error("nao status")
 		return
 	
-	# Si se muere el personaje nos borramos
+	# Cuando se muera el personaje nos borramos
 	target_status.connect("morir", self, "dar_error", ["Se murio!!!! chau fuego"])
 	
 	# Revisar que el personaje no tenga fuego
@@ -45,6 +50,12 @@ func _ready() -> void:
 			break
 	
 	timer = FRECUENCIA
+	
+	# Spawnear los efectos de fuego
+	particulas_fuego = ESCENA_FUEGO_CHIQUIT.instance()
+	target.add_child(particulas_fuego)
+	var fgrand = ESCENA_FUEGO_GRANDE.instance()
+	target.add_child(fgrand)
 
 
 func _process(delta: float) -> void:
@@ -61,3 +72,8 @@ func _process(delta: float) -> void:
 func dar_error(mensaje: String):
 	printerr(mensaje)
 	call_deferred("free")
+
+
+func _exit_tree():
+	# Borrar las particulas cuando se borra el fuego
+	particulas_fuego.call_deferred("free")
