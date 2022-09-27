@@ -53,8 +53,8 @@ func _ready():
 
 	yield(get_tree(), "idle_frame")
 
-	if impulse_automatico:
-		Comandos.c_impulse_200()
+#	if impulse_automatico:
+#		Comandos.c_impulse_200()
 
 
 func init_primer_limite():

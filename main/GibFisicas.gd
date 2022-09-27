@@ -4,9 +4,9 @@ extends KinematicBody2D
 const LIFETIME := 4.0
 const VEL_FADE := 1.0
 
-export(float) var gravedad
-export(float) var friccion
-export(float) var vel_rotacion_base
+export(float) var gravedad = 500
+export(float) var friccion = 0.8
+export(float) var vel_rotacion_base = 50
 
 var velocity : Vector2
 var vel_rotacion : float

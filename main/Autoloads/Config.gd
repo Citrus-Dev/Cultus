@@ -37,6 +37,8 @@ func _ready() -> void:
 		actualizar_opciones()
 		return
 	cargar_config()
+	
+	OS.window_fullscreen = ProjectSettings.get_setting("display/window/size/fullscreen")
 
 
 func guardar_config():
@@ -52,6 +54,9 @@ func guardar_config():
 	
 	for key in keybinds.keys():
 		file.set_value("KEYBINDS", key, keybinds[key])
+	
+	file.set_value("PROJECT_SETTINGS", "display/window/size/fullscreen", ProjectSettings.get_setting("display/window/size/fullscreen"))
+	file.set_value("PROJECT_SETTINGS", "globals/console", ProjectSettings.get_setting("globals/console"))
 	
 	file.save(archivo_camino)
 	print(archivo_camino + "(config) guardado.")
@@ -73,6 +78,10 @@ func cargar_config():
 			"KEYBINDS":
 				for key in file.get_section_keys("KEYBINDS"):
 					keybinds[key] = file.get_value("KEYBINDS", key, null)
+			"PROJECT_SETTINGS":
+				ProjectSettings.set_setting("display/window/size/fullscreen", file.get_value("PROJECT_SETTINGS", "display/window/size/fullscreen", null))
+				ProjectSettings.set_setting("global/console", file.get_value("PROJECT_SETTINGS", "global/console", null))
+				
 	
 	print("Config cargada con exito")
 	print(config_data)

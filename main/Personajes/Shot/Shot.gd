@@ -3,6 +3,7 @@ class_name Shot
 extends Personaje
 
 const PROYECTILES = preload("res://main/Proyectiles/ProyectilHomingMejor.tscn")
+const GIBS := preload("res://main/Personajes/Shot/GibsShot.tscn")
 
 export(NodePath) onready var fsm = get_node(fsm) as StateMachine
 export(NodePath) onready var hurtbox = get_node(hurtbox) as Hurtbox
@@ -45,6 +46,13 @@ func morir(_info : InfoDmg):
 	remove_from_group("Enemigos")
 	
 	var tipo = _info.dmg_tipo
+	if InfoDmg.puede_gibear(tipo):
+		var g = GIBS.instance()
+		g.global_position = global_position
+		get_parent().add_child(g)
+	else:
+		# ragdoll
+		instanciar_ragdoll()
 
 
 func mirar_al_jugador():

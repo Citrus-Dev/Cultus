@@ -6,7 +6,7 @@ const BALA = preload("res://main/Proyectiles/BalaSniper.tscn")
 var linea: Line2D
 
 func _init():
-	skin_escena = preload("res://main/Armas/Skins/SkinAR.tscn")
+	skin_escena = preload("res://main/Armas/Skins/SkinSniper.tscn")
 	casquillo_escena = preload("res://main/Efectos/Casquillos/CasquilloBase.tscn")
 	damage_info.dmg_cantidad = 40
 	damage_info.fuerza_retroceso = 500

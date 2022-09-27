@@ -4,6 +4,7 @@ extends Personaje
 const MAX_SPAWNS: int = 4
 const INTERVALO_SUMMON: float = 2.5
 const ESCENA_SUMMON_RANDOM := preload("res://main/Personajes/Summoner/SummonRandom.tscn")
+const GIBS := preload("res://main/Personajes/Summoner/GibsSummoner.tscn")
 
 # Me canse de usar la maquina de estados de mierda, ahora los estados son un enum
 # El que le joda que la haga!!!
@@ -114,6 +115,10 @@ func set_muerto(toggle : bool):
 		hurtbox.collision_mask = 0 
 	cambiar_visibilidad(!toggle)
 	set_estado(Estados.MUERTO)
+	
+	var gibs := GIBS.instance()
+	gibs.global_position = global_position
+	get_parent().add_child(gibs)
 
 
 func mirar_al_jugador():

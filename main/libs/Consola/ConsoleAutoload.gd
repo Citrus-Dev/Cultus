@@ -14,6 +14,7 @@ var command_list := {}
 
 func _ready() -> void:
 	# Si no es una build debug sacamos la consola
+#	if !ProjectSettings.get_setting("global/consola"):
 	if !OS.is_debug_build():
 		call_deferred("free")
 		return

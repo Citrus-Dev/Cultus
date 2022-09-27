@@ -6,6 +6,7 @@ onready var raycast: RayCast2D = $RayCast2D
 
 func _ready():
 	linea.set_as_toplevel(true)
+	owner.connect("muerto", self, "apagar")
 
 
 func _process(delta):
@@ -13,3 +14,7 @@ func _process(delta):
 	var col = global_position - raycast.get_collision_point()
 	linea.set_point_position(1, -col)
 	linea.global_position = global_position
+
+
+func apagar():
+	linea.visible = false

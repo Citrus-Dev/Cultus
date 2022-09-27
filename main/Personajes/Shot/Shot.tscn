@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://main/Personajes/PersonajeBase.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/enemies/sprites_shot_attack.png" type="Texture" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://main/Personajes/Shot/estados/Cast.gd" type="Script" id=9]
 [ext_resource path="res://main/Personajes/Shot/estados/Idle.gd" type="Script" id=10]
 [ext_resource path="res://main/libs/DebugMonitor/DebugMonitor.tscn" type="PackedScene" id=11]
+[ext_resource path="res://main/Ragdolls/RagdollShot.tscn" type="PackedScene" id=12]
 
 [sub_resource type="Animation" id=1]
 length = 0.001
@@ -179,6 +180,7 @@ extents = Vector2( 10, 24 )
 collision_layer = 4
 collision_mask = 517
 script = ExtResource( 5 )
+ragdoll_escena = ExtResource( 12 )
 skin = NodePath("Skin")
 skin_sprite_path = NodePath("Skin/Sprite")
 aceleracion = 25.0

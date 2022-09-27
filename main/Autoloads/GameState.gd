@@ -15,8 +15,24 @@ var estado_actual : int
 var combate_terminado : bool
 var vio_tutorial_variantes: bool
 
+var cursor: Cursor
+
+
 func _init() -> void:
 	pause_mode = Node.PAUSE_MODE_PROCESS
+
+
+func _ready():
+	# Crear una capa nueva para el cursor
+	var capa = CanvasLayer.new()
+	capa.layer = 512
+	add_child(capa)
+	
+	# Crear cursor
+	cursor = Cursor.new()
+	capa.add_child(cursor)
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+
 
 
 func _process(delta):
@@ -37,11 +53,15 @@ func entrar_estado(est : int):
 	match est:
 		Estados.MENU:
 			Musica.set_track(0)
+			cursor.set_cursor_estilo(0)
 		Estados.NORMAL:
 			Musica.set_track(Musica.Tracks.MUS_NORMAL)
+			cursor.set_cursor_estilo(1)
 		Estados.COMBATE:
 			Musica.set_track(Musica.Tracks.MUS_COMBATE)
+			cursor.set_cursor_estilo(1)
 		Estados.MUERTE:
+			cursor.set_cursor_estilo(1)
 			pass
 
 

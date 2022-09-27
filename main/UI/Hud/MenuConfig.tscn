@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://icon.png" type="Texture" id=1]
 [ext_resource path="res://main/UI/Hud/MenuConfig.gd" type="Script" id=2]
@@ -7,6 +7,19 @@
 [ext_resource path="res://assets/ui/menuboton_hover_grande.tres" type="Texture" id=5]
 [ext_resource path="res://assets/ui/menuboton_normal.tres" type="Texture" id=6]
 [ext_resource path="res://assets/ui/menuboton_presionado_grande.tres" type="Texture" id=7]
+[ext_resource path="res://assets/ui/iconos_config.png" type="Texture" id=8]
+
+[sub_resource type="AtlasTexture" id=2]
+flags = 2
+atlas = ExtResource( 8 )
+region = Rect2( 68, 39, 22, 21 )
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id=1]
+flags = 2
+atlas = ExtResource( 8 )
+region = Rect2( 36, 39, 22, 21 )
+filter_clip = true
 
 [node name="Config" type="Control"]
 anchor_right = 1.0
@@ -17,6 +30,8 @@ label_sfx = NodePath("CenterContainer/PanelContainer/MarginContainer/VBoxContain
 icono_sfx = NodePath("CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SliderSFX/TextureRect")
 slider_musica = NodePath("CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SliderMusica/HSlider")
 label_musica = NodePath("CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SliderMusica/Label")
+checkbox_pantalla_completa = NodePath("CenterContainer/PanelContainer/MarginContainer/VBoxContainer/checkboxes/Check pantalla completa")
+checkbox_consola = NodePath("CenterContainer/PanelContainer/MarginContainer/VBoxContainer/checkboxes/Check consola")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_right = 1.0
@@ -29,10 +44,10 @@ anchor_bottom = 1.0
 
 [node name="PanelContainer" type="NinePatchRect" parent="CenterContainer"]
 margin_left = 116.0
-margin_top = 80.0
+margin_top = 51.0
 margin_right = 396.0
-margin_bottom = 208.0
-rect_min_size = Vector2( 280, 128 )
+margin_bottom = 236.0
+rect_min_size = Vector2( 280, 185 )
 texture = ExtResource( 4 )
 patch_margin_left = 6
 patch_margin_top = 6
@@ -53,7 +68,7 @@ custom_constants/margin_bottom = 12
 margin_left = 12.0
 margin_top = 12.0
 margin_right = 254.0
-margin_bottom = 102.0
+margin_bottom = 165.0
 
 [node name="Label" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
 margin_right = 242.0
@@ -64,12 +79,12 @@ align = 1
 [node name="SliderSFX" type="HBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
 margin_top = 21.0
 margin_right = 242.0
-margin_bottom = 39.0
+margin_bottom = 38.0
 size_flags_vertical = 3
 
 [node name="TextureRect" type="TextureRect" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SliderSFX"]
 margin_right = 16.0
-margin_bottom = 18.0
+margin_bottom = 17.0
 rect_min_size = Vector2( 16, 16 )
 texture = ExtResource( 1 )
 expand = true
@@ -86,23 +101,22 @@ valign = 1
 
 [node name="HSlider" type="HSlider" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SliderSFX"]
 margin_left = 48.0
-margin_top = 1.0
 margin_right = 242.0
-margin_bottom = 17.0
+margin_bottom = 16.0
 size_flags_horizontal = 3
 size_flags_vertical = 4
 max_value = 1.0
 step = 0.05
 
 [node name="SliderMusica" type="HBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
-margin_top = 43.0
+margin_top = 42.0
 margin_right = 242.0
-margin_bottom = 62.0
+margin_bottom = 59.0
 size_flags_vertical = 3
 
 [node name="TextureRect" type="TextureRect" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SliderMusica"]
 margin_right = 16.0
-margin_bottom = 19.0
+margin_bottom = 17.0
 rect_min_size = Vector2( 16, 16 )
 texture = ExtResource( 3 )
 expand = true
@@ -110,9 +124,8 @@ stretch_mode = 6
 
 [node name="Label" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SliderMusica"]
 margin_left = 20.0
-margin_top = 1.0
 margin_right = 44.0
-margin_bottom = 18.0
+margin_bottom = 17.0
 rect_min_size = Vector2( 24, 0 )
 text = "10"
 align = 1
@@ -120,19 +133,36 @@ valign = 1
 
 [node name="HSlider" type="HSlider" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SliderMusica"]
 margin_left = 48.0
-margin_top = 1.0
 margin_right = 242.0
-margin_bottom = 17.0
+margin_bottom = 16.0
 size_flags_horizontal = 3
 size_flags_vertical = 4
 max_value = 1.0
 step = 0.05
 
+[node name="checkboxes" type="VBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+margin_top = 63.0
+margin_right = 242.0
+margin_bottom = 125.0
+
+[node name="Check pantalla completa" type="CheckBox" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/checkboxes"]
+margin_right = 242.0
+margin_bottom = 29.0
+text = "Pantalla completa"
+icon = SubResource( 2 )
+
+[node name="Check consola" type="CheckBox" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/checkboxes"]
+margin_top = 33.0
+margin_right = 242.0
+margin_bottom = 62.0
+text = "Consola (Requiere reinicio)"
+icon = SubResource( 1 )
+
 [node name="BotonAtras" type="HBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
 margin_left = 82.0
-margin_top = 66.0
+margin_top = 129.0
 margin_right = 160.0
-margin_bottom = 90.0
+margin_bottom = 153.0
 size_flags_horizontal = 4
 
 [node name="Button" type="TextureButton" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/BotonAtras"]

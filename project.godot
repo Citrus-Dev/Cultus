@@ -249,6 +249,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://main/Personajes/Cultista/Cultista.gd"
 }, {
+"base": "Sprite",
+"class": "Cursor",
+"language": "GDScript",
+"path": "res://main/Cursor.gd"
+}, {
 "base": "Accion",
 "class": "DebugBreakpoint",
 "language": "GDScript",
@@ -624,7 +629,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://main/Objetos_mapa/Plataformas alternas/PlataformaPropagacion.gd"
 }, {
-"base": "PlataformaAlterna",
+"base": "KinematicBody2D",
 "class": "PlataformaRotatoria",
 "language": "GDScript",
 "path": "res://main/Objetos_mapa/Plataformas alternas/PlataformaRotatoria.gd"
@@ -948,6 +953,7 @@ _global_script_class_icons={
 "CuerdaVerletV2": "",
 "CuerpoAgua": "",
 "Cultista": "",
+"Cursor": "",
 "DebugBreakpoint": "res://main/libs/BehaviorTree/icons/fail.svg",
 "DebugCanvasDrawer": "",
 "Decorador": "res://main/libs/BehaviorTree/icons/category_decorator.svg",
@@ -1089,6 +1095,7 @@ config/icon="res://icono_CULTUS.png"
 
 [autoload]
 
+Config="*res://main/Autoloads/Config.gd"
 DebugDraw="*res://addons/zylann.debug_draw/debug_draw.gd"
 ConsoleAutoload="*res://main/libs/Consola/ConsoleAutoload.gd"
 Comandos="*res://main/Autoloads/Comandos.gd"
@@ -1100,7 +1107,6 @@ Guardado="*res://main/Autoloads/Guardado.gd"
 GameState="*res://main/Autoloads/GameState.gd"
 Musica="*res://main/Autoloads/Musica.gd"
 Pausa="*res://main/Autoloads/Pausa.gd"
-Config="*res://main/Autoloads/Config.gd"
 LabelsPickup="*res://main/Autoloads/LabelsPickup.gd"
 
 [debug]
@@ -1137,6 +1143,10 @@ window/stretch/aspect="keep"
 [editor_plugins]
 
 enabled=PoolStringArray( "res://addons/antialiased_line2d/plugin.cfg", "res://addons/godot_sfxr/plugin.cfg", "res://addons/notes_tab/plugin.cfg" )
+
+[global]
+
+consola=false
 
 [gui]
 

@@ -1,5 +1,5 @@
 class_name PlataformaRotatoria
-extends PlataformaAlterna
+extends KinematicBody2D
 
 export(float) var velocidad_rotacion = 2.0
 export(float) var tiempo_quieto = 3.0
@@ -9,6 +9,7 @@ export(bool) var invertir_dir
 
 var timer_stay := Timer.new() 
 var timer_windup := Timer.new()
+var shaker := Shaker.new()
 
 var girando : bool
 var shake : bool
@@ -26,6 +27,12 @@ func _ready() -> void:
 	add_child(timer_windup)
 	
 	calcular_proximo_intervalo()
+	
+	shaker.target = get_child(0)
+	shaker.decay = 1
+	shaker.max_roll = 0
+	shaker.max_offset = Vector2(2, 5)
+	add_child(shaker)
 
 
 # Termino la espera, empezar a sacudirse

@@ -128,7 +128,7 @@ func c_hurt(_dolor : String = "") -> String:
 		return "Argumentos incorrectos (hurt [cantidad de daño])"
 	var strint = int(_dolor)
 	
-	var jug = get_tree().get_nodes_in_group("Jugador")[0] as Jugador
+	var jug = get_tree().get_nodes_in_group("Jugador")[0] as Personaje
 	var status = jug.status as Status
 	
 	var dmg = InfoDmg.new()
@@ -140,7 +140,7 @@ func c_hurt(_dolor : String = "") -> String:
 
 # Mata al jugador
 func c_kill(_ouch : String = "") -> String:
-	var jug = get_tree().get_nodes_in_group("Jugador")[0] as Jugador
+	var jug = get_tree().get_nodes_in_group("Jugador")[0] as Personaje
 	var status = jug.status as Status
 	var dmg = InfoDmg.new()
 	dmg.dmg_cantidad = 9999999
@@ -161,7 +161,7 @@ func c_kill(_ouch : String = "") -> String:
 
 
 func c_mirar(_nada := "a") -> String:
-	var jug : Jugador = get_tree().get_nodes_in_group("Jugador")[0]
+	var jug : Personaje = get_tree().get_nodes_in_group("Jugador")[0]
 	if _nada != "a":
 		var strint = int(_nada)
 		jug.alternar_checkpoint(false if strint == 0 else true)
@@ -202,7 +202,7 @@ func c_give(_arma := "") -> String:
 func give_arma(_arma := "") -> String:
 	if get_tree().get_nodes_in_group("ArmasJugador").size() <= 0:
 		return "ERROR INESPERADO"
-	var cont : ControladorArmasJugador = get_tree().get_nodes_in_group("ArmasJugador")[0]
+	var cont = get_tree().get_nodes_in_group("ArmasJugador")[0]
 	var armas := Armas.new()
 	
 	if _arma in armas.armas_lista:
@@ -215,7 +215,7 @@ func give_arma(_arma := "") -> String:
 func give_skill(_skill := "") -> String:
 	if get_tree().get_nodes_in_group("Jugador").size() <= 0:
 		return "ERROR INESPERADO"
-	var jug : Jugador = get_tree().get_nodes_in_group("Jugador")[0]
+	var jug : Personaje = get_tree().get_nodes_in_group("Jugador")[0]
 	var armas := Armas.new()
 	
 	if _skill in armas.skills_lista:
