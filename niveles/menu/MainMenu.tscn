@@ -29,6 +29,7 @@ anchor_bottom = 1.0
 script = ExtResource( 3 )
 cont_botones = NodePath("VBoxContainer")
 boton_continuar = NodePath("VBoxContainer/cont botones/}")
+boton_creditos = NodePath("VBoxContainer/cont botones/Creditos")
 ng_prompt = NodePath("NGPrompt/NuevoJuegoPrompt")
 menu_config = NodePath("Config")
 
@@ -64,12 +65,12 @@ custom_fonts/font = SubResource( 1 )
 text = "Cultus"
 
 [node name="cont botones" type="VBoxContainer" parent="VBoxContainer"]
-margin_top = 93.0
+margin_top = 85.0
 margin_right = 78.0
-margin_bottom = 237.0
+margin_bottom = 245.0
 size_flags_horizontal = 0
 size_flags_vertical = 6
-custom_constants/separation = 16
+custom_constants/separation = 10
 
 [node name="}" type="TextureButton" parent="VBoxContainer/cont botones"]
 margin_right = 78.0
@@ -88,9 +89,9 @@ align = 1
 valign = 1
 
 [node name="JuegoNuevo" type="TextureButton" parent="VBoxContainer/cont botones"]
-margin_top = 40.0
+margin_top = 34.0
 margin_right = 78.0
-margin_bottom = 64.0
+margin_bottom = 58.0
 texture_normal = ExtResource( 8 )
 texture_pressed = ExtResource( 9 )
 texture_hover = ExtResource( 7 )
@@ -105,9 +106,9 @@ align = 1
 valign = 1
 
 [node name="Opciones" type="TextureButton" parent="VBoxContainer/cont botones"]
-margin_top = 80.0
+margin_top = 68.0
 margin_right = 78.0
-margin_bottom = 104.0
+margin_bottom = 92.0
 texture_normal = ExtResource( 8 )
 texture_pressed = ExtResource( 9 )
 texture_hover = ExtResource( 7 )
@@ -121,10 +122,27 @@ text = "Opciones"
 align = 1
 valign = 1
 
-[node name="Salir" type="TextureButton" parent="VBoxContainer/cont botones"]
-margin_top = 120.0
+[node name="Creditos" type="TextureButton" parent="VBoxContainer/cont botones"]
+margin_top = 102.0
 margin_right = 78.0
-margin_bottom = 144.0
+margin_bottom = 126.0
+texture_normal = ExtResource( 8 )
+texture_pressed = ExtResource( 9 )
+texture_hover = ExtResource( 7 )
+
+[node name="Label4" type="Label" parent="VBoxContainer/cont botones/Creditos"]
+margin_left = -5.0
+margin_right = 82.0
+margin_bottom = 23.0
+custom_fonts/font = SubResource( 2 )
+text = "Creditos"
+align = 1
+valign = 1
+
+[node name="Salir" type="TextureButton" parent="VBoxContainer/cont botones"]
+margin_top = 136.0
+margin_right = 78.0
+margin_bottom = 160.0
 texture_normal = ExtResource( 8 )
 texture_pressed = ExtResource( 9 )
 texture_hover = ExtResource( 7 )
@@ -190,6 +208,8 @@ visible = false
 [connection signal="pressed" from="VBoxContainer/cont botones/JuegoNuevo" to="." method="mostrar_prompt_nuevo_juego" binds= [ true ]]
 [connection signal="mouse_entered" from="VBoxContainer/cont botones/Opciones" to="AudioStreamPlayer" method="play"]
 [connection signal="pressed" from="VBoxContainer/cont botones/Opciones" to="." method="mostrar_config"]
+[connection signal="mouse_entered" from="VBoxContainer/cont botones/Creditos" to="AudioStreamPlayer" method="play"]
+[connection signal="pressed" from="VBoxContainer/cont botones/Creditos" to="." method="mostrar_config"]
 [connection signal="mouse_entered" from="VBoxContainer/cont botones/Salir" to="AudioStreamPlayer" method="play"]
 [connection signal="pressed" from="VBoxContainer/cont botones/Salir" to="." method="quit"]
 [connection signal="aceptado" from="NGPrompt/NuevoJuegoPrompt" to="." method="empezar_nuevo_juego"]

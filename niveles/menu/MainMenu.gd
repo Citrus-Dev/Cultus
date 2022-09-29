@@ -5,6 +5,7 @@ const SND_BOTON_TOCAR := preload("res://assets/sfx/ui_botton_tocar.wav")
 
 export(NodePath) onready var cont_botones = get_node(cont_botones) as Control
 export(NodePath) onready var boton_continuar = get_node(boton_continuar) as Control
+export(NodePath) onready var boton_creditos = get_node(boton_creditos) as Control
 export(NodePath) onready var ng_prompt = get_node(ng_prompt) as Control
 export(NodePath) onready var menu_config = get_node(menu_config) as MenuConfig
 
@@ -14,6 +15,7 @@ func _ready():
 	GameState.determinar_estado_inicial(self)
 	if Guardado.existe_partida("1") != OK:
 		boton_continuar.visible = false
+	boton_creditos.connect("pressed", GameState, "ver_credtios")
 
 
 func sonido_tocar_boton():

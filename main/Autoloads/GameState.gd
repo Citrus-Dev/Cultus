@@ -1,5 +1,6 @@
 extends Node
 
+const INFO := preload("res://main/InfoJuego.tres")
 const CHANCE_EVENTO := 60000
 
 signal jugador_muerto
@@ -115,7 +116,7 @@ func evento():
 	if get_tree().get_nodes_in_group("Jugador").size() < 1: return
 	var jug : Node2D = get_tree().get_nodes_in_group("Jugador")[0]
 	jug.pause_mode = PAUSE_MODE_PROCESS
-	ControladorUi.mensaje_ui("Hola", 2.0, true)
+#	ControladorUi.mensaje_ui("Hola", 2.0, true)
 	get_tree().paused = true
 	jug.alternar_checkpoint(true)
 	
@@ -128,5 +129,12 @@ func evento():
 	timer.call_deferred("free")
 	get_tree().paused = false
 	jug.alternar_checkpoint(false)
-	
+
+
+func ir_al_menu():
+	get_tree().change_scene("res://niveles/menu/MainMenu.tscn")
+
+
+func ver_credtios():
+	get_tree().change_scene(INFO.escena_creditos)
 

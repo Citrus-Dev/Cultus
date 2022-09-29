@@ -299,6 +299,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://main/libs/BehaviorTree/hojas/Acciones/EsVectorCero.gd"
 }, {
+"base": "CanvasLayer",
+"class": "EscenaCreditos",
+"language": "GDScript",
+"path": "res://niveles/creditos/EscenaCreditos.gd"
+}, {
 "base": "Arma",
 "class": "Escopeta",
 "language": "GDScript",
@@ -963,6 +968,7 @@ _global_script_class_icons={
 "EfectoParticulas": "",
 "EjecutorComando": "",
 "EsVectorCero": "",
+"EscenaCreditos": "",
 "Escopeta": "",
 "EscribirEnBlackboard": "",
 "Esqueleto": "",

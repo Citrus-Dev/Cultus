@@ -15,3 +15,4 @@ const INV_BALAS_DEFAULT := {
 export(String) var version_actual
 export(Array, String) var creditos
 export(String) var primer_nivel
+export(String) var escena_creditos
