@@ -277,37 +277,55 @@ tile_data = PoolIntArray( -1048577, 0, 0, -1114112, 0, 1, -1114111, 0, 1, -11141
 [node name="Borde" parent="bordes" index="0" instance=ExtResource( 16 )]
 position = Vector2( 661, 143 )
 
-[node name="Borde2" parent="bordes" index="1" instance=ExtResource( 16 )]
+[node name="Borde13" parent="bordes" index="1" instance=ExtResource( 16 )]
+position = Vector2( 440, -157 )
+
+[node name="Borde14" parent="bordes" index="2" instance=ExtResource( 16 )]
+position = Vector2( 401, -157 )
+
+[node name="Borde15" parent="bordes" index="3" instance=ExtResource( 16 )]
+position = Vector2( 417, -33 )
+
+[node name="Borde16" parent="bordes" index="4" instance=ExtResource( 16 )]
+position = Vector2( 1118, -33 )
+
+[node name="Borde17" parent="bordes" index="5" instance=ExtResource( 16 )]
+position = Vector2( 1077, -150 )
+
+[node name="Borde18" parent="bordes" index="6" instance=ExtResource( 16 )]
+position = Vector2( 1119, -150 )
+
+[node name="Borde2" parent="bordes" index="7" instance=ExtResource( 16 )]
 position = Vector2( 618, 143 )
 
-[node name="Borde3" parent="bordes" index="2" instance=ExtResource( 16 )]
+[node name="Borde3" parent="bordes" index="8" instance=ExtResource( 16 )]
 position = Vector2( 1334, 143 )
 
-[node name="Borde4" parent="bordes" index="3" instance=ExtResource( 16 )]
+[node name="Borde4" parent="bordes" index="9" instance=ExtResource( 16 )]
 position = Vector2( 1291, 143 )
 
-[node name="Borde5" parent="bordes" index="4" instance=ExtResource( 16 )]
+[node name="Borde5" parent="bordes" index="10" instance=ExtResource( 16 )]
 position = Vector2( 1261, 191 )
 
-[node name="Borde6" parent="bordes" index="5" instance=ExtResource( 16 )]
+[node name="Borde6" parent="bordes" index="11" instance=ExtResource( 16 )]
 position = Vector2( 1075, 191 )
 
-[node name="Borde7" parent="bordes" index="6" instance=ExtResource( 16 )]
+[node name="Borde7" parent="bordes" index="12" instance=ExtResource( 16 )]
 position = Vector2( 922, 191 )
 
-[node name="Borde8" parent="bordes" index="7" instance=ExtResource( 16 )]
+[node name="Borde8" parent="bordes" index="13" instance=ExtResource( 16 )]
 position = Vector2( 997, 191 )
 
-[node name="Borde9" parent="bordes" index="8" instance=ExtResource( 16 )]
+[node name="Borde9" parent="bordes" index="14" instance=ExtResource( 16 )]
 position = Vector2( 829, 255 )
 
-[node name="Borde11" parent="bordes" index="9" instance=ExtResource( 16 )]
+[node name="Borde11" parent="bordes" index="15" instance=ExtResource( 16 )]
 position = Vector2( 835, 318 )
 
-[node name="Borde12" parent="bordes" index="10" instance=ExtResource( 16 )]
+[node name="Borde12" parent="bordes" index="16" instance=ExtResource( 16 )]
 position = Vector2( 1084, 318 )
 
-[node name="Borde10" parent="bordes" index="11" instance=ExtResource( 16 )]
+[node name="Borde10" parent="bordes" index="17" instance=ExtResource( 16 )]
 position = Vector2( 707, 255 )
 
 [node name="CameraBounds" type="CollisionShape2D" parent="camara limites" index="0"]
@@ -539,7 +557,7 @@ position = Vector2( 752, 56 )
 shape = SubResource( 20 )
 
 [node name="SpawnJugador" type="Node2D" parent="." index="22"]
-position = Vector2( 552, 104 )
+position = Vector2( 332, -70 )
 script = ExtResource( 12 )
 
 [node name="PlataformaRotatoria" parent="." index="23" instance=ExtResource( 13 )]

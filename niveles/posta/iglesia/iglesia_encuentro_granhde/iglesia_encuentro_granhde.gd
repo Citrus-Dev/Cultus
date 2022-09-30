@@ -88,7 +88,7 @@ func empezar_fase2(__):
 		rueda.connect("muerto", self, "aumentar_contador")
 	alertar_todos_los_enemigos()
 	
-	for i in range(2):
+	for i in range(1):
 		var moderfoker: BossPaladin = spawn_paladin.spawn()
 		moderfoker.connect("muerto", self, "aumentar_contador")
 		yield(get_tree().create_timer(1.0), "timeout")
@@ -124,6 +124,11 @@ func abrir_puerta_final_boss():
 	puerta_salir.abrir()
 	
 	TransicionesDePantalla.abrio_puerta_boss_final = true
+	
+	var c: CamaraReal = get_tree().get_nodes_in_group("Camara")[0]
+	for i in range(10):
+		c.aplicar_screenshake(2.0)
+		yield(get_tree().create_timer(0.2), "timeout")
 
 
 
