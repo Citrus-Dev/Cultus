@@ -62,7 +62,7 @@ func set_estado(nuevo_estado: int):
 		Estados.ALERTA:
 			animador.play("idle")
 			timer_alerta = 0
-			if objetivo.muerto:
+			if !is_instance_valid(objetivo) or objetivo.muerto:
 				objetivo = null
 				set_estado(Estados.MUERTO)
 		Estados.SUMMON:
