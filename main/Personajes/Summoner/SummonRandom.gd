@@ -79,6 +79,11 @@ func spawnear_enemigo(enemigo: PackedScene, pos: Vector2):
 	
 	hacer_efecto_spawn(pos)
 	emit_signal("enemigo_spawneado", inst)
+	
+	# Alertar los enemigos spawneados
+	var jug = get_tree().get_nodes_in_group("Jugador")[0]
+	inst.objetivo = jug
+	inst.emit_signal("objetivo_encontrado")
 
 
 func hacer_efecto_spawn(pos: Vector2):

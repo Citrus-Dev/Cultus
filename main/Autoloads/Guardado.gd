@@ -25,6 +25,7 @@ func guardar_partida(_slot := ""):
 	datos["info_persist_global"] = info_persist_global
 	datos["vio_tutorial_variantes"] = GameState.vio_tutorial_variantes
 	datos["tiene_llave_iglesia"] = TransicionesDePantalla.tiene_llave_iglesia
+	datos["abrio_puerta_boss_final"] = TransicionesDePantalla.abrio_puerta_boss_final
 	
 	var data_string = var2str(datos)
 	
@@ -65,6 +66,7 @@ func cargar_partida(_slot := ""):
 	info_persist_global = datos["info_persist_global"]
 	GameState.vio_tutorial_variantes = datos["vio_tutorial_variantes"]
 	TransicionesDePantalla.tiene_llave_iglesia = datos["tiene_llave_iglesia"]
+	TransicionesDePantalla.abrio_puerta_boss_final = datos["abrio_puerta_boss_final"]
 	
 	TransicionesDePantalla.muerte = true
 	get_tree().change_scene(TransicionesDePantalla.checkpoint_actual_escena)

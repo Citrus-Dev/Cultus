@@ -6,6 +6,7 @@ var checkpoint_actual_escena : String
 var checkpoint_actual_pos : Vector2
 var muerte : bool
 var tiene_llave_iglesia : bool
+var abrio_puerta_boss_final : bool
 
 # ID de la transicion de nivel donde tenes que aparecer cuando 
 # pases a otro nivel

@@ -16,7 +16,7 @@
 [ext_resource path="res://main/Objetos_mapa/Puertas/Puerta.gd" type="Script" id=14]
 [ext_resource path="res://main/Objetos_mapa/TransicionDeNivel/Palanca_cripta.tscn" type="PackedScene" id=15]
 [ext_resource path="res://main/Objetos_mapa/Plataformas alternas/PlataformaFragilChiquitIglesia.tscn" type="PackedScene" id=16]
-[ext_resource path="res://main/Personajes/Shot/Shot.tscn" type="PackedScene" id=17]
+[ext_resource path="res://main/Personajes/Summoner/Summoner.tscn" type="PackedScene" id=17]
 [ext_resource path="res://main/AI/Borde.tscn" type="PackedScene" id=18]
 [ext_resource path="res://main/Pickups/PickupHP.tscn" type="PackedScene" id=19]
 [ext_resource path="res://assets/objetos/pillar_pickup.png" type="Texture" id=20]
@@ -884,8 +884,8 @@ texture = ExtResource( 20 )
 [node name="PickupGauss" parent="." index="19" instance=ExtResource( 21 )]
 position = Vector2( 1192, -312 )
 
-[node name="Shot" parent="." index="20" instance=ExtResource( 17 )]
-position = Vector2( 295.789, -293.158 )
+[node name="Summoner" parent="." index="20" instance=ExtResource( 17 )]
+position = Vector2( 313.724, -295.108 )
 
 [connection signal="activado" from="PalancaCripta" to="." method="abrir_entrada_path_of_pain"]
 [connection signal="activado" from="PalancaCripta2" to="." method="abrir_salida_path_of_pain"]
