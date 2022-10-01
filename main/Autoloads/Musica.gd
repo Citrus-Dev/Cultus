@@ -1,5 +1,7 @@
 extends Node
 
+const MENU_TRACK := preload("res://assets/musica/The-fire-is-gone.mp3")
+
 enum Tracks {
 	MUS_MENU = 0,
 	MUS_NORMAL = 1,
@@ -118,18 +120,19 @@ func cambiar_musica(track : int):
 	if stream_player_actual:
 		pos_vieja = stream_player_actual.get_playback_position()
 	
-	if musica != null:
-		match track:
-			Tracks.MUS_MENU:
-				objetivo_actual = null
-			Tracks.MUS_NORMAL:
+	match track:
+		Tracks.MUS_MENU:
+			objetivo = MENU_TRACK
+		Tracks.MUS_NORMAL:
+			if musica != null:
 				objetivo = musica.mus_normal
-			Tracks.MUS_COMBATE:
+		Tracks.MUS_COMBATE:
+			if musica != null:
 				objetivo = musica.mus_combate
-			Tracks.SIN_MUSICA:
-				objetivo = null
-			_:
-				return
+		Tracks.SIN_MUSICA:
+			objetivo = null
+		_:
+			return
 	
 	if objetivo != objetivo_actual:
 		crossfade(objetivo, pos_vieja)

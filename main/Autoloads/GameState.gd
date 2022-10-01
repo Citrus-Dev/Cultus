@@ -53,7 +53,7 @@ func cambiar_estado(est : int):
 func entrar_estado(est : int):
 	match est:
 		Estados.MENU:
-			Musica.set_track(0)
+			Musica.set_track(Musica.Tracks.MUS_MENU)
 			cursor.set_cursor_estilo(0)
 		Estados.NORMAL:
 			Musica.set_track(Musica.Tracks.MUS_NORMAL)

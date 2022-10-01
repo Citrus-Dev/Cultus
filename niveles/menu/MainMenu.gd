@@ -16,6 +16,7 @@ func _ready():
 	if Guardado.existe_partida("1") != OK:
 		boton_continuar.visible = false
 	boton_creditos.connect("pressed", GameState, "ver_credtios")
+	Musica.cambiar_musica(Musica.Tracks.MUS_MENU)
 
 
 func sonido_tocar_boton():

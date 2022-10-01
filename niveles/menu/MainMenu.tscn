@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://icon.png" type="Texture" id=1]
 [ext_resource path="res://assets/fuentes/DungeonFont.ttf" type="DynamicFontData" id=2]
@@ -10,7 +10,6 @@
 [ext_resource path="res://assets/ui/menuboton_normal.tres" type="Texture" id=8]
 [ext_resource path="res://assets/ui/menuboton_presionado_grande.tres" type="Texture" id=9]
 [ext_resource path="res://assets/sfx/ui_botton_tocar.wav" type="AudioStream" id=10]
-[ext_resource path="res://assets/musica/The-fire-is-gone.mp3" type="AudioStream" id=11]
 
 [sub_resource type="DynamicFont" id=1]
 size = 78
@@ -36,11 +35,6 @@ menu_config = NodePath("Config")
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 10 )
 pitch_scale = 2.83
-
-[node name="Musica" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 11 )
-autoplay = true
-bus = "Musica"
 
 [node name="Fondo" type="TextureRect" parent="."]
 anchor_right = 1.0
