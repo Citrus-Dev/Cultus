@@ -5,11 +5,11 @@ signal balas_cambiadas(_self)
 
 var dict_balas := {
 	"Pistola" : {"cant" : 24, "max" : 60},
-	"Rifle" : {"cant" : 90, "max" : 240},
-	"Escopeta" : {"cant" : 16, "max" : 48},
-	"Granadas" : {"cant" : 1, "max" : 6},
-	"Cohetes" : {"cant" : 6, "max" : 6},
-	"Flechas" : {"cant" : 8, "max" : 24}
+	"Rifle" : {"cant" : 90, "max" : 240, "min" : 30},
+	"Escopeta" : {"cant" : 16, "max" : 48, "min" : 10},
+	"Granadas" : {"cant" : 1, "max" : 6, "min" : 0},
+	"Cohetes" : {"cant" : 6, "max" : 6, "min" : 6}, # e diablo :0
+	"Flechas" : {"cant" : 8, "max" : 24, "min" : 3}
 }
 
 var medidor : HudMedidorBalas setget set_medidor
@@ -58,4 +58,23 @@ func tomar_balas_descubiertas() -> Dictionary:
 		nuevo_inv["Cohetes"] = dict_balas["Cohetes"]
 	
 	return nuevo_inv
+
+
+func agregar_minimo_de_balas():
+	if TransicionesDePantalla.inv_armas.has("ESCOPETA"):
+		if dict_balas["Escopeta"]["cant"] < dict_balas["Escopeta"]["min"]:
+			dict_balas["Escopeta"]["cant"] = dict_balas["Escopeta"]["min"]
+	
+	if TransicionesDePantalla.inv_armas.has("RIFLE"):
+		if dict_balas["Rifle"]["cant"] < dict_balas["Rifle"]["min"]:
+			dict_balas["Rifle"]["cant"] = dict_balas["Rifle"]["min"]
+	
+	if TransicionesDePantalla.inv_armas.has("BALLESTA"):
+		if dict_balas["Flechas"]["cant"] < dict_balas["Flechas"]["min"]:
+			dict_balas["Flechas"]["cant"] = dict_balas["Flechas"]["min"]
+	
+	if TransicionesDePantalla.inv_armas.has("BAZUCA"):
+		if dict_balas["Cohetes"]["cant"] < dict_balas["Cohetes"]["min"]:
+			dict_balas["Cohetes"]["cant"] = dict_balas["Cohetes"]["min"]
+
 

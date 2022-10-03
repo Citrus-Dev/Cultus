@@ -50,9 +50,14 @@ func _ready() -> void:
 	crear_camaras()
 	crear_bufanda()
 	
-	if !TransicionesDePantalla.inv_skills.empty():
-		for skill in TransicionesDePantalla.inv_skills:
-			agregar_skill(skill)
+	
+	if TransicionesDePantalla.inv_skills.has("Bufanda"):
+		agregar_skill("Bufanda")
+	
+	if TransicionesDePantalla.inv_skills.has("Escudo"):
+		agregar_skill("Escudo")
+	elif TransicionesDePantalla.inv_skills.has("Slide"):
+		agregar_skill("Slide")
 
 
 func _process(delta: float) -> void:

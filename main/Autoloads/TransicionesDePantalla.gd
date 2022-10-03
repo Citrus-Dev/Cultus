@@ -67,3 +67,5 @@ func encontrar_checkpoint() -> Node2D:
 	else:
 		return null
 
+
+

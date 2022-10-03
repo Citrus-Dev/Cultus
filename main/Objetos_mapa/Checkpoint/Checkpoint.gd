@@ -66,6 +66,10 @@ func guardar_checkpoint(jugador : Personaje):
 	
 	var nivel = get_tree().get_nodes_in_group("Nivel")[0]
 	nivel.guardar_datos_persistentes()
+	
+	# Dar un minimo de balas de cada tipo si tenes el arma que corresponde
+	var inv: InvBalas = GameState.hack_tomar_inv_balas()
+	inv.agregar_minimo_de_balas()
 
 
 # Alternar la activacion de la zona que te deja usar el checkpoint

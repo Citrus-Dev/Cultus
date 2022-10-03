@@ -243,7 +243,7 @@ shape = SubResource( 18 )
 script = ExtResource( 4 )
 
 [node name="SpawnJugador" type="Node2D" parent="." index="7"]
-position = Vector2( 549.273, 157.909 )
+position = Vector2( -528, 104 )
 script = ExtResource( 6 )
 
 [node name="pinches" type="Node2D" parent="." index="8"]

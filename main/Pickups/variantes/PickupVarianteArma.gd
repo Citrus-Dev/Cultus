@@ -31,6 +31,8 @@ func agarrar(jug: Personaje):
 	
 	if !TransicionesDePantalla.inv_variantes.has( convertir_nombre_arma_a_id(arma) ):
 		TransicionesDePantalla.inv_variantes[arma] = []
+	
+	if !TransicionesDePantalla.inv_armas.has( convertir_nombre_arma_a_id(arma) ):
 		ControladorUi.mensaje_ui(
 			"Atencion: Agarraste una variante para un arma que aun no encontraste",
 			2.5,

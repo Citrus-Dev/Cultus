@@ -17,6 +17,7 @@ func _ready() -> void:
 			i.connect("spawn_muerto", self, "test_encuentro_terminado")
 	else:
 		trigger_encuentro.call_deferred("free")
+		puerta.set_abierto(true)
 
 
 func empezar_encuentro():
