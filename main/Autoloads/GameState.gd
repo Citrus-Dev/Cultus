@@ -133,6 +133,12 @@ func evento():
 
 func ir_al_menu():
 	get_tree().change_scene("res://niveles/menu/MainMenu.tscn")
+	
+	# Borrar toda la info que no debe persistir
+	TransicionesDePantalla.inv_balas_estado = {}
+	TransicionesDePantalla.inv_armas = {}
+	TransicionesDePantalla.inv_variantes = {}
+	TransicionesDePantalla.inv_skills = {}
 
 
 func ver_credtios():
