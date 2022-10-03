@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=2]
+[gd_scene load_steps=49 format=2]
 
 [ext_resource path="res://niveles/Nivel.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/tilesets/Iglesia_tileset_1.png" type="Texture" id=2]
@@ -23,6 +23,8 @@
 [ext_resource path="res://main/Personajes/Shot/Shot.tscn" type="PackedScene" id=21]
 [ext_resource path="res://main/Personajes/Polilla/Polilla.tscn" type="PackedScene" id=22]
 [ext_resource path="res://main/Triggers/TriggerNPCMover.gd" type="Script" id=23]
+[ext_resource path="res://main/Objetos_mapa/TransicionDeNivel/TransicionDeNivelConArea.tscn" type="PackedScene" id=24]
+[ext_resource path="res://main/Objetos_mapa/TransicionDeNivel/TransicionDeNivel.gd" type="Script" id=25]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
@@ -231,13 +233,15 @@ extents = Vector2( 51.5845, 216 )
 [sub_resource type="RectangleShape2D" id=22]
 extents = Vector2( 23, 48 )
 
+[sub_resource type="RectangleShape2D" id=23]
+extents = Vector2( 56, 10 )
+
 [sub_resource type="RectangleShape2D" id=20]
 extents = Vector2( 8, 24 )
 
 [node name="iglesia_encuentro_granhde" instance=ExtResource( 1 )]
 script = ExtResource( 6 )
 primer_limite_camara = NodePath("camara limites/CameraBounds")
-impulse_automatico = true
 cam_limites_2 = NodePath("camara limites/CameraBoundsEncuentro")
 puertas_fase1 = NodePath("Puerta")
 puertas_fase2 = NodePath("Puertasegunda")
@@ -429,6 +433,30 @@ dir = Vector2( -1, 0 )
 position = Vector2( -3.01544, 7.94131 )
 shape = SubResource( 22 )
 
+[node name="TransicionDeNivelConArea" type="Area2D" parent="triggers" index="6"]
+modulate = Color( 0.905882, 0.439216, 0.0862745, 1 )
+position = Vector2( 70, 410 )
+collision_layer = 0
+collision_mask = 2
+script = ExtResource( 25 )
+__meta__ = {
+"_edit_group_": true
+}
+ID = "abajo"
+ID_objetivo = "arr"
+direccion_nivel = "res://niveles/posta/iglesia/igl_plataformas/igl_plataformas.tscn"
+direccion_movimiento = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="triggers/TransicionDeNivelConArea" index="0"]
+position = Vector2( 1, 2 )
+shape = SubResource( 23 )
+
+[node name="TransicionDeNivelConArea2" parent="triggers" index="7" instance=ExtResource( 24 )]
+position = Vector2( 1, -63 )
+ID = "izq"
+ID_objetivo = "der"
+direccion_nivel = "res://niveles/posta/iglesia/iglesia_atajo_o4/iglesia_atajo_o4.tscn"
+
 [node name="Plataformas" type="Node2D" parent="." index="7"]
 
 [node name="PlataformaAlternaIglesia" parent="Plataformas" index="0" instance=ExtResource( 7 )]
@@ -557,7 +585,7 @@ position = Vector2( 752, 56 )
 shape = SubResource( 20 )
 
 [node name="SpawnJugador" type="Node2D" parent="." index="22"]
-position = Vector2( 332, -70 )
+position = Vector2( 166, 318 )
 script = ExtResource( 12 )
 
 [node name="PlataformaRotatoria" parent="." index="23" instance=ExtResource( 13 )]

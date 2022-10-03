@@ -29,7 +29,7 @@ func agarrar(jug: Personaje):
 		get_tree().root.add_child(ESCENA_TUT.instance())
 		GameState.vio_tutorial_variantes = true
 	
-	if !TransicionesDePantalla.inv_variantes.has(arma):
+	if !TransicionesDePantalla.inv_variantes.has( convertir_nombre_arma_a_id(arma) ):
 		TransicionesDePantalla.inv_variantes[arma] = []
 		ControladorUi.mensaje_ui(
 			"Atencion: Agarraste una variante para un arma que aun no encontraste",
@@ -45,3 +45,21 @@ func agarrar(jug: Personaje):
 func anim_levitar(_x :float, _freq : float, _amplitud : float) -> float:
 	_x += cos(OS.get_ticks_msec() * _freq) * _amplitud
 	return _x
+
+
+
+func convertir_nombre_arma_a_id(nombre: String) -> String:
+	match nombre:
+		"ArmaAR":
+			return "RIFLE"
+		"ArmaBallesta":
+			return "BALLESTA"
+		"ArmaRevolver":
+			return "PISTOLA"
+		"ArmaEscopeta":
+			return "ESCOPETA"
+		"ArmaGauss":
+			return "BAZUCA"
+		_:
+			return "?"
+	

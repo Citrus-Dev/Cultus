@@ -133,7 +133,8 @@ func evento_anim_spawn():
 
 
 func hacer_summon_random(pos: Vector2):
-	var inst: SummonRandom = ESCENA_SUMMON_RANDOM.instance()
+#	var inst = ESCENA_SUMMON_RANDOM.instance()
+	var inst = SummonRandom.new(self)
 	inst.global_position = pos
 	get_tree().root.add_child(inst)
 	

@@ -28,4 +28,7 @@ func buscar_jug():
 
 
 func dir_obj() -> Vector2:
-	return (jug.global_position - owner.global_position).normalized()
+	if is_instance_valid(jug):
+		return (jug.global_position - owner.global_position).normalized()
+	else:
+		return Vector2.ZERO

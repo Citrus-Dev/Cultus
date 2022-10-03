@@ -30,6 +30,13 @@ enum Spawns {
 }
 
 
+var spawner: Node2D
+
+
+func _init(n_spawner: Node2D):
+	spawner = n_spawner
+
+
 func spawn_random():
 	var elegido: int = randi() % Spawns.keys().size()
 	print("Spawn random elegido: " +  str(Spawns.keys()[elegido]))
@@ -75,7 +82,7 @@ func spawnear_enemigo(enemigo: PackedScene, pos: Vector2):
 	var inst = enemigo.instance()
 	inst.global_position = pos
 	
-	get_tree().root.add_child(inst)
+	spawner.get_parent().add_child(inst)
 	
 	hacer_efecto_spawn(pos)
 	emit_signal("enemigo_spawneado", inst)

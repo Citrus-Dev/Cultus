@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://niveles/Nivel.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/tilesets/Iglesia_tileset_1.png" type="Texture" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://main/Personajes/Subdito/SubditoSniper.tscn" type="PackedScene" id=11]
 [ext_resource path="res://main/AI/Borde.tscn" type="PackedScene" id=12]
 [ext_resource path="res://main/Personajes/Subdito/Subdito.tscn" type="PackedScene" id=13]
+[ext_resource path="res://main/Objetos_mapa/TransicionDeNivel/TransicionDeNivelConArea.tscn" type="PackedScene" id=14]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
@@ -267,10 +268,21 @@ position = Vector2( 110, 211 )
 script = ExtResource( 10 )
 
 [node name="CameraBounds" type="CollisionShape2D" parent="camara limites" index="0"]
-visible = false
 position = Vector2( 584, 144 )
 shape = SubResource( 18 )
 script = ExtResource( 4 )
+
+[node name="TransicionDeNivelConArea" parent="triggers" index="0" instance=ExtResource( 14 )]
+position = Vector2( 0, 224 )
+ID = "izq"
+ID_objetivo = "der"
+direccion_nivel = "res://niveles/posta/iglesia/iglesia_o1/iglesia_o1.tscn"
+
+[node name="TransicionDeNivelConArea2" parent="triggers" index="1" instance=ExtResource( 14 )]
+position = Vector2( 1168, 192 )
+ID = "der"
+ID_objetivo = "izq"
+direccion_nivel = "res://niveles/posta/iglesia/igl_salto/igl_salto.tscn"
 
 [node name="PlataformaAlternaIglesia" parent="." index="8" instance=ExtResource( 8 )]
 position = Vector2( 320, 112 )

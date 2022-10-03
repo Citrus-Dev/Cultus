@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=2]
+[gd_scene load_steps=43 format=2]
 
 [ext_resource path="res://niveles/Nivel.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/tilesets/Iglesia_tileset_1.png" type="Texture" id=2]
@@ -21,6 +21,7 @@
 [ext_resource path="res://main/Pickups/PickupHP.tscn" type="PackedScene" id=19]
 [ext_resource path="res://assets/objetos/pillar_pickup.png" type="Texture" id=20]
 [ext_resource path="res://main/Pickups/armas/PickupGauss.tscn" type="PackedScene" id=21]
+[ext_resource path="res://main/Objetos_mapa/TransicionDeNivel/TransicionDeNivel.gd" type="Script" id=22]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
@@ -220,6 +221,9 @@ script = ExtResource( 5 )
 [sub_resource type="RectangleShape2D" id=18]
 extents = Vector2( 1036, 384 )
 
+[sub_resource type="RectangleShape2D" id=20]
+extents = Vector2( 62, 19 )
+
 [sub_resource type="RectangleShape2D" id=19]
 extents = Vector2( 8, 24 )
 
@@ -257,6 +261,42 @@ visible = false
 position = Vector2( 1036, -96 )
 shape = SubResource( 18 )
 script = ExtResource( 4 )
+
+[node name="TransicionDeNivelConArea" type="Area2D" parent="triggers" index="0"]
+modulate = Color( 0.905882, 0.439216, 0.0862745, 1 )
+position = Vector2( 96, 280 )
+collision_layer = 0
+collision_mask = 2
+script = ExtResource( 22 )
+__meta__ = {
+"_edit_group_": true
+}
+ID = "abajo"
+ID_objetivo = "arr"
+direccion_nivel = "res://niveles/posta/iglesia/iglesia_checkpoint/iglesia_checkpoint.tscn"
+direccion_movimiento = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="triggers/TransicionDeNivelConArea" index="0"]
+position = Vector2( 1, 2 )
+shape = SubResource( 20 )
+
+[node name="TransicionDeNivelConArea2" type="Area2D" parent="triggers" index="1"]
+modulate = Color( 0.905882, 0.439216, 0.0862745, 1 )
+position = Vector2( 776, -504 )
+collision_layer = 0
+collision_mask = 2
+script = ExtResource( 22 )
+__meta__ = {
+"_edit_group_": true
+}
+ID = "arr"
+ID_objetivo = "abajo"
+direccion_nivel = "res://niveles/posta/iglesia/iglesia_encuentro_granhde/iglesia_encuentro_granhde.tscn"
+direccion_movimiento = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="triggers/TransicionDeNivelConArea2" index="0"]
+position = Vector2( 1, 2 )
+shape = SubResource( 20 )
 
 [node name="plataformas" type="Node2D" parent="." index="7"]
 
@@ -824,7 +864,7 @@ position = Vector2( 1448, -344 )
 position = Vector2( 1232, -408 )
 
 [node name="SpawnJugador" type="Node2D" parent="." index="10"]
-position = Vector2( 200, -312 )
+position = Vector2( 808, -416 )
 script = ExtResource( 9 )
 
 [node name="Puerta_pop_principio" type="KinematicBody2D" parent="." index="11"]
