@@ -110,13 +110,20 @@ func _process(delta: float) -> void:
 			var nivel = get_tree().get_nodes_in_group("Nivel")[0]
 			nivel.agregar_dato_persistente(get_path(), datos)
 	
-	if sprites_shader.size() > 0:
-		var fuerza = sprites_shader[0].material.get_shader_param("hit_strength")
+#	if sprites_shader.size() > 0:
+#		var fuerza = sprites_shader[0].material.get_shader_param("hit_strength")
+#		if fuerza == null: return
+#
+#		if fuerza > 0:
+#			fuerza -= delta * 5
+#		sprites_shader[0].material.set_shader_param("hit_strength", fuerza)
+	for shader in sprites_shader:
+		var fuerza = shader.material.get_shader_param("hit_strength")
 		if fuerza == null: return
 		
 		if fuerza > 0:
 			fuerza -= delta * 5
-		sprites_shader[0].material.set_shader_param("hit_strength", fuerza)
+		shader.material.set_shader_param("hit_strength", fuerza)
 
 
 func _physics_process(delta: float) -> void:
@@ -319,6 +326,9 @@ func valor_default(_valor : String):
 		set(_valor, valores_default[_valor])
 
 
+
+
+
 func cargar_shader_hit():
 	if sprites_shader.empty():
 		var skin_sprite = get_node(skin_sprite_path)
@@ -341,11 +351,15 @@ func cargar_shader_hit():
 		sprite.material = mat
 
 
+
+
+
+
 func efecto_brillo_dmg(_fuerza : float):
 	var fuerza_actual = sprites_shader[0].material.get_shader_param("hit_strength")
 	if fuerza_actual != null and _fuerza > fuerza_actual:
-		for sprite in sprites_shader:
-			sprite.material.set_shader_param("hit_strength", _fuerza)
+		for spr in sprites_shader:
+			spr.material.set_shader_param("hit_strength", _fuerza)
 
 
 func detectar_borde(_borde):

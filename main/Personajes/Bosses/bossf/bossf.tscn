@@ -1,0 +1,213 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://main/Personajes/Bosses/bossf/bossf.gd" type="Script" id=1]
+[ext_resource path="res://assets/enemies/finalb_cuerpo.png" type="Texture" id=2]
+[ext_resource path="res://assets/enemies/finalb_ojo.png" type="Texture" id=3]
+[ext_resource path="res://assets/enemies/finalb_ala.png" type="Texture" id=4]
+[ext_resource path="res://main/SistemaDaño/Status.gd" type="Script" id=5]
+[ext_resource path="res://main/SistemaDaño/Hurtbox.gd" type="Script" id=6]
+[ext_resource path="res://main/SistemaDaño/Hitbox.gd" type="Script" id=7]
+[ext_resource path="res://main/UI/BarraHPBoss/BarraHPBoss.gd" type="Script" id=8]
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("cuerpo:hframes")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 11 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("cuerpo:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 2 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("ojo:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("ala_der:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=1]
+resource_name = "idle"
+length = 1.1
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("cuerpo:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ]
+}
+
+[sub_resource type="Animation" id=3]
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("ala_der:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0, 1, 2, 3, 4, 5 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ala_izq:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "idle"
+length = 1.1
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("cuerpo:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ]
+}
+
+[node name="Bossf" type="KinematicBody2D"]
+script = ExtResource( 1 )
+skin = NodePath("Skin")
+skin_sprite_path = NodePath("Skin/cuerpo")
+status = NodePath("Status")
+aceleracion = 0.4
+friccion = 1.0
+max_velocidad_horizontal = 100.0
+max_velocidad_vertical = 100.0
+no_gravedad = true
+hurtbox = NodePath("Skin/Hurtbox")
+sprite_ojo = NodePath("Skin/ojo")
+hitbox_path = NodePath("Skin/Hitbox")
+
+[node name="BarraHPBoss" type="Node2D" parent="."]
+script = ExtResource( 8 )
+objetivo_dir = NodePath("..")
+
+[node name="Status" type="Node" parent="."]
+script = ExtResource( 5 )
+hp_max = 2500
+stun_threshold = 99999
+agente = NodePath("..")
+
+[node name="Skin" type="Node2D" parent="."]
+
+[node name="cuerpo" type="Sprite" parent="Skin"]
+texture = ExtResource( 2 )
+hframes = 11
+frame = 2
+
+[node name="ojo" type="Sprite" parent="Skin"]
+position = Vector2( 0, -48 )
+texture = ExtResource( 3 )
+hframes = 9
+
+[node name="ala_der" type="Sprite" parent="Skin"]
+position = Vector2( 72, -40 )
+z_index = -1
+texture = ExtResource( 4 )
+hframes = 6
+
+[node name="ala_izq" type="Sprite" parent="Skin"]
+position = Vector2( -72, -40 )
+z_index = -1
+texture = ExtResource( 4 )
+flip_h = true
+hframes = 6
+
+[node name="Anim cuerpo" type="AnimationPlayer" parent="Skin"]
+autoplay = "idle"
+anims/RESET = SubResource( 2 )
+anims/idle = SubResource( 1 )
+
+[node name="Anim alas" type="AnimationPlayer" parent="Skin"]
+autoplay = "RESET"
+anims/RESET = SubResource( 3 )
+anims/idle = SubResource( 4 )
+
+[node name="Hurtbox" type="Area2D" parent="Skin"]
+visible = false
+modulate = Color( 0.870588, 0.168627, 0.168627, 1 )
+collision_layer = 0
+collision_mask = 16
+script = ExtResource( 6 )
+agente_dir = NodePath("../..")
+is_constant = true
+dmg = 25
+fuerza_retroceso = 500.0
+dmg_tipo = 1
+
+[node name="Polygon2D" type="CollisionPolygon2D" parent="Skin/Hurtbox"]
+polygon = PoolVector2Array( 0, 40, -32, -32, 0, -48, 32, -32 )
+
+[node name="Hitbox" type="Area2D" parent="Skin"]
+visible = false
+collision_layer = 36
+collision_mask = 0
+script = ExtResource( 7 )
+status = NodePath("../../Status")
+i_frames_tiempo = 0.0
+
+[node name="Polygon2D2" type="CollisionPolygon2D" parent="Skin/Hitbox"]
+modulate = Color( 0.188235, 0.639216, 1, 1 )
+polygon = PoolVector2Array( 0, 40, -32, -32, 0, -48, 32, -32 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[connection signal="ready" from="BarraHPBoss" to="BarraHPBoss" method="setup"]

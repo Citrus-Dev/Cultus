@@ -257,6 +257,7 @@ script = ExtResource( 4 )
 position = Vector2( 248, -240 )
 ID = "arr"
 ID_objetivo = "abajo"
+direccion_nivel = "res://niveles/posta/iglesia/iglesia_boss_final/iglesia_boss_final.tscn"
 direccion_movimiento = 2
 
 [node name="CollisionShape2D" parent="triggers/TransicionDeNivelConArea3" index="0"]
@@ -319,7 +320,7 @@ position = Vector2( 248, -200 )
 position = Vector2( 472, 72 )
 
 [node name="SpawnJugador" type="Node2D" parent="." index="11"]
-position = Vector2( 400, -56 )
+position = Vector2( 273, -48 )
 script = ExtResource( 9 )
 
 [node name="Puerta" type="KinematicBody2D" parent="." index="12"]
