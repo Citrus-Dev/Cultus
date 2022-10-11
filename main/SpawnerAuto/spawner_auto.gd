@@ -10,8 +10,14 @@ export(PackedScene) var spawn setget set_spawn_object
 export(String) var spawn_group
 export(bool) var spawn_on_ready
 export(bool) var efecto = true
+export(float) var spawn_continuo_intervalo
 
 var cont_spawns : int 
+var spawn_continuo_timer: Timer
+
+func puede_spawn_continuo() -> bool:
+	return spawn_continuo_intervalo > 0.0
+
 
 func _init():
 	add_to_group("spawners")
@@ -19,11 +25,18 @@ func _init():
 
 func _ready():
 	if spawn_on_ready: call_deferred("spawn")
+	if puede_spawn_continuo():
+		spawn_continuo_timer = Timer.new()
+		add_child(spawn_continuo_timer)
+		spawn_continuo_timer.connect("timeout", self, "spawn")
 
 
 func spawn():
 	if Engine.editor_hint or spawn == null:
 		return
+	
+	if puede_spawn_continuo():
+		spawn_continuo_timer.start(spawn_continuo_intervalo)
 	
 	if efecto:
 		var inst = SPAWN_EFFECT.instance()
@@ -41,6 +54,10 @@ func spawn():
 	
 	new_inst.name += name + str(cont_spawns)
 	cont_spawns += 1
+	
+	var p: Jugador = get_tree().get_nodes_in_group("Jugador")[0]
+	new_inst.objetivo = p
+	new_inst.emit_signal("objetivo_encontrado")
 	
 	return new_inst
 
@@ -81,3 +98,4 @@ func find_packedscene_sprite(_instance : Node):
 
 func on_spawn_muerto():
 	emit_signal("spawn_muerto")
+

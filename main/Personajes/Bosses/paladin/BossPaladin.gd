@@ -65,6 +65,9 @@ func empezar_ciclo():
 
 
 func determinar_siguiente_ataque():
+	if muerto:
+		return
+	
 	if !fase2 and status.hp < status.hp_max / 2:
 		empezar_fase_2()
 		return

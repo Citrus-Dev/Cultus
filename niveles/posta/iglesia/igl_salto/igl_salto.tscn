@@ -265,8 +265,8 @@ shape = SubResource( 19 )
 
 [node name="TransicionDeNivelConArea" parent="triggers" index="1" instance=ExtResource( 13 )]
 position = Vector2( 8, 176 )
-ID = "der"
-ID_objetivo = "izq"
+ID = "izq"
+ID_objetivo = "der"
 direccion_nivel = "res://niveles/posta/iglesia/iglesia_o3/iglesia_o3.tscn"
 
 [node name="TransicionDeNivelConArea2" parent="triggers" index="2" instance=ExtResource( 13 )]
