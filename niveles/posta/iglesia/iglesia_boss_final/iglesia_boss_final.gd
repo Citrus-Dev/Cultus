@@ -35,3 +35,4 @@ func empezar_boss(__):
 	boss_empezado = true
 	puerta.cerrar()
 	efecto.play("o")
+	call_deferred("alertar_todos_los_enemigos")

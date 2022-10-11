@@ -8,8 +8,15 @@ export(NodePath) onready var sprite_ojo = get_node(sprite_ojo) as Sprite
 export(NodePath) var hitbox_path 
 
 
+func _init():
+	add_to_group("Enemigos")
+	add_to_group("Boss")
+	connect("objetivo_encontrado", self, "alertar")
+
+
 func _ready():
 	hitbox = get_node(hitbox_path)
+	print(objetivo)
 
 
 func _process(delta):

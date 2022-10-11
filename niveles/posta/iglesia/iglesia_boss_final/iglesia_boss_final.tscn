@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=2]
+[gd_scene load_steps=43 format=2]
 
 [ext_resource path="res://niveles/Nivel.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/tilesets/Iglesia_tileset_1.png" type="Texture" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://main/Objetos_mapa/TransicionDeNivel/TransicionDeNivelConArea.tscn" type="PackedScene" id=13]
 [ext_resource path="res://main/SpawnerAuto/spawner_auto.gd" type="Script" id=14]
 [ext_resource path="res://main/Personajes/Bosses/bossf/bossf.tscn" type="PackedScene" id=15]
+[ext_resource path="res://main/Musica/MusCastillo.tres" type="Resource" id=16]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
@@ -265,6 +266,7 @@ tracks/0/keys = {
 [node name="Nivel" instance=ExtResource( 1 )]
 script = ExtResource( 6 )
 primer_limite_camara = NodePath("camara limites/CameraBounds")
+musica = ExtResource( 16 )
 camara_boss = NodePath("camara limites/boundsboss")
 puerta = NodePath("Puerta")
 efecto = NodePath("Efecto/AnimationPlayer")
