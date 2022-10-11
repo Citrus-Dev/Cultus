@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://niveles/Nivel.tscn" type="PackedScene" id=1]
 [ext_resource path="res://main/CameraLimitSystem/CameraBounds.gd" type="Script" id=2]
@@ -25,8 +25,23 @@ extents = Vector2( 291, 200 )
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 8, 24.287 )
 
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 21, 56 )
+
 [node name="cripta_arena" instance=ExtResource( 1 )]
 script = ExtResource( 18 )
+primer_limite_camara = NodePath("camara limites/CameraBounds")
+spawn_rueda1 = NodePath("Spawns/sp rueda")
+spawn_polilla1 = NodePath("Spawns/sp polilla")
+spawn_polilla2 = NodePath("Spawns/sp polilla2")
+spawn_polilla3 = NodePath("Spawns/sp polilla3")
+spawn_polilla4 = NodePath("Spawns/sp polilla4")
+spawn_shot1 = NodePath("Spawns/sp mason")
+spawn_shot2 = NodePath("Spawns/sp mason2")
+spawn_esqueleto1 = NodePath("Spawns/sp esqueleto")
+puerta1 = NodePath("Puerta")
+puerta2 = NodePath("Puerta2")
+area = NodePath("Area2D")
 
 [node name="TileMap" type="TileMap" parent="Fondo" index="0"]
 modulate = Color( 0.509804, 0.501961, 0.501961, 1 )
@@ -93,7 +108,7 @@ position = Vector2( 200, -16 )
 position = Vector2( -216, -16 )
 
 [node name="SpawnJugador" type="Node2D" parent="." index="9"]
-position = Vector2( 232, -16 )
+position = Vector2( 226, -19 )
 script = ExtResource( 5 )
 
 [node name="PlataformaFragilCripta" parent="." index="10" instance=ExtResource( 7 )]
@@ -102,31 +117,28 @@ position = Vector2( -232, 192 )
 [node name="PlataformaFragilCripta5" parent="." index="11" instance=ExtResource( 7 )]
 position = Vector2( -32, 192 )
 
-[node name="PlataformaFragilCripta6" parent="." index="12" instance=ExtResource( 7 )]
-position = Vector2( -32, 192 )
-
-[node name="PlataformaFragilCripta2" parent="." index="13" instance=ExtResource( 7 )]
+[node name="PlataformaFragilCripta2" parent="." index="12" instance=ExtResource( 7 )]
 position = Vector2( 152, 192 )
 
-[node name="Hookpoint" parent="." index="14" instance=ExtResource( 6 )]
+[node name="Hookpoint" parent="." index="13" instance=ExtResource( 6 )]
 position = Vector2( -216, -88 )
 
-[node name="Hookpoint2" parent="." index="15" instance=ExtResource( 6 )]
+[node name="Hookpoint2" parent="." index="14" instance=ExtResource( 6 )]
 position = Vector2( 0, -104 )
 
-[node name="PickupHP" parent="." index="16" instance=ExtResource( 8 )]
+[node name="PickupHP" parent="." index="15" instance=ExtResource( 8 )]
 position = Vector2( -296, -24 )
 no_desaparecer = true
 
-[node name="PickupHP2" parent="." index="17" instance=ExtResource( 8 )]
+[node name="PickupHP2" parent="." index="16" instance=ExtResource( 8 )]
 position = Vector2( -272, -24 )
 no_desaparecer = true
 
-[node name="PickupHP3" parent="." index="18" instance=ExtResource( 8 )]
+[node name="PickupHP3" parent="." index="17" instance=ExtResource( 8 )]
 position = Vector2( -248, -24 )
 no_desaparecer = true
 
-[node name="Puerta" parent="." index="19" instance=ExtResource( 10 )]
+[node name="Puerta" parent="." index="18" instance=ExtResource( 10 )]
 position = Vector2( -328, 232 )
 
 [node name="Sprite" type="Sprite" parent="Puerta" index="0"]
@@ -136,7 +148,7 @@ texture = ExtResource( 9 )
 position = Vector2( 0, -0.286972 )
 shape = SubResource( 2 )
 
-[node name="Puerta2" parent="." index="20" instance=ExtResource( 10 )]
+[node name="Puerta2" parent="." index="19" instance=ExtResource( 10 )]
 position = Vector2( 248, -40 )
 empezar_abierto = true
 
@@ -147,13 +159,13 @@ texture = ExtResource( 9 )
 position = Vector2( 0, -0.286972 )
 shape = SubResource( 2 )
 
-[node name="Rueda" parent="." index="21" instance=ExtResource( 13 )]
+[node name="Rueda" parent="." index="20" instance=ExtResource( 13 )]
 position = Vector2( -232, 256 )
 
-[node name="Rueda2" parent="." index="22" instance=ExtResource( 13 )]
+[node name="Rueda2" parent="." index="21" instance=ExtResource( 13 )]
 position = Vector2( 152, 256 )
 
-[node name="Spawns" type="Node2D" parent="." index="23"]
+[node name="Spawns" type="Node2D" parent="." index="22"]
 
 [node name="sp polilla" parent="Spawns" index="0" instance=ExtResource( 14 )]
 position = Vector2( -203, 139 )
@@ -171,39 +183,39 @@ spawn = ExtResource( 16 )
 position = Vector2( 103, 138 )
 spawn = ExtResource( 16 )
 
-[node name="sp mason" parent="Spawns" index="4" instance=ExtResource( 14 )]
-position = Vector2( -288, 128 )
-spawn = ExtResource( 15 )
-
-[node name="sp rueda" parent="Spawns" index="5" instance=ExtResource( 14 )]
+[node name="sp rueda" parent="Spawns" index="4" instance=ExtResource( 14 )]
 position = Vector2( -32, 168 )
 spawn = ExtResource( 13 )
 
-[node name="sp mason2" parent="Spawns" index="6" instance=ExtResource( 14 )]
-position = Vector2( 208, 128 )
+[node name="sp esqueleto" parent="Spawns" index="5" instance=ExtResource( 14 )]
+position = Vector2( -39, 240 )
+spawn = ExtResource( 12 )
+
+[node name="sp mason" parent="Spawns" index="6" instance=ExtResource( 14 )]
+position = Vector2( -289, 127 )
 spawn = ExtResource( 15 )
 
-[node name="sp esqueleto3" parent="Spawns" index="7" instance=ExtResource( 14 )]
-position = Vector2( 64, 240 )
-spawn = ExtResource( 12 )
+[node name="sp mason2" parent="Spawns" index="7" instance=ExtResource( 14 )]
+position = Vector2( 206, 129 )
+spawn = ExtResource( 15 )
 
-[node name="sp esqueleto2" parent="Spawns" index="8" instance=ExtResource( 14 )]
-position = Vector2( -128, 240 )
-spawn = ExtResource( 12 )
-
-[node name="sp esqueleto" parent="Spawns" index="9" instance=ExtResource( 14 )]
-position = Vector2( -288, 240 )
-spawn = ExtResource( 12 )
-
-[node name="TransicionDeNivelConArea" parent="." index="24" instance=ExtResource( 17 )]
+[node name="TransicionDeNivelConArea" parent="." index="23" instance=ExtResource( 17 )]
 position = Vector2( 256, -16 )
 ID = "puerta_der"
 ID_objetivo = "puerta_izq"
 direccion_nivel = "res://niveles/posta/cripta/cripta_09/cripta_09.tscn"
 direccion_movimiento = 1
 
-[node name="TransicionDeNivelConArea2" parent="." index="25" instance=ExtResource( 17 )]
+[node name="TransicionDeNivelConArea2" parent="." index="24" instance=ExtResource( 17 )]
 position = Vector2( -336, 256 )
 ID = "puerta_izq"
 ID_objetivo = "puerta_der"
 direccion_nivel = "res://niveles/posta/cripta/cripta_boss/cripta_boss.tscn"
+
+[node name="Area2D" type="Area2D" parent="." index="25"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
+position = Vector2( 194, -58 )
+shape = SubResource( 3 )
