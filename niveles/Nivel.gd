@@ -26,7 +26,13 @@ func _ready():
 		for personaje in group_pers:
 			var path = personaje.get_path()
 			if info_persist_nivel.has(str(path)):
-				for prop in info_persist_nivel[str(path)]:
+				var info: Dictionary = info_persist_nivel[str(path)]
+				
+				if info.has("muerto") and info["muerto"] == true:
+					personaje.call_deferred("free")
+					continue
+				
+				for prop in info:
 					personaje.set(prop, info_persist_nivel[str(path)][prop])
 	
 	if get_tree().get_nodes_in_group("HUD").size() > 0:

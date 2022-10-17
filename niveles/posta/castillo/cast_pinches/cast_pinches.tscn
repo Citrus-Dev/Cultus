@@ -91,6 +91,7 @@ position = Vector2( 40, 104 )
 
 [node name="Cultista" parent="." index="20" instance=ExtResource( 7 )]
 position = Vector2( 672, 336 )
+persistir = true
 
 [node name="PickupHP" parent="." index="21" instance=ExtResource( 8 )]
 position = Vector2( 1344, 344 )

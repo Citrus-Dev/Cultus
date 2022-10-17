@@ -173,18 +173,23 @@ position = Vector2( 32, 376 )
 
 [node name="Polilla" parent="." index="16" instance=ExtResource( 12 )]
 position = Vector2( 295, 79 )
+persistir = true
 
 [node name="Esqueleto" parent="." index="17" instance=ExtResource( 13 )]
 position = Vector2( 288, 144 )
+persistir = true
 
 [node name="Esqueleto2" parent="." index="18" instance=ExtResource( 13 )]
 position = Vector2( 37, 127 )
+persistir = true
 
 [node name="Esqueleto3" parent="." index="19" instance=ExtResource( 13 )]
 position = Vector2( 12, 382 )
+persistir = true
 
 [node name="Rueda" parent="." index="20" instance=ExtResource( 15 )]
 position = Vector2( 409, 387 )
+persistir = true
 
 [node name="PlataformaFragilCripta" parent="." index="21" instance=ExtResource( 10 )]
 position = Vector2( 96, 360 )
