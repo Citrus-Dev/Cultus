@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://main/Personajes/Bosses/bossf/bossf.gd" type="Script" id=1]
 [ext_resource path="res://assets/enemies/finalb_cuerpo.png" type="Texture" id=2]
@@ -8,6 +8,18 @@
 [ext_resource path="res://main/SistemaDaño/Hurtbox.gd" type="Script" id=6]
 [ext_resource path="res://main/SistemaDaño/Hitbox.gd" type="Script" id=7]
 [ext_resource path="res://main/UI/BarraHPBoss/BarraHPBoss.gd" type="Script" id=8]
+[ext_resource path="res://assets/brillo.png" type="Texture" id=9]
+[ext_resource path="res://main/Personajes/Bosses/bossf/laser_ojo_boss.gd" type="Script" id=10]
+
+[sub_resource type="CanvasItemMaterial" id=10]
+blend_mode = 1
+
+[sub_resource type="Gradient" id=6]
+colors = PoolColorArray( 1, 1, 0.392157, 0, 10, 4, 0.4, 1 )
+
+[sub_resource type="CanvasItemMaterial" id=9]
+blend_mode = 1
+light_mode = 1
 
 [sub_resource type="Animation" id=2]
 length = 0.001
@@ -122,18 +134,211 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ]
 }
 
+[sub_resource type="RectangleShape2D" id=5]
+
+[sub_resource type="Animation" id=8]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Skin/ojo/laser_ojo_boss:rotation_degrees")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Skin/ojo/laser_ojo_boss/brillo:modulate")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Skin/ojo/laser_ojo_boss/brillo:scale")
+tracks/2/interp = 0
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0.5, 0.5 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Skin/ojo/Line2D:modulate")
+tracks/3/interp = 0
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "rasho_lase1"
+length = 2.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Skin/ojo/laser_ojo_boss:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.8, 2.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ -40.0, 0.0, 180.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Skin/ojo/laser_ojo_boss/brillo:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Skin/ojo/laser_ojo_boss/brillo:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 3, 3 ), Vector2( 5, 5 ), Vector2( 3, 3 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Skin/ojo/Line2D:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.2, 0.602632, 2, 2.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/4/type = "method"
+tracks/4/path = NodePath("Skin/ojo/laser_ojo_boss")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 2.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ true ],
+"method": "set_activo"
+}, {
+"args": [ false ],
+"method": "set_activo"
+} ]
+}
+
+[sub_resource type="Animation" id=11]
+resource_name = "rasho_lase2"
+length = 2.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Skin/ojo/laser_ojo_boss:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.8, 2.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 210.0, 180.0, 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Skin/ojo/laser_ojo_boss/brillo:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Skin/ojo/laser_ojo_boss/brillo:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 3, 3 ), Vector2( 5, 5 ), Vector2( 3, 3 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Skin/ojo/Line2D:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.2, 0.6, 2, 2.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/4/type = "method"
+tracks/4/path = NodePath("Skin/ojo/laser_ojo_boss")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 2.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ true ],
+"method": "set_activo"
+}, {
+"args": [ false ],
+"method": "set_activo"
+} ]
+}
+
 [node name="Bossf" type="KinematicBody2D"]
+collision_layer = 4
 script = ExtResource( 1 )
 skin = NodePath("Skin")
 skin_sprite_path = NodePath("Skin/cuerpo")
 status = NodePath("Status")
-aceleracion = 0.4
+aceleracion = 1.0
 friccion = 1.0
 max_velocidad_horizontal = 100.0
 max_velocidad_vertical = 100.0
 no_gravedad = true
 hurtbox = NodePath("Skin/Hurtbox")
 sprite_ojo = NodePath("Skin/ojo")
+anim_ataques = NodePath("animador_ataques")
 hitbox_path = NodePath("Skin/Hitbox")
 
 [node name="BarraHPBoss" type="Node2D" parent="."]
@@ -142,7 +347,7 @@ objetivo_dir = NodePath("..")
 
 [node name="Status" type="Node" parent="."]
 script = ExtResource( 5 )
-hp_max = 2500
+hp_max = 3200
 stun_threshold = 99999
 agente = NodePath("..")
 
@@ -157,6 +362,40 @@ frame = 2
 position = Vector2( 0, -48 )
 texture = ExtResource( 3 )
 hframes = 9
+
+[node name="Line2D" type="Line2D" parent="Skin/ojo"]
+modulate = Color( 1, 1, 1, 0 )
+material = SubResource( 10 )
+position = Vector2( 0, -9 )
+points = PoolVector2Array( 0, 0, 0.961826, 0.273664 )
+gradient = SubResource( 6 )
+
+[node name="laser_ojo_boss" type="Node2D" parent="Skin/ojo"]
+position = Vector2( 0, -9 )
+script = ExtResource( 10 )
+__meta__ = {
+"_edit_group_": true
+}
+raycast = NodePath("RayCast2D")
+raycast_dmg = NodePath("raycast_dmg")
+linea = NodePath("../Line2D")
+
+[node name="RayCast2D" type="RayCast2D" parent="Skin/ojo/laser_ojo_boss"]
+enabled = true
+cast_to = Vector2( 900, 0 )
+
+[node name="raycast_dmg" type="RayCast2D" parent="Skin/ojo/laser_ojo_boss"]
+enabled = true
+cast_to = Vector2( 900, 0 )
+collision_mask = 16
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="brillo" type="Sprite" parent="Skin/ojo/laser_ojo_boss"]
+modulate = Color( 1, 1, 1, 0 )
+material = SubResource( 9 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 9 )
 
 [node name="ala_der" type="Sprite" parent="Skin"]
 position = Vector2( 72, -40 )
@@ -209,5 +448,11 @@ modulate = Color( 0.188235, 0.639216, 1, 1 )
 polygon = PoolVector2Array( 0, 40, -32, -32, 0, -48, 32, -32 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 5 )
+
+[node name="animador_ataques" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 8 )
+anims/rasho_lase1 = SubResource( 7 )
+anims/rasho_lase2 = SubResource( 11 )
 
 [connection signal="ready" from="BarraHPBoss" to="BarraHPBoss" method="setup"]

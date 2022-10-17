@@ -43,7 +43,7 @@ func deal_damage(_dmg : int):
 	if timer_cooldown > 0: return
 	
 	for i in get_overlapping_areas():
-		if i is Hitbox:
+		if i is Hitbox and !i.desactivado:
 			var dmg_info = InfoDmg.new()
 			dmg_info.atacante = agente
 			dmg_info.objetivo = i.owner

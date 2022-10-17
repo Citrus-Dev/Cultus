@@ -29,3 +29,5 @@ static func puede_gibear(tipo: int) -> bool:
 			return true
 		_:
 			return false
+
+

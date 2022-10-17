@@ -472,13 +472,13 @@ los = NodePath("LOSCheck")
 detector_inse = NodePath("DetectorAreasInseguras")
 
 [node name="monitores" type="Node2D" parent="."]
-visible = false
 
-[node name="agua" parent="monitores" instance=ExtResource( 7 )]
+[node name="hitbox" parent="monitores" instance=ExtResource( 7 )]
+visible = false
 position = Vector2( 10, -26 )
-monitor_target_node = NodePath("../..")
-monitor_target_property = "agua"
-monitor_flavor_text = "agua"
+monitor_target_node = NodePath("../../Hitbox")
+monitor_target_property = "desactivado"
+monitor_flavor_text = "desactivado"
 
 [node name="Status" type="Node" parent="."]
 script = ExtResource( 2 )

@@ -33,7 +33,7 @@ func _ready():
 	get_parent().connect("muerto", self, "set", ["desactivado", true])
 	
 	jug = get_parent()
-	jug_hitbox = jug.hitbox
+	jug_hitbox = jug.get_node("Hitbox")
 	area_escudo = get_child(0)
 	area_escudo.connect("body_entered", self, "determinar_bloqueo")
 	area_escudo.monitoring = false
@@ -87,15 +87,16 @@ func _physics_process(delta):
 		jug.move_and_slide(dir_mov * VEL_DASH)
 	
 	if timer_slide.is_stopped():
-		if slide_probar_fin():
+		if is_sliding and slide_probar_fin():
 			is_sliding = false
 			jug.usando_habilidad = false
 			jug.valor_default("max_velocidad_horizontal")
 			
 			# Manualmente reactivamos la hitbox porque la animacion RESET no lo hace por alguna razon.
-			var hb : Hitbox = jug.get_node("Hitbox")
-			hb.monitorable = true
-			hb.monitoring = true
+#			var hb : Hitbox = jug.get_node("Hitbox")
+			jug_hitbox.monitorable = true
+			jug_hitbox.monitoring = true
+			jug_hitbox.desactivado = false
 #			yield(get_tree(), "idle_frame")
 			jug.reiniciar_forma_de_colision()
 
@@ -110,6 +111,7 @@ func puede_activar() -> bool:
 func activar():
 	jug.movimiento_desactivado = true
 	jug_hitbox.monitorable = false
+	jug_hitbox.desactivado = true
 	
 	emit_signal("usado")
 
@@ -118,6 +120,7 @@ func terminar():
 	area_escudo.monitoring = false
 	jug_hitbox.monitorable = true
 	jug.movimiento_desactivado = false
+	jug_hitbox.desactivado = false
 	jug.velocity = Vector2.ZERO
 	dir_mov = Vector2.ZERO
 
@@ -130,6 +133,7 @@ func empezar_block_quieto():
 	activar()
 	dir_mov = Vector2.ZERO
 	area_escudo.monitoring = true
+	jug_hitbox.desactivado = true
 
 
 func empezar_dash(dir_x : int):
@@ -141,6 +145,7 @@ func empezar_dash(dir_x : int):
 	dir_x = sign(dir_x)
 	dir_mov = Vector2(dir_x, 0)
 	jug_hitbox.monitorable = false
+	jug_hitbox.desactivado = true
 
 
 func determinar_bloqueo(objeto_en_cuestion):
@@ -188,6 +193,7 @@ func slide_activar():
 	jug.max_velocidad_horizontal = velocidad
 	jug.input.x = velocidad * sign(jug.input.x)
 	jug.animador.play("slide_start")
+	jug_hitbox.desactivado = true
 	
 	timer_slide.start()
 	yield(timer_slide, "timeout")

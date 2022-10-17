@@ -14,6 +14,7 @@ export(float) var tiempo
 var timer := Timer.new()
 var timer_cooldown := Timer.new()
 var area_test : Area2D
+var hitbox_del_jugador: Hitbox
 
 func _ready():
 	name = "skill_slide"
@@ -27,6 +28,8 @@ func _ready():
 	add_child(timer)
 	
 	area_test = get_node("Area2D")
+	
+	hitbox_del_jugador = jugador.get_node("Hitbox")
 	
 	yield(get_tree(), "idle_frame")
 	instanciar_medidor_cooldown()
@@ -47,9 +50,12 @@ func _physics_process(delta):
 			jugador.valor_default("max_velocidad_horizontal")
 			
 			# Manualmente reactivamos la hitbox porque la animacion RESET no lo hace por alguna razon.
-			var hb : Hitbox = jugador.get_node("Hitbox")
-			hb.monitorable = true
-			hb.monitoring = true
+#			var hb : Hitbox = jugador.get_node("Hitbox")
+#			hb.monitorable = true
+#			hb.monitoring = true
+			hitbox_del_jugador.desactivado = false
+			hitbox_del_jugador.monitorable = true
+			hitbox_del_jugador.monitoring = true
 			yield(get_tree(), "idle_frame")
 			jugador.reiniciar_forma_de_colision()
 
@@ -75,6 +81,8 @@ func activar():
 	jugador.max_velocidad_horizontal = velocidad
 	jugador.input.x = velocidad * sign(jugador.input.x)
 	jugador.animador.play("slide_start")
+	
+	hitbox_del_jugador.desactivado = true
 	
 	timer.start()
 	yield(timer, "timeout")
