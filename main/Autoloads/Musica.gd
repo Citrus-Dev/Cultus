@@ -22,6 +22,7 @@ var tween : Tween
 var is_ready : bool
 # Forzar la musica a permanecer en un estado especifico. -1 para deactivar
 var override : int = -1 setget set_override
+var instantaneo: bool
 
 func _ready():
 	stream_player_1 = AudioStreamPlayer.new()
@@ -47,6 +48,8 @@ func _process(delta):
 	DebugDraw.set_text("play1", str(stream_player_1.get_playback_position()) + (" - ") + str(stream_player_1.get_stream_playback()))
 	DebugDraw.set_text("play2", str(stream_player_2.get_playback_position()) + (" - ") + str(stream_player_2.get_stream_playback()))
 	DebugDraw.set_text("objetivo_actual", objetivo_actual)
+	DebugDraw.set_text("vol1", stream_player_1.volume_db)
+	DebugDraw.set_text("vol2", stream_player_2.volume_db)
 
 
 func set_override(value : int):
@@ -65,7 +68,8 @@ func asignar_musica(cancion_res : ResCancion):
 	cambiar_musica(track_actual)
 
 
-func crossfade(nueva_cancion : AudioStream, posicion : float):
+func crossfade(nueva_cancion : AudioStream, posicion : float, instant: bool = instantaneo):
+	
 	var VOL_SILENCIO := -40.0
 	var VOL_NORMAL := 0.0
 	var DURACION := 0.5
@@ -76,27 +80,33 @@ func crossfade(nueva_cancion : AudioStream, posicion : float):
 	no_player.play()
 	no_player.seek(posicion)
 	
-	tween.interpolate_property(
-		no_player,
-		"volume_db",
-		VOL_SILENCIO,
-		VOL_NORMAL,
-		DURACION,
-		Tween.TRANS_LINEAR
-	)
+	print("silenciando " + str(stream_player_actual.name) + ", subiendo " + str(stream_player_no_actual.name))
 	
-	tween.interpolate_property(
-		stream_player_actual,
-		"volume_db",
-		VOL_NORMAL,
-		VOL_SILENCIO,
-		DURACION,
-		Tween.TRANS_LINEAR,
-		2,
-		DURACION
-	)
-	
-	tween.start()
+	if instant:
+		no_player.volume_db = VOL_NORMAL
+		stream_player_actual.volume_db = VOL_SILENCIO
+	else:
+		tween.interpolate_property(
+			no_player,
+			"volume_db",
+			VOL_SILENCIO,
+			VOL_NORMAL,
+			DURACION,
+			Tween.TRANS_LINEAR
+		)
+		
+		tween.interpolate_property(
+			stream_player_actual,
+			"volume_db",
+			VOL_NORMAL,
+			VOL_SILENCIO,
+			DURACION,
+			Tween.TRANS_LINEAR,
+			2,
+			DURACION # Delay
+		)
+		
+		tween.start()
 	
 	stream_player_no_actual = stream_player_actual
 	stream_player_actual = no_player

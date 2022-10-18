@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://main/Personajes/Bosses/bossf/bossf.gd" type="Script" id=1]
 [ext_resource path="res://assets/enemies/finalb_cuerpo.png" type="Texture" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://main/UI/BarraHPBoss/BarraHPBoss.gd" type="Script" id=8]
 [ext_resource path="res://assets/brillo.png" type="Texture" id=9]
 [ext_resource path="res://main/Personajes/Bosses/bossf/laser_ojo_boss.gd" type="Script" id=10]
+[ext_resource path="res://main/Shaker/Shaker.gd" type="Script" id=11]
 
 [sub_resource type="CanvasItemMaterial" id=10]
 blend_mode = 1
@@ -339,6 +340,8 @@ no_gravedad = true
 hurtbox = NodePath("Skin/Hurtbox")
 sprite_ojo = NodePath("Skin/ojo")
 anim_ataques = NodePath("animador_ataques")
+shaker = NodePath("Skin/Shaker")
+barra_hp = NodePath("BarraHPBoss")
 hitbox_path = NodePath("Skin/Hitbox")
 
 [node name="BarraHPBoss" type="Node2D" parent="."]
@@ -347,11 +350,18 @@ objetivo_dir = NodePath("..")
 
 [node name="Status" type="Node" parent="."]
 script = ExtResource( 5 )
-hp_max = 3200
+hp_max = 3600
 stun_threshold = 99999
 agente = NodePath("..")
 
 [node name="Skin" type="Node2D" parent="."]
+
+[node name="Shaker" type="Node" parent="Skin"]
+script = ExtResource( 11 )
+decay = 0.4
+max_offset = Vector2( 10, 10 )
+max_roll = 0.0
+target_path = NodePath("..")
 
 [node name="cuerpo" type="Sprite" parent="Skin"]
 texture = ExtResource( 2 )

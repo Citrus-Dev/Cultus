@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=2]
+[gd_scene load_steps=46 format=2]
 
 [ext_resource path="res://niveles/Nivel.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/tilesets/Iglesia_tileset_1.png" type="Texture" id=2]
@@ -15,7 +15,8 @@
 [ext_resource path="res://main/Objetos_mapa/TransicionDeNivel/TransicionDeNivelConArea.tscn" type="PackedScene" id=13]
 [ext_resource path="res://main/SpawnerAuto/spawner_auto.gd" type="Script" id=14]
 [ext_resource path="res://main/Personajes/Bosses/bossf/bossf.tscn" type="PackedScene" id=15]
-[ext_resource path="res://main/Musica/MusCastillo.tres" type="Resource" id=16]
+[ext_resource path="res://main/Musica/MusFinal.tres" type="Resource" id=16]
+[ext_resource path="res://niveles/posta/iglesia/iglesia_boss_final/bossf_lluvia_piedras.gd" type="Script" id=17]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
@@ -263,6 +264,37 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
+[sub_resource type="Animation" id=27]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=28]
+resource_name = "o"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
 [node name="Nivel" instance=ExtResource( 1 )]
 script = ExtResource( 6 )
 primer_limite_camara = NodePath("camara limites/CameraBounds")
@@ -270,6 +302,7 @@ musica = ExtResource( 16 )
 camara_boss = NodePath("camara limites/boundsboss")
 puerta = NodePath("Puerta")
 efecto = NodePath("Efecto/AnimationPlayer")
+efecto_muerto = NodePath("EfectoBossMuerte/AnimationPlayer")
 boss_spawn = NodePath("SpawnerAuto")
 
 [node name="fondo" type="TileMap" parent="Fondo" index="0"]
@@ -434,10 +467,27 @@ color = Color( 1, 1, 1, 0 )
 anims/RESET = SubResource( 25 )
 anims/o = SubResource( 26 )
 
-[node name="SpawnerAuto" type="Position2D" parent="." index="23"]
+[node name="EfectoBossMuerte" type="CanvasLayer" parent="." index="23"]
+layer = 100
+
+[node name="ColorRect" type="ColorRect" parent="EfectoBossMuerte" index="0"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 1, 1, 1, 0 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="EfectoBossMuerte" index="1"]
+anims/RESET = SubResource( 27 )
+anims/o = SubResource( 28 )
+
+[node name="SpawnerAuto" type="Position2D" parent="." index="24"]
 position = Vector2( 1160, -960 )
 script = ExtResource( 14 )
 spawn = ExtResource( 15 )
+
+[node name="LluviaPiedras" type="Node2D" parent="." index="25"]
+position = Vector2( 1176, -1128 )
+script = ExtResource( 17 )
+espacio = 330.0
 
 [connection signal="body_entered" from="triggers/t_empezar_boss" to="." method="empezar_boss"]
 [connection signal="body_entered" from="triggers/t_cambiar_a_der" to="." method="cambiar_a_limites_derecha"]

@@ -3,6 +3,7 @@ extends Nivel
 export(NodePath) onready var camara_boss = get_node(camara_boss) as CameraBounds
 export(NodePath) onready var puerta = get_node(puerta) as Puerta
 export(NodePath) onready var efecto = get_node(efecto) as AnimationPlayer
+export(NodePath) onready var efecto_muerto = get_node(efecto_muerto) as AnimationPlayer
 export(NodePath) onready var boss_spawn = get_node(boss_spawn) as SpawnerAuto
 
 var limites_derecha: bool
@@ -36,3 +37,9 @@ func empezar_boss(__):
 	puerta.cerrar()
 	efecto.play("o")
 	call_deferred("alertar_todos_los_enemigos")
+
+
+
+func boss_muerto():
+	efecto_muerto.play("o")
+

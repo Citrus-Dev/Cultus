@@ -135,6 +135,11 @@ _global_script_classes=[ {
 "path": "res://main/Personajes/Bosses/paladin/BossPaladin.gd"
 }, {
 "base": "Node2D",
+"class": "BossfLluviaPiedras",
+"language": "GDScript",
+"path": "res://niveles/posta/iglesia/iglesia_boss_final/bossf_lluvia_piedras.gd"
+}, {
+"base": "Node2D",
 "class": "BufanString",
 "language": "GDScript",
 "path": "res://main/libs/Verlet/string.gd"
@@ -624,6 +629,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://main/Proyectiles/PiedraBoss.gd"
 }, {
+"base": "KinematicBody2D",
+"class": "PiedraBossF",
+"language": "GDScript",
+"path": "res://niveles/posta/iglesia/iglesia_boss_final/Piedra.gd"
+}, {
 "base": "StaticBody2D",
 "class": "PlataformaAlterna",
 "language": "GDScript",
@@ -945,6 +955,7 @@ _global_script_class_icons={
 "BorrarValorDeBlackboard": "",
 "BossFinal": "",
 "BossPaladin": "",
+"BossfLluviaPiedras": "",
 "BufanString": "",
 "BuscarJugadorDetectado": "",
 "BuscarMapa": "",
@@ -1043,6 +1054,7 @@ _global_script_class_icons={
 "PickupSkill": "",
 "PickupVarianteArma": "",
 "PiedraBoss": "",
+"PiedraBossF": "",
 "PlataformaAlterna": "",
 "PlataformaFragil": "",
 "PlataformaMovible": "",

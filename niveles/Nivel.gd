@@ -14,9 +14,11 @@ func _init() -> void:
 
 
 func _ready():
-	Musica.set_override(-1)
+	Musica.instantaneo = true
 	Musica.asignar_musica(musica)
 	GameState.determinar_estado_inicial(self)
+	Musica.instantaneo = false
+	Musica.set_override(-1)
 	
 	if Guardado.hay_datos_persist_del_nivel(filename):
 		info_persist_nivel = Guardado.tomar_datos_persist_del_nivel(filename)

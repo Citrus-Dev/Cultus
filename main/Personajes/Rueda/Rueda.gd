@@ -13,8 +13,17 @@ export(NodePath) onready var fsm = get_node(fsm) as StateMachine
 
 var girando: bool setget set_girando
 
+
+func _init():
+	add_to_group("Enemigos")
+
+
 func _ready():
 	connect("stun_terminado", self, "hack_terminar_stun")
+
+
+
+
 
 
 func set_girando(toggle: bool):
