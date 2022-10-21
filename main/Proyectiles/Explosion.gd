@@ -1,6 +1,36 @@
 class_name Explosion
 extends Node2D
 
+# NO SE USA MAS
+# NO SE USA MAS
+# NO SE USA MAS
+# NO SE USA MAS
+# NO SE USA MAS
+# NO SE USA MAS
+# NO SE USA MAS
+# NO SE USA MAS
+# NO SE USA MAS
+# NO SE USA MAS
+# NO SE USA MAS
+# NO SE USA MAS
+# NO SE USA MAS
+# NO SE USA MAS
+# NO SE USA MAS
+# NO SE USA MAS
+# NO SE USA MAS
+# NO SE USA MAS
+# NO SE USA MAS
+# NO SE USA MAS
+# NO SE USA MAS
+# NO SE USA MAS
+# NO SE USA MAS
+# NO SE USA MAS
+# NO SE USA MAS
+# NO SE USA MAS
+# NO SE USA MAS
+# NO SE USA MAS
+# NO SE USA MAS
+
 export(NodePath) var los_check_path
 export(String, "Enemigos", "Jugador", "Ambos") var equipo
 export(int) var dmg

@@ -1055,9 +1055,14 @@ mano_2 = NodePath("Mano2")
 punto_de_disparo = NodePath("Skin/Cabeza/PuntoDisparo")
 shaker_paths = [ NodePath("Skin/Shaker"), NodePath("Mano1/Shaker"), NodePath("Mano2/Shaker") ]
 hurtbox_paths = [ NodePath("Skin/Cabeza/Hurtbox"), NodePath("Mano1/Hurtbox"), NodePath("Mano2/Hurtbox") ]
+barra_hp = NodePath("BarraHPBoss")
 dmg_rayos = 10
 muriendo = true
 mirando = true
+
+[node name="BarraHPBoss" type="Node2D" parent="."]
+script = ExtResource( 8 )
+objetivo_dir = NodePath("..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
@@ -1218,10 +1223,6 @@ dmg_tipo = 1
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Mano2/Hurtbox"]
 position = Vector2( 0, -21.5 )
 shape = SubResource( 6 )
-
-[node name="BarraHPBoss" type="Node2D" parent="."]
-script = ExtResource( 8 )
-objetivo_dir = NodePath("..")
 
 [connection signal="activo" from="." to="BarraHPBoss" method="set_activo" binds= [ true ]]
 [connection signal="muerto" from="." to="BarraHPBoss" method="set_activo" binds= [ false ]]

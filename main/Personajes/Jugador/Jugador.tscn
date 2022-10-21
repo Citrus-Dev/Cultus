@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://main/Personajes/Jugador/Jugador.gd" type="Script" id=1]
 [ext_resource path="res://main/SistemaDaño/StatusJugador.gd" type="Script" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://main/Shaker/Shaker.tscn" type="PackedScene" id=9]
 [ext_resource path="res://main/Componentes/LOSCheck.gd" type="Script" id=10]
 [ext_resource path="res://main/Ragdolls/RagdollJug.tscn" type="PackedScene" id=11]
+[ext_resource path="res://main/Personajes/Jugador/SonidosDePasos.gd" type="Script" id=12]
 
 [sub_resource type="Animation" id=3]
 length = 0.001
@@ -442,6 +443,20 @@ tracks/2/keys = {
 "update": 0,
 "values": [ Vector2( 0, -9 ), Vector2( 0, -8.3 ), Vector2( 0, -10 ), Vector2( 0, -10.5 ) ]
 }
+tracks/3/type = "method"
+tracks/3/path = NodePath("../SonidosDePasos")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "hacer_sonido_random"
+} ]
+}
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 4, 8 )
@@ -470,6 +485,9 @@ pos_bufanda = NodePath("Skin/PosBufanda")
 shaker = NodePath("Skin/Shaker")
 los = NodePath("LOSCheck")
 detector_inse = NodePath("DetectorAreasInseguras")
+
+[node name="SonidosDePasos" type="Node" parent="."]
+script = ExtResource( 12 )
 
 [node name="monitores" type="Node2D" parent="."]
 

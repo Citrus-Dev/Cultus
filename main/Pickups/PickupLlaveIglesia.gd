@@ -1,6 +1,8 @@
 class_name PickupLlaveIglesia
 extends KinematicBody2D
 
+signal agarrado
+
 const MAX_VEL := 1500.0
 const GRAVEDAD := 500.0
 const BOUNCE_DAMP := 0.6
@@ -17,6 +19,7 @@ func pickup(__):
 	ControladorUi.mensaje_ui("Esta llave abre las puertas de la iglesia.", 5.0, true)
 	TransicionesDePantalla.tiene_llave_iglesia = true
 	
+	emit_signal("agarrado")
 	call_deferred("free")
 
 

@@ -5,10 +5,17 @@ const ANGULO_TILT: float = deg2rad(0.1)
 const DISTANCIA_DEL_CENTRO_PARA_CAMBIAR: float = 200.0
 const COOLDOWN_ATAQUE_LLUVIA: float = 10.0
 
+const ESCENA_SPAWNER_HILERAS_BOMBAS := preload("res://main/Personajes/Bosses/bossf/hilera_bombas/SpawnerDeHilera.tscn")
+
 const ATAQUES: Array = [
 	"rayo",
 	"rayo",
-	"lluvia"
+	"rayo",
+	"rayo",
+	"lluvia",
+	"bombas",
+	"pilares",
+	"pilares",
 ]
 
 
@@ -30,6 +37,9 @@ var timer_cooldown_lluvia: Timer
 
 var muerto_enserio: bool
 var tembleque: bool
+var jugref: Personaje
+
+var ataques_actuales: Array
 
 
 func esperar_random() -> float: return rand_range(1.5, 3.0)
@@ -43,6 +53,8 @@ func _init():
 
 
 func _ready():
+	jugref = get_tree().get_nodes_in_group("Jugador")[0]
+	
 	Musica.set_override(Musica.Tracks.MUS_COMBATE)
 	
 	pos_spawn = global_position
@@ -105,8 +117,9 @@ func hacer_ataque( nombre: String ):
 
 # Ataques:
 # - Laser con el ojo (va de un extremo del cuarto al otro)
-# - Spawnear enemigos para que te den balas (ojos?? polillas????)
 # - Sacudir toda la arena y hacer que caigan piedras del techo. Las piedras dan municion.
+# - Hilo de bombas
+# - Pilares
 func decidir_siguiente_ataque(ataque = "?"):
 	timer_espera.start( esperar_random() )
 	yield( timer_espera, "timeout" )
@@ -114,7 +127,18 @@ func decidir_siguiente_ataque(ataque = "?"):
 	if muerto:
 		return
 	
-	var eleccion = ataque if ATAQUES.has(ataque) else ATAQUES[randi() % ATAQUES.size()]
+	var eleccion: String
+	
+	if ATAQUES.has(ataque):
+		eleccion = ataque
+	else:
+		if ataques_actuales.empty():
+			ataques_actuales = ATAQUES.duplicate()
+		
+		var randinex: int = randi() % ataques_actuales.size()
+		eleccion = ataques_actuales[randinex]
+		ataques_actuales.remove(randinex)
+	
 	
 	match eleccion:
 		"rayo":
@@ -131,6 +155,32 @@ func decidir_siguiente_ataque(ataque = "?"):
 			emit_signal("hacer_ataque_lluvia_piedras")
 			
 			timer_cooldown_lluvia.start(COOLDOWN_ATAQUE_LLUVIA)
+			
+			# No usa animador, llamamos esta funcion manualmente
+			call_deferred("decidir_siguiente_ataque")
+		
+		"bombas":
+			# Hacemos un windup temblando y esperando unos segundos
+			tembleque = true
+			timer_espera.start( 1.5 )
+			yield(timer_espera, "timeout")
+			tembleque = false
+			
+			# Sacar si el jugador esta a la izquierda o la derecha
+			var dirjug: int = sign(jugref.global_position.x - global_position.x)
+			
+			# Spawnear el objeto que hace la hilera de bombas
+			var obj: Node2D = ESCENA_SPAWNER_HILERAS_BOMBAS.instance()
+			var angulo_random: float = rand_range(-12.0, 12.0)
+			obj.rotation = deg2rad( dirjug + angulo_random + (180.0 if dirjug == -1 else 0.0) )
+			obj.global_position = global_position
+			get_parent().add_child(obj)
+			
+			# No usa animador, llamamos esta funcion manualmente
+			call_deferred("decidir_siguiente_ataque")
+		
+		"pilares":
+			get_tree().call_group("bossf_pilares", "activar")
 			
 			# No usa animador, llamamos esta funcion manualmente
 			call_deferred("decidir_siguiente_ataque")

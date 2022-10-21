@@ -140,6 +140,11 @@ _global_script_classes=[ {
 "path": "res://niveles/posta/iglesia/iglesia_boss_final/bossf_lluvia_piedras.gd"
 }, {
 "base": "Node2D",
+"class": "BossfPilar",
+"language": "GDScript",
+"path": "res://main/Personajes/Bosses/bossf/pilar/BossfPilar.gd"
+}, {
+"base": "Node2D",
 "class": "BufanString",
 "language": "GDScript",
 "path": "res://main/libs/Verlet/string.gd"
@@ -814,6 +819,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://main/Componentes/SonidoRandom.gd"
 }, {
+"base": "Node",
+"class": "SonidosDePasos",
+"language": "GDScript",
+"path": "res://main/Personajes/Jugador/SonidosDePasos.gd"
+}, {
 "base": "Node2D",
 "class": "SpawnJugador",
 "language": "GDScript",
@@ -823,6 +833,11 @@ _global_script_classes=[ {
 "class": "SpawnerAuto",
 "language": "GDScript",
 "path": "res://main/SpawnerAuto/spawner_auto.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "SpawnerDeHilera",
+"language": "GDScript",
+"path": "res://main/Personajes/Bosses/bossf/hilera_bombas/SpawnerDeHilera.gd"
 }, {
 "base": "Node",
 "class": "State",
@@ -956,6 +971,7 @@ _global_script_class_icons={
 "BossFinal": "",
 "BossPaladin": "",
 "BossfLluviaPiedras": "",
+"BossfPilar": "",
 "BufanString": "",
 "BuscarJugadorDetectado": "",
 "BuscarMapa": "",
@@ -1091,8 +1107,10 @@ _global_script_class_icons={
 "SkinArma": "",
 "Slide": "",
 "SonidoRandom": "",
+"SonidosDePasos": "",
 "SpawnJugador": "",
 "SpawnerAuto": "",
+"SpawnerDeHilera": "",
 "State": "",
 "StateMachine": "",
 "Status": "",
@@ -1164,6 +1182,7 @@ shapes/collision/shape_color=Color( 1, 1, 1, 0.419608 )
 
 window/size/width=512
 window/size/height=288
+window/size/always_on_top=true
 window/size/test_width=1024
 window/size/test_height=576
 window/stretch/mode="2d"

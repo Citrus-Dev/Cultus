@@ -15,6 +15,7 @@ export(NodePath) onready var mano_2 = get_node(mano_2) as Node2D
 export(NodePath) onready var punto_de_disparo = get_node(punto_de_disparo  ) as Node2D
 export(Array, NodePath) var shaker_paths
 export(Array, NodePath) var hurtbox_paths
+export(NodePath) onready var barra_hp = get_node(barra_hp) as BarraHPBoss
 export(int) var dmg_rayos
 
 export(bool) var atacando: bool
@@ -70,6 +71,7 @@ func empezar_boss():
 	jugref = get_tree().get_nodes_in_group("Jugador")[0]
 	empezar_ciclo()
 	set_process(true)
+	barra_hp.setup()
 
 
 func animador_trigger(anim: String):
@@ -143,6 +145,7 @@ func set_muerto(toggle : bool):
 			hurtbox.collision_mask = 0 
 	
 	animador.play("muerte")
+	barra_hp.borrar_barra()
 	activo = false
 
 

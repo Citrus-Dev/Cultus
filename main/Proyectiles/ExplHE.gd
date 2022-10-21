@@ -5,13 +5,14 @@ export(NodePath) var path_collider
 export(float) var radio_comienzo = 32
 export(float) var radio_final = 256
 export(float) var duracion = 0.8
+export(int) var dmg = 17
+export(Color) var color := Color(0.92, 0.6, 0.14)
 
 var collider : CollisionShape2D
 var shape : CircleShape2D
 var tween : Tween
 
 var alpha := 1.0
-var c := Color(0.92, 0.6, 0.14)
 
 func _ready():
 	$Area2D.connect("area_entered", self, "enemigo_detectado")
@@ -53,13 +54,13 @@ func _draw():
 	draw_circle(
 		Vector2.ZERO,
 		shape.radius,
-		Color(c.r, c.g, c.b, alpha)
+		Color(color.r, color.g, color.b, alpha)
 	)
 
 
 func enemigo_detectado(hitbox : Hitbox):
 	var dmg_info = InfoDmg.new()
-	dmg_info.dmg_cantidad = 60
+	dmg_info.dmg_cantidad = dmg
 	dmg_info.dmg_stun = 100
 	dmg_info.dmg_tipo = InfoDmg.DMG_TIPOS.EXPLOSION
 	hitbox.recibir_dmg(dmg_info)

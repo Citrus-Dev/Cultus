@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://assets/tilesets/tileset_castillo.tres" type="TileSet" id=1]
 [ext_resource path="res://niveles/Nivel.tscn" type="PackedScene" id=2]
@@ -19,6 +19,7 @@
 [ext_resource path="res://main/Musica/MusBossPaladin.tres" type="Resource" id=17]
 [ext_resource path="res://main/AI/Borde.tscn" type="PackedScene" id=18]
 [ext_resource path="res://main/libs/BlockinPolygon/BlockinPolygon.gd" type="Script" id=19]
+[ext_resource path="res://main/Objetos_mapa/Hookpoint.tscn" type="PackedScene" id=20]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 365, 324 )
@@ -258,6 +259,24 @@ color = Color( 0.239216, 0.172549, 0.117647, 1 )
 polygon = PoolVector2Array( -16, -48, -16, 48, 16, 48, 16, -48 )
 script = ExtResource( 19 )
 enable_collisions = true
+
+[node name="Hookpoint" parent="." index="18" instance=ExtResource( 20 )]
+position = Vector2( 512, 576 )
+
+[node name="Hookpoint2" parent="." index="19" instance=ExtResource( 20 )]
+position = Vector2( 344, 520 )
+
+[node name="Hookpoint3" parent="." index="20" instance=ExtResource( 20 )]
+position = Vector2( 640, 512 )
+
+[node name="Hookpoint4" parent="." index="21" instance=ExtResource( 20 )]
+position = Vector2( 504, 416 )
+
+[node name="Hookpoint5" parent="." index="22" instance=ExtResource( 20 )]
+position = Vector2( 376, 352 )
+
+[node name="Hookpoint6" parent="." index="23" instance=ExtResource( 20 )]
+position = Vector2( 640, 384 )
 
 [editable path="triggers/TransicionDeNivelConArea2"]
 [editable path="triggers/TransicionDeNivelConArea3"]
