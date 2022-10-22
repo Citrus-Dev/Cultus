@@ -39,6 +39,7 @@ var muerto_enserio: bool
 var tembleque: bool
 var jugref: Personaje
 
+var altura_inicial: float
 var ataques_actuales: Array
 
 
@@ -71,6 +72,8 @@ func _ready():
 	timer_cooldown_lluvia.one_shot
 	add_child(timer_cooldown_lluvia)
 	
+	altura_inicial = global_position.y
+	
 	decidir_siguiente_ataque()
 
 
@@ -81,6 +84,10 @@ func _process(delta):
 	input.x = mult_actual
 	
 	if tembleque: shaker.add_trauma(0.5)
+	
+	# Hacemos que se acerque siempre a la altura inicial
+	var dir: int = sign(global_position.y - altura_inicial)
+	input.y = dir
 
 
 func _physics_process(delta):

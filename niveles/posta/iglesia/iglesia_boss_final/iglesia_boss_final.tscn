@@ -390,7 +390,7 @@ position = Vector2( -1, -12 )
 shape = SubResource( 23 )
 
 [node name="SpawnJugador" type="Node2D" parent="." index="7"]
-position = Vector2( 912, -928 )
+position = Vector2( 752, -904 )
 script = ExtResource( 7 )
 
 [node name="PlataformaAlternaIglesia" parent="." index="8" instance=ExtResource( 8 )]

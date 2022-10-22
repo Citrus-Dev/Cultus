@@ -136,6 +136,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 10, 48 )
 
 [sub_resource type="Animation" id=8]
 length = 0.001
@@ -458,6 +459,7 @@ modulate = Color( 0.188235, 0.639216, 1, 1 )
 polygon = PoolVector2Array( 0, 40, -32, -32, 0, -48, 32, -32 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -16 )
 shape = SubResource( 5 )
 
 [node name="animador_ataques" type="AnimationPlayer" parent="."]
