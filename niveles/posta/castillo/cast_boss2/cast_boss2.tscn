@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://assets/tilesets/tileset_castillo.tres" type="TileSet" id=1]
 [ext_resource path="res://niveles/Nivel.tscn" type="PackedScene" id=2]
@@ -20,6 +20,8 @@
 [ext_resource path="res://main/AI/Borde.tscn" type="PackedScene" id=18]
 [ext_resource path="res://main/libs/BlockinPolygon/BlockinPolygon.gd" type="Script" id=19]
 [ext_resource path="res://main/Objetos_mapa/Hookpoint.tscn" type="PackedScene" id=20]
+[ext_resource path="res://assets/proyectiles/piedra.png" type="Texture" id=21]
+[ext_resource path="res://assets/shaders/shader_recolor.shader" type="Shader" id=22]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 365, 324 )
@@ -45,6 +47,30 @@ extents = Vector2( 108, 36 )
 [sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 16, 44 )
 
+[sub_resource type="Gradient" id=11]
+offsets = PoolRealArray( 0, 0.106918, 0.522013, 0.955975 )
+colors = PoolColorArray( 0.290523, 0.208497, 0.176471, 1, 0.207843, 0.129412, 0.0901961, 1, 0.0823529, 0.0509804, 0.0392157, 1, 0, 0, 0, 1 )
+
+[sub_resource type="GradientTexture" id=12]
+gradient = SubResource( 11 )
+
+[sub_resource type="ShaderMaterial" id=10]
+shader = ExtResource( 22 )
+shader_param/palette = SubResource( 12 )
+
+[sub_resource type="ParticlesMaterial" id=9]
+emission_shape = 2
+emission_box_extents = Vector3( 1, 45, 1 )
+flag_disable_z = true
+direction = Vector3( -1, 0, 0 )
+gravity = Vector3( 0, 160, 0 )
+initial_velocity = 120.0
+initial_velocity_random = 0.74
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 0.03
+scale_random = 0.31
+
 [node name="Nivel" instance=ExtResource( 2 )]
 script = ExtResource( 4 )
 primer_limite_camara = NodePath("camara limites/inicial")
@@ -60,6 +86,7 @@ spawner_pol_2 = NodePath("SpawnerPolilla2")
 puente = NodePath("Puente")
 pared = NodePath("Pared")
 plataforma_spawn_boss = NodePath("PlataformaSpawnBoss")
+particulas_romper_pared = NodePath("ParticulasRomperPared")
 
 [node name="TileMapFondo" type="TileMap" parent="Fondo" index="0"]
 modulate = Color( 0.25098, 0.25098, 0.25098, 1 )
@@ -277,6 +304,17 @@ position = Vector2( 376, 352 )
 
 [node name="Hookpoint6" parent="." index="23" instance=ExtResource( 20 )]
 position = Vector2( 640, 384 )
+
+[node name="ParticulasRomperPared" type="Particles2D" parent="." index="24"]
+material = SubResource( 10 )
+position = Vector2( 714, 208 )
+emitting = false
+amount = 32
+lifetime = 5.0
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource( 9 )
+texture = ExtResource( 21 )
 
 [editable path="triggers/TransicionDeNivelConArea2"]
 [editable path="triggers/TransicionDeNivelConArea3"]

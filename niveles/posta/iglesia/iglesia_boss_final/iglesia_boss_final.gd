@@ -4,6 +4,7 @@ export(NodePath) onready var camara_boss = get_node(camara_boss) as CameraBounds
 export(NodePath) onready var puerta = get_node(puerta) as Puerta
 export(NodePath) onready var efecto = get_node(efecto) as AnimationPlayer
 export(NodePath) onready var efecto_muerto = get_node(efecto_muerto) as AnimationPlayer
+export(NodePath) onready var fadeout = get_node(fadeout) as AnimationPlayer
 export(NodePath) onready var boss_spawn = get_node(boss_spawn) as SpawnerAuto
 
 var limites_derecha: bool
@@ -42,4 +43,8 @@ func empezar_boss(__):
 
 func boss_muerto():
 	efecto_muerto.play("o")
+	
+	fadeout.play("o")
+	yield(fadeout, "animation_finished")
+	GameState.ver_credtios()
 

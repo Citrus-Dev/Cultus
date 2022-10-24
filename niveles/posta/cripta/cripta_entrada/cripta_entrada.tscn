@@ -41,14 +41,14 @@ shape = SubResource( 1 )
 script = ExtResource( 3 )
 
 [node name="TransicionDeNivelConArea2" parent="triggers" index="0" instance=ExtResource( 6 )]
-position = Vector2( 404, -123 )
+position = Vector2( 401, -388 )
 ID = "entrada_arriba"
 ID_objetivo = "boss_caida"
 direccion_nivel = "res://niveles/posta/castillo/cast_boss2/cast_boss2.tscn"
 direccion_movimiento = 2
 
 [node name="CollisionShape2D" parent="triggers/TransicionDeNivelConArea2" index="0"]
-position = Vector2( -12, -253 )
+position = Vector2( 0, 0 )
 shape = SubResource( 2 )
 
 [node name="SpawnJugador" type="Node2D" parent="." index="7"]

@@ -18,6 +18,7 @@ export(NodePath) onready var spawner_pol_2 = get_node(spawner_pol_2) as SpawnerA
 export(NodePath) onready var puente = get_node(puente) as Node2D
 export(NodePath) onready var pared = get_node(pared) as Node2D
 export(NodePath) onready var plataforma_spawn_boss = get_node(plataforma_spawn_boss) as Node2D
+export(NodePath) onready var particulas_romper_pared = get_node(particulas_romper_pared) as Particles2D
 
 var boss : Personaje
 var tembleque : bool
@@ -86,6 +87,7 @@ func terminar_boss():
 
 func romper_pared():
 	pared.call_deferred("free")
+	particulas_romper_pared.emitting = true
 
 
 func cutscene_romper_puente():
