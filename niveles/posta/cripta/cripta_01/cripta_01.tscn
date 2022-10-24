@@ -110,12 +110,15 @@ direccion_nivel = "res://niveles/posta/cripta/cripta_entrada/cripta_entrada.tscn
 direccion_movimiento = 1
 
 [node name="TransicionDeNivelConArea3" parent="triggers" index="1" instance=ExtResource( 16 )]
-position = Vector2( 64, 400 )
+position = Vector2( 96, 401 )
 rotation = 1.5708
 ID = "abajo"
 ID_objetivo = "caida"
 direccion_nivel = "res://niveles/posta/cripta/cripta_03/cripta_03.tscn"
 direccion_movimiento = 3
+
+[node name="CollisionShape2D" parent="triggers/TransicionDeNivelConArea3" index="0"]
+position = Vector2( -3.05176e-05, 0 )
 
 [node name="TransicionDeNivelConArea2" parent="triggers" index="2" instance=ExtResource( 16 )]
 position = Vector2( 680, 320 )
@@ -193,3 +196,5 @@ persistir = true
 
 [node name="PlataformaFragilCripta" parent="." index="21" instance=ExtResource( 10 )]
 position = Vector2( 96, 360 )
+
+[editable path="triggers/TransicionDeNivelConArea3"]

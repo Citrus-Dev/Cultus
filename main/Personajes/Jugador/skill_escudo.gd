@@ -91,13 +91,14 @@ func _physics_process(delta):
 			is_sliding = false
 			jug.usando_habilidad = false
 			jug.valor_default("max_velocidad_horizontal")
+			jug.determinar_animacion()
 			
 			# Manualmente reactivamos la hitbox porque la animacion RESET no lo hace por alguna razon.
 #			var hb : Hitbox = jug.get_node("Hitbox")
 			jug_hitbox.monitorable = true
 			jug_hitbox.monitoring = true
 			jug_hitbox.desactivado = false
-#			yield(get_tree(), "idle_frame")
+			yield(get_tree(), "idle_frame")
 			jug.reiniciar_forma_de_colision()
 
 

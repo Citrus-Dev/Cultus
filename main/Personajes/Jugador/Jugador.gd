@@ -15,6 +15,7 @@ export(NodePath) onready var pos_bufanda = get_node(pos_bufanda) as Position2D
 export(NodePath) onready var shaker = get_node(shaker) as Shaker
 export(NodePath) onready var los = get_node(los) as LOSCheck
 export(NodePath) onready var detector_inse = get_node(detector_inse) as Area2D
+export(NodePath) onready var pasos_rand = get_node(pasos_rand) as SonidosDePasos
 
 var controlador_armas 
 var anim_level_trans : bool setget set_anim_level_trans
@@ -319,6 +320,8 @@ func confirmar_salto():
 	timer_jump_buffer.stop()
 	timer_coyote.stop()
 	coyote_timed_out = true
+	pasos_rand.hacer_sonido_random()
+	pasos_rand.hacer_sonido_random()
 
 
 func borrar_objetos_pisando():

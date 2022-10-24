@@ -12,6 +12,9 @@ enum DIRS {
 	ABAJO
 }
 
+signal jugador_entro
+signal jugador_salio
+
 export(String) var ID
 export(String) var ID_objetivo
 export(String) var direccion_nivel
@@ -32,6 +35,7 @@ func colision_jugador(_jug : Personaje):
 	if _jug.anim_level_trans:
 		return
 	
+	emit_signal("jugador_entro")
 	activar_animacion(_jug, direccion_movimiento)
 	yield(get_tree().create_timer(TIEMPO_TRANSICION_NIVEL), "timeout")
 	transicion(_jug)
@@ -53,6 +57,7 @@ func activar_animacion(_jug : Personaje, _dir : int):
 
 func animacion_de_salida(_jug : Personaje, _direccion : int):
 	mascara_anim(false)
+	emit_signal("jugador_salio")
 	_jug.anim_level_trans = true
 	_jug.input = Vector2.ZERO
 	match _direccion:

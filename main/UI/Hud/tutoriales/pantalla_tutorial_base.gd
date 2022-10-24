@@ -1,7 +1,7 @@
 class_name PantTutorialBase
 extends CanvasLayer
 
-const SONIDO := preload("res://assets/sfx/habilidades.wav")
+export(AudioStream) var SONIDO = preload("res://assets/sfx/habilidades.wav")
 
 onready var anim = $AnimationPlayer as AnimationPlayer
 var aparicion_terminada : bool

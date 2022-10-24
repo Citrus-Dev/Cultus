@@ -815,6 +815,11 @@ _global_script_classes=[ {
 "path": "res://main/Personajes/Jugador/habilidades/Slide.gd"
 }, {
 "base": "Node2D",
+"class": "Sonido",
+"language": "GDScript",
+"path": "res://main/Musica/Sonido.gd"
+}, {
+"base": "Node2D",
 "class": "SonidoRandom",
 "language": "GDScript",
 "path": "res://main/Componentes/SonidoRandom.gd"
@@ -1106,6 +1111,7 @@ _global_script_class_icons={
 "SkillEscudo": "",
 "SkinArma": "",
 "Slide": "",
+"Sonido": "",
 "SonidoRandom": "",
 "SonidosDePasos": "",
 "SpawnJugador": "",

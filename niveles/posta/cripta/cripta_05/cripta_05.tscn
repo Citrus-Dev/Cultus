@@ -57,7 +57,7 @@ shape = SubResource( 1 )
 script = ExtResource( 2 )
 
 [node name="TransicionDeNivelConArea" parent="triggers" index="0" instance=ExtResource( 14 )]
-position = Vector2( 64, 24 )
+position = Vector2( 128, 24 )
 rotation = 1.5708
 ID = "caida_der"
 ID_objetivo = "arriba"
@@ -65,16 +65,19 @@ direccion_nivel = "res://niveles/posta/cripta/cripta_04/cripta_04.tscn"
 direccion_movimiento = 3
 
 [node name="CollisionShape2D" parent="triggers/TransicionDeNivelConArea" index="0"]
-position = Vector2( -1.90735e-06, -64 )
+position = Vector2( -0.999992, 1.00001 )
 shape = SubResource( 7 )
 
 [node name="TransicionDeNivelConArea2" parent="triggers" index="1" instance=ExtResource( 14 )]
-position = Vector2( 448, 24 )
+position = Vector2( 470, 22 )
 rotation = 1.5708
 ID = "caida_izq"
 ID_objetivo = "caida_arriba"
 direccion_nivel = "res://niveles/posta/cripta/cripta_06/cripta_06.tscn"
 direccion_movimiento = 3
+
+[node name="CollisionShape2D" parent="triggers/TransicionDeNivelConArea2" index="0"]
+position = Vector2( -3.8147e-06, -1 )
 
 [node name="SpawnJugador" type="Node2D" parent="." index="7"]
 position = Vector2( 208, 0 )
@@ -146,7 +149,8 @@ dmg = 10000
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TriggerHurt" index="0"]
 modulate = Color( 0.921569, 0.458824, 0.458824, 1 )
-position = Vector2( 116, 0 )
+position = Vector2( 118, 86 )
 shape = SubResource( 6 )
 
 [editable path="triggers/TransicionDeNivelConArea"]
+[editable path="triggers/TransicionDeNivelConArea2"]

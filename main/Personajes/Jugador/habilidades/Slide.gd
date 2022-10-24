@@ -48,6 +48,7 @@ func _physics_process(delta):
 		if probar_fin():
 			jugador.usando_habilidad = false
 			jugador.valor_default("max_velocidad_horizontal")
+			jugador.determinar_animacion()
 			
 			# Manualmente reactivamos la hitbox porque la animacion RESET no lo hace por alguna razon.
 #			var hb : Hitbox = jugador.get_node("Hitbox")

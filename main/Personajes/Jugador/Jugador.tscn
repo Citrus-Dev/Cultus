@@ -450,7 +450,7 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0.1 ),
+"times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],
@@ -485,9 +485,11 @@ pos_bufanda = NodePath("Skin/PosBufanda")
 shaker = NodePath("Skin/Shaker")
 los = NodePath("LOSCheck")
 detector_inse = NodePath("DetectorAreasInseguras")
+pasos_rand = NodePath("SonidosDePasos")
 
 [node name="SonidosDePasos" type="Node" parent="."]
 script = ExtResource( 12 )
+sonidos = [ "res://assets/sfx/paso1.wav", "res://assets/sfx/paso2.wav", "res://assets/sfx/paso3.wav", "res://assets/sfx/paso4.wav" ]
 
 [node name="monitores" type="Node2D" parent="."]
 
@@ -541,7 +543,6 @@ position = Vector2( 0, -9 )
 script = ExtResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2( 0, -8 )
 shape = SubResource( 1 )
 

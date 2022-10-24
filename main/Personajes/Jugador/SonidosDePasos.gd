@@ -10,7 +10,7 @@ var sonidos_cargados: Array
 func _ready():
 	for i in sonidos:
 		if ResourceLoader.exists(i):
-			sonidos_cargados.append(load(sonidos))
+			sonidos_cargados.append(load(i))
 
 
 func hacer_sonido_random():

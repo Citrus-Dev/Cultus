@@ -63,6 +63,7 @@ direccion_movimiento = 1
 position = Vector2( -472, 80 )
 ID = "puerta_izq"
 ID_objetivo = "puerta_der"
+direccion_nivel = "res://niveles/posta/cripta/cripta_09/cripta_09.tscn"
 
 [node name="SpawnJugador" type="Node2D" parent="." index="7"]
 position = Vector2( 8, 16 )
