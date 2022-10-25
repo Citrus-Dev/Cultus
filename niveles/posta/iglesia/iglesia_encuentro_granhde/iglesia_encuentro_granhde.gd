@@ -2,7 +2,7 @@ extends Nivel
 
 const DATO_ENCUNTRO_TERMINADO := "TERMIADO EL ENCUENTRO"
 const ENEMIGOS_MUERTOS_PARA_FASE_2 := 7
-const ENEMIGOS_MUERTOS_PARA_TERMINAR := 5
+const ENEMIGOS_MUERTOS_PARA_TERMINAR := 4
 
 export(NodePath) onready var cam_limites_2 = get_node(cam_limites_2) as CameraBounds
 export(NodePath) onready var puertas_fase1 = get_node(puertas_fase1) as Puerta
@@ -78,15 +78,11 @@ func empezar_fase2(__):
 	contador_spawns = 0
 	fase = 2
 	
-	# Spawnear ruedas, el summoner y el moderfoker
-	var summoner: Summoner = spawn_summoner.spawn()
-	summoner.connect("muerto", self, "aumentar_contador")
-	alertar_todos_los_enemigos()
+	spawn_summoner.spawn()
 	
 	for rueda_s in [spawn_rueda1, spawn_rueda2, spawn_rueda3]:
 		var rueda: Rueda = rueda_s.spawn()
 		rueda.connect("muerto", self, "aumentar_contador")
-	alertar_todos_los_enemigos()
 	
 	for i in range(1):
 		var moderfoker: BossPaladin = spawn_paladin.spawn()

@@ -257,6 +257,7 @@ script = ExtResource( 4 )
 position = Vector2( 248, -240 )
 ID = "arr"
 ID_objetivo = "abajo"
+direccion_nivel = "res://niveles/posta/iglesia/iglesia_boss_final/iglesia_boss_final.tscn"
 direccion_movimiento = 2
 
 [node name="CollisionShape2D" parent="triggers/TransicionDeNivelConArea3" index="0"]
@@ -265,8 +266,8 @@ shape = SubResource( 19 )
 
 [node name="TransicionDeNivelConArea" parent="triggers" index="1" instance=ExtResource( 13 )]
 position = Vector2( 8, 176 )
-ID = "der"
-ID_objetivo = "izq"
+ID = "izq"
+ID_objetivo = "der"
 direccion_nivel = "res://niveles/posta/iglesia/iglesia_o3/iglesia_o3.tscn"
 
 [node name="TransicionDeNivelConArea2" parent="triggers" index="2" instance=ExtResource( 13 )]
@@ -319,7 +320,7 @@ position = Vector2( 248, -200 )
 position = Vector2( 472, 72 )
 
 [node name="SpawnJugador" type="Node2D" parent="." index="11"]
-position = Vector2( 400, -56 )
+position = Vector2( 273, -48 )
 script = ExtResource( 9 )
 
 [node name="Puerta" type="KinematicBody2D" parent="." index="12"]

@@ -283,6 +283,7 @@ position = Vector2( 1168, 192 )
 ID = "der"
 ID_objetivo = "izq"
 direccion_nivel = "res://niveles/posta/iglesia/igl_salto/igl_salto.tscn"
+direccion_movimiento = 1
 
 [node name="PlataformaAlternaIglesia" parent="." index="8" instance=ExtResource( 8 )]
 position = Vector2( 320, 112 )
