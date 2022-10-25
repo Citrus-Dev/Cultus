@@ -42,18 +42,18 @@ rotation = 1.5708
 ID = "caida_arriba"
 ID_objetivo = "caida_der"
 direccion_nivel = "res://niveles/posta/cripta/cripta_05/cripta_05.tscn"
-direccion_movimiento = 2
-
-[node name="TransicionDeNivelConArea2" parent="triggers" index="1" instance=ExtResource( 7 )]
-position = Vector2( -64, 272 )
-rotation = 1.5708
-ID = "caida_abajo"
-ID_objetivo = "puerta_izq_arriba"
-direccion_nivel = "res://niveles/posta/cripta/cripta_07/cripta_07.tscn"
 direccion_movimiento = 3
 
+[node name="TransicionDeNivelConArea2" parent="triggers" index="1" instance=ExtResource( 7 )]
+position = Vector2( -65, 270 )
+rotation = 1.5708
+ID = "caida_abajo"
+ID_objetivo = "puerta_izq_abajo"
+direccion_nivel = "res://niveles/posta/cripta/cripta_07/cripta_07.tscn"
+direccion_movimiento = 2
+
 [node name="SpawnJugador" type="Node2D" parent="." index="7"]
-position = Vector2( 40, -48 )
+position = Vector2( 37, -33 )
 script = ExtResource( 4 )
 
 [node name="Rueda" parent="." index="8" instance=ExtResource( 5 )]

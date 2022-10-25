@@ -45,10 +45,11 @@ shape = SubResource( 1 )
 script = ExtResource( 2 )
 
 [node name="TransicionDeNivelConArea" parent="triggers" index="0" instance=ExtResource( 11 )]
-position = Vector2( -184, -440 )
+position = Vector2( -213, -442 )
 ID = "puerta_izq_arriba"
 ID_objetivo = "puerta_der"
 direccion_nivel = "res://niveles/posta/cripta/cripta_00/cripta_00.tscn"
+direccion_movimiento = 1
 
 [node name="TransicionDeNivelConArea2" parent="triggers" index="1" instance=ExtResource( 11 )]
 position = Vector2( -184, 88 )

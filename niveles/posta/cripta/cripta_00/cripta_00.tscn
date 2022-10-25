@@ -47,6 +47,7 @@ position = Vector2( 648, 80 )
 ID = "puerta_der"
 ID_objetivo = "puerta_izq_arriba"
 direccion_nivel = "res://niveles/posta/cripta/cripta_salto/cripta_salto.tscn"
+direccion_movimiento = 1
 
 [node name="Borde" parent="triggers" index="2" instance=ExtResource( 10 )]
 position = Vector2( 144, 160 )

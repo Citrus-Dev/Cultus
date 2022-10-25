@@ -157,7 +157,7 @@ ID = "caida"
 direccion_movimiento = 2
 
 [node name="TransicionDeNivelConArea2" parent="." index="12" instance=ExtResource( 12 )]
-position = Vector2( 656.317, 394.817 )
+position = Vector2( 659, 384 )
 ID = "puerta_der_abajo"
 ID_objetivo = "puerta_izq"
 direccion_nivel = "res://niveles/posta/cripta/cripta_04/cripta_04.tscn"
