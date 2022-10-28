@@ -75,7 +75,7 @@ direccion_nivel = "res://niveles/posta/cripta/cripta_salto/cripta_salto.tscn"
 direccion_movimiento = 3
 
 [node name="SpawnJugador" type="Node2D" parent="." index="7"]
-position = Vector2( 8, 256 )
+position = Vector2( 40, -56 )
 script = ExtResource( 4 )
 
 [node name="Rueda" parent="." index="8" instance=ExtResource( 5 )]
