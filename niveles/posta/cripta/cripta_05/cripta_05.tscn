@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://niveles/Nivel.tscn" type="PackedScene" id=1]
 [ext_resource path="res://main/CameraLimitSystem/CameraBounds.gd" type="Script" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://main/Objetos_mapa/Plataformas alternas/PlataformaAlterna.gd" type="Script" id=12]
 [ext_resource path="res://assets/tilesets/plataformas/cripta_plataforma.png" type="Texture" id=13]
 [ext_resource path="res://main/Objetos_mapa/TransicionDeNivel/TransicionDeNivelConArea.tscn" type="PackedScene" id=14]
+[ext_resource path="res://main/Musica/MusCripta.tres" type="Resource" id=15]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 344, 152 )
@@ -34,6 +35,7 @@ extents = Vector2( 340, 10 )
 
 [node name="cripta_05" instance=ExtResource( 1 )]
 primer_limite_camara = NodePath("camara limites/CameraBounds")
+musica = ExtResource( 15 )
 
 [node name="TileMap" type="TileMap" parent="Fondo" index="0"]
 modulate = Color( 0.509804, 0.501961, 0.501961, 1 )
@@ -57,24 +59,27 @@ shape = SubResource( 1 )
 script = ExtResource( 2 )
 
 [node name="TransicionDeNivelConArea" parent="triggers" index="0" instance=ExtResource( 14 )]
-position = Vector2( 64, 24 )
+position = Vector2( 128, 24 )
 rotation = 1.5708
-ID = "caida_der"
+ID = "caida_izq"
 ID_objetivo = "arriba"
 direccion_nivel = "res://niveles/posta/cripta/cripta_04/cripta_04.tscn"
 direccion_movimiento = 3
 
 [node name="CollisionShape2D" parent="triggers/TransicionDeNivelConArea" index="0"]
-position = Vector2( -1.90735e-06, -64 )
+position = Vector2( 0, 0 )
 shape = SubResource( 7 )
 
 [node name="TransicionDeNivelConArea2" parent="triggers" index="1" instance=ExtResource( 14 )]
-position = Vector2( 448, 24 )
+position = Vector2( 472, 16 )
 rotation = 1.5708
-ID = "caida_izq"
+ID = "caida_der"
 ID_objetivo = "caida_arriba"
 direccion_nivel = "res://niveles/posta/cripta/cripta_06/cripta_06.tscn"
 direccion_movimiento = 3
+
+[node name="CollisionShape2D" parent="triggers/TransicionDeNivelConArea2" index="0"]
+position = Vector2( 0, 0 )
 
 [node name="SpawnJugador" type="Node2D" parent="." index="7"]
 position = Vector2( 208, 0 )
@@ -106,13 +111,13 @@ position = Vector2( 280, -8 )
 no_desaparecer = true
 
 [node name="Borde" parent="." index="15" instance=ExtResource( 6 )]
-position = Vector2( 40, 0 )
+position = Vector2( 56, 0 )
 
 [node name="Borde3" parent="." index="16" instance=ExtResource( 6 )]
-position = Vector2( 112, 16 )
+position = Vector2( 108, -1 )
 
 [node name="Borde4" parent="." index="17" instance=ExtResource( 6 )]
-position = Vector2( 144, 16 )
+position = Vector2( 152, 0 )
 
 [node name="Borde5" parent="." index="18" instance=ExtResource( 6 )]
 position = Vector2( 208, 0 )
@@ -127,13 +132,14 @@ position = Vector2( 504, 0 )
 position = Vector2( 544, 0 )
 
 [node name="PlataformaAlterna2" type="StaticBody2D" parent="." index="22"]
-position = Vector2( 128, 24 )
+position = Vector2( 129, 7 )
 script = ExtResource( 12 )
 
 [node name="Sprite" type="Sprite" parent="PlataformaAlterna2" index="0"]
 texture = SubResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlataformaAlterna2" index="1"]
+position = Vector2( -1, 1 )
 shape = SubResource( 5 )
 one_way_collision = true
 
@@ -150,3 +156,4 @@ position = Vector2( 105, 61 )
 shape = SubResource( 6 )
 
 [editable path="triggers/TransicionDeNivelConArea"]
+[editable path="triggers/TransicionDeNivelConArea2"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://niveles/Nivel.tscn" type="PackedScene" id=1]
 [ext_resource path="res://main/CameraLimitSystem/CameraBounds.gd" type="Script" id=2]
@@ -9,12 +9,14 @@
 [ext_resource path="res://main/Personajes/Esqueleto/Esqueleto.tscn" type="PackedScene" id=7]
 [ext_resource path="res://main/Pickups/PickupHP.tscn" type="PackedScene" id=8]
 [ext_resource path="res://main/Objetos_mapa/TransicionDeNivel/TransicionDeNivelConArea.tscn" type="PackedScene" id=9]
+[ext_resource path="res://main/Musica/MusCripta.tres" type="Resource" id=10]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 252, 184 )
 
 [node name="cripta_07" instance=ExtResource( 1 )]
 primer_limite_camara = NodePath("camara limites/CameraBounds")
+musica = ExtResource( 10 )
 
 [node name="TileMap" type="TileMap" parent="Fondo" index="0"]
 modulate = Color( 0.509804, 0.501961, 0.501961, 1 )
