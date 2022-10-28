@@ -78,7 +78,6 @@ func _ready():
 
 
 func _process(delta):
-	skin.position.y = anim_levitar(skin.position.y, .1 * delta, 0.6)
 	
 	rotation = ANGULO_TILT * (velocity.x)
 	input.x = mult_actual
@@ -105,12 +104,6 @@ func _physics_process(delta):
 
 
 
-
-
-
-func anim_levitar(_x :float, _freq : float, _amplitud : float) -> float:
-	_x += cos(OS.get_ticks_msec() * _freq) * _amplitud
-	return _x
 
 
 

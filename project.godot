@@ -369,6 +369,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://main/Proyectiles/FlechaFuego.gd"
 }, {
+"base": "Sprite",
+"class": "FondoNube",
+"language": "GDScript",
+"path": "res://main/Objetos_mapa/FondoNube.gd"
+}, {
 "base": "Node",
 "class": "Fuego",
 "language": "GDScript",
@@ -1017,6 +1022,7 @@ _global_script_class_icons={
 "Explosion": "",
 "Flecha": "",
 "FlechaFuego": "",
+"FondoNube": "",
 "Fuego": "",
 "Gauss": "",
 "GibFisicas": "",

@@ -8,6 +8,8 @@ const TIEMPO_ENTRE_PIEDRAS: float = 0.2
 
 export var espacio: float
 
+onready var particulas := get_child(0) as Particles2D
+
 var timer: Timer
 
 
@@ -22,6 +24,7 @@ func _ready():
 func llover():
 	
 	var c: CamaraReal = get_tree().get_nodes_in_group("Camara")[0]
+	particulas.emitting = true
 	for i in range(10):
 		c.aplicar_screenshake(2.0)
 		

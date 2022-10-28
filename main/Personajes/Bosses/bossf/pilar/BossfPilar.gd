@@ -41,13 +41,16 @@ func activar():
 		return
 	activo = true
 	
-	# telegrafear con los efectos de particulas
-	particulas.emitting = true
-	timer_espera.start(TIEMPO_TELEGRAFEAR)
-	yield(timer_espera, "timeout")
-	particulas.emitting = false
 	
-	if animar:
+	if !animar:
+		
+		# telegrafear con los efectos de particulas
+		particulas.emitting = true
+		timer_espera.start(TIEMPO_TELEGRAFEAR)
+		yield(timer_espera, "timeout")
+		particulas.emitting = false
+		
+		
 		# Moverse para arriba, esperar
 		tween.interpolate_property(
 			eje,
@@ -78,5 +81,17 @@ func activar():
 		)
 		tween.start()
 		yield(tween, "tween_all_completed")
+		
+	else:
+		
+		# telegrafear con los efectos de particulas
+		particulas.emitting = true
+		anim.play("telegraph")
+		timer_espera.start(TIEMPO_TELEGRAFEAR)
+		yield(timer_espera, "timeout")
+		particulas.emitting = false
+		
+		anim.play("ouch")
+		yield(anim, "animation_finished")
 	
 	activo = false
