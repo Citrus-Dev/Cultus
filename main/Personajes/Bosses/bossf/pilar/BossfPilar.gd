@@ -9,6 +9,8 @@ const TIEMPO_ESPERA_ARRIBA: float = 1.5 # lo que queda esperando arriba antes de
 
 export(NodePath) onready var eje = get_node(eje) as Node2D
 export(NodePath) onready var particulas = get_node(particulas) as Particles2D
+export(NodePath) onready var anim = get_node(anim) as AnimationPlayer
+export var animar: bool
 
 
 var timer_espera: Timer
@@ -45,35 +47,36 @@ func activar():
 	yield(timer_espera, "timeout")
 	particulas.emitting = false
 	
-	# Moverse para arriba, esperar
-	tween.interpolate_property(
-		eje,
-		"position:y",
-		altura_inicial,
-		0.0,
-		TIEMPO_SUBIDA_BAJADA,
-		Tween.TRANS_LINEAR,
-		Tween.EASE_OUT
-	)
-	tween.start()
-	yield(tween, "tween_all_completed")
-	
-	
-	timer_espera.start(TIEMPO_ESPERA_ARRIBA)
-	yield(timer_espera, "timeout")
-	
-	
-	# Volverse para abajo
-	tween.interpolate_property(
-		eje,
-		"position:y",
-		0.0,
-		altura_inicial,
-		TIEMPO_SUBIDA_BAJADA,
-		Tween.TRANS_LINEAR,
-		Tween.EASE_OUT
-	)
-	tween.start()
-	yield(tween, "tween_all_completed")
+	if animar:
+		# Moverse para arriba, esperar
+		tween.interpolate_property(
+			eje,
+			"position:y",
+			altura_inicial,
+			0.0,
+			TIEMPO_SUBIDA_BAJADA,
+			Tween.TRANS_LINEAR,
+			Tween.EASE_OUT
+		)
+		tween.start()
+		yield(tween, "tween_all_completed")
+		
+		
+		timer_espera.start(TIEMPO_ESPERA_ARRIBA)
+		yield(timer_espera, "timeout")
+		
+		
+		# Volverse para abajo
+		tween.interpolate_property(
+			eje,
+			"position:y",
+			0.0,
+			altura_inicial,
+			TIEMPO_SUBIDA_BAJADA,
+			Tween.TRANS_LINEAR,
+			Tween.EASE_OUT
+		)
+		tween.start()
+		yield(tween, "tween_all_completed")
 	
 	activo = false

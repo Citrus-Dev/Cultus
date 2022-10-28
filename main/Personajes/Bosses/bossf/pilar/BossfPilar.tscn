@@ -1,6 +1,6 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=12 format=2]
 
-[ext_resource path="res://assets/icon.png" type="Texture" id=1]
+[ext_resource path="res://assets/enemies/espinas.png" type="Texture" id=1]
 [ext_resource path="res://main/SistemaDaño/Hurtbox.gd" type="Script" id=2]
 [ext_resource path="res://main/Personajes/Bosses/bossf/pilar/BossfPilar.gd" type="Script" id=3]
 [ext_resource path="res://assets/particulas/particle_medium.png" type="Texture" id=4]
@@ -25,10 +25,60 @@ scale_curve = SubResource( 4 )
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 16, 88 )
 
+[sub_resource type="Animation" id=5]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "ouch"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 2, 2.1, 2.2, 2.3, 2.4, 2.5, 2.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 5, 6, 7, 8, 9, 10, 10, 9, 8, 7, 6, 5, 4 ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "telegraph"
+length = 0.25
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4 ]
+}
+
 [node name="BossfPilar" type="Node2D"]
 script = ExtResource( 3 )
 eje = NodePath("eje")
 particulas = NodePath("Particles2D")
+anim = NodePath("eje/AnimationPlayer")
 
 [node name="Particles2D" type="Particles2D" parent="."]
 z_index = 15
@@ -46,8 +96,8 @@ __meta__ = {
 
 [node name="Sprite" type="Sprite" parent="eje"]
 position = Vector2( 0, -88 )
-scale = Vector2( 0.5, 2.75 )
 texture = ExtResource( 1 )
+hframes = 11
 
 [node name="Hurtbox" type="Area2D" parent="eje"]
 visible = false
@@ -62,3 +112,8 @@ dmg_tipo = 1
 [node name="CollisionShape2D" type="CollisionShape2D" parent="eje/Hurtbox"]
 position = Vector2( 0, -88 )
 shape = SubResource( 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="eje"]
+anims/RESET = SubResource( 5 )
+anims/ouch = SubResource( 7 )
+anims/telegraph = SubResource( 6 )
