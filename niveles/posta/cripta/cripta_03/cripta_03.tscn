@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://main/CameraLimitSystem/CameraBounds.gd" type="Script" id=1]
 [ext_resource path="res://niveles/Nivel.tscn" type="PackedScene" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://main/Objetos_mapa/TransicionDeNivel/TransicionDeNivelConArea.tscn" type="PackedScene" id=12]
 [ext_resource path="res://main/SpawnerAuto/spawner_auto.gd" type="Script" id=13]
 [ext_resource path="res://niveles/posta/cripta/cripta_03/cripta_03.gd" type="Script" id=14]
+[ext_resource path="res://main/Musica/MusCripta.tres" type="Resource" id=15]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 331.5, 221.5 )
@@ -35,6 +36,7 @@ extents = Vector2( 24, 8 )
 [node name="cripta_03" instance=ExtResource( 2 )]
 script = ExtResource( 14 )
 primer_limite_camara = NodePath("camara limites/CameraBounds")
+musica = ExtResource( 15 )
 spawn_rueda1 = NodePath("spawns/sp rueda1")
 spawn_rueda2 = NodePath("spawns/sp rueda2")
 spawn_rueda3 = NodePath("spawns/sp rueda3")

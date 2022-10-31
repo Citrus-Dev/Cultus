@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://main/Objetos_mapa/Plataformas alternas/PlataformaFragilCripta.tscn" type="PackedScene" id=1]
 [ext_resource path="res://main/Objetos_mapa/TransicionDeNivel/TransicionDeNivelConArea.tscn" type="PackedScene" id=2]
@@ -10,12 +10,14 @@
 [ext_resource path="res://main/Objetos_mapa/SpawnJugador.gd" type="Script" id=8]
 [ext_resource path="res://main/Pickups/PickupHP.tscn" type="PackedScene" id=9]
 [ext_resource path="res://main/AI/Borde.tscn" type="PackedScene" id=10]
+[ext_resource path="res://main/Musica/MusCripta.tres" type="Resource" id=11]
 
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 432, 148 )
 
 [node name="cripta_00" instance=ExtResource( 4 )]
 primer_limite_camara = NodePath("camara limites/CameraBounds")
+musica = ExtResource( 11 )
 
 [node name="TileMap" type="TileMap" parent="Fondo" index="0"]
 modulate = Color( 0.509804, 0.501961, 0.501961, 1 )

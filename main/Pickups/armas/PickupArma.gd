@@ -23,7 +23,7 @@ func _process(delta):
 
 
 func anim_levitar(_x :float, _freq : float, _amplitud : float) -> float:
-	_x += cos(OS.get_ticks_msec() * _freq) * _amplitud
+	_x += stepify(cos(OS.get_ticks_msec() * _freq) * _amplitud, 0.1)
 	return _x
 
 
