@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://main/Personajes/PersonajeBase.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/enemies/sprites_shot_attack.png" type="Texture" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://main/Personajes/Shot/estados/Idle.gd" type="Script" id=10]
 [ext_resource path="res://main/libs/DebugMonitor/DebugMonitor.tscn" type="PackedScene" id=11]
 [ext_resource path="res://main/Ragdolls/RagdollShot.tscn" type="PackedScene" id=12]
+[ext_resource path="res://main/Componentes/DropManager.gd" type="Script" id=13]
 
 [sub_resource type="Animation" id=1]
 length = 0.001
@@ -192,32 +193,35 @@ hurtbox = NodePath("Hurtbox")
 trigger_block = NodePath("TriggerBlock")
 sprite_circ = NodePath("SpriteCirc")
 
-[node name="st" parent="." index="0" instance=ExtResource( 11 )]
+[node name="DropManager" type="Node" parent="." index="0"]
+script = ExtResource( 13 )
+
+[node name="st" parent="." index="1" instance=ExtResource( 11 )]
 visible = false
 position = Vector2( 6, -45 )
 monitor_target_node = NodePath("../StateMachine")
 monitor_target_property = "state"
 monitor_flavor_text = "state"
 
-[node name="input" parent="." index="1" instance=ExtResource( 11 )]
+[node name="input" parent="." index="2" instance=ExtResource( 11 )]
 visible = false
 position = Vector2( 6, -62 )
 monitor_target_node = NodePath("..")
 monitor_target_property = "input"
 monitor_flavor_text = "input"
 
-[node name="Status" parent="." index="2"]
+[node name="Status" parent="." index="3"]
 hp_max = 300
 stun_threshold = 150
 
-[node name="SpriteCirc" type="Sprite" parent="." index="3"]
+[node name="SpriteCirc" type="Sprite" parent="." index="4"]
 visible = false
 position = Vector2( 1, -59 )
 texture = ExtResource( 2 )
 hframes = 15
 vframes = 2
 
-[node name="Skin" type="Node2D" parent="." index="4"]
+[node name="Skin" type="Node2D" parent="." index="5"]
 position = Vector2( 1, 0 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Skin" index="0"]
@@ -235,13 +239,13 @@ hframes = 9
 vframes = 3
 frame = 18
 
-[node name="Hitbox" parent="." index="5"]
+[node name="Hitbox" parent="." index="6"]
 visible = false
 
 [node name="CollisionShape2D" parent="Hitbox" index="0"]
 position = Vector2( 0, -16 )
 
-[node name="Hurtbox" parent="." index="6" instance=ExtResource( 4 )]
+[node name="Hurtbox" parent="." index="7" instance=ExtResource( 4 )]
 visible = false
 collision_mask = 16
 agente_dir = NodePath("..")
@@ -254,12 +258,12 @@ dmg_tipo = 1
 position = Vector2( 0, -17.5 )
 shape = SubResource( 5 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="7"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="8"]
 visible = false
 position = Vector2( 0, -16.5 )
 shape = SubResource( 6 )
 
-[node name="TriggerBlock" type="Area2D" parent="." index="8"]
+[node name="TriggerBlock" type="Area2D" parent="." index="9"]
 visible = false
 modulate = Color( 0.94902, 0.941176, 0.0980392, 1 )
 collision_layer = 0
@@ -268,7 +272,7 @@ collision_layer = 0
 position = Vector2( 0, -56 )
 shape = SubResource( 8 )
 
-[node name="StateMachine" type="Node" parent="." index="9"]
+[node name="StateMachine" type="Node" parent="." index="10"]
 script = ExtResource( 6 )
 initial_state = NodePath("Idle")
 
@@ -283,3 +287,5 @@ script = ExtResource( 9 )
 
 [node name="Muerte" type="Node" parent="StateMachine" index="3"]
 script = ExtResource( 8 )
+
+[connection signal="muerto" from="." to="DropManager" method="drop"]

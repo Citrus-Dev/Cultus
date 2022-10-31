@@ -30,4 +30,3 @@ static func puede_gibear(tipo: int) -> bool:
 		_:
 			return false
 
-

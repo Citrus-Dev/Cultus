@@ -369,6 +369,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://main/Proyectiles/FlechaFuego.gd"
 }, {
+"base": "Sprite",
+"class": "FondoNube",
+"language": "GDScript",
+"path": "res://main/Objetos_mapa/FondoNube.gd"
+}, {
 "base": "Node",
 "class": "Fuego",
 "language": "GDScript",
@@ -593,6 +598,11 @@ _global_script_classes=[ {
 "class": "Palanca",
 "language": "GDScript",
 "path": "res://main/Objetos_mapa/Palanca.gd"
+}, {
+"base": "Node2D",
+"class": "Paloma",
+"language": "GDScript",
+"path": "res://main/Efectos/Paloma.gd"
 }, {
 "base": "CanvasLayer",
 "class": "PantTutorialBase",
@@ -1022,6 +1032,7 @@ _global_script_class_icons={
 "Explosion": "",
 "Flecha": "",
 "FlechaFuego": "",
+"FondoNube": "",
 "Fuego": "",
 "Gauss": "",
 "GibFisicas": "",
@@ -1067,6 +1078,7 @@ _global_script_class_icons={
 "OneJointIK": "",
 "OneshotParticles": "",
 "Palanca": "",
+"Paloma": "",
 "PantTutorialBase": "",
 "Personaje": "",
 "PickupArma": "",

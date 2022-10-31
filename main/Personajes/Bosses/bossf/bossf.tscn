@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://main/Personajes/Bosses/bossf/bossf.gd" type="Script" id=1]
 [ext_resource path="res://assets/enemies/finalb_cuerpo.png" type="Texture" id=2]
@@ -133,6 +133,39 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ]
+}
+
+[sub_resource type="Animation" id=12]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=13]
+resource_name = "levitar"
+length = 2.0
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.5, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 15 ), Vector2( 0, -15 ) ]
 }
 
 [sub_resource type="RectangleShape2D" id=5]
@@ -354,6 +387,7 @@ script = ExtResource( 5 )
 hp_max = 3600
 stun_threshold = 99999
 agente = NodePath("..")
+resistencia_al_gauss = true
 
 [node name="Skin" type="Node2D" parent="."]
 
@@ -457,6 +491,11 @@ i_frames_tiempo = 0.0
 [node name="Polygon2D2" type="CollisionPolygon2D" parent="Skin/Hitbox"]
 modulate = Color( 0.188235, 0.639216, 1, 1 )
 polygon = PoolVector2Array( 0, 40, -32, -32, 0, -48, 32, -32 )
+
+[node name="Levitador" type="AnimationPlayer" parent="Skin"]
+autoplay = "levitar"
+anims/RESET = SubResource( 12 )
+anims/levitar = SubResource( 13 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, -16 )

@@ -212,6 +212,9 @@ func morir(_info : InfoDmg):
 
 
 func muerte_cambio_nivel():
+	# Guarda las armas/skills que tenes ahora
+	Guardado.guardar_partida()
+	
 	var timer_muerte := Timer.new()
 	timer_muerte.wait_time = 3.5
 	add_child(timer_muerte)

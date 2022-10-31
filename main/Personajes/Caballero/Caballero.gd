@@ -53,6 +53,21 @@ func morir(_info : InfoDmg):
 		instanciar_ragdoll()
 
 
+
+# Llamado cuando recibis daño
+func evento_dmg(_dmg : InfoDmg):
+	efecto_brillo_dmg(.6)
+	Musica.hacer_sonido(SND_HIT, global_position)
+	
+	if _dmg.atacante is Personaje:
+		objetivo = _dmg.atacante
+		objetivo.connect("muerto", self, "perder_vista_jugador")
+		fsm.transition_to("Perseguir")
+	
+	alertar()
+
+
+
 func cambiar_visibilidad(_bool : bool):
 	skin.visible = _bool
 

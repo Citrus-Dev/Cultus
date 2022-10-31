@@ -1,6 +1,8 @@
 class_name Polilla
 extends Personaje
 
+const PALOMA_ESCENA := preload("res://main/Efectos/Paloma.tscn")
+
 export(NodePath) onready var fsm = get_node(fsm) as StateMachine
 export(NodePath) onready var hurtbox = get_node(hurtbox) as Hurtbox
 
@@ -37,6 +39,12 @@ func morir(_info : InfoDmg):
 	remove_from_group("Enemigos")
 	
 	instanciar_gibs()
+	
+	var inst: Paloma = PALOMA_ESCENA.instance()
+	inst.global_position = global_position
+	add_child(inst)
+#	inst.velocity.x *= input.x
+	inst.velocity *= -input
 
 
 func on_parry(escudo : Node2D):
@@ -61,9 +69,7 @@ func evento_dmg(_dmg : InfoDmg):
 	
 	if _dmg.atacante is Personaje:
 		objetivo = _dmg.atacante
-		objetivo.connect("muerto", self, "perder_vista_jugador")
-		fsm.transition_to("Perseguir")
-	
+		
 	alertar()
 
 

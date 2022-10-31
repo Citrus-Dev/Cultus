@@ -46,6 +46,7 @@ func _process(delta: float) -> void:
 
 
 func aplicar_dmg(_info : InfoDmg):
+	
 	hp = max(hp - _info.dmg_cantidad, 0)
 	actualizar_hp_bar()
 	

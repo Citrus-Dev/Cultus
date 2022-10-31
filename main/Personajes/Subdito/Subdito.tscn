@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://main/Personajes/Cultista/Cultista.gd" type="Script" id=1]
 [ext_resource path="res://main/Personajes/Cultista/Disparar.gd" type="Script" id=2]
@@ -17,6 +17,7 @@
 [ext_resource path="res://main/libs/HSM/StateMachine.gd" type="Script" id=15]
 [ext_resource path="res://main/Componentes/Stretcher.gd" type="Script" id=16]
 [ext_resource path="res://main/Personajes/Caballero/estados/Stun.gd" type="Script" id=17]
+[ext_resource path="res://main/Componentes/DropManager.gd" type="Script" id=18]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 6, 8.5 )
@@ -220,6 +221,9 @@ hurtbox = NodePath("Hurtbox")
 stretcher = NodePath("Skin/Sprite/Stretcher")
 arma_id = "ArmaCultista"
 
+[node name="DropManager" type="Node" parent="."]
+script = ExtResource( 18 )
+
 [node name="monitores" type="Node2D" parent="."]
 visible = false
 
@@ -341,3 +345,5 @@ anims/mirar = SubResource( 10 )
 anims/mirar_der = SubResource( 11 )
 anims/saltar = SubResource( 7 )
 anims/turn = SubResource( 6 )
+
+[connection signal="muerto" from="." to="DropManager" method="drop"]

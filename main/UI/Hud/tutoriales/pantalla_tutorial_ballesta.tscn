@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://main/UI/Hud/tutoriales/pantalla_tutorial_base.tscn" type="PackedScene" id=1]
+
+[node name="PantTutorialBallesta" instance=ExtResource( 1 )]
+
+[node name="Nombre" parent="Control/margen/VBoxContainer" index="0"]
+text = "Ballesta"
+
+[node name="Descripcion" parent="Control/margen/VBoxContainer/VBoxContainer" index="0"]
+text = "Arma de precision a distancia, dispara una flecha que puede atravezar enemigos."

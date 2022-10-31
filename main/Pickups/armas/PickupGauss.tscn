@@ -1,9 +1,13 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://main/Pickups/armas/PickupArma.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/armas/weapon_gauss.png" type="Texture" id=2]
+[ext_resource path="res://main/UI/Hud/tutoriales/pantalla_tutorial_gauss.tscn" type="PackedScene" id=3]
 
 [node name="PickupGauss" instance=ExtResource( 1 )]
+id_arma = "ArmaGauss"
+mensaje = "Fusil gauss"
+pantalla_tutorial = ExtResource( 3 )
 
 [node name="Sprite" parent="." index="1"]
 texture = ExtResource( 2 )

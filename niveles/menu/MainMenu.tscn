@@ -132,6 +132,10 @@ custom_fonts/font = SubResource( 2 )
 text = "Creditos"
 align = 1
 valign = 1
+__meta__ = {
+"_editor_description_": "??????????????????????????
+"
+}
 
 [node name="Salir" type="TextureButton" parent="VBoxContainer/cont botones"]
 margin_top = 136.0
