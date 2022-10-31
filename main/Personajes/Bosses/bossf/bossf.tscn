@@ -387,6 +387,7 @@ script = ExtResource( 5 )
 hp_max = 3600
 stun_threshold = 99999
 agente = NodePath("..")
+resistencia_al_gauss = true
 
 [node name="Skin" type="Node2D" parent="."]
 

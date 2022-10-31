@@ -7,7 +7,7 @@ const SONIDO_DISPARO := preload("res://assets/sfx/armas/disparo/mixkit-sci-fi-pl
 func _init() -> void:
 	medidor_balas_escena = preload("res://main/UI/BarrasBalas/BarraBalasGauss.tscn")
 	skin_escena = preload("res://main/Armas/Skins/SkinGauss.tscn")
-	damage_info.dmg_cantidad = 750_000_000
+	damage_info.dmg_cantidad = 750
 	damage_info.dmg_stun = 250
 	damage_info.fuerza_retroceso = 250
 	damage_info.dmg_tipo = damage_info.DMG_TIPOS.PLASMA

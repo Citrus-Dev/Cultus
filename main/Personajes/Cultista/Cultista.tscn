@@ -335,3 +335,5 @@ anims/mirar = SubResource( 10 )
 anims/mirar_der = SubResource( 11 )
 anims/saltar = SubResource( 7 )
 anims/turn = SubResource( 6 )
+
+[connection signal="muerto" from="." to="DropManager" method="drop"]

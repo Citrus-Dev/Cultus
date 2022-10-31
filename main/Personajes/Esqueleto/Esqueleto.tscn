@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://main/Personajes/Cultista/Disparar.gd" type="Script" id=1]
 [ext_resource path="res://assets/enemies/cowboy_skeleton.png" type="Texture" id=2]
@@ -17,6 +17,7 @@
 [ext_resource path="res://main/SistemaDaño/Hurtbox.tscn" type="PackedScene" id=15]
 [ext_resource path="res://main/Componentes/Stretcher.gd" type="Script" id=16]
 [ext_resource path="res://main/Personajes/Esqueleto/gibs/GibsEsqueleto.tscn" type="PackedScene" id=17]
+[ext_resource path="res://main/Componentes/DropManager.gd" type="Script" id=18]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 6, 8.5 )
@@ -222,6 +223,9 @@ hurtbox = NodePath("Hurtbox")
 stretcher = NodePath("Skin/Stretcher")
 arma_id = "ArmaRevolverEsqueleto"
 
+[node name="DropManager" type="Node" parent="."]
+script = ExtResource( 18 )
+
 [node name="monitores" type="Node2D" parent="."]
 visible = false
 
@@ -338,3 +342,5 @@ anims/turn = SubResource( 6 )
 
 [node name="Stretcher" type="Node2D" parent="Skin"]
 script = ExtResource( 16 )
+
+[connection signal="muerto" from="." to="DropManager" method="drop"]

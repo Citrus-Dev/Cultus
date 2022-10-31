@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=2]
+[gd_scene load_steps=52 format=2]
 
 [ext_resource path="res://niveles/Nivel.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/tilesets/Iglesia_tileset_1.png" type="Texture" id=2]
@@ -19,6 +19,7 @@
 [ext_resource path="res://niveles/posta/iglesia/iglesia_boss_final/bossf_lluvia_piedras.gd" type="Script" id=17]
 [ext_resource path="res://main/Personajes/Bosses/bossf/pilar/BossfPilar.tscn" type="PackedScene" id=18]
 [ext_resource path="res://assets/particulas/particle_medium.png" type="Texture" id=19]
+[ext_resource path="res://main/Personajes/Shot/Shot.tscn" type="PackedScene" id=20]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
@@ -568,6 +569,9 @@ position = Vector2( 1280, -880 )
 
 [node name="BossfPilar4" parent="." index="30" instance=ExtResource( 18 )]
 position = Vector2( 1424, -880 )
+
+[node name="Shot" parent="." index="31" instance=ExtResource( 20 )]
+position = Vector2( 489.922, -908.519 )
 
 [connection signal="body_entered" from="triggers/t_empezar_boss" to="." method="empezar_boss"]
 [connection signal="body_entered" from="triggers/t_cambiar_a_der" to="." method="cambiar_a_limites_derecha"]

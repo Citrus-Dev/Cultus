@@ -144,3 +144,19 @@ func ir_al_menu():
 func ver_credtios():
 	get_tree().change_scene(INFO.escena_creditos)
 
+
+# "ñiñi referencia ciclica" chupame las dobola
+static func duplicar_dmg(original: InfoDmg) -> InfoDmg:
+	var new = InfoDmg.new()
+	new.atacante = original.atacante
+	new.objetivo = original.objetivo
+	new.dmg_cantidad = original.dmg_cantidad
+	new.dmg_tipo = original.dmg_tipo
+	new.dmg_stun = original.dmg_stun
+	new.fuerza_retroceso = original.fuerza_retroceso
+	
+	return new
+
+
+
+

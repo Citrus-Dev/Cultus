@@ -40,7 +40,14 @@ func dibujar_hitscan(_dir : float):
 		if collider is Hitbox:
 			if !collider.monitorable: return
 			var col = collider.owner.name
-			collider.recibir_dmg(info_dmg)
+			
+			# Si el dueño de la hitbox es un boss, bajamos el daño un monton
+			if (collider.owner.is_in_group("Boss")):
+				var menos_dmg = GameState.duplicar_dmg(info_dmg)
+				menos_dmg.dmg_cantidad *= 0.3
+				collider.recibir_dmg(menos_dmg)
+			else:
+				collider.recibir_dmg(info_dmg)
 	
 	var final = hitscan["position"] if !hitscan.empty() else cast_to
 	

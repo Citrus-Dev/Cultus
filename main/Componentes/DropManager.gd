@@ -64,7 +64,13 @@ func convertir_id_a_escena(id : String):
 		"Flechas":
 			instanciar_pickup(DROP_BALLESTA)
 		"Cohetes":
-			instanciar_pickup(DROP_BAZUCA)
+			# Estos en teoria tienen que ser mas raros asi que aleatoriamente podemos dropear vida
+			# (chance de 2 en 3)
+			var chance_de_cagarte: bool = randi() % 3 < 2
+			if chance_de_cagarte:
+				instanciar_pickup(DROP_VIDA)
+			else:
+				instanciar_pickup(DROP_BAZUCA)
 
 
 func instanciar_pickup(escena : PackedScene):
