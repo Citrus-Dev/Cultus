@@ -11,6 +11,7 @@ func _ready():
 func enter(msg : Dictionary = {}) -> void:
 	obj = owner.objetivo 
 	owner.connect("borde_tocado", self, "tocar_borde")
+	owner.alertar()
 	animador.play("alerta")
 	calcular_distancia_a_jugador()
 	cambiar_direccion(target_dir)

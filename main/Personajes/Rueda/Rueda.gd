@@ -23,6 +23,15 @@ func _ready():
 
 
 
+func alertar():
+	if !ciego and !muerto:
+		add_to_group("EnemigosAlertados")
+		objetivo.connect("muerto", self, "perder_vista_jugador")
+
+
+func perder_vista_jugador():
+	objetivo = null
+
 
 
 
