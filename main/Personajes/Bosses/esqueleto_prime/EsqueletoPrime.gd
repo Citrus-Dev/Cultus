@@ -67,6 +67,7 @@ func _process(delta):
 # Activa un ciclo de ataques
 func empezar_boss():
 	activo = true
+	add_to_group("EnemigosAlertados")
 	emit_signal("activo")
 	jugref = get_tree().get_nodes_in_group("Jugador")[0]
 	empezar_ciclo()

@@ -3,6 +3,8 @@ extends Nivel
 const DATO_ENCUENTRO_TERMINADO := "encuentro_terminado"
 
 export(NodePath) onready var spawn_rueda1 = get_node(spawn_rueda1) as SpawnerAuto
+export(NodePath) onready var spawn_rueda2 = get_node(spawn_rueda2) as SpawnerAuto
+export(NodePath) onready var spawn_rueda3 = get_node(spawn_rueda3) as SpawnerAuto
 
 export(NodePath) onready var spawn_polilla1 = get_node(spawn_polilla1) as SpawnerAuto
 export(NodePath) onready var spawn_polilla2 = get_node(spawn_polilla2) as SpawnerAuto
@@ -13,6 +15,8 @@ export(NodePath) onready var spawn_shot1 = get_node(spawn_shot1) as SpawnerAuto
 export(NodePath) onready var spawn_shot2 = get_node(spawn_shot2) as SpawnerAuto
 
 export(NodePath) onready var spawn_esqueleto1 = get_node(spawn_esqueleto1) as SpawnerAuto
+
+
 
 export(NodePath) onready var puerta1 = get_node(puerta1) as Puerta
 export(NodePath) onready var puerta2 = get_node(puerta2) as Puerta
@@ -35,6 +39,8 @@ func empezar_encuentro(__):
 	spawn_shot1.spawn()
 	spawn_shot2.spawn()
 	spawn_esqueleto1.spawn()
+	spawn_rueda3.spawn()
+	spawn_rueda2.spawn()
 
 func empezar_oleada_2():
 	oleada_actual = 2
@@ -46,7 +52,7 @@ func empezar_oleada_2():
 
 func subir_contador():
 	contador_enemigos += 1
-	if oleada_actual == 1 and contador_enemigos == 3:
+	if oleada_actual == 1 and contador_enemigos == 5:
 		empezar_oleada_2()
 		contador_enemigos = 0
 	elif oleada_actual == 2 and contador_enemigos == 5:
