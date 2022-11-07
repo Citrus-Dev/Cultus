@@ -211,7 +211,7 @@ monitor_target_property = "input"
 monitor_flavor_text = "input"
 
 [node name="Status" parent="." index="3"]
-hp_max = 300
+hp_max = 225
 stun_threshold = 150
 
 [node name="SpriteCirc" type="Sprite" parent="." index="4"]

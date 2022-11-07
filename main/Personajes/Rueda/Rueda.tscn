@@ -208,7 +208,7 @@ visible = false
 collision_mask = 16
 agente_dir = NodePath("..")
 is_constant = true
-dmg = 50
+dmg = 35
 fuerza_retroceso = 100.0
 dmg_tipo = 7
 
