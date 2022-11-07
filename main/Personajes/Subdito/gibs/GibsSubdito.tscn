@@ -1,0 +1,132 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://main/Gibs.gd" type="Script" id=1]
+[ext_resource path="res://main/GibFisicas.gd" type="Script" id=2]
+[ext_resource path="res://assets/gibs/subdito_gibs.png" type="Texture" id=3]
+
+[sub_resource type="AtlasTexture" id=1]
+flags = 2
+atlas = ExtResource( 3 )
+region = Rect2( 27, 27, 15, 9 )
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id=2]
+flags = 2
+atlas = ExtResource( 3 )
+region = Rect2( 8, 27, 10, 8 )
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id=3]
+flags = 2
+atlas = ExtResource( 3 )
+region = Rect2( 5, 46, 5, 4 )
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id=6]
+flags = 2
+atlas = ExtResource( 3 )
+region = Rect2( 32, 45, 6, 6 )
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id=4]
+flags = 2
+atlas = ExtResource( 3 )
+region = Rect2( 21, 45, 6, 5 )
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id=5]
+flags = 2
+atlas = ExtResource( 3 )
+region = Rect2( 14, 46, 3, 5 )
+filter_clip = true
+
+[node name="GibsSubdito" type="Node2D"]
+script = ExtResource( 1 )
+gibs_paths = [ NodePath("GibFisicas"), NodePath("GibFisicas2"), NodePath("GibFisicas3"), NodePath("GibFisicas4"), NodePath("GibFisicas5"), NodePath("GibFisicas6") ]
+punto_de_expulsion_path = NodePath("Position2D")
+
+[node name="Position2D" type="Position2D" parent="."]
+
+[node name="GibFisicas" type="KinematicBody2D" parent="."]
+position = Vector2( 0, -15 )
+collision_layer = 0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="GibFisicas"]
+texture = SubResource( 1 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="GibFisicas"]
+polygon = PoolVector2Array( -9, 1, -4, 5, 7, 3, 1, -5, -7, -4 )
+
+[node name="GibFisicas2" type="KinematicBody2D" parent="."]
+position = Vector2( -1, -25 )
+collision_layer = 0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="GibFisicas2"]
+texture = SubResource( 2 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="GibFisicas2"]
+polygon = PoolVector2Array( -4, 3, 5, 0, -3, -3 )
+
+[node name="GibFisicas3" type="KinematicBody2D" parent="."]
+position = Vector2( -7, -9 )
+collision_layer = 0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="GibFisicas3"]
+texture = SubResource( 3 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="GibFisicas3"]
+polygon = PoolVector2Array( -1, 2, 3, 1, -1, -2 )
+
+[node name="GibFisicas4" type="KinematicBody2D" parent="."]
+position = Vector2( 11, -8 )
+collision_layer = 0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="GibFisicas4"]
+texture = SubResource( 6 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="GibFisicas4"]
+polygon = PoolVector2Array( 0, 3, 3, 1, 2, -3, -3, -3 )
+
+[node name="GibFisicas5" type="KinematicBody2D" parent="."]
+position = Vector2( 4, -3 )
+collision_layer = 0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="GibFisicas5"]
+texture = SubResource( 4 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="GibFisicas5"]
+polygon = PoolVector2Array( -3, 2, 3, 1, 0, -3 )
+
+[node name="GibFisicas6" type="KinematicBody2D" parent="."]
+position = Vector2( -7, -3 )
+collision_layer = 0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="GibFisicas6"]
+texture = SubResource( 5 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="GibFisicas6"]
+polygon = PoolVector2Array( -1, 2, 3, 1, -1, -2 )
