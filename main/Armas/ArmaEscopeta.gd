@@ -20,7 +20,7 @@ func _init() -> void:
 	skin_escena = preload("res://main/Armas/Skins/SkinShotgun.tscn")
 	casquillo_escena = preload("res://main/Efectos/Casquillos/CasquilloEscopeta.tscn")
 	medidor_balas_escena = preload("res://main/UI/BarrasBalas/BarraBalasNoRecarga.tscn")
-	damage_info.dmg_cantidad = 12
+	damage_info.dmg_cantidad = 16
 	damage_info.fuerza_retroceso = 400
 	damage_info.dmg_stun = 25
 	nombre = "ArmaEscopeta"

@@ -7,6 +7,7 @@ export(NodePath) onready var checkpoint_real = get_node(checkpoint_real) as Chec
 export(NodePath) onready var limites_boss = get_node(limites_boss) as CameraBounds
 export(NodePath) onready var puerta = get_node(puerta) as Puerta
 export(NodePath) onready var pos_centro = get_node(pos_centro) as Position2D
+export(NodePath) onready var pickup_escudo_spawn = get_node(pickup_escudo_spawn) as SpawnerAuto
 
 var timer: Timer
 
@@ -33,6 +34,7 @@ func empezar_boss():
 
 func boss_muerto():
 	info_persist_nivel[NOMBRE_DATO] = true
+	pickup_escudo_spawn.spawn()
 	
 	timer.start(2.0)
 	yield(timer, "timeout")

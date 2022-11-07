@@ -3,6 +3,7 @@ extends Arma
 
 const BALA = preload("res://main/Proyectiles/Flecha.tscn")
 const BALA_FUEGO = preload("res://main/Proyectiles/FlechaFuego.tscn")
+const SKIN_ALT := preload("res://main/Armas/Skins/SkinBallestaAlt.tscn")
 
 const COSTO_FLECHAS_FUEGO: int = 2
 
@@ -59,6 +60,31 @@ func instanciar_medidor(_inv_balas : InvBalas, _hud : CanvasLayer) -> Control:
 	
 	hud_medidor_inst.init_barra(_inv_balas.dict_balas[tipo]["max"], _inv_balas.dict_balas[tipo]["cant"])
 	return hud_medidor_inst
+
+
+
+
+func cambio_variante_PIERCING():
+	borrar_skin()
+	instanciar_skin(cont, skin_escena)
+
+
+func cambio_variante_FUEGO():
+	borrar_skin()
+	instanciar_skin(cont, SKIN_ALT)
+
+
+
+func instanciar_skin(_parent : Node2D, _skin_escena = skin_escena):
+	match variantes[variante_actual]:
+		"PIERCING":
+			_skin_escena = skin_escena
+		"FUEGO":
+			_skin_escena = SKIN_ALT
+	var inst = _skin_escena.instance()
+	_parent.add_child(inst)
+	skin_inst = inst
+
 
 
 func actualizar_medidor():

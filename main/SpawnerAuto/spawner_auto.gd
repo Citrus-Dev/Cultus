@@ -55,9 +55,10 @@ func spawn():
 	new_inst.name += name + str(cont_spawns)
 	cont_spawns += 1
 	
-	var p: Jugador = get_tree().get_nodes_in_group("Jugador")[0]
-	new_inst.objetivo = p
-	new_inst.emit_signal("objetivo_encontrado")
+	if new_inst is Personaje:
+		var p: Jugador = get_tree().get_nodes_in_group("Jugador")[0]
+		new_inst.objetivo = p
+		new_inst.emit_signal("objetivo_encontrado")
 	
 	return new_inst
 

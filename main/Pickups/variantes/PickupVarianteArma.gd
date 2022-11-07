@@ -6,6 +6,7 @@ const ESCENA_TUT := preload("res://main/UI/Hud/tutoriales/pantalla_tutorial_vari
 signal agarrado
 
 export(String) var arma
+export(String) var nombre
 export(NodePath) var sprite_path
 export(int) var id_variante
 
@@ -40,6 +41,9 @@ func agarrar(jug: Personaje):
 		)
 	
 	TransicionesDePantalla.inv_variantes[arma].append(id_variante)
+	
+#	LabelsPickup.agregar_mensaje(global_position, "Arma alterna: " + arma)
+	ControladorUi.mensaje_ui("Arma alterna encontrada: " + nombre)
 	
 	call_deferred("free")
 

@@ -400,6 +400,7 @@ position = Vector2( -416, 88 )
 [node name="PickupVarianteArma" parent="." index="15" instance=ExtResource( 9 )]
 position = Vector2( -584, 104 )
 arma = "ArmaEscopeta"
+nombre = "Escopeta pesada"
 sprite_path = NodePath("Sprite2")
 id_variante = 1
 

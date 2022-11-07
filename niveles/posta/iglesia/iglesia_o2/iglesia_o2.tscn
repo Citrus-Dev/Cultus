@@ -256,6 +256,7 @@ texture = ExtResource( 11 )
 [node name="PickupVarianteArma" parent="." index="8" instance=ExtResource( 7 )]
 position = Vector2( 72, 264 )
 arma = "ArmaAR"
+nombre = "Rifle + Granadas de hielo"
 sprite_path = NodePath("Sprite2")
 id_variante = 1
 
