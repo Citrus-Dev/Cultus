@@ -58,6 +58,7 @@ func set_override(value : int):
 
 
 func set_track(value : int):
+	if track_actual == value: return
 	track_actual = value
 	cambiar_musica(track_actual if override == -1 else override)
 
@@ -124,6 +125,8 @@ func cambiar_musica(track : int):
 	
 	var track_viejo = track_actual
 	track_actual = track
+	
+	if track_actual == track_viejo: return
 	
 	var objetivo : AudioStream
 	var pos_vieja : float

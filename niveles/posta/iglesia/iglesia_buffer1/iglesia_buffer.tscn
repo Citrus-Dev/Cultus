@@ -12,7 +12,7 @@
 [ext_resource path="res://main/Objetos_mapa/Plataformas alternas/PlataformaAlternaIglesia.tscn" type="PackedScene" id=10]
 [ext_resource path="res://main/Objetos_mapa/Pinchos/PinchosRestart.tscn" type="PackedScene" id=11]
 [ext_resource path="res://main/Objetos_mapa/Hookpoint.tscn" type="PackedScene" id=12]
-[ext_resource path="res://main/Musica/MusIglesia.tres" type="Resource" id=13]
+[ext_resource path="res://main/Musica/MusMimic.tres" type="Resource" id=13]
 [ext_resource path="res://main/Objetos_mapa/TransicionDeNivel/TransicionDeNivelConArea.tscn" type="PackedScene" id=14]
 [ext_resource path="res://main/Objetos_mapa/TransicionDeNivel/TransicionDeNivel.gd" type="Script" id=15]
 

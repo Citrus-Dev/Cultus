@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=2]
+[gd_scene load_steps=45 format=2]
 
 [ext_resource path="res://niveles/Nivel.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/tilesets/Iglesia_tileset_1.png" type="Texture" id=2]
@@ -22,6 +22,8 @@
 [ext_resource path="res://assets/objetos/pillar_pickup.png" type="Texture" id=20]
 [ext_resource path="res://main/Pickups/armas/PickupGauss.tscn" type="PackedScene" id=21]
 [ext_resource path="res://main/Objetos_mapa/TransicionDeNivel/TransicionDeNivel.gd" type="Script" id=22]
+[ext_resource path="res://main/Musica/MusIglesia.tres" type="Resource" id=23]
+[ext_resource path="res://main/Pickups/PickupBalasAR.tscn" type="PackedScene" id=24]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
@@ -230,6 +232,7 @@ extents = Vector2( 8, 24 )
 [node name="igl_plataformas" instance=ExtResource( 1 )]
 script = ExtResource( 6 )
 primer_limite_camara = NodePath("camara limites/CameraBounds")
+musica = ExtResource( 23 )
 puerta_pop_entrada = NodePath("Puerta_pop_principio")
 puerta_pop_salida = NodePath("Puerta_pop_final")
 pickup_gauss = NodePath("PickupGauss")
@@ -864,8 +867,11 @@ position = Vector2( 1448, -344 )
 position = Vector2( 1232, -408 )
 
 [node name="SpawnJugador" type="Node2D" parent="." index="10"]
-position = Vector2( 808, -416 )
+position = Vector2( 179, -296 )
 script = ExtResource( 9 )
+
+[node name="PickupBalasAR" parent="SpawnJugador" index="0" instance=ExtResource( 24 )]
+position = Vector2( 58, -14 )
 
 [node name="Puerta_pop_principio" type="KinematicBody2D" parent="." index="11"]
 position = Vector2( 1008, 64 )

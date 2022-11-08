@@ -7,7 +7,7 @@
 [ext_resource path="res://main/Objetos_mapa/SpawnJugador.gd" type="Script" id=5]
 [ext_resource path="res://main/Objetos_mapa/Checkpoint/Checkpoint.tscn" type="PackedScene" id=6]
 [ext_resource path="res://main/Objetos_mapa/TransicionDeNivel/TransicionDeNivelConArea.tscn" type="PackedScene" id=7]
-[ext_resource path="res://main/Musica/MusIglesia.tres" type="Resource" id=8]
+[ext_resource path="res://main/Musica/MusMimic.tres" type="Resource" id=8]
 [ext_resource path="res://main/Objetos_mapa/TransicionDeNivel/TransicionDeNivel.gd" type="Script" id=9]
 [ext_resource path="res://main/AI/Borde.tscn" type="PackedScene" id=10]
 

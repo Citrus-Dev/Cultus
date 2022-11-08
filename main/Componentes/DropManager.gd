@@ -11,6 +11,7 @@ const DROP_RIFLE = preload("res://main/Pickups/PickupBalasAR.tscn")
 const DROP_RIFLE_GRANADA = preload("res://main/Pickups/PickupGranadas.tscn")
 const DROP_BAZUCA = preload("res://main/Pickups/PickupGauss.tscn")
 const DROP_VIDA = preload("res://main/Pickups/PickupHP.tscn")
+const OFFSET_VERTICAL: float = -8.0
 
 func drop():
 	# Chance de 1 en 4 de dropear vida, sino dropear balas
@@ -76,7 +77,7 @@ func convertir_id_a_escena(id : String):
 func instanciar_pickup(escena : PackedScene):
 	var inst = escena.instance()
 	get_parent().get_parent().add_child(inst)
-	inst.global_position = get_parent().global_position
+	inst.global_position = get_parent().global_position + Vector2(0.0, OFFSET_VERTICAL)
 
 
 # Representa la cantidad de balas que tenes como un numero del 0 al 1

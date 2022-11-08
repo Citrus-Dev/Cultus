@@ -42,8 +42,8 @@ func agarrar(jug: Personaje):
 	
 	TransicionesDePantalla.inv_variantes[arma].append(id_variante)
 	
-#	LabelsPickup.agregar_mensaje(global_position, "Arma alterna: " + arma)
-	ControladorUi.mensaje_ui("Arma alterna encontrada: " + nombre)
+#	ControladorUi.mensaje_ui("Arma alterna encontrada: " + nombre)
+	ControladorUi.call_deferred("mensaje_ui", "Arma alterna encontrada: " + nombre)
 	
 	call_deferred("free")
 
