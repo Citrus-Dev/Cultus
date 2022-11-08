@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://niveles/Nivel.tscn" type="PackedScene" id=1]
 [ext_resource path="res://main/CameraLimitSystem/CameraBounds.gd" type="Script" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://main/Musica/MusCripta.tres" type="Resource" id=10]
 [ext_resource path="res://main/Pickups/variantes/PickupVarianteArma.tscn" type="PackedScene" id=11]
 [ext_resource path="res://assets/armas/weapon_crossbow_variant.png" type="Texture" id=12]
+[ext_resource path="res://main/UI/Hud/tutoriales/PantTutorialVarBallestaDeFuego.tscn" type="PackedScene" id=13]
 
 [sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 260, 178 )
@@ -83,9 +84,9 @@ shape = SubResource( 5 )
 [node name="PickupVarianteArma" parent="." index="10" instance=ExtResource( 11 )]
 position = Vector2( 84, 186 )
 arma = "ArmaBallesta"
-nombre = "Ballesta incendiaria"
 sprite_path = NodePath("Sprite2")
 id_variante = 1
+pantalla_tutorial = ExtResource( 13 )
 
 [node name="Sprite2" type="Sprite" parent="PickupVarianteArma" index="2"]
 texture = ExtResource( 12 )

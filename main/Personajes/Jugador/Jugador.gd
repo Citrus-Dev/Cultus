@@ -34,6 +34,8 @@ var contador_input_checkpoint_etc: float
 var debug_muerte_bugeada : bool
 
 func _ready() -> void:
+	add_to_group("NO_CONGELAR")
+	
 	timer_jump_buffer = Timer.new()
 	add_child(timer_jump_buffer)
 	timer_jump_buffer.wait_time = JUMP_BUFFER_T

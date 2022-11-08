@@ -1,6 +1,8 @@
 class_name PantTutorialBase
 extends CanvasLayer
 
+signal continuado
+
 export(AudioStream) var SONIDO = preload("res://assets/sfx/habilidades.wav")
 
 onready var anim = $AnimationPlayer as AnimationPlayer
@@ -25,5 +27,6 @@ func borrar():
 
 
 func _exit_tree():
+	emit_signal("continuado")
 	get_tree().paused = false
 

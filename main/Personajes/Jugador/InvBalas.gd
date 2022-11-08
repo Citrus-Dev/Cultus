@@ -76,5 +76,9 @@ func agregar_minimo_de_balas():
 	if TransicionesDePantalla.inv_armas.has("BAZUCA"):
 		if dict_balas["Cohetes"]["cant"] < dict_balas["Cohetes"]["min"]:
 			dict_balas["Cohetes"]["cant"] = dict_balas["Cohetes"]["min"]
+	
+	# aaaaaaaaaaaAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+	var jug: Jugador = TransicionesDePantalla.get_tree().get_nodes_in_group("Jugador")[0]
+	jug.controlador_armas.arma_actual.actualizar_medidor()
 
 
