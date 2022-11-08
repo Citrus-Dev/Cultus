@@ -5,6 +5,8 @@ const TIEMPO_ESPERA_FINAL := 0.8
 const TIEMPO_ESPERA_FINAL_2 := 0.4
 const VARIACION_MOV_H := [60.0, 120.0]
 
+signal aterrizado
+
 var tiempo_a_terminar_salto : float
 
 var esperando : bool
@@ -34,6 +36,7 @@ func physics_process(delta : float) -> void:
 	if col and col.normal.x != 0.0: owner.input.x *= -1
 	
 	if owner.animador.current_animation == "salto" and owner.is_on_floor():
+		emit_signal("aterrizado")
 		owner.set_animacion("idle")
 		owner.input.x = 0
 		esperando = true

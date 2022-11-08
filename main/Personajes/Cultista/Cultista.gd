@@ -6,6 +6,7 @@ export(NodePath) onready var fsm = get_node(fsm) as StateMachine
 export(NodePath) onready var hurtbox = get_node(hurtbox) as Hurtbox
 export(NodePath) onready var stretcher = get_node(stretcher) as Stretcher
 export(String) var arma_id = "ArmaAR"
+export(String) var gibs_escena_override
 
 export(bool) var actor
 
@@ -14,7 +15,6 @@ var gibs_escena
 
 func _init():
 	add_to_group("Enemigos")
-	gibs_escena = preload("res://main/Personajes/Cultista/gibs/GibsCultista.tscn")
 
 
 func set_es_actor(_actor : bool):
@@ -40,6 +40,11 @@ func set_es_actor(_actor : bool):
 
 
 func _ready() -> void:
+	if gibs_escena_override != "":
+		gibs_escena = load(gibs_escena_override)
+	else:
+		gibs_escena = load("res://main/Personajes/Cultista/gibs/GibsCultista.tscn")
+	
 	hitbox = $Hitbox
 	connect("objetivo_encontrado", self, "alertar")
 	set_es_actor(actor)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://main/SistemaDaño/Hitbox.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/enemies/paladin_arreglado_maggi_inutil.png" type="Texture" id=2]
@@ -15,6 +15,9 @@
 [ext_resource path="res://main/SistemaDaño/Hurtbox.tscn" type="PackedScene" id=13]
 [ext_resource path="res://main/Shaker/Shaker.gd" type="Script" id=14]
 [ext_resource path="res://main/Personajes/Bosses/paladin/estados/TransFase2.gd" type="Script" id=15]
+[ext_resource path="res://assets/sfx/paladin_fase2.wav" type="AudioStream" id=16]
+[ext_resource path="res://assets/sfx/paso2.wav" type="AudioStream" id=17]
+[ext_resource path="res://assets/sfx/melee_whiff.wav" type="AudioStream" id=18]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 24, 24 )
@@ -117,6 +120,20 @@ tracks/3/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ false, true ]
+}
+tracks/4/type = "method"
+tracks/4/path = NodePath("Skin/AnimationPlayer/snd_fase2")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.3 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ 0.0 ],
+"method": "play"
+} ]
 }
 
 [sub_resource type="Animation" id=11]
@@ -347,6 +364,20 @@ anims/morir = SubResource( 5 )
 "anims/piña_windup" = SubResource( 12 )
 anims/salto = SubResource( 6 )
 
+[node name="snd_fase2" type="AudioStreamPlayer2D" parent="Skin/AnimationPlayer"]
+stream = ExtResource( 16 )
+volume_db = 1.2
+
+[node name="snd_paso" type="AudioStreamPlayer2D" parent="Skin/AnimationPlayer"]
+stream = ExtResource( 17 )
+volume_db = 5.0
+pitch_scale = 0.74
+
+[node name="snd_salto" type="AudioStreamPlayer2D" parent="Skin/AnimationPlayer"]
+stream = ExtResource( 18 )
+volume_db = 5.0
+pitch_scale = 0.7
+
 [node name="HurtboxPiña" parent="Skin" instance=ExtResource( 13 )]
 collision_mask = 16
 agente_dir = NodePath("../..")
@@ -410,3 +441,6 @@ script = ExtResource( 4 )
 
 [node name="TransFase2" type="Node" parent="StateMachine"]
 script = ExtResource( 15 )
+
+[connection signal="aterrizado" from="." to="Skin/AnimationPlayer/snd_paso" method="play"]
+[connection signal="saltado" from="." to="Skin/AnimationPlayer/snd_salto" method="play"]

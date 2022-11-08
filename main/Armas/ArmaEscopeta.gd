@@ -7,6 +7,7 @@ const BALA = preload("res://main/Proyectiles/BalaEscopeta.tscn")
 const BALA_FLAK = preload("res://main/Proyectiles/BalaFlak.tscn")
 const SKIN_ALT = preload("res://main/Armas/Skins/SkinShotgun_alt.tscn")
 const SONIDO_DISPARO := preload("res://assets/sfx/armas/disparo/Beefy-12-Gauge-Pump-Action-Shotgun-Close-Gunshot-D-www.fesliyanstudios.com-www.fesliyanstudios.com.mp3")
+const SONIDO_DISPARO_DOBLE := preload("res://assets/sfx/armas/disparo/shotgun_double.wav")
 const SONIDO_CHCK_CHCK := preload("res://assets/sfx/armas/recarga/mixkit-shotgun-pump-1659.wav")
 
 const COSTO_BALAS_FLAK := 3
@@ -70,10 +71,16 @@ func disparar(_origin : Node, _dir : float):
 func disparar_secundario(_origin : Node, _dir : float):
 	if !puede_disparar_sec(): 
 		return
+	
 	if variantes[variante_actual] == "FLAK" and puede_disparar_flak():
 		disparo_alt_flak(_origin, _dir)
-	if variantes[variante_actual] == "SUPER" and puede_disparar_super():
+	elif variantes[variante_actual] == "SUPER" and puede_disparar_super():
 		disparo_alt_super(_origin, _dir)
+	else: return
+	
+	
+	Musica.hacer_sonido(SONIDO_DISPARO_DOBLE, _origin.global_position, 3.0)
+	snd_timer_chck_chk = TIEMPO_DELAY_SONIDO_ESCOPETA * 1.25
 
 
 func disparo_alt_flak(_origin : Node, _dir : float):

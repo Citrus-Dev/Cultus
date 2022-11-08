@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://main/Personajes/Cultista/Cultista.gd" type="Script" id=1]
 [ext_resource path="res://main/Personajes/Cultista/Disparar.gd" type="Script" id=2]
@@ -18,6 +18,7 @@
 [ext_resource path="res://main/Componentes/Stretcher.gd" type="Script" id=16]
 [ext_resource path="res://main/Personajes/Caballero/estados/Stun.gd" type="Script" id=17]
 [ext_resource path="res://main/Componentes/DropManager.gd" type="Script" id=18]
+[ext_resource path="res://main/Ragdolls/RagdollSubdito.tscn" type="PackedScene" id=19]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 6, 8.5 )
@@ -208,6 +209,7 @@ tracks/1/keys = {
 collision_layer = 4
 collision_mask = 513
 script = ExtResource( 1 )
+ragdoll_escena = ExtResource( 19 )
 skin = NodePath("Skin")
 skin_sprite_path = NodePath("Skin/Sprite")
 status = NodePath("Status")
@@ -220,6 +222,7 @@ fsm = NodePath("StateMachine")
 hurtbox = NodePath("Hurtbox")
 stretcher = NodePath("Skin/Sprite/Stretcher")
 arma_id = "ArmaCultista"
+gibs_escena_override = "res://main/Personajes/Subdito/gibs/GibsSubdito.tscn"
 
 [node name="DropManager" type="Node" parent="."]
 script = ExtResource( 18 )

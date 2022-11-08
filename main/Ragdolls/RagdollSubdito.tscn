@@ -1,13 +1,23 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://main/Ragdolls/Ragdoll.gd" type="Script" id=1]
 [ext_resource path="res://assets/ragdolls/jug/pierna1.png" type="Texture" id=2]
 [ext_resource path="res://main/GibFisicas.gd" type="Script" id=3]
-[ext_resource path="res://assets/enemies/subdito.png" type="Texture" id=4]
 [ext_resource path="res://assets/ragdolls/subdito/subdito_ragdoll_cabeza.tres" type="Texture" id=5]
 [ext_resource path="res://assets/ragdolls/jug/pierna2.png" type="Texture" id=6]
 [ext_resource path="res://assets/gibs/subdito_gibs.png" type="Texture" id=7]
 [ext_resource path="res://assets/ragdolls/subdito/subdito_ragdoll_cuerpo.tres" type="Texture" id=8]
+[ext_resource path="res://assets/ragdolls/subdito_ragdoll.png" type="Texture" id=9]
+
+[sub_resource type="AtlasTexture" id=5]
+flags = 2
+atlas = ExtResource( 9 )
+region = Rect2( 17, 30, 4, 7 )
+
+[sub_resource type="AtlasTexture" id=6]
+flags = 2
+atlas = ExtResource( 9 )
+region = Rect2( 36, 30, 4, 6 )
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 3.0
@@ -40,7 +50,11 @@ texture = ExtResource( 8 )
 
 [node name="Sprite2" type="Sprite" parent="Cuerpo"]
 position = Vector2( -3, 1 )
-texture = ExtResource( 8 )
+texture = SubResource( 5 )
+
+[node name="Sprite3" type="Sprite" parent="Cuerpo"]
+position = Vector2( 2, 0 )
+texture = SubResource( 6 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Cuerpo"]
 visible = false
@@ -123,10 +137,6 @@ position = Vector2( 2, 6 )
 rotation = -0.392712
 shape = SubResource( 3 )
 disabled = true
-
-[node name="Subdito" type="Sprite" parent="."]
-position = Vector2( -61, -7 )
-texture = ExtResource( 4 )
 
 [node name="Sombrero fisicas" type="KinematicBody2D" parent="."]
 position = Vector2( -7, -19 )

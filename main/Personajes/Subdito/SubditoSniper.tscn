@@ -22,7 +22,7 @@ gradient = SubResource( 1 )
 [node name="RayCast2D" type="RayCast2D" parent="ControladorArmasNPC/Laser" index="1"]
 cast_to = Vector2( 500, 0 )
 
-[node name="LOSCheckDisparo" parent="." index="6"]
+[node name="LOSCheckDisparo" parent="." index="7"]
 radio = 420.0
 
 [node name="Disparar" parent="StateMachine" index="2"]

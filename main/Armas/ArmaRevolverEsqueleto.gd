@@ -2,6 +2,7 @@ class_name ArmaRevolverEsqueleto
 extends Arma
 
 const BALA = preload("res://main/Proyectiles/BalaRevolverEsqueleto.tscn")
+const SONIDO_DISPARO := preload("res://assets/sfx/armas/disparo/Barrett-M82-.50-BMG-Single-Close-Gunshot-A-www.fesliyanstudios.com.wav")
 
 func _init() -> void:
 	skin_escena = preload("res://main/Armas/Skins/SkinRevolverEsqueleto.tscn")
@@ -24,3 +25,4 @@ func disparar(_origin : Node, _dir : float):
 		skin_inst.animador.play("disparar")
 	eyectar_casquillo(_dir)
 	crear_bala(_origin, BALA, _dir, spread)
+	Musica.hacer_sonido(SONIDO_DISPARO, _origin.global_position)

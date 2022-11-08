@@ -1,6 +1,8 @@
 class_name ExplHE
 extends Node2D
 
+const SONIDO: AudioStream = preload("res://assets/sfx/explosion_piola.wav")
+
 export(NodePath) var path_collider 
 export(float) var radio_comienzo = 32
 export(float) var radio_final = 256
@@ -16,6 +18,7 @@ var alpha := 1.0
 
 func _ready():
 	$Area2D.connect("area_entered", self, "enemigo_detectado")
+	Musica.hacer_sonido(SONIDO, global_position, 0.2)
 	
 	collider = get_node(path_collider)
 	shape = collider.shape

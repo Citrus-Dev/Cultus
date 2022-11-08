@@ -10,6 +10,7 @@ const PROYECTIL_ESCENA := preload("res://main/Proyectiles/ProyectilMimic.tscn")
 const SND_MIMIC_HIT1 := preload("res://assets/sfx/mimic_hit1.wav")
 const SND_MIMIC_HIT2 := preload("res://assets/sfx/mimic_hit2.wav")
 const SND_MIMIC_MORIR := preload("res://assets/sfx/mimic_morir.wav")
+const SND_DISPARAR := preload("res://assets/sfx/plasma_shot3.wav")
 
 signal activado
 
@@ -59,6 +60,8 @@ func _init():
 	balas_dmg = InfoDmg.new()
 	balas_dmg.dmg_cantidad = 12
 	balas_dmg.dmg_tipo = InfoDmg.DMG_TIPOS.PLASMA
+	add_to_group("Enemigos")
+	add_to_group("Boss")
 
 
 func set_activo(toggle: bool):
@@ -240,6 +243,7 @@ func disparar_1():
 	var contador: int = 16
 	var intervalo: float = 0.1
 	while contador > 0 and !dejar_de_disparar:
+		Musica.hacer_sonido(SND_DISPARAR, global_position)
 		var bala = PROYECTIL_ESCENA.instance()
 		bala.info_dmg = balas_dmg
 		bala.rotation = (p.global_position - global_position).angle()
@@ -256,6 +260,7 @@ func disparar_2():
 	var contador: int = 28
 	var intervalo: float = 0.08
 	while contador > 0 and !dejar_de_disparar:
+		Musica.hacer_sonido(SND_DISPARAR, global_position)
 		var bala = PROYECTIL_ESCENA.instance()
 		bala.info_dmg = balas_dmg
 		var rotmod: float = inverse_lerp(0.0, deg2rad(360), contador)
@@ -273,8 +278,6 @@ func disparar_2():
 func morir(_info : InfoDmg):
 	if muerto: return
 	set_muerto(true)
-	remove_from_group("EnemigosAlertados")
-	remove_from_group("Enemigos")
 	
 	dejar_de_disparar = true
 	animador.stop()
@@ -299,6 +302,9 @@ func set_muerto(toggle : bool):
 
 func morir_enserio():
 	muerto_enserio = true
+	remove_from_group("EnemigosAlertados")
+	remove_from_group("Enemigos")
+	Musica.set_track(Musica.Tracks.MUS_NORMAL)
 	
 	timer_graciso.start(1.2)
 	yield(timer_graciso, "timeout")

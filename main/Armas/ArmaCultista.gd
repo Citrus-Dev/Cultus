@@ -2,6 +2,7 @@ class_name ArmaCultista
 extends Arma
 
 const BALA_CULT = preload("res://main/Proyectiles/ProyCultista.tscn")
+const SND_DISPARO = preload("res://assets/sfx/armas/disparo/cultista_tiro.wav")
 
 func _init() -> void:
 	skin_escena = preload("res://main/Armas/Skins/SkinARCultista.tscn")
@@ -25,3 +26,4 @@ func disparar(_origin : Node, _dir : float):
 		skin_inst.animador.play("disparar")
 	eyectar_casquillo(_dir)
 	crear_bala(_origin, BALA_CULT, _dir, spread)
+	Musica.hacer_sonido(SND_DISPARO, _origin.global_position)

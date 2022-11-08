@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=38 format=2]
 
 [ext_resource path="res://niveles/Nivel.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/tilesets/Iglesia_tileset_1.png" type="Texture" id=2]
@@ -17,6 +17,7 @@
 [ext_resource path="res://main/libs/BlockinPolygon/BlockinPolygon.gd" type="Script" id=15]
 [ext_resource path="res://main/Objetos_mapa/Plataformas alternas/PlataformaAlternaIglesia.tscn" type="PackedScene" id=16]
 [ext_resource path="res://assets/objetos/puerta_iglesia_pared.png" type="Texture" id=17]
+[ext_resource path="res://main/Musica/MusIglesia.tres" type="Resource" id=18]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
@@ -222,6 +223,7 @@ extents = Vector2( 64, 8 )
 [node name="Nivel" instance=ExtResource( 1 )]
 script = ExtResource( 11 )
 primer_limite_camara = NodePath("camara limites/CameraBounds")
+musica = ExtResource( 18 )
 puerta_grande = NodePath("Puerta")
 summoner = NodePath("Summoner")
 
@@ -320,7 +322,7 @@ position = Vector2( 248, -200 )
 position = Vector2( 472, 72 )
 
 [node name="SpawnJugador" type="Node2D" parent="." index="11"]
-position = Vector2( 273, -48 )
+position = Vector2( 104, 80 )
 script = ExtResource( 9 )
 
 [node name="Puerta" type="KinematicBody2D" parent="." index="12"]

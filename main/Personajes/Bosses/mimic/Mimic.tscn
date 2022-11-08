@@ -161,6 +161,23 @@ tracks/1/keys = {
 "method": "set_activo"
 } ]
 }
+tracks/2/type = "method"
+tracks/2/path = NodePath("../SonidoRayo")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 1, 4.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ 0.0 ],
+"method": "play"
+}, {
+"args": [  ],
+"method": "stop"
+} ]
+}
 
 [sub_resource type="Animation" id=4]
 resource_name = "wake"
@@ -353,10 +370,13 @@ stream = ExtResource( 24 )
 volume_db = 5.0
 pitch_scale = 0.2
 
-[node name="DropManager" type="Node" parent="." index="1"]
+[node name="SonidoRayo" type="AudioStreamPlayer2D" parent="." index="1"]
+stream = ExtResource( 23 )
+
+[node name="DropManager" type="Node" parent="." index="2"]
 script = ExtResource( 5 )
 
-[node name="TriggerOnce" type="Area2D" parent="." index="2"]
+[node name="TriggerOnce" type="Area2D" parent="." index="3"]
 collision_layer = 0
 collision_mask = 2
 
@@ -366,21 +386,21 @@ modulate = Color( 0.92549, 0.533333, 0.215686, 0.172549 )
 position = Vector2( 0, -56 )
 shape = SubResource( 7 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="3"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="4"]
 visible = false
 shape = SubResource( 6 )
 
-[node name="Status" parent="." index="4"]
+[node name="Status" parent="." index="5"]
 hp_max = 2100
 
-[node name="Hitbox" parent="." index="5"]
+[node name="Hitbox" parent="." index="6"]
 position = Vector2( 0, 32 )
 
 [node name="CollisionShape2D" parent="Hitbox" index="0"]
 position = Vector2( 0, -32 )
 shape = SubResource( 1 )
 
-[node name="Hurtbox" parent="." index="6" instance=ExtResource( 4 )]
+[node name="Hurtbox" parent="." index="7" instance=ExtResource( 4 )]
 position = Vector2( 0, 12 )
 collision_mask = 16
 agente_dir = NodePath("..")
@@ -393,7 +413,7 @@ dmg_tipo = 1
 position = Vector2( 0, -12 )
 shape = SubResource( 5 )
 
-[node name="Skin" type="Node2D" parent="." index="7"]
+[node name="Skin" type="Node2D" parent="." index="8"]
 
 [node name="Sprite_inactivo" type="Sprite" parent="Skin" index="0"]
 position = Vector2( 0, -34 )
@@ -427,25 +447,25 @@ autoplay = "idle_real"
 anims/RESET = SubResource( 13 )
 anims/idle_real = SubResource( 14 )
 
-[node name="rc_piso" type="RayCast2D" parent="." index="8"]
+[node name="rc_piso" type="RayCast2D" parent="." index="9"]
 modulate = Color( 0.278431, 0.815686, 0.12549, 1 )
 position = Vector2( 0, -17 )
 enabled = true
 cast_to = Vector2( 0, 168 )
 
-[node name="rc_pared_izquierda" type="RayCast2D" parent="." index="9"]
+[node name="rc_pared_izquierda" type="RayCast2D" parent="." index="10"]
 modulate = Color( 0.894118, 0.376471, 0.0901961, 1 )
 position = Vector2( 0, -17 )
 enabled = true
 cast_to = Vector2( -64, 0 )
 
-[node name="rc_pared_derecho" type="RayCast2D" parent="." index="10"]
+[node name="rc_pared_derecho" type="RayCast2D" parent="." index="11"]
 modulate = Color( 0.894118, 0.376471, 0.0901961, 1 )
 position = Vector2( 0, -17 )
 enabled = true
 cast_to = Vector2( 64, 0 )
 
-[node name="RayoSans" type="Node2D" parent="." index="11"]
+[node name="RayoSans" type="Node2D" parent="." index="12"]
 script = ExtResource( 20 )
 hurtbox = NodePath("Hurtbox")
 audio = NodePath("AudioStreamPlayer2D")
@@ -488,7 +508,7 @@ frame = 3
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="RayoSans" index="5"]
 stream = ExtResource( 23 )
 
-[node name="StateMachine" type="Node" parent="." index="12"]
+[node name="StateMachine" type="Node" parent="." index="13"]
 script = ExtResource( 8 )
 initial_state = NodePath("Fake")
 
@@ -507,32 +527,32 @@ script = ExtResource( 11 )
 [node name="Morir" type="Node" parent="StateMachine" index="4"]
 script = ExtResource( 13 )
 
-[node name="DebugMonitor" parent="." index="13" instance=ExtResource( 12 )]
+[node name="DebugMonitor" parent="." index="14" instance=ExtResource( 12 )]
 visible = false
 position = Vector2( -8, -40 )
 monitor_target_node = NodePath("../StateMachine")
 monitor_target_property = "state"
 monitor_flavor_text = "state"
 
-[node name="DebugMonitor2" parent="." index="14" instance=ExtResource( 12 )]
+[node name="DebugMonitor2" parent="." index="15" instance=ExtResource( 12 )]
 visible = false
 position = Vector2( -8, -24 )
 monitor_target_node = NodePath("../StateMachine/DisparoIdle")
 monitor_target_property = "veces"
 monitor_flavor_text = "veces"
 
-[node name="DebugMonitor3" parent="." index="15" instance=ExtResource( 12 )]
+[node name="DebugMonitor3" parent="." index="16" instance=ExtResource( 12 )]
 visible = false
 position = Vector2( -8, -8 )
 monitor_target_node = NodePath("..")
 monitor_target_property = "input"
 monitor_flavor_text = "input"
 
-[node name="BarraHPBoss" type="Node2D" parent="." index="16"]
+[node name="BarraHPBoss" type="Node2D" parent="." index="17"]
 script = ExtResource( 21 )
 objetivo_dir = NodePath("..")
 
-[node name="Label" type="Label" parent="." index="17"]
+[node name="Label" type="Label" parent="." index="18"]
 margin_left = -80.0
 margin_top = -88.0
 margin_right = 78.0

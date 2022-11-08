@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://main/Gibs.gd" type="Script" id=1]
 [ext_resource path="res://main/GibFisicas.gd" type="Script" id=2]
 [ext_resource path="res://assets/gibs/subdito_gibs.png" type="Texture" id=3]
+[ext_resource path="res://main/particulas/Sangre.tscn" type="PackedScene" id=4]
 
 [sub_resource type="AtlasTexture" id=1]
 flags = 2
@@ -76,7 +77,7 @@ texture = SubResource( 2 )
 polygon = PoolVector2Array( -4, 3, 5, 0, -3, -3 )
 
 [node name="GibFisicas3" type="KinematicBody2D" parent="."]
-position = Vector2( -7, -9 )
+position = Vector2( -16, -13 )
 collision_layer = 0
 script = ExtResource( 2 )
 __meta__ = {
@@ -90,7 +91,7 @@ texture = SubResource( 3 )
 polygon = PoolVector2Array( -1, 2, 3, 1, -1, -2 )
 
 [node name="GibFisicas4" type="KinematicBody2D" parent="."]
-position = Vector2( 11, -8 )
+position = Vector2( 12, -11 )
 collision_layer = 0
 script = ExtResource( 2 )
 __meta__ = {
@@ -118,7 +119,7 @@ texture = SubResource( 4 )
 polygon = PoolVector2Array( -3, 2, 3, 1, 0, -3 )
 
 [node name="GibFisicas6" type="KinematicBody2D" parent="."]
-position = Vector2( -7, -3 )
+position = Vector2( -17, -5 )
 collision_layer = 0
 script = ExtResource( 2 )
 __meta__ = {
@@ -130,3 +131,6 @@ texture = SubResource( 5 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="GibFisicas6"]
 polygon = PoolVector2Array( -1, 2, 3, 1, -1, -2 )
+
+[node name="Sangre" parent="." instance=ExtResource( 4 )]
+position = Vector2( 0, -9 )

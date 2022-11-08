@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/shotgun_double.wav-545f77fc9bb9a991a60ba4e36ecd43c4.sample"
+
+[deps]
+
+source_file="res://assets/sfx/armas/disparo/shotgun_double.wav"
+dest_files=[ "res://.import/shotgun_double.wav-545f77fc9bb9a991a60ba4e36ecd43c4.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

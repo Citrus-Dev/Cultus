@@ -51,7 +51,7 @@ func alertar():
 		add_to_group("EnemigosAlertados")
 		
 		# La primera vez que entra en alerta tarda menos en sumonear
-		timer_alerta = 1.0
+		timer_alerta = 2.5
 
 
 func set_estado(nuevo_estado: int):
@@ -101,6 +101,7 @@ func morir(_info : InfoDmg):
 	set_muerto(true)
 	remove_from_group("EnemigosAlertados")
 	remove_from_group("Enemigos")
+	animador.stop()
 	
 	var tipo = _info.dmg_tipo
 

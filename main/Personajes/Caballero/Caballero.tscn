@@ -119,6 +119,20 @@ tracks/3/keys = {
 "update": 0,
 "values": [ Vector2( 11, -13 ), Vector2( 14, -24 ), Vector2( 3.25, -26 ), Vector2( 0, -17 ) ]
 }
+tracks/4/type = "method"
+tracks/4/path = NodePath("AnimationPlayer/snd_melee")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ 0.0 ],
+"method": "play"
+} ]
+}
 
 [sub_resource type="Animation" id=17]
 resource_name = "att2"
@@ -170,6 +184,20 @@ tracks/3/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 9.25, -11.25 ), Vector2( 1, -12 ) ]
+}
+tracks/4/type = "method"
+tracks/4/path = NodePath("AnimationPlayer/snd_melee")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.9 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ 0.0 ],
+"method": "play"
+} ]
 }
 
 [sub_resource type="Animation" id=15]
@@ -337,6 +365,8 @@ anims/att2 = SubResource( 17 )
 anims/caminar = SubResource( 15 )
 anims/idle = SubResource( 13 )
 anims/saltar = SubResource( 14 )
+
+[node name="snd_melee" type="AudioStreamPlayer2D" parent="Skin/AnimationPlayer" index="0"]
 
 [node name="Hurtbox" parent="." index="6" instance=ExtResource( 4 )]
 visible = false

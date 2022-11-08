@@ -1,6 +1,7 @@
 class_name Casquillo
 extends KinematicBody2D
 
+const SONIDO: AudioStream = preload("res://assets/sfx/armas/shells_hit.wav")
 const DAMP_X := 0.99
 const DAMP_X_GROUNDED := 0.8
 const GRAVEDAD := 1000.0
@@ -79,6 +80,7 @@ func _physics_process(delta: float) -> void:
 			var norm = collision.normal
 			velocity = pre_vel.bounce(collision.normal) * BOUNCE_DAMP
 			max_vel_y *= BOUNCE_DAMP
+			Musica.hacer_sonido(SONIDO, global_position)
 	elif is_on_floor() and !is_on_wall() or is_in_group("CuerposEnAgua"):
 		set_physics_process(false)
 

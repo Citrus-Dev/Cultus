@@ -1,6 +1,8 @@
 class_name Granada
 extends KinematicBody2D
 
+signal reboto
+
 export(PackedScene) var spawn_en_impacto
 export(float) var gravedad
 export(float) var friccion
@@ -37,6 +39,7 @@ func _physics_process(delta):
 			impacto()
 	else:
 		if col:
+			emit_signal("reboto")
 			velocity = velocity.bounce(col.normal) * 0.8
 			velocity.y *= 0.6
 	

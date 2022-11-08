@@ -2,6 +2,8 @@ class_name BossPaladin
 extends Personaje
 
 signal muerte_fachera_terminada
+signal saltado
+signal aterrizado
 
 export(NodePath) onready var fsm = get_node(fsm) as StateMachine
 export(NodePath) onready var hurtbox_contacto = get_node(hurtbox_contacto) as Hurtbox
@@ -15,6 +17,7 @@ var ataques := []
 
 var activo : bool
 var fase2 : bool
+var saltando : bool
 
 var tween : Tween
 
@@ -26,6 +29,19 @@ func _ready():
 	connect("borde_tocado", self, "on_borde_tocado")
 	add_to_group("Enemigos")
 	add_to_group("Boss")
+
+
+
+func _physics_process(delta: float) -> void:
+	if saltando and is_on_floor():
+		# Acabas de aterrizar
+		saltando = false
+		emit_signal("aterrizado")
+	if !saltando and !is_on_floor():
+		# Acabas de saltar
+		emit_signal("saltado")
+		saltando = true
+
 
 
 # Activa un ciclo de ataques
