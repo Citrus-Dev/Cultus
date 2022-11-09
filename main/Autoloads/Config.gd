@@ -3,6 +3,7 @@ extends Node
 const CAMINO_GUARDADO := "user://"
 const ARCHIVO_GUARDADO := "config"
 const SUFIJO_GUARDADO := ".ini"
+const CFG_FULLSCREEN := "display/window/size/fullscreen"
 
 var config_data := {
 	"volumen_sonido" : 0.5,
@@ -39,6 +40,14 @@ func _ready() -> void:
 	cargar_config()
 	
 	OS.window_fullscreen = ProjectSettings.get_setting("display/window/size/fullscreen")
+
+
+func _process(delta: float) -> void:
+	# Alternar pantalla completa con F11
+	if Input.is_key_pressed(KEY_F11):
+		set_pantalla_completa( not OS.window_fullscreen )
+
+
 
 
 func guardar_config():
@@ -139,6 +148,8 @@ func actualizar_opcion_vol_musica(val : float = config_data["volumen_musica"]):
 
 
 
-
+func set_pantalla_completa(toggle: bool):
+	ProjectSettings.set_setting(CFG_FULLSCREEN, toggle)
+	OS.window_fullscreen = toggle
 
 

@@ -4,6 +4,7 @@ extends Personaje
 
 const PROYECTILES = preload("res://main/Proyectiles/ProyectilHomingMejor.tscn")
 const GIBS := preload("res://main/Personajes/Shot/GibsShot.tscn")
+const SND_DISPARAR := preload("res://assets/sfx/mason_disparar.wav")
 
 export(NodePath) onready var fsm = get_node(fsm) as StateMachine
 export(NodePath) onready var hurtbox = get_node(hurtbox) as Hurtbox
@@ -93,4 +94,6 @@ func hacer_proyectiles():
 	proys[1].global_position.y -= 16
 	proys[2].global_position.x += 16
 	proys[2].global_position.y -= 16
+	
+	Musica.hacer_sonido(SND_DISPARAR, global_position)
 

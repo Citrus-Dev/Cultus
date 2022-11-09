@@ -5,6 +5,7 @@ const VEL_AJUSTE_MANO := 2.0
 const VEL_AJUSTE_MANO_GOLPE := 15.0
 const BALA_ESCENA := preload("res://main/Proyectiles/ProyCultista.tscn")
 const PIEDRA_ESCENA := preload("res://main/Proyectiles/PiedraBoss.tscn")
+const SND_DISPARAR := preload("res://assets/sfx/mason_disparar.wav")
 
 signal activo
 
@@ -206,6 +207,8 @@ func crear_bala(pos: Vector2, rot: float):
 	proy.move_speed = 350
 	
 	get_tree().root.add_child(proy)
+	
+	Musica.hacer_sonido(SND_DISPARAR, global_position)
 
 
 func set_jugador_en_lugar_de_mierda(__, valor: bool):

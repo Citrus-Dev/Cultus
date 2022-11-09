@@ -22,6 +22,7 @@
 [ext_resource path="res://assets/tilesets/plataformas/plataforma.png" type="Texture" id=20]
 [ext_resource path="res://main/Objetos_mapa/Plataformas alternas/PlataformaAlterna.tscn" type="PackedScene" id=21]
 
+
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 680, 372 )
 

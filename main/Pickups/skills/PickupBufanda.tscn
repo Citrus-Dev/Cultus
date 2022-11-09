@@ -4,6 +4,7 @@
 [ext_resource path="res://main/Pickups/skills/PickupSkill.gd" type="Script" id=2]
 [ext_resource path="res://main/UI/Hud/tutoriales/PantTutorialBufanda.tscn" type="PackedScene" id=3]
 
+
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 8, 8 )
 

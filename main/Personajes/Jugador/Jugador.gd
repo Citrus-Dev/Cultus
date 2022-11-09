@@ -8,6 +8,7 @@ const CAMARA_REAL = preload("res://main/Camaras/CamaraReal.tscn")
 const FUERZA_DE_ENTRADA := 4.0
 const HUD = preload("res://main/UI/Hud/HUD.tscn")
 const SNOIDO_HURT := preload("res://assets/sfx/hurt.wav")
+const SNOIDO_SALTAR := preload("res://assets/sfx/melee_whiff.wav")
 const GIBS = preload("res://main/Personajes/Jugador/GibsJugador.tscn")
 
 export(NodePath) onready var stretcher = get_node(stretcher) as Stretcher
@@ -47,6 +48,7 @@ func _ready() -> void:
 	timer_coyote.one_shot = true
 	
 	los.connect("nuevo_objeto_en_los", self, "detectar_enemigo")
+	connect("aterrizado", self, "hacer_sonido_aterrizar")
 	connect("muerto", Musica, "set_override", [-1])
 	
 	crear_hud()
@@ -325,8 +327,9 @@ func confirmar_salto():
 	timer_jump_buffer.stop()
 	timer_coyote.stop()
 	coyote_timed_out = true
-	pasos_rand.hacer_sonido_random()
-	pasos_rand.hacer_sonido_random()
+#	pasos_rand.hacer_sonido_random()
+#	pasos_rand.hacer_sonido_random()
+	Musica.hacer_sonido(SNOIDO_SALTAR, global_position, 1.5)
 
 
 func borrar_objetos_pisando():
@@ -442,3 +445,8 @@ func reiniciar_forma_de_colision():
 func osciliar(_x :float, _freq : float, _amplitud : float) -> float:
 	_x += cos(OS.get_ticks_msec() * _freq) * _amplitud
 	return _x
+
+
+func hacer_sonido_aterrizar():
+	pasos_rand.hacer_sonido_random()
+	pasos_rand.hacer_sonido_random()

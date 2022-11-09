@@ -4,6 +4,7 @@
 [ext_resource path="res://assets/armas/weapon_crossbow.png" type="Texture" id=2]
 [ext_resource path="res://main/UI/Hud/tutoriales/pantalla_tutorial_ballesta.tscn" type="PackedScene" id=3]
 
+
 [node name="PickupBallesta" instance=ExtResource( 1 )]
 id_arma = "ArmaBallesta"
 mensaje = "Ballesta"

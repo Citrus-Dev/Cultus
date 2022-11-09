@@ -1,5 +1,7 @@
 extends Casquillo
 
+const SND_AGARRAR := preload("res://assets/sfx/ammo_pickup.wav")
+
 export (NodePath) var path_area
 export (String) var nombre_bala
 export (String) var mensaje
@@ -22,6 +24,8 @@ func proceso(delta):
 
 
 func agarrar(_jug):
+	Musica.hacer_sonido(SND_AGARRAR, global_position)
+	
 	var inv : InvBalas = _jug.controlador_armas.inv_balas
 	var arma : Arma = _jug.controlador_armas.arma_actual
 	

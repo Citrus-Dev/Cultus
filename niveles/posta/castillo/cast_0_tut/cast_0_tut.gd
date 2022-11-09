@@ -17,6 +17,8 @@ var arma : Node2D
 var cultista_actor : Cultista
 
 func _ready():
+	Musica.set_override(1) # Sin musica de combate
+	
 	spawner_cult = get_node(path_spawner_cult)
 	puertas = get_node(path_puertas)
 	target_correr = get_node(path_target_correr)

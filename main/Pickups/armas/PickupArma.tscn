@@ -3,6 +3,7 @@
 [ext_resource path="res://assets/armas/weapon_revolver.png" type="Texture" id=1]
 [ext_resource path="res://main/Pickups/armas/PickupArma.gd" type="Script" id=2]
 
+
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 8, 8 )
 

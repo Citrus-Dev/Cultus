@@ -11,6 +11,7 @@
 [ext_resource path="res://main/Objetos_mapa/TransicionDeNivel/TransicionDeNivelConArea.tscn" type="PackedScene" id=9]
 [ext_resource path="res://main/Musica/MusCripta.tres" type="Resource" id=10]
 
+
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 252, 184 )
 

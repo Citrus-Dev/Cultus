@@ -14,4 +14,4 @@ func _ready():
 
 
 func mensaje_necesitas_llave(__):
-	ControladorUi.mensaje_ui("La puerta a la iglesia esta cerrada... necesitas una llave.", 4.0, true)
+	ControladorUi.mensaje_ui("La puerta a la iglesia esta cerrada... necesitas una llave.", 8.0, true)

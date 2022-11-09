@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://main/SistemaDaño/Status.gd" type="Script" id=1]
 [ext_resource path="res://main/Personajes/Bosses/esqueleto_prime/EsqueletoPrime.gd" type="Script" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://main/SistemaDaño/Hitbox.tscn" type="PackedScene" id=7]
 [ext_resource path="res://main/UI/BarraHPBoss/BarraHPBoss.gd" type="Script" id=8]
 [ext_resource path="res://assets/luz/luz.png" type="Texture" id=9]
+[ext_resource path="res://assets/sfx/mason_telegraph.wav" type="AudioStream" id=10]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 24, 24 )
@@ -1035,6 +1036,20 @@ tracks/8/keys = {
 "update": 1,
 "values": [ true, false ]
 }
+tracks/9/type = "audio"
+tracks/9/path = NodePath("AnimationPlayer/Sonido windup")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 10 )
+} ],
+"times": PoolRealArray( 0.8 )
+}
 
 [sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 12, 20.5 )
@@ -1058,7 +1073,6 @@ hurtbox_paths = [ NodePath("Skin/Cabeza/Hurtbox"), NodePath("Mano1/Hurtbox"), No
 barra_hp = NodePath("BarraHPBoss")
 dmg_rayos = 10
 muriendo = true
-mirando = true
 
 [node name="BarraHPBoss" type="Node2D" parent="."]
 script = ExtResource( 8 )
@@ -1140,6 +1154,8 @@ anims/golpe_no_estes_ahi = SubResource( 12 )
 anims/idle = SubResource( 5 )
 anims/muerte = SubResource( 9 )
 anims/rayos1 = SubResource( 10 )
+
+[node name="Sonido windup" type="AudioStreamPlayer2D" parent="Skin/AnimationPlayer"]
 
 [node name="TargetMano1" type="Position2D" parent="."]
 position = Vector2( -76, 31 )

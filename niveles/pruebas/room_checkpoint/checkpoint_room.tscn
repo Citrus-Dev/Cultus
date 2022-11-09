@@ -9,6 +9,7 @@
 [ext_resource path="res://main/Pickups/armas/PickupBallesta.tscn" type="PackedScene" id=7]
 [ext_resource path="res://main/Pickups/armas/PickupGauss.tscn" type="PackedScene" id=9]
 
+
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 440, 142.5 )
 

@@ -3,6 +3,7 @@ extends Node
 
 const ESCENA_MEDIDOR_COOLDOWN = preload("res://main/UI/Hud/MedidorCooldown.tscn")
 const TEXTURA_ICONO = preload("res://assets/ui/IconoHUDBufan.tres")
+const SONIDO := preload("res://assets/sfx/player_grab.wav")
 
 const TIEMPO_GANCHO := 0.05
 const TIEMPO_GANCHO_AGARRADO := 0.6
@@ -52,6 +53,7 @@ func _process(delta):
 	
 
 	if timer_cooldown.is_stopped() and Input.is_action_just_pressed("gancho"):
+		Musica.hacer_sonido(SONIDO, jug.global_position)
 		pos_objetivo = jug.get_global_mouse_position()
 		attached = true
 		

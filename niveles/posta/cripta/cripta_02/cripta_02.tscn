@@ -82,7 +82,7 @@ position = Vector2( -1, 18 )
 shape = SubResource( 5 )
 
 [node name="PickupVarianteArma" parent="." index="10" instance=ExtResource( 11 )]
-position = Vector2( 84, 186 )
+position = Vector2( 88, 192 )
 arma = "ArmaBallesta"
 sprite_path = NodePath("Sprite2")
 id_variante = 1

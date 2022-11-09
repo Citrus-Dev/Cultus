@@ -23,7 +23,8 @@ func _ready():
 	slider_sfx.value = Config.config_data["volumen_sonido"]
 	slider_musica.value = Config.config_data["volumen_musica"]
 	
-	checkbox_pantalla_completa.pressed = ProjectSettings.get_setting(CFG_FULLSCREEN)
+#	checkbox_pantalla_completa.pressed = ProjectSettings.get_setting(CFG_FULLSCREEN)
+	checkbox_pantalla_completa.pressed = OS.window_fullscreen
 	checkbox_pantalla_completa.connect("toggled", self, "set_pantalla_completa")
 	
 	checkbox_consola.pressed = ProjectSettings.get_setting(CFG_CONSOLA)
@@ -46,8 +47,7 @@ func actualizar_slider_musica(val : float):
 
 
 func set_pantalla_completa(toggle: bool):
-	ProjectSettings.set_setting(CFG_FULLSCREEN, toggle)
-	OS.window_fullscreen = toggle
+	Config.set_pantalla_completa(toggle)
 
 func set_consola(toggle: bool):
 	ProjectSettings.set_setting(CFG_CONSOLA, toggle)

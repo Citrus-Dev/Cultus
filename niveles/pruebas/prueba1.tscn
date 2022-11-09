@@ -12,6 +12,7 @@
 [ext_resource path="res://main/Pickups/PickupGauss.tscn" type="PackedScene" id=10]
 [ext_resource path="res://main/Personajes/Caballero/Caballero.tscn" type="PackedScene" id=11]
 
+
 [node name="Nivel" instance=ExtResource( 1 )]
 impulse_automatico = true
 

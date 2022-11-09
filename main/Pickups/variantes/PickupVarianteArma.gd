@@ -11,15 +11,17 @@ export(int) var id_variante
 export(PackedScene) var pantalla_tutorial
 
 var sprite: Sprite
+var starting_y: float
 
 func _ready():
 	$Area2D.connect("body_entered", self, "agarrar")
 	if sprite_path: sprite = get_node(sprite_path)
+	
+	starting_y = position.y
 
 
 func _process(delta):
-	if is_instance_valid(sprite):
-		sprite.position.y = anim_levitar(sprite.position.y, 0.4 * delta, 0.3)
+	position.y = anim_levitar(position.y, 0.5 * delta, 1.8)
 
 
 func agarrar(jug: Personaje):
@@ -55,9 +57,10 @@ func agarrar(jug: Personaje):
 	call_deferred("free")
 
 
-func anim_levitar(_x :float, _freq : float, _amplitud : float) -> float:
-	_x += cos(OS.get_ticks_msec() * _freq) * _amplitud
-	return _x
+
+func anim_levitar(_y :float, _freq : float, _amplitud : float) -> float:
+	_y = starting_y + (sin(OS.get_ticks_msec() * _freq) * _amplitud)
+	return _y
 
 
 func spawn_tutorial():

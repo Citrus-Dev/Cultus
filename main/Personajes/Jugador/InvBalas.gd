@@ -79,6 +79,7 @@ func agregar_minimo_de_balas():
 	
 	# aaaaaaaaaaaAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 	var jug: Jugador = TransicionesDePantalla.get_tree().get_nodes_in_group("Jugador")[0]
-	jug.controlador_armas.arma_actual.actualizar_medidor()
+	if jug.controlador_armas.arma_actual != null:
+		jug.controlador_armas.arma_actual.actualizar_medidor()
 
 

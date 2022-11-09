@@ -107,4 +107,7 @@ no_desaparecer = true
 [node name="PlataformaAlternaIglesia" parent="." index="16" instance=ExtResource( 11 )]
 position = Vector2( -40, 320 )
 
+[node name="PlataformaAlternaIglesia2" parent="." index="17" instance=ExtResource( 11 )]
+position = Vector2( 40, -24 )
+
 [editable path="triggers/TransicionDeNivelConArea"]

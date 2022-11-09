@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://main/Gibs.gd" type="Script" id=1]
 [ext_resource path="res://main/GibFisicas.gd" type="Script" id=2]
 [ext_resource path="res://assets/gibs/summoner_gibs.png" type="Texture" id=3]
 [ext_resource path="res://main/particulas/Sangre.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/sfx/gib.wav" type="AudioStream" id=5]
 
 [sub_resource type="AtlasTexture" id=1]
 flags = 2
@@ -155,3 +156,7 @@ polygon = PoolVector2Array( -4, 0, 0, 4, 4, 0, 0, -4 )
 
 [node name="Sangre" parent="." instance=ExtResource( 4 )]
 position = Vector2( 0, -9 )
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 5 )
+autoplay = true

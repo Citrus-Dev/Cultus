@@ -9,6 +9,8 @@ const MAX_TENSION := 2
 const COOLDOWN_AREA_SALTO := 0.5
 const VEL_CAIDA := 350.0
 const GIBS := preload("res://main/Objetos_mapa/GibsJaula.tscn")
+const SND_SACUDIR := preload("res://assets/sfx/jaula_sacudir.wav")
+const SND_ROMPER := preload("res://assets/sfx/jaula_romper.wav")
 
 signal caida_empezada
 
@@ -64,6 +66,7 @@ func _physics_process(delta):
 func aumentar_tension():
 	tension += 1
 	shaker.add_trauma(0.6)
+	Musica.hacer_sonido(SND_SACUDIR, global_position)
 	if tension >= MAX_TENSION:
 		caer()
 		shaker.add_trauma(6.0)
@@ -77,6 +80,8 @@ func caer():
 
  
 func terminar_de_caer():
+	Musica.hacer_sonido(SND_ROMPER, global_position)
+	
 	var gibs = GIBS.instance()
 	gibs.global_position = jaula.global_position
 	get_tree().root.add_child(gibs)

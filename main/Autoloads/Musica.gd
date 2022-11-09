@@ -126,7 +126,7 @@ func cambiar_musica(track : int):
 	var track_viejo = track_actual
 	track_actual = track
 	
-	if track_actual == track_viejo: return
+#	if track_actual == track_viejo: return
 	
 	var objetivo : AudioStream
 	var pos_vieja : float

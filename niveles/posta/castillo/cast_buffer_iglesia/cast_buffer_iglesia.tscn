@@ -14,6 +14,7 @@
 [ext_resource path="res://assets/fuentes/RobotoRegular.tres" type="DynamicFont" id=13]
 [ext_resource path="res://main/Musica/MusCastillo.tres" type="Resource" id=14]
 
+
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 260, 144 )
 

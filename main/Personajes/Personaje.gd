@@ -15,6 +15,8 @@ signal borde_tocado(_borde)
 signal muerto
 signal muerto_gib
 signal stun_terminado
+signal saltado
+signal aterrizado
 
 export(bool) var persistir 
 export(PackedScene) var ragdoll_escena
@@ -68,6 +70,7 @@ var turning : bool
 var is_on_floor : bool
 var ciego : bool
 var agua : bool
+var saltando : bool
 
 var timer_stun = Timer.new()
 var sprites_shader : Array # Lista de sprites que van a ser afectadas por un shader
@@ -128,7 +131,17 @@ func _process(delta: float) -> void:
 
 func _physics_process(delta: float) -> void:
 	if stun: input = Vector2.ZERO
+	
 	procesar_movimiento(delta)
+	
+	if saltando and is_on_floor():
+		# Acabas de aterrizar
+		saltando = false
+		emit_signal("aterrizado")
+	if !saltando and !is_on_floor():
+		# Acabas de saltar
+		emit_signal("saltado")
+		saltando = true
 
 
 # LAS FUNCIONES ARRIBA DE ESTO NO SE PUEDEN CAMBIAR EN LAS SUBCLASES

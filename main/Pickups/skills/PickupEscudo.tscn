@@ -4,6 +4,7 @@
 [ext_resource path="res://assets/objetos/parry_cross.png" type="Texture" id=2]
 [ext_resource path="res://main/UI/Hud/tutoriales/pantalla_tutorial_escudo.tscn" type="PackedScene" id=3]
 
+
 [node name="PickupEscudo" instance=ExtResource( 1 )]
 id_skill = "Escudo"
 pantalla_tutorial = ExtResource( 3 )

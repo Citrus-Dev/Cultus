@@ -3,6 +3,7 @@ class_name SpawnerAuto
 extends Position2D
 
 const SPAWN_EFFECT := preload("res://main/particulas/ParticulasSpawn.tscn")
+const SND_SPAWN := preload("res://assets/sfx/spawn.wav")
 
 signal spawn_muerto
 
@@ -59,6 +60,8 @@ func spawn():
 		var p: Jugador = get_tree().get_nodes_in_group("Jugador")[0]
 		new_inst.objetivo = p
 		new_inst.emit_signal("objetivo_encontrado")
+	
+	Musica.hacer_sonido(SND_SPAWN, global_position)
 	
 	return new_inst
 
