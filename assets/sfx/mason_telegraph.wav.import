@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/mason_telegraph.wav-e78d893c6a1050ec2b893d182d480741.sample"
+
+[deps]
+
+source_file="res://assets/sfx/mason_telegraph.wav"
+dest_files=[ "res://.import/mason_telegraph.wav-e78d893c6a1050ec2b893d182d480741.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

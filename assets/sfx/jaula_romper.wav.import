@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/jaula_romper.wav-31893af54b94a9da928ea88d668c392f.sample"
+
+[deps]
+
+source_file="res://assets/sfx/jaula_romper.wav"
+dest_files=[ "res://.import/jaula_romper.wav-31893af54b94a9da928ea88d668c392f.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

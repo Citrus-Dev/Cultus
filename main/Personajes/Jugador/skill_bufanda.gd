@@ -53,7 +53,7 @@ func _process(delta):
 	
 
 	if timer_cooldown.is_stopped() and Input.is_action_just_pressed("gancho"):
-		Musica.hacer_sonido(SONIDO, jug.global_position)
+		Musica.hacer_sonido(SONIDO, jug.global_position, 1.6)
 		pos_objetivo = jug.get_global_mouse_position()
 		attached = true
 		

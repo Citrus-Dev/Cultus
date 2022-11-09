@@ -242,6 +242,8 @@ extents = Vector2( 8, 24 )
 [node name="iglesia_encuentro_granhde" instance=ExtResource( 1 )]
 script = ExtResource( 6 )
 primer_limite_camara = NodePath("camara limites/CameraBounds")
+print_fps = false
+impulse_automatico = false
 musica = ExtResource( 20 )
 cam_limites_2 = NodePath("camara limites/CameraBoundsEncuentro")
 puertas_fase1 = NodePath("Puerta")
@@ -460,7 +462,7 @@ direccion_nivel = "res://niveles/posta/iglesia/iglesia_atajo_o4/iglesia_atajo_o4
 
 [node name="TransicionDeNivelConArea3" parent="triggers" index="8" instance=ExtResource( 24 )]
 position = Vector2( 0, 144 )
-ID = "izq"
+ID = "izq_abajo"
 ID_objetivo = "der"
 direccion_nivel = "res://niveles/posta/iglesia/igl_pickup/igl_pickup.tscn"
 
@@ -712,5 +714,3 @@ position = Vector2( 1400, 24 )
 
 [node name="Hookpoint3" parent="ganchos" index="4" instance=ExtResource( 14 )]
 position = Vector2( 696, 96 )
-
-[connection signal="spawn_muerto" from="spawns/s_paladin" to="spawns/s_polillas" method="queue_free"]
