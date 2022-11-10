@@ -3,6 +3,7 @@ extends Node2D
 
 const ESCENA_MEDIDOR_COOLDOWN = preload("res://main/UI/Hud/MedidorCooldown.tscn")
 const TEXTURA_ICONO = preload("res://assets/ui/IconoHUDCruz.tres")
+const SND_SLIDE := preload("res://assets/sfx/slide.wav")
 
 const DURACION_PARRY := 0.6
 const DURACION_PARRY_DURO := 0.2
@@ -14,6 +15,7 @@ const velocidad := 200
 const tiempo := 0.5
 
 signal cooldown_update(valor)
+signal usado
 
 var jug : Personaje
 var jug_hitbox : Hitbox
@@ -187,6 +189,7 @@ func slide_activar():
 	timer_cooldown.start(TIEMPO_COOLDOWN)
 	
 	emit_signal("usado")
+	Musica.hacer_sonido(SND_SLIDE, jug.global_position)
 	
 	jug.set_dir(sign(jug.input.x))
 	jug.turning = false

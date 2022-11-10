@@ -3,6 +3,7 @@ extends Habilidad
 
 const ESCENA_MEDIDOR_COOLDOWN = preload("res://main/UI/Hud/MedidorCooldown.tscn")
 const TEXTURA_ICONO = preload("res://assets/ui/IconoHUDPiedra.tres")
+const SND := preload("res://assets/sfx/slide.wav")
 
 const TIEMPO_COOLDOWN := 0.8
 
@@ -75,6 +76,7 @@ func activar():
 	timer_cooldown.start()
 	
 	emit_signal("usado")
+	Musica.hacer_sonido(SND, jugador.global_position)
 	
 	jugador.set_dir(sign(jugador.input.x))
 	jugador.turning = false

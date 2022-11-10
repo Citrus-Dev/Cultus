@@ -242,8 +242,6 @@ extents = Vector2( 8, 24 )
 [node name="iglesia_encuentro_granhde" instance=ExtResource( 1 )]
 script = ExtResource( 6 )
 primer_limite_camara = NodePath("camara limites/CameraBounds")
-print_fps = false
-impulse_automatico = false
 musica = ExtResource( 20 )
 cam_limites_2 = NodePath("camara limites/CameraBoundsEncuentro")
 puertas_fase1 = NodePath("Puerta")

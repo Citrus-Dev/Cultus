@@ -12,6 +12,7 @@ signal aplicar_dmg(_info)
 signal aplicar_knockback(_fuerza, _dir)
 signal aplicar_stun
 signal stun_terminado
+signal curado
 
 export(int) var hp_max
 export(int) var stun_threshold # Cuando el stun actual pasa este valor, stunea
@@ -77,6 +78,7 @@ func aplicar_dmg(_info : InfoDmg):
 func curar(_cantidad : int = hp_max):
 	hp = min(hp + _cantidad, hp_max)
 	actualizar_hp_bar()
+	emit_signal("curado")
 
 
 # Solo sirve si el dueño es el jugador

@@ -2,6 +2,8 @@
 class_name PlataformaFragil
 extends PlataformaAlterna
 
+const SONIDO := preload("res://assets/sfx/piedras_romper.wav")
+
 export(float) var tiempo_drop = .8 # El tiempo que tarda en desactivar despues que la pisas
 export(float) var tiempo_recuperacion = 1.5 # El tiempo que tarda en volver
 export(NodePath) var sprite_path
@@ -42,6 +44,7 @@ func _process(delta):
 
 
 func drop():
+	Musica.hacer_sonido(SONIDO, global_position, -0.6)
 	alternar(false)
 	if tiempo_recuperacion != 0.0: timer_recuperacion.start()
 

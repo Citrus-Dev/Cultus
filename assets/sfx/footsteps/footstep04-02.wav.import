@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/footstep04-02.wav-29c242c1f58231a289749ffe80f721a3.sample"
+
+[deps]
+
+source_file="res://assets/sfx/footsteps/footstep04-02.wav"
+dest_files=[ "res://.import/footstep04-02.wav-29c242c1f58231a289749ffe80f721a3.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

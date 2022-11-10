@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://main/Personajes/Jugador/skill_escudo.gd" type="Script" id=1]
+[ext_resource path="res://assets/sfx/mason_disparar.wav" type="AudioStream" id=2]
 
 [sub_resource type="CircleShape2D" id=15]
 radius = 23.0
@@ -28,3 +29,9 @@ collision_layer = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2DSlide"]
 position = Vector2( 0, -12 )
 shape = SubResource( 16 )
+
+[node name="Sonido" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 2 )
+pitch_scale = 3.01
+
+[connection signal="usado" from="." to="Sonido" method="play"]

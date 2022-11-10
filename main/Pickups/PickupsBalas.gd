@@ -1,5 +1,7 @@
 extends Casquillo
 
+const SONIDO_PICKUP := preload("res://assets/sfx/ammo_pickup.wav")
+
 export (NodePath) var path_area
 export (String) var nombre_bala
 export (String) var mensaje
@@ -26,6 +28,8 @@ func agarrar(_jug):
 	var arma : Arma = _jug.controlador_armas.arma_actual
 	
 	if arma == null or inv == null: return
+	
+	Musica.hacer_sonido(SONIDO_PICKUP, global_position, 1.0)
 	
 	inv.agregar_balas(cant_bala, nombre_bala)
 	if arma.has_method("actualizar_medidor"):

@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://main/Personajes/Jugador/Jugador.gd" type="Script" id=1]
 [ext_resource path="res://main/SistemaDaño/StatusJugador.gd" type="Script" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://main/Componentes/LOSCheck.gd" type="Script" id=10]
 [ext_resource path="res://main/Ragdolls/RagdollJug.tscn" type="PackedScene" id=11]
 [ext_resource path="res://main/Personajes/Jugador/SonidosDePasos.gd" type="Script" id=12]
+[ext_resource path="res://assets/sfx/mason_telegraph.wav" type="AudioStream" id=13]
 
 [sub_resource type="Animation" id=3]
 length = 0.001
@@ -489,7 +490,7 @@ pasos_rand = NodePath("SonidosDePasos")
 
 [node name="SonidosDePasos" type="Node" parent="."]
 script = ExtResource( 12 )
-sonidos = [ "res://assets/sfx/paso1.wav", "res://assets/sfx/paso2.wav", "res://assets/sfx/paso3.wav", "res://assets/sfx/paso4.wav" ]
+sonidos = [ "res://assets/sfx/footsteps/footstep04-01.wav", "res://assets/sfx/footsteps/footstep04-02.wav", "res://assets/sfx/footsteps/footstep04-03.wav", "res://assets/sfx/footsteps/footstep04-04.wav", "res://assets/sfx/footsteps/footstep04-05.wav" ]
 
 [node name="monitores" type="Node2D" parent="."]
 
@@ -504,6 +505,11 @@ monitor_flavor_text = "desactivado"
 script = ExtResource( 2 )
 hp_max = 100
 agente = NodePath("..")
+
+[node name="Curarsonido" type="AudioStreamPlayer2D" parent="Status"]
+stream = ExtResource( 13 )
+volume_db = -0.92
+pitch_scale = 2.02
 
 [node name="Skin" type="Node2D" parent="."]
 
@@ -575,3 +581,5 @@ collision_mask = 65536
 modulate = Color( 0.909804, 0.415686, 0.2, 1 )
 position = Vector2( 0, -8 )
 shape = SubResource( 15 )
+
+[connection signal="curado" from="Status" to="Status/Curarsonido" method="play"]
