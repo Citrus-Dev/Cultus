@@ -6,6 +6,7 @@ const NOMBRE_DATO := "boss_muerto"
 const NOMBRE_DATO_PUENTE_ROTO := "puente_roto"
 const TIEMPO_POLILLAS := 6.0
 const MAX_POLILLAS := 3
+const SND_ROMPER := preload("res://assets/sfx/piedras_romper.wav")
 
 export(NodePath) onready var limites_camara_boss = get_node(limites_camara_boss) as CameraBounds
 export(NodePath) onready var puerta = get_node(puerta) as Puerta
@@ -88,6 +89,7 @@ func terminar_boss():
 func romper_pared():
 	pared.call_deferred("free")
 	particulas_romper_pared.emitting = true
+	Musica.hacer_sonido(SND_ROMPER, puerta.global_position)
 
 
 func cutscene_romper_puente():

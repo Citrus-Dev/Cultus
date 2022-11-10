@@ -11,6 +11,7 @@ const SND_MIMIC_HIT1 := preload("res://assets/sfx/mimic_hit1.wav")
 const SND_MIMIC_HIT2 := preload("res://assets/sfx/mimic_hit2.wav")
 const SND_MIMIC_MORIR := preload("res://assets/sfx/mimic_morir.wav")
 const SND_DISPARAR := preload("res://assets/sfx/plasma_shot3.wav")
+const SND_ROMPER := preload("res://assets/sfx/piedras_romper.wav")
 
 signal activado
 
@@ -345,3 +346,5 @@ func instanciar_gibs_piedra():
 	var gib = gibs_escena_piedra.instance() as Gibs
 	gib.global_position = global_position
 	get_parent().add_child(gib)
+	
+	Musica.hacer_sonido(SND_ROMPER, global_position)
