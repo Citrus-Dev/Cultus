@@ -156,6 +156,8 @@ one_way_collision = true
 position = Vector2( 96, 0 )
 rotation = 1.5708
 ID = "caida"
+ID_objetivo = "abajo"
+direccion_nivel = "res://niveles/posta/cripta/cripta_01/cripta_01.tscn"
 direccion_movimiento = 2
 
 [node name="TransicionDeNivelConArea2" parent="." index="12" instance=ExtResource( 12 )]
@@ -176,23 +178,28 @@ spawn = ExtResource( 10 )
 position = Vector2( 608, 373 )
 script = ExtResource( 13 )
 spawn = ExtResource( 10 )
+windup_spawn = 1.0
 
 [node name="sp esqueleto3" type="Position2D" parent="spawns" index="2"]
 position = Vector2( 549, 369 )
 script = ExtResource( 13 )
 spawn = ExtResource( 10 )
+windup_spawn = 1.0
 
 [node name="sp rueda1" type="Position2D" parent="spawns" index="3"]
 position = Vector2( 45, 277 )
 script = ExtResource( 13 )
 spawn = ExtResource( 7 )
+windup_spawn = 1.0
 
 [node name="sp rueda2" type="Position2D" parent="spawns" index="4"]
 position = Vector2( 250, 326 )
 script = ExtResource( 13 )
 spawn = ExtResource( 7 )
+windup_spawn = 1.0
 
 [node name="sp rueda3" type="Position2D" parent="spawns" index="5"]
 position = Vector2( 359, 373 )
 script = ExtResource( 13 )
 spawn = ExtResource( 7 )
+windup_spawn = 1.0

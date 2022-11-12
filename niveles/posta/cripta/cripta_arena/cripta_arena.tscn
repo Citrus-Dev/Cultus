@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://niveles/Nivel.tscn" type="PackedScene" id=1]
 [ext_resource path="res://main/CameraLimitSystem/CameraBounds.gd" type="Script" id=2]
@@ -27,7 +27,10 @@ extents = Vector2( 291, 200 )
 extents = Vector2( 8, 24.287 )
 
 [sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 21, 56 )
+extents = Vector2( 89.5, 20 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 20, 82 )
 
 [node name="cripta_arena" instance=ExtResource( 1 )]
 script = ExtResource( 18 )
@@ -186,42 +189,52 @@ shape = SubResource( 2 )
 [node name="sp polilla" parent="Spawns" index="0" instance=ExtResource( 14 )]
 position = Vector2( -203, 139 )
 spawn = ExtResource( 16 )
+windup_spawn = 2.0
 
 [node name="sp polilla2" parent="Spawns" index="1" instance=ExtResource( 14 )]
 position = Vector2( -152, 136 )
 spawn = ExtResource( 16 )
+windup_spawn = 2.0
 
 [node name="sp polilla3" parent="Spawns" index="2" instance=ExtResource( 14 )]
 position = Vector2( 136, 137 )
 spawn = ExtResource( 16 )
+windup_spawn = 2.0
 
 [node name="sp polilla4" parent="Spawns" index="3" instance=ExtResource( 14 )]
 position = Vector2( 103, 138 )
 spawn = ExtResource( 16 )
+windup_spawn = 2.0
 
 [node name="sp rueda" parent="Spawns" index="4" instance=ExtResource( 14 )]
 position = Vector2( -32, 168 )
 spawn = ExtResource( 13 )
+windup_spawn = 1.0
 
 [node name="sp esqueleto" parent="Spawns" index="5" instance=ExtResource( 14 )]
 position = Vector2( -39, 240 )
 spawn = ExtResource( 12 )
+windup_spawn = 1.0
 
 [node name="sp mason" parent="Spawns" index="6" instance=ExtResource( 14 )]
 position = Vector2( -289, 127 )
 spawn = ExtResource( 15 )
+windup_spawn = 1.0
 
 [node name="sp mason2" parent="Spawns" index="7" instance=ExtResource( 14 )]
 position = Vector2( 206, 129 )
 spawn = ExtResource( 15 )
+windup_spawn = 1.0
 
 [node name="sp rueda2" parent="Spawns" index="8" instance=ExtResource( 14 )]
 position = Vector2( -280, 240 )
 spawn = ExtResource( 13 )
+windup_spawn = 1.0
 
 [node name="sp rueda3" parent="Spawns" index="9" instance=ExtResource( 14 )]
 position = Vector2( 200, 240 )
 spawn = ExtResource( 13 )
+windup_spawn = 1.0
 
 [node name="TransicionDeNivelConArea" parent="." index="22" instance=ExtResource( 17 )]
 position = Vector2( 256, -16 )
@@ -241,5 +254,9 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
-position = Vector2( 194, -58 )
+position = Vector2( 137.5, 30 )
 shape = SubResource( 3 )
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Area2D" index="1"]
+position = Vector2( 43, -33 )
+shape = SubResource( 4 )

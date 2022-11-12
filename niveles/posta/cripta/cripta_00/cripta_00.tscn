@@ -12,7 +12,6 @@
 [ext_resource path="res://main/AI/Borde.tscn" type="PackedScene" id=10]
 [ext_resource path="res://main/Musica/MusCripta.tres" type="Resource" id=11]
 
-
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 432, 148 )
 

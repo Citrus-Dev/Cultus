@@ -22,7 +22,6 @@
 [ext_resource path="res://assets/tilesets/plataformas/plataforma.png" type="Texture" id=20]
 [ext_resource path="res://main/Objetos_mapa/Plataformas alternas/PlataformaAlterna.tscn" type="PackedScene" id=21]
 
-
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 680, 372 )
 
@@ -314,31 +313,37 @@ position = Vector2( 1224, -32 )
 position = Vector2( 269, 403 )
 script = ExtResource( 18 )
 spawn = ExtResource( 15 )
+windup_spawn = 1.0
 
 [node name="sl2" type="Position2D" parent="spawns" index="1"]
 position = Vector2( 420, 403 )
 script = ExtResource( 18 )
 spawn = ExtResource( 19 )
+windup_spawn = 1.0
 
 [node name="sl3" type="Position2D" parent="spawns" index="2"]
 position = Vector2( 565, 403 )
 script = ExtResource( 18 )
 spawn = ExtResource( 15 )
+windup_spawn = 1.0
 
 [node name="sr3" type="Position2D" parent="spawns" index="3"]
 position = Vector2( 951, 401 )
 script = ExtResource( 18 )
 spawn = ExtResource( 15 )
+windup_spawn = 1.0
 
 [node name="sr2" type="Position2D" parent="spawns" index="4"]
 position = Vector2( 1093, 399 )
 script = ExtResource( 18 )
 spawn = ExtResource( 19 )
+windup_spawn = 1.0
 
 [node name="sr1" type="Position2D" parent="spawns" index="5"]
 position = Vector2( 1234, 397 )
 script = ExtResource( 18 )
 spawn = ExtResource( 15 )
+windup_spawn = 1.0
 
 [node name="PlataformaAlterna" parent="." index="20" instance=ExtResource( 21 )]
 position = Vector2( 384, 496 )

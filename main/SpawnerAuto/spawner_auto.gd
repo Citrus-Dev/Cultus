@@ -12,6 +12,7 @@ export(String) var spawn_group
 export(bool) var spawn_on_ready
 export(bool) var efecto = true
 export(float) var spawn_continuo_intervalo
+export(float) var windup_spawn
 
 var cont_spawns : int 
 var spawn_continuo_timer: Timer
@@ -39,10 +40,12 @@ func spawn():
 	if puede_spawn_continuo():
 		spawn_continuo_timer.start(spawn_continuo_intervalo)
 	
-	if efecto:
-		var inst = SPAWN_EFFECT.instance()
-		get_tree().root.add_child(inst)
-		inst.global_position = global_position
+	if windup_spawn > 0:
+		Musica.hacer_sonido(SND_SPAWN, global_position, -15)
+		hacer_efecto()
+		yield(get_tree().create_timer(windup_spawn, false), "timeout")
+	
+	hacer_efecto()
 	
 	var new_inst = spawn.instance()
 	
@@ -85,6 +88,14 @@ func set_spawn_object(_new_spawn : PackedScene):
 		test_inst.free()
 	else:
 		get_node("Sprite").texture = null
+
+
+func hacer_efecto():
+	if efecto:
+		var inst = SPAWN_EFFECT.instance()
+		get_tree().root.add_child(inst)
+		inst.global_position = global_position
+
 
 
 func find_packedscene_sprite(_instance : Node):

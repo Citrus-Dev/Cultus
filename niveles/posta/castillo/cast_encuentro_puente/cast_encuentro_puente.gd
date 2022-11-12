@@ -104,8 +104,8 @@ func oleada_2():
 	yield(get_tree().create_timer(0.8), "timeout")
 	spawnear_polillas()
 	spawnear_caballeros()
-	yield(get_tree().create_timer(0.8), "timeout")
-	spawnear_polillas()
+#	yield(get_tree().create_timer(0.8), "timeout")
+#	spawnear_polillas()
 
 
 

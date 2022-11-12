@@ -58,12 +58,12 @@ func empezar_encuentro(__):
 	
 	# Spawnear polillas y masones
 	for mason_s in [spawn_mason1, spawn_mason2]:
-		var mason: Shot = mason_s.spawn()
-		mason.connect("muerto", self, "aumentar_contador")
+		mason_s.spawn()
+		mason_s.connect("spawn_muerto", self, "aumentar_contador")
 	
 	for pol_s in [spawn_polilla1, spawn_polilla2, spawn_polilla3, spawn_polilla4, spawn_polilla5]:
-		var polilla: Polilla = pol_s.spawn()
-		polilla.connect("muerto", self, "aumentar_contador")
+		pol_s.spawn()
+		pol_s.connect("spawn_muerto", self, "aumentar_contador")
 	
 	alertar_todos_los_enemigos()
 
