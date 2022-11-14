@@ -46,12 +46,12 @@ func agarrar(jug: Personaje):
 	if pantalla_tutorial: spawn_tutorial()
 	
 	
-	if !TransicionesDePantalla.inv_armas.has( convertir_nombre_arma_a_id(arma) ):
-		ControladorUi.mensaje_ui(
-			"Atencion: Agarraste una variante para un arma que aun no encontraste",
-			2.5,
-			true
-		)
+#	if !TransicionesDePantalla.inv_armas.has( convertir_nombre_arma_a_id(arma) ):
+#		ControladorUi.mensaje_ui(
+#			"Atencion: Agarraste una variante para un arma que aun no encontraste",
+#			2.5,
+#			true
+#		)
 	
 	
 	call_deferred("free")

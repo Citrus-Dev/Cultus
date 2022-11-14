@@ -21,7 +21,7 @@ func _ready() -> void:
 func alertar():
 	if !ciego and !muerto:
 		fsm.transition_to("Perseguir")
-		objetivo.connect("muerto", self, "perder_vista_jugador")
+		if objetivo: objetivo.connect("muerto", self, "perder_vista_jugador")
 		add_to_group("EnemigosAlertados")
 
 

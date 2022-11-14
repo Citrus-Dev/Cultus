@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://assets/tilesets/tileset_castillo.tres" type="TileSet" id=1]
 [ext_resource path="res://niveles/Nivel.tscn" type="PackedScene" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://main/Pickups/PickupBalasAR.tscn" type="PackedScene" id=13]
 [ext_resource path="res://main/Pickups/PickupBalasEscopeta.tscn" type="PackedScene" id=14]
 [ext_resource path="res://main/Musica/MusCastillo.tres" type="Resource" id=15]
+[ext_resource path="res://assets/fondos/flecha.png" type="Texture" id=16]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 496, 224 )
@@ -188,17 +189,10 @@ no_desaparecer = true
 position = Vector2( 552, -88 )
 no_desaparecer = true
 
-[node name="Cartel" type="Node2D" parent="." index="21"]
-position = Vector2( 488, 160 )
-
-[node name="Polygon2D2" type="Polygon2D" parent="Cartel" index="0"]
-position = Vector2( -4, 0 )
-color = Color( 0.576471, 0.356863, 0.196078, 1 )
-polygon = PoolVector2Array( 8, 0, 8, -32, 16, -32, 16, 0 )
-
-[node name="Polygon2D" type="Polygon2D" parent="Cartel" index="1"]
-color = Color( 0.921569, 0.545098, 0.317647, 1 )
-polygon = PoolVector2Array( -8, -24, 24, -16, 16, -48, 8, -40, 0, -48, -8, -40, 0, -32 )
+[node name="Sprite" type="Sprite" parent="." index="21"]
+position = Vector2( 504, 112 )
+z_index = -5
+texture = ExtResource( 16 )
 
 [editable path="triggers/TransicionDeNivelConArea2"]
 [editable path="triggers/TransicionDeNivelConArea3"]

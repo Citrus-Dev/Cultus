@@ -93,6 +93,8 @@ func romper_pared():
 
 
 func cutscene_romper_puente():
+	puerta.cerrar()
+	
 	info_persist_nivel[NOMBRE_DATO_PUENTE_ROTO] = true
 	tembleque = true
 	

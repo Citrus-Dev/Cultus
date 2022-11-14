@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://assets/tilesets/tileset_castillo.tres" type="TileSet" id=1]
 [ext_resource path="res://niveles/Nivel.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://main/Objetos_mapa/SpawnJugador.gd" type="Script" id=6]
 [ext_resource path="res://main/Musica/MusCastillo.tres" type="Resource" id=7]
 [ext_resource path="res://main/Objetos_mapa/Plataformas alternas/PlataformaFragilChiquit.tscn" type="PackedScene" id=8]
+[ext_resource path="res://assets/fondos/flecha.png" type="Texture" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 256, 144 )
@@ -77,6 +78,11 @@ script = ExtResource( 6 )
 
 [node name="PlataformaFragil" parent="." index="9" instance=ExtResource( 8 )]
 position = Vector2( 500, 257 )
+
+[node name="Sprite" type="Sprite" parent="." index="10"]
+position = Vector2( 400, 200 )
+z_index = -5
+texture = ExtResource( 9 )
 
 [editable path="triggers/TransicionDeNivelConArea2"]
 [editable path="triggers/TransicionDeNivelConArea3"]
