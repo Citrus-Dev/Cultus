@@ -646,7 +646,6 @@ position = Vector2( 788, -73 )
 script = ExtResource( 17 )
 spawn = ExtResource( 19 )
 spawn_group = "encuentro"
-windup_spawn = 2.0
 
 [node name="s_polillas" type="Position2D" parent="spawns" index="4"]
 position = Vector2( 1097, -173 )

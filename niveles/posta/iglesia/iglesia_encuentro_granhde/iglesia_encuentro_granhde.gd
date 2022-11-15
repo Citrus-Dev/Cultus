@@ -85,8 +85,8 @@ func empezar_fase2(__):
 		rueda.connect("muerto", self, "aumentar_contador")
 	
 	for i in range(1):
-		var moderfoker: BossPaladin = spawn_paladin.spawn()
-		moderfoker.connect("muerto", self, "aumentar_contador")
+		spawn_paladin.spawn()
+		spawn_paladin.connect("spawn_muerto", self, "aumentar_contador")
 		yield(get_tree().create_timer(1.0), "timeout")
 		moderfoker.empezar_boss()
 		yield(get_tree().create_timer(0.6), "timeout")
