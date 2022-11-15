@@ -33,7 +33,7 @@ func terminar_boss():
 	info_persist_nivel[NOMBRE_DATO] = true
 	primer_limite_camara_obj.get_new_limits()
 	
-	yield(get_tree().create_timer(1.5), "timeout")
+	yield(get_tree().create_timer(3.5), "timeout")
 	
 	spawnear_drops()
 
