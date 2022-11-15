@@ -534,6 +534,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://niveles/menu/MainMenu.gd"
 }, {
+"base": "Node2D",
+"class": "ManosDeMierdaMaggiForro",
+"language": "GDScript",
+"path": "res://main/Personajes/Bosses/esqueleto_prime/EsqueletoManosFase2.gd"
+}, {
 "base": "Control",
 "class": "MedidorCooldown",
 "language": "GDScript",
@@ -1065,6 +1070,7 @@ _global_script_class_icons={
 "LaserOjoBoss": "",
 "LlamarFuncionNodo": "",
 "MainMenu": "",
+"ManosDeMierdaMaggiForro": "",
 "MedidorCooldown": "",
 "MenuConfig": "",
 "MenuPausa": "",

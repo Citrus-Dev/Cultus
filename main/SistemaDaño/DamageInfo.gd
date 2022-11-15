@@ -23,6 +23,11 @@ var dmg_stun : int # El daño de stun es separado al daño normal
 var fuerza_retroceso : float
 
 
+func _init(dmg: int = 0):
+	dmg_cantidad = dmg
+
+
+
 static func puede_gibear(tipo: int) -> bool:
 	match tipo:
 		DMG_TIPOS.EXPLOSION, DMG_TIPOS.PLASMA, DMG_TIPOS.APLASTAR:

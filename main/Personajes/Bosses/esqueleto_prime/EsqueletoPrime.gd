@@ -8,6 +8,7 @@ const PIEDRA_ESCENA := preload("res://main/Proyectiles/PiedraBoss.tscn")
 const SND_DISPARAR := preload("res://assets/sfx/mason_disparar.wav")
 
 signal activo
+signal fase2_entrada
 
 export(NodePath) onready var target_mano_1 = get_node(target_mano_1) as Position2D
 export(NodePath) onready var target_mano_2 = get_node(target_mano_2) as Position2D
@@ -33,6 +34,7 @@ var activo : bool
 var counter_idle: int
 var shakers := []
 var hurtboxes := []
+var fase2: bool
 
 var bala_dmg: InfoDmg
 
@@ -51,11 +53,17 @@ func _ready():
 
 
 func _process(delta):
+	if Input.is_action_just_pressed("ciclar_var"):
+		status.aplicar_dmg( InfoDmg.new(status.hp_max / 2) )
+	
 	var vel : float = (VEL_AJUSTE_MANO_GOLPE if atacando else VEL_AJUSTE_MANO) * delta
 	mano_1.global_position = lerp(mano_1.global_position, target_mano_1.global_position, vel)
 	mano_1.rotation = lerp_angle(mano_1.rotation, target_mano_1.rotation, vel)
 	mano_2.global_position = lerp(mano_2.global_position, target_mano_2.global_position, vel)
 	mano_2.rotation = lerp_angle(mano_2.rotation, target_mano_2.rotation, vel)
+	
+	if !fase2 and status.hp < status.hp_max / 2:
+		empezar_fase2()
 	
 	if muriendo:
 		for i in shakers:
@@ -209,6 +217,13 @@ func crear_bala(pos: Vector2, rot: float):
 	get_tree().root.add_child(proy)
 	
 	Musica.hacer_sonido(SND_DISPARAR, global_position)
+
+
+
+func empezar_fase2():
+	fase2 = true
+	emit_signal("fase2_entrada")
+
 
 
 func set_jugador_en_lugar_de_mierda(__, valor: bool):

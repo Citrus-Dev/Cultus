@@ -135,4 +135,3 @@ muriendo = false
 
 [connection signal="body_entered" from="triggers/TriggerNoEstesAhi" to="EsqueletoPrime" method="set_jugador_en_lugar_de_mierda" binds= [ true ]]
 [connection signal="body_exited" from="triggers/TriggerNoEstesAhi" to="EsqueletoPrime" method="set_jugador_en_lugar_de_mierda" binds= [ false ]]
-[connection signal="muerto" from="EsqueletoPrime" to="." method="terminar_boss"]

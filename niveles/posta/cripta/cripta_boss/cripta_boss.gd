@@ -22,6 +22,7 @@ func _ready():
 	boss.call_deferred("free")
 
 
+
 func empezar_boss():
 	limites_boss.get_new_limits()
 	boss.animador.play("emerger")
