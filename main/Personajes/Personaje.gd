@@ -75,6 +75,10 @@ var saltando : bool
 var timer_stun = Timer.new()
 var sprites_shader : Array # Lista de sprites que van a ser afectadas por un shader
 
+func tomar_entrada_bestiario() -> EntradaBestiario:
+	return null
+
+
 func _init() -> void:
 	add_to_group("Personaje")
 
