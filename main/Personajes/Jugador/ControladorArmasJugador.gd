@@ -87,7 +87,8 @@ func procesar_arma_actual(_delta : float):
 	if Input.is_action_just_pressed("ciclar_var"):
 		arma_actual.ciclar_variante()
 	
-	if arma_actual.esta_en_cooldown(): puede_disparar = false
+	if arma_actual.esta_en_cooldown(): 
+		puede_disparar = false
 	
 	if puede_disparar:
 		arma_actual.disparar(self, angulo)
@@ -132,8 +133,8 @@ func agregar_arma(_arma : Arma):
 	_arma.usador = usador
 	_arma.damage_info.atacante = usador
 	armas[slot] = _arma
+	ControladorUi.emit_signal("arma_nueva_agarrada", _arma)
 	seleccionar_arma(slot)
-#	TransicionesDePantalla.inv_armas = armas
 
 
 func agregar_arma_string(dir : String):
@@ -167,6 +168,7 @@ func seleccionar_arma(_slot : String):
 		var hud = get_tree().get_nodes_in_group("HUD")[0]
 		var med = arma_actual.instanciar_medidor(inv_balas, hud)
 		ControladorUi.medidor_balas = med
+		ControladorUi.emit_signal("arma_actual_cambiada", arma_actual)
 		
 		arma_actual.equipar(self)
 

@@ -87,7 +87,10 @@ func empezar_fase2(__):
 	for i in range(1):
 		spawn_paladin.spawn()
 		spawn_paladin.connect("spawn_muerto", self, "aumentar_contador")
-		yield(get_tree().create_timer(1.0), "timeout")
+		
+		yield(get_tree().create_timer(1.0, true), "timeout")
+		
+		(spawn_paladin.node_spawn as BossPaladin).empezar_boss()
 
 
 

@@ -17,6 +17,8 @@ export(float) var windup_spawn
 var cont_spawns : int 
 var spawn_continuo_timer: Timer
 
+var node_spawn: Node2D
+
 func puede_spawn_continuo() -> bool:
 	return spawn_continuo_intervalo > 0.0
 
@@ -66,6 +68,7 @@ func spawn():
 	
 	Musica.hacer_sonido(SND_SPAWN, global_position)
 	
+	node_spawn = new_inst
 	return new_inst
 
 

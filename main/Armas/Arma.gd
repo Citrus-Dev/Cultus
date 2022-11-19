@@ -5,6 +5,7 @@ signal empezado_a_apuntar
 signal dejado_de_apuntar
 
 var skin_escena = preload("res://main/Armas/Skins/SkinArma.tscn")
+var textura_hud_selec: Texture
 var medidor_balas_escena
 var ui_escena
 var casquillo_escena : PackedScene

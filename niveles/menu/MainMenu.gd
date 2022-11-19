@@ -28,6 +28,7 @@ func empezar_nuevo_juego():
 	var primer_nivel_path : String = GAME_INFO.primer_nivel
 	get_tree().change_scene(GAME_INFO.primer_nivel)
 	TransicionesDePantalla.checkpoint_actual_escena = GAME_INFO.primer_nivel
+	TransicionesDePantalla.trigger_objetivo = ""
 	TransicionesDePantalla.inv_balas_estado = GAME_INFO.INV_BALAS_DEFAULT
 	TransicionesDePantalla.inv_armas = {}
 	TransicionesDePantalla.inv_variantes = {}

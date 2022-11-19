@@ -43,7 +43,7 @@ ID_objetivo = "final_pasillo"
 direccion_nivel = "res://niveles/posta/castillo/intro_pasillo/IntroPasillo.tscn"
 
 [node name="TransicionDeNivelConArea2" parent="triggers" index="1" instance=ExtResource( 6 )]
-position = Vector2( 672, 118 )
+position = Vector2( 672, 112 )
 ID = "check1_alto"
 ID_objetivo = "buffer1_izq_alto"
 direccion_nivel = "res://niveles/posta/castillo/cast_buffer1/cast_buffer1.tscn"

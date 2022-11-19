@@ -24,7 +24,6 @@
 [ext_resource path="res://main/Objetos_mapa/Puertas/Puerta.tscn" type="PackedScene" id=22]
 [ext_resource path="res://main/Musica/MusCastillo.tres" type="Resource" id=23]
 
-
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 776, 384 )
 
@@ -38,7 +37,6 @@ extents = Vector2( 17, 76 )
 extents = Vector2( 72, 8 )
 
 [sub_resource type="AtlasTexture" id=6]
-flags = 2
 atlas = ExtResource( 1 )
 region = Rect2( 64, 0, 48, 16 )
 
@@ -340,6 +338,17 @@ texture = ExtResource( 15 )
 visible = false
 position = Vector2( -6.10352e-05, 23 )
 shape = SubResource( 4 )
+
+[node name="TriggerNPCMover" type="Area2D" parent="." index="23"]
+modulate = Color( 0.266667, 0.0823529, 0.4, 1 )
+position = Vector2( 1384, 56 )
+collision_layer = 0
+collision_mask = 4
+script = ExtResource( 18 )
+dir = Vector2( 1, 0 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TriggerNPCMover" index="0"]
+polygon = PoolVector2Array( 24, -24, 56, 24, 0, 8 )
 
 [connection signal="spawn_muerto" from="SpawnerAuto" to="." method="enemigo_puerta_muerto"]
 [connection signal="spawn_muerto" from="SpawnerAuto2" to="." method="enemigo_puerta_muerto"]

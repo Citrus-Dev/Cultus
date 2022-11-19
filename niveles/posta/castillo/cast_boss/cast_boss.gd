@@ -19,6 +19,7 @@ var contador_kills_abrir_puerta : int = 6
 func _ready() -> void:
 	if info_persist_nivel.has(NOMBRE_DATO): 
 		slide_pickup.call_deferred("free")
+		puerta_pickup.set_abierto(true)
 	else:
 		trigger_polillas.connect("triggered", self, "spawnear_polillas")
 		cultista_forro1.connect("muerto", self, "enemigo_puerta_muerto")

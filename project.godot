@@ -309,6 +309,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://main/Objetos_mapa/EjecutarComando.gd"
 }, {
+"base": "Resource",
+"class": "EntradaBestiario",
+"language": "GDScript",
+"path": "res://bestiario_datos/entrada_bestiario.gd"
+}, {
 "base": "Accion",
 "class": "EsVectorCero",
 "language": "GDScript",
@@ -438,6 +443,16 @@ _global_script_classes=[ {
 "class": "Hookpoint",
 "language": "GDScript",
 "path": "res://main/Objetos_mapa/Hookpoint.gd"
+}, {
+"base": "Control",
+"class": "HudBarraDeArmas",
+"language": "GDScript",
+"path": "res://main/UI/Hud/barra_de_armas/hud_barra_de_armas.gd"
+}, {
+"base": "Control",
+"class": "HudDisplayArma",
+"language": "GDScript",
+"path": "res://main/UI/Hud/barra_de_armas/display_arma.gd"
 }, {
 "base": "Control",
 "class": "HudMedidorBalas",
@@ -1025,6 +1040,7 @@ _global_script_class_icons={
 "EfectoCirculo": "",
 "EfectoParticulas": "",
 "EjecutorComando": "",
+"EntradaBestiario": "",
 "EsVectorCero": "",
 "EscenaCreditos": "",
 "Escopeta": "",
@@ -1051,6 +1067,8 @@ _global_script_class_icons={
 "Hitbox": "",
 "Hoja": "",
 "Hookpoint": "",
+"HudBarraDeArmas": "",
+"HudDisplayArma": "",
 "HudMedidorBalas": "",
 "Hurtbox": "",
 "ImprimirTexto": "",

@@ -78,7 +78,7 @@ func agregar_minimo_de_balas():
 			dict_balas["Cohetes"]["cant"] = dict_balas["Cohetes"]["min"]
 	
 	# aaaaaaaaaaaAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-	var jug: Jugador = TransicionesDePantalla.get_tree().get_nodes_in_group("Jugador")[0]
+	var jug = TransicionesDePantalla.get_tree().get_nodes_in_group("Jugador")[0]
 	if jug.controlador_armas.arma_actual != null:
 		jug.controlador_armas.arma_actual.actualizar_medidor()
 

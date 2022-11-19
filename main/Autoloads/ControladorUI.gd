@@ -6,6 +6,8 @@ const SONIDO := preload("res://assets/sfx/habilidades.wav")
 signal cambiar_salud(_cantidad)
 signal balas_cambio(_cantidad)
 signal mensaje_ui(mensaje, tiempo, no_brillo)
+signal arma_nueva_agarrada(arma)
+signal arma_actual_cambiada(arma)
 
 var jugador : Personaje
 var hud
@@ -33,6 +35,9 @@ func mensaje_ui(mensaje : String, tiempo := 1.4, no_brillo := false):
 
 func instanciar_overlay_muerte():
 	get_tree().root.add_child(OVERLAY_MUERTE_ESCENA.instance())
+
+
+
 
 
 

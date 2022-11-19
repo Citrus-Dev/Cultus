@@ -592,7 +592,7 @@ position = Vector2( 752, 56 )
 shape = SubResource( 20 )
 
 [node name="SpawnJugador" type="Node2D" parent="." index="22"]
-position = Vector2( 320, 120 )
+position = Vector2( 1192, -72 )
 script = ExtResource( 12 )
 
 [node name="PlataformaRotatoria" parent="." index="23" instance=ExtResource( 13 )]
@@ -652,7 +652,7 @@ position = Vector2( 1097, -173 )
 script = ExtResource( 17 )
 spawn = ExtResource( 18 )
 spawn_group = "encuentro"
-spawn_continuo_intervalo = 4.0
+spawn_continuo_intervalo = 5.0
 
 [node name="s_mason" type="Position2D" parent="spawns" index="5"]
 position = Vector2( 1153, 166 )
