@@ -116,6 +116,7 @@ script = ExtResource( 4 )
 position = Vector2( 643, 384 )
 tiempo_abrir = 1.2
 tiempo_cerrar = 0.6
+empezar_abierto = true
 
 [node name="Sprite" type="Sprite" parent="Puerta1" index="0"]
 position = Vector2( 4, -23 )
@@ -129,6 +130,7 @@ shape = SubResource( 2 )
 position = Vector2( 643, 191 )
 tiempo_abrir = 1.2
 tiempo_cerrar = 0.6
+empezar_abierto = true
 
 [node name="Sprite" type="Sprite" parent="Puerta2" index="0"]
 position = Vector2( 4, -23 )

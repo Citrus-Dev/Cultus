@@ -29,6 +29,8 @@ func _ready():
 			i.connect("spawn_muerto", self, "subir_contador")
 
 func empezar_encuentro(__):
+	puerta1.cerrar()
+	puerta2.cerrar()
 	spawn_rueda1.spawn()
 	spawn_rueda2.spawn()
 	spawn_rueda3.spawn()
