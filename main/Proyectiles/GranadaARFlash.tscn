@@ -29,7 +29,7 @@ spawn_en_impacto = ExtResource( 4 )
 gravedad = 400.0
 friccion = 0.6
 usar_timer = true
-timer = 0.8
+timer = 0.6
 
 [node name="Sprite" parent="." index="0"]
 material = SubResource( 5 )

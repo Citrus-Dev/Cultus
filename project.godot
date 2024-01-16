@@ -1368,6 +1368,10 @@ dodge={
 2d_physics/layer_17="LugarInseguro"
 2d_physics/layer_18="BloquearGancho"
 
+[mono]
+
+project/assembly_name="Cultus"
+
 [physics]
 
 common/enable_pause_aware_picking=true

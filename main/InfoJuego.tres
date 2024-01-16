@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource( 1 )
-version_actual = "Beta 5"
-creditos = [ "Programador, Coordinador - Agustín Garcia", "Diseño gráfico - Martin Maggi", "Programador, investigación - Manuel Avalos", "Diseño gráfico, investigación - Demian Lozano", "Diseño gráfico - Valentin Paz", "Cata Animations - Arte adicional (Imagen de fondo)", "Efectos de sonido (SFX) - Agustin garcia, Soniss, PMSFX, Kenney", "Musica - Heaven Pierce Her (Copiada del juego Ultrakill)" ]
+version_actual = "Release 1.0"
+creditos = [ "Programador, Coordinador - Agustín Garcia", "Diseño gráfico - Martin Maggi", "Programador, investigación, Música, Traducción - Manuel Avalos", "Diseño gráfico, investigación - Demian Lozano", "Diseño gráfico - Valentin Paz", "Cata Animations - Arte adicional (Imagen de fondo)", "Efectos de sonido (SFX) - Agustin garcia, Soniss, PMSFX, Kenney" ]
 primer_nivel = "res://niveles/posta/castillo/intro_jaula/Intro_jaula.tscn"
 escena_creditos = "res://niveles/creditos/EscenaCreditos.tscn"

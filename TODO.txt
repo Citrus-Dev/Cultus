@@ -1,0 +1,10 @@
+- Traducir al ingles
+- terminar el selector de armas (hacer cuadrados mas chiquitos arriba de las habilidades)
+- hacer que el juego no te devuelva al ultimo lugar seguro si te mata un pincho que te tepea (asi la camara no se va de tu cuerpo)
+- Arreglar los spawns inifinitos en la pelea antes del esqueleto
+- Hacer que el esqueleto te mire?
+- Arreglar que la barra de vida del esqueleto no desaparece cuando se muere
+- Hacer que las armas recuerden que variante estan usando entre transiciones de nivel
+- Revisar las descripciones de habilidades
+- (consultar) Mover al summonner en igl_plataformas
+- (consultar) Elevar la puerta que lleva a igl_checkpoint para que se vea mas la puerta blanca que se abre despues

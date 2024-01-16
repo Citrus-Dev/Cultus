@@ -4,7 +4,7 @@ uniform vec4 hit_color : hint_color = vec4(1.0, 1.0, 1.0, 1.0);
 uniform float hit_strength : hint_range(0.0,1.0) = 0.0;
 uniform bool efecto_flotar;
 uniform float flotar_amplitud = 1.2;
-uniform float flotar_velocidad = 5f;
+uniform float flotar_velocidad = 5.0;
 
 void fragment() {
 	vec4 custom_color = texture(TEXTURE, UV);

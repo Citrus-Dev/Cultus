@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/mimic-combat.ogg-492491fbc0da69b58334f70587c80ab8.oggstr"
+
+[deps]
+
+source_file="res://assets/musica/mimic-combat.ogg"
+dest_files=[ "res://.import/mimic-combat.ogg-492491fbc0da69b58334f70587c80ab8.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

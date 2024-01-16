@@ -45,8 +45,8 @@ func animar_cultista_cinematica(__ = ""):
 
 
 func empezar_boss(__ = ""):
-	
 	boss = boss_spawn.spawn()
+	Musica.reiniciar_musica()
 	efecto.play("o")
 	call_deferred("alertar_todos_los_enemigos")
 

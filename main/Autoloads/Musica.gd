@@ -64,13 +64,14 @@ func set_track(value : int):
 
 
 func asignar_musica(cancion_res : ResCancion):
+	if musica == cancion_res: return
 	musica = cancion_res
 	if cancion_res == null: return
+	reiniciar_musica()
 	cambiar_musica(track_actual)
 
 
 func crossfade(nueva_cancion : AudioStream, posicion : float, instant: bool = instantaneo):
-	
 	var VOL_SILENCIO := -40.0
 	var VOL_NORMAL := 0.0
 	var DURACION := 0.5
@@ -159,5 +160,5 @@ func hacer_sonido(stream : AudioStream, pos : Vector2, vol_over := 0.0, usar_2d 
 
 
 func reiniciar_musica():
-	stream_player_1.play(0.0)
-	stream_player_2.play(0.0)
+	stream_player_1.seek(0.0)
+	stream_player_2.seek(0.0)
